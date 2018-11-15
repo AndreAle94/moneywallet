@@ -43,7 +43,7 @@ allprojects {
 ext {
     versions = [
             versionCode: 55,
-            versionName: "Beta(4.0.1)",
+            versionName: "4.0.2",
             minSdkVersion: 21,
             compileSdkVersion: 27,
             targetSdkVersion: 27,
