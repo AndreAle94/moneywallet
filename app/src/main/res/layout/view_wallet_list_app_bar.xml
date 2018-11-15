@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/view_header_height" >
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+        android:id="@+id/total_sum_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/view_header_text_margin"
+        android:layout_marginLeft="@dimen/view_header_text_margin"
+        android:layout_marginEnd="@dimen/view_header_text_margin"
+        android:layout_marginRight="@dimen/view_header_text_margin"
+        android:text="@string/hint_total_sum"
+        app:theme_textColor="textOverColorPrimary"/>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedHorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_toRightOf="@id/total_sum_text_view"
+        android:layout_toEndOf="@id/total_sum_text_view" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:id="@+id/total_money_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="true"
+            android:paddingStart="@dimen/view_header_text_margin"
+            android:paddingLeft="@dimen/view_header_text_margin"
+            android:paddingEnd="@dimen/view_header_text_margin"
+            android:paddingRight="@dimen/view_header_text_margin"
+            android:layout_gravity="end|center_vertical"
+            app:theme_textColor="textOverColorPrimary"
+            tool:text="$ 450.99 - £ 50.45"/>
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedHorizontalScrollView>
+
+</RelativeLayout>

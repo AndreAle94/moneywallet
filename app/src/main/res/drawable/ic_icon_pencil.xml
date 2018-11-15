@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="136.914"
+    android:viewportHeight="136.914"
+    android:width="136.914dp"
+    android:height="136.914dp">
+    <path
+        android:pathData="M131.79 68.456001A63.333 63.333 0 0 1 68.457001 131.789 63.333 63.333 0 0 1 5.1240005 68.456001 63.333 63.333 0 0 1 68.457001 5.1230011 63.333 63.333 0 0 1 131.79 68.456001Z"
+        android:fillColor="#f2be3e" />
+    <path
+        android:pathData="M76.995 85.592L104.202 31.869 52.146 60.736 49.478 63.231 75.155 87.67Z"
+        android:fillColor="#f7d98b" />
+    <path
+        android:pathData="M81.645 44.198l10.871 10.873 11.845 -23.5z"
+        android:fillColor="#626463" />
+    <path
+        android:pathData="M77.462 81.795l-7.741 0.443 -37.896 37.865c2.141 1.52 4.371 2.92 6.696 4.17L75.155 87.67 77.462 81.795Z"
+        android:fillColor="#e84849" />
+    <path
+        android:pathData="M22.824 112.348l38.524 -38.488 0.344 -7.834 -7.54 0.642 -37.804 37.772c1.945 2.81 4.113 5.452 6.476 7.908z"
+        android:fillColor="#e84849" />
+    <path
+        android:pathData="M54.151 66.667l1.061 -7.124 -5.148 3.033 -36.86 36.827c0.972 1.73 2.02 3.411 3.144 5.037L54.151 66.667Z"
+        android:fillColor="#f06668" />
+    <path
+        android:pathData="M31.824 120.104L69.72 82.239 69.62 73.954 61.347 73.86 22.824 112.348c2.748 2.857 5.76 5.453 9 7.756z"
+        android:fillColor="#f06668" />
+</vector>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="136.913"
+    android:viewportHeight="136.914"
+    android:width="136.913dp"
+    android:height="136.914dp">
+    <path
+        android:pathData="M131.789 68.458A63.333 63.333 0 0 1 68.456001 131.791 63.333 63.333 0 0 1 5.1230011 68.458 63.333 63.333 0 0 1 68.456001 5.125 63.333 63.333 0 0 1 131.789 68.458Z"
+        android:fillColor="#f3ea83" />
+    <path
+        android:pathData="M118.787 88.83c0 1.505 -1.221 2.725 -2.727 2.725l-95.35 0c-1.504 0 -2.725 -1.22 -2.725 -2.725l0 -37.816c0 -1.506 1.221 -2.726 2.725 -2.726l95.35 0c1.506 0 2.727 1.22 2.727 2.726l0 37.816z"
+        android:fillColor="#786e57" />
+    <path
+        android:pathData="M107 88.126c0 1.505 -1.221 2.725 -2.725 2.725l-84.148 0c-1.506 0 -2.727 -1.22 -2.727 -2.725l0 -37.814c0 -1.507 1.221 -2.727 2.727 -2.727l84.148 0c1.504 0 2.725 1.22 2.725 2.727l0 37.814z"
+        android:fillColor="#eddaab" />
+    <path
+        android:pathData="M117.893 88.126c0 1.505 -1.219 2.725 -2.725 2.725l-11.607 0 0 -43.266 11.607 0c1.506 0 2.725 1.22 2.725 2.727l0 37.814z"
+        android:fillColor="#e3e1dc" />
+    <path
+        android:pathData="M54.215 62.077c-1.326 -2.656 -5.516 -0.939 -6.551 -0.424 0 0 -0.271 0.147 -0.75 0.408 -3.566 -2.382 -11.076 -7.164 -13.611 -6.992 -0.494 0.034 -2.049 0.722 -1.721 1.022 2.613 2.387 7.414 6.683 9.943 8.941 -4.727 2.639 -10.865 6.15 -13.406 7.984 -1.658 -1.064 -4.01 -2.45 -4.908 -2.389 -0.213 0.014 -0.881 0.311 -0.74 0.439 1.051 0.961 2.924 2.637 4.053 3.646 -0.23 0.363 -0.416 0.834 -0.135 1.171 0.258 0.311 0.686 0.467 1.051 0.548 0.123 1.488 0.346 4.108 0.482 5.572 0.02 0.19 0.658 -0.165 0.799 -0.327 0.592 -0.685 0.9 -3.424 1.049 -5.392 3.049 -0.912 9.676 -3.67 14.66 -5.809 0.27 3.224 0.846 10.09 1.195 13.78 0.045 0.442 1.527 -0.384 1.854 -0.76 1.717 -1.983 2.406 -11.393 2.629 -15.488 0.381 -0.169 0.594 -0.264 0.594 -0.264 1.036 -0.512 4.837 -3.009 3.513 -5.666z"
+        android:fillColor="#786e57" />
+    <path
+        android:pathData="M81.51 57.142c0 1.067 -0.867 1.933 -1.934 1.933l-10.894 0c-1.066 0 -1.932 -0.865 -1.932 -1.933l0 0c0 -1.067 0.865 -1.932 1.932 -1.932l10.895 0c1.066 0 1.933 0.865 1.933 1.932l0 0z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M99.781 57.142c0 1.067 -0.865 1.933 -1.934 1.933l-10.892 0c-1.066 0 -1.932 -0.865 -1.932 -1.933l0 0c0 -1.067 0.865 -1.932 1.932 -1.932l10.893 0c1.068 0 1.933 0.865 1.933 1.932l0 0z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M81.51 81.33c0 1.067 -0.867 1.933 -1.934 1.933l-10.894 0c-1.066 0 -1.932 -0.865 -1.932 -1.933l0 0c0 -1.067 0.865 -1.933 1.932 -1.933l10.895 0c1.066 0 1.933 0.865 1.933 1.933l0 0z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M99.781 81.33c0 1.067 -0.865 1.933 -1.934 1.933l-10.892 0c-1.066 0 -1.932 -0.865 -1.932 -1.933l0 0c0 -1.067 0.865 -1.933 1.932 -1.933l10.893 0c1.068 0 1.933 0.865 1.933 1.933l0 0z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M68.859 67.157l28.988 0c1.068 0 1.934 -0.865 1.934 -1.933 0 -1.068 -0.865 -1.933 -1.934 -1.933l-28.988 0c-1.068 0 -1.934 0.865 -1.934 1.933 0 1.068 0.866 1.933 1.934 1.933z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M97.848 71.139l-13.561 0 -15.428 0c-1.068 0 -1.934 0.865 -1.934 1.933 0 1.068 0.865 1.934 1.934 1.934l28.988 0c1.068 0 1.934 -0.866 1.934 -1.934 0 -1.068 -0.865 -1.933 -1.933 -1.933z"
+        android:fillColor="#d8bf8a" />
+    <path
+        android:pathData="M117.906 56.264l-6.561 0c-0.84 0 -1.521 -0.683 -1.521 -1.522l0 0c0 -0.842 0.682 -1.523 1.521 -1.523l6.561 0 0 3.045z"
+        android:fillColor="#786e57" />
+    <path
+        android:pathData="M117.906 62.062l-6.561 0c-0.84 0 -1.521 -0.683 -1.521 -1.522l0 0c0 -0.841 0.682 -1.523 1.521 -1.523l6.561 0 0 3.045z"
+        android:fillColor="#786e57" />
+    <path
+        android:pathData="M117.906 68.211l-6.561 0c-0.84 0 -1.521 -0.683 -1.521 -1.523l0 0c0 -0.841 0.682 -1.522 1.521 -1.522l6.561 0 0 3.045z"
+        android:fillColor="#786e57" />
+    <path
+        android:pathData="M103.061 47.584999l1 0 0 43.265999 -1 0z"
+        android:fillColor="#d9c390" />
+    <path
+        android:pathData="M115.154 76.601c0.824 0 1.494 0.669 1.494 1.494l0 8.417c0 0.825 -0.67 1.494 -1.494 1.494l0 0c-0.824 0 -1.494 -0.669 -1.494 -1.494l0 -8.417c0 -0.825 0.67 -1.494 1.494 -1.494l0 0z"
+        android:fillColor="#786e57" />
+</vector>

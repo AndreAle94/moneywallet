@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedProgressWheel
+        android:id="@+id/secondary_panel_progress_wheel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:matProg_progressIndeterminate="true" />
+
+    <LinearLayout
+        android:id="@+id/secondary_panel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/address_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_address"
+            app:mtv_leftIcon="@drawable/ic_place_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Piazza Leonardo, Milan, Italy" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedCardView
+            android:id="@+id/map_card_view"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_component_card_margin"
+            android:foreground="?attr/selectableItemBackground" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include layout="@layout/view_card_map" />
+
+                <LinearLayout
+                    android:id="@+id/button_bar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/material_component_lists_card_action_button_height"
+                    android:padding="@dimen/material_component_lists_card_action_button_padding"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    style="?android:attr/buttonBarStyle" >
+
+                    <com.oriondev.moneywallet.ui.view.theme.ThemedCardButton
+                        android:id="@+id/open_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/material_component_lists_card_action_button_padding"
+                        android:layout_marginStart="@dimen/material_component_lists_card_action_button_padding"
+                        android:text="@string/action_open"
+                        android:background="?attr/selectableItemBackground"
+                        style="?android:attr/buttonBarButtonStyle" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.oriondev.moneywallet.ui.view.theme.ThemedCardView>
+
+    </LinearLayout>
+
+</FrameLayout>

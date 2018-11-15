@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_show_transaction_list"
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="@string/menu_action_show_transaction_list"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_edit_item"
+        android:icon="@drawable/ic_mode_edit_black_24dp"
+        android:title="@string/menu_action_edit_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_delete_item"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:title="@string/menu_action_delete_item"
+        app:showAsAction="ifRoom" />
+
+</menu>

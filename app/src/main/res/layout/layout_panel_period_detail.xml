@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<com.oriondev.moneywallet.ui.view.theme.ThemedNestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:descendantFocusability="blocksDescendants">
+
+        <include layout="@layout/adapter_header_item" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedViewPager
+            android:id="@+id/chart_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_pie_chart_height"
+            android:layout_marginBottom="@dimen/view_pie_chart_margin_bottom">
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedViewPagerIndicator
+                android:id="@+id/view_pager_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:gravity="center_vertical"
+                app:dotRadius="@dimen/view_pie_chart_indicator_radius" />
+
+        </com.oriondev.moneywallet.ui.view.theme.ThemedViewPager>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/material_component_lists_padding_top"
+            android:paddingBottom="@dimen/material_component_lists_padding_bottom"
+            android:clipToPadding="false" />
+
+    </LinearLayout>
+
+</com.oriondev.moneywallet.ui.view.theme.ThemedNestedScrollView>

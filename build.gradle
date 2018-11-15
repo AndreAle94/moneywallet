@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2018.
+ *
+ * This file is part of MoneyWallet.
+ *
+ * MoneyWallet is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MoneyWallet is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+ext {
+    versions = [
+            versionCode: 55,
+            versionName: "Beta(4.0.1)",
+            minSdkVersion: 21,
+            compileSdkVersion: 27,
+            targetSdkVersion: 27,
+            supportLib: "27.1.1"
+    ]
+    supportDependencies = [
+            appcompat : "com.android.support:appcompat-v7:${versions.supportLib}",
+            recyclerview : "com.android.support:recyclerview-v7:${versions.supportLib}",
+            cardview: "com.android.support:cardview-v7:${versions.supportLib}",
+            annotations : "com.android.support:support-annotations:${versions.supportLib}",
+            design : "com.android.support:design:${versions.supportLib}",
+            preference: "com.android.support:preference-v7:${versions.supportLib}",
+            constraintlayout : "com.android.support.constraint:constraint-layout:1.0.2"
+    ]
+    googlePlayServices = [
+            auth: "com.google.android.gms:play-services-auth:15.0.1",
+            signin: "com.google.android.gms:play-services-identity:15.0.1",
+            location: "com.google.android.gms:play-services-location:15.0.1",
+            places: "com.google.android.gms:play-services-places:15.0.1",
+            drive: "com.google.android.gms:play-services-drive:15.0.1"
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

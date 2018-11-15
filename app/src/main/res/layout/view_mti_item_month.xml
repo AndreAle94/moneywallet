@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/view_mti_month_width"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:minHeight="@dimen/view_mti_month_height"
+    android:paddingBottom="@dimen/view_mti_month_lbl_padding_vertical"
+    android:paddingEnd="@dimen/view_mti_month_lbl_padding_horizontal"
+    android:paddingLeft="@dimen/view_mti_month_lbl_padding_horizontal"
+    android:paddingRight="@dimen/view_mti_month_lbl_padding_horizontal"
+    android:paddingStart="@dimen/view_mti_month_lbl_padding_horizontal"
+    android:paddingTop="@dimen/view_mti_month_lbl_padding_vertical">
+
+    <com.oriondev.moneywallet.ui.view.calendar.DotView
+        android:id="@+id/mti_view_indicator"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/mti_month_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLength="8"
+        android:textSize="@dimen/view_mti_month_lbl_text"
+        tools:text="Feb\n17"/>
+
+</FrameLayout>

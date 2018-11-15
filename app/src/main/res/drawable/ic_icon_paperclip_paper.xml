@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="136.913"
+    android:viewportHeight="136.913"
+    android:width="136.913dp"
+    android:height="136.913dp">
+    <path
+        android:pathData="M131.79 68.455002A63.333 63.333 0 0 1 68.457001 131.788 63.333 63.333 0 0 1 5.1240005 68.455002 63.333 63.333 0 0 1 68.457001 5.1220016 63.333 63.333 0 0 1 131.79 68.455002Z"
+        android:fillColor="#67b8cb" />
+    <group
+        android:rotation="-9.073304"
+        android:scaleX="1.000013"
+        android:scaleY="1.000013"
+        android:translateX="-10.4391"
+        android:translateY="11.9672">
+        <path
+            android:pathData="M42.623001 33.655998l55.139 0 0 76.221002 -55.139 0z"
+            android:fillColor="#e8e7e7" />
+    </group>
+    <group
+        android:rotation="1.455436"
+        android:scaleX="1.000023"
+        android:scaleY="1.000023"
+        android:translateX="1.9164"
+        android:translateY="-1.6918">
+        <path
+            android:pathData="M39.896 36.382l55.139 0 0 76.222 -55.139 0z"
+            android:fillColor="#ffffff" />
+    </group>
+    <path
+        android:pathData="M80.757 44.195l0 -13.054c0 -5.541 -3.035 -8.854 -8.328 -9.082 -5.861 0.162 -9.045 3.371 -9.045 9.033l0.008 3.084 2.355 -0.432 -0.006 -2.652c-0.002 -4.428 2.119 -6.553 6.67 -6.678 4.004 0.178 5.99 2.377 5.99 6.727l0 13.432 -0.002 27.568c0.002 3.145 -3.15 4.162 -4.678 4.162 -1.076 0.045 -2.111 -0.354 -2.891 -1.1 -0.826 -0.789 -1.283 -1.891 -1.281 -3.1l0 -26.117 -2.355 0.375 0 25.742c0 1.861 0.713 3.566 2.01 4.805 1.24 1.188 2.908 1.826 4.572 1.75 2.869 0.002 6.98 -2.021 6.98 -6.518l0 -27.945z"
+        android:fillColor="#4b4a4b" />
+</vector>

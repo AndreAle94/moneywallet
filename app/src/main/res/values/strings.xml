@@ -1,0 +1,597 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">MoneyWallet</string>
+
+    <string name="menu_transaction">"Transactions"</string>
+    <string name="menu_category">"Categories"</string>
+    <string name="menu_overview">"Overview"</string>
+    <string name="menu_debt">"Debts"</string>
+    <string name="menu_budget">"Budgets"</string>
+    <string name="menu_saving">"Savings"</string>
+    <string name="menu_event">"Events"</string>
+    <string name="menu_recurrences">"Recurrences"</string>
+    <string name="menu_models">"Models"</string>
+    <string name="menu_place">"Places"</string>
+    <string name="menu_people">"People"</string>
+    <string name="menu_converter">"Converter"</string>
+    <string name="menu_calculator">"Calculator"</string>
+    <string name="menu_search_atm">"Search atm"</string>
+    <string name="menu_search_bank">"Search bank"</string>
+    <string name="menu_setting">"Settings"</string>
+    <string name="menu_about">"About"</string>
+
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"Transactions"</string>
+    <string name="menu_transaction_tab_transfers">"Transfers"</string>
+
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"Incomes"</string>
+    <string name="menu_category_tab_expense">"Expenses"</string>
+    <string name="menu_category_tab_system">"System"</string>
+
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"Debt"</string>
+    <string name="menu_debt_tab_credit">"Credit"</string>
+
+    <!-- Budgets -->
+    <string name="menu_budget_tab_running">"Running"</string>
+    <string name="menu_budget_tab_expired">"Expired"</string>
+
+    <!-- Savings -->
+    <string name="menu_saving_tab_running">"Running"</string>
+    <string name="menu_saving_tab_completed">"Completed"</string>
+
+    <!-- Events -->
+    <string name="menu_event_tab_running">"Running"</string>
+    <string name="menu_event_tab_completed">"Completed"</string>
+
+    <!-- Models -->
+    <string name="menu_model_tab_transactions">"Transactions"</string>
+    <string name="menu_model_tab_transfers">"Transfers"</string>
+
+    <string name="action_new_wallet">"New wallet"</string>
+    <string name="action_manage_wallets">"Manage wallets"</string>
+    <string name="action_pay_debt">"Pay"</string>
+    <string name="action_receive_debt">"Receive"</string>
+    <string name="action_withdraw">"Withdraw"</string>
+    <string name="action_deposit">"Deposit"</string>
+    <string name="action_withdraw_everything">"Withdraw everything"</string>
+    <string name="action_add">"Add"</string>
+    <string name="action_new">"New"</string>
+    <string name="action_edit">"Edit"</string>
+    <string name="action_search">"Search"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_remove">"Remove"</string>
+    <string name="action_open">"Open"</string>
+    <string name="action_undo">"Undo"</string>
+
+    <string name="msg_no_wallet_found">"No wallet found"</string>
+    <string name="msg_add_one_wallet">"Please add one wallet"</string>
+
+    <string name="hint_total_sum">"Total"</string>
+
+    <string name="hint_name">"Name"</string>
+    <string name="hint_description">"Description"</string>
+    <string name="hint_currency">"Currency"</string>
+    <string name="hint_money">"Money"</string>
+    <string name="hint_start_money">"Initial amount"</string>
+    <string name="hint_not_exclude_wallet">"Show this wallet in the total count"</string>
+    <string name="hint_category">"Category"</string>
+    <string name="hint_parent_category">"Parent category"</string>
+    <string name="hint_show_category_report">"Show this category inside the reports"</string>
+    <string name="hint_show_category_report_on">"This category is included inside the reports"</string>
+    <string name="hint_show_category_report_off">"This category is not included inside the reports"</string>
+    <string name="hint_confirmed">"Confirmed"</string>
+    <string name="hint_show_in_total">"Show in total wallet"</string>
+    <string name="hint_income">"Income"</string>
+    <string name="hint_expense">"Expense"</string>
+    <string name="hint_date">"Date"</string>
+    <string name="hint_start_date">"Start date"</string>
+    <string name="hint_end_date">"End date"</string>
+    <string name="hint_expiration_date">"Expiration date"</string>
+    <string name="hint_time">"Time"</string>
+    <string name="hint_wallet">"Wallet"</string>
+    <string name="hint_wallets">"Wallets"</string>
+    <string name="hint_wallet_from">"From"</string>
+    <string name="hint_wallet_to">"To"</string>
+    <string name="hint_recurrence">"Recurrence"</string>
+    <string name="hint_recurrence_invalid">"Invalid recurrence"</string>
+    <string name="hint_event">"Event"</string>
+    <string name="hint_people">"People"</string>
+    <string name="hint_place">"Place"</string>
+    <string name="hint_note">"Note"</string>
+    <string name="hint_tax">"Tax"</string>
+    <string name="hint_type">"Type"</string>
+    <string name="hint_incomes">"Incomes"</string>
+    <string name="hint_expenses">"Expenses"</string>
+    <string name="hint_net_incomes">"Net incomes"</string>
+    <string name="hint_summary">"Summary"</string>
+    <string name="hint_address">"Address"</string>
+    <string name="hint_size_unknown">"Unknown size"</string>
+    <string name="hint_address_unknown">"Unknown address"</string>
+    <string name="hint_unknown">"Unknown"</string>
+    <string name="hint_directory">"Directory"</string>
+    <string name="hint_navigate_up">"Navigate up"</string>
+    <string name="hint_password">"Password"</string>
+    <string name="hint_atm_name">"ATM name"</string>
+    <string name="hint_bank_name">"Bank name"</string>
+    <string name="hint_attachments">"Attachments"</string>
+    <string name="hint_operation_in_progress">"In progress…"</string>
+    <string name="hint_search_something">"Search something"</string>
+    <string name="hint_exchange_rate">"Exchange rate"</string>
+    <string name="hint_recurrence_finished">"Ended"</string>
+
+    <string name="hint_show_currency_symbol">"Show currency symbol"</string>
+    <string name="hint_group_digits">"Group digits"</string>
+    <string name="hint_round_decimals">"Round decimals"</string>
+
+    <string name="total_wallet_name">"Total"</string>
+
+    <string name="title_activity_new_wallet">"New wallet"</string>
+    <string name="title_activity_edit_wallet">"Edit wallet"</string>
+    <string name="title_activity_new_transaction">"New transaction"</string>
+    <string name="title_activity_edit_transaction">"Edit transaction"</string>
+    <string name="title_activity_new_transfer">"New transfer"</string>
+    <string name="title_activity_edit_transfer">"Edit transfer"</string>
+    <string name="title_activity_new_category">"New category"</string>
+    <string name="title_activity_edit_category">"Edit category"</string>
+    <string name="title_activity_new_debt">"New debt"</string>
+    <string name="title_activity_edit_debt">"Edit debt"</string>
+    <string name="title_activity_new_budget">"New budget"</string>
+    <string name="title_activity_edit_budget">"Edit budget"</string>
+    <string name="title_activity_new_saving">"New saving"</string>
+    <string name="title_activity_edit_saving">"Edit saving"</string>
+    <string name="title_activity_new_event">"New event"</string>
+    <string name="title_activity_edit_event">"Edit event"</string>
+    <string name="title_activity_new_recurrence">"New recurrence"</string>
+    <string name="title_activity_edit_recurrence">"Edit recurrence"</string>
+    <string name="title_activity_new_model">"New model"</string>
+    <string name="title_activity_edit_model">"Edit model"</string>
+    <string name="title_activity_new_place">"New place"</string>
+    <string name="title_activity_edit_place">"Edit place"</string>
+    <string name="title_activity_new_person">"New person"</string>
+    <string name="title_activity_edit_person">"Edit person"</string>
+    <string name="title_activity_currency_list">"Currencies"</string>
+    <string name="title_activity_category_picker">"Pick a category"</string>
+    <string name="title_activity_icon_list">"Icons"</string>
+    <string name="title_activity_backup_services">"Backup services"</string>
+    <string name="title_activity_about">"About"</string>
+    <string name="title_activity_calculator">"Calculator"</string>
+    <string name="title_activity_currency_converter">"Currency converter"</string>
+    <string name="title_activity_search_transaction">"Search"</string>
+    <string name="title_activity_calendar">"Calendar"</string>
+    <string name="title_activity_map">"Map"</string>
+
+    <string name="title_fragment_item_wallet">"Wallet"</string>
+    <string name="title_fragment_item_transaction">"Transaction"</string>
+    <string name="title_fragment_item_transfer">"Transfer"</string>
+    <string name="title_fragment_item_category">"Category"</string>
+    <string name="title_fragment_item_debt">"Debt"</string>
+    <string name="title_fragment_item_budget">"Budget"</string>
+    <string name="title_fragment_item_saving">"Saving"</string>
+    <string name="title_fragment_item_event">"Event"</string>
+    <string name="title_fragment_item_recurrence">"Recurrence"</string>
+    <string name="title_fragment_item_model">"Model"</string>
+    <string name="title_fragment_item_place">"Place"</string>
+    <string name="title_fragment_item_person">"Person"</string>
+
+    <string name="menu_action_attach_file">"Attach file"</string>
+    <string name="menu_action_save_changes">"Save changes"</string>
+    <string name="menu_refresh_currency_rate">"Refresh currency rate"</string>
+    <string name="menu_advanced_settings">"Advanced settings"</string>
+    <string name="menu_action_edit_item">"Edit"</string>
+    <string name="menu_action_delete_item">"Delete"</string>
+    <string name="menu_action_archive_item">"Archive"</string>
+    <string name="menu_action_unarchive_item">"Unarchive"</string>
+    <string name="menu_action_search_item">"Search"</string>
+    <string name="menu_action_open_calendar">"Calendar"</string>
+    <string name="menu_action_open_map">"Map"</string>
+    <string name="menu_action_show_transaction_list">"Show transactions"</string>
+    <string name="menu_action_service_disconnect">"Disconnect"</string>
+
+    <string name="bottom_sheet_icon_picker_title">"Personalize the icon"</string>
+    <string name="bottom_sheet_icon_picker_action_select_icon">"Select an icon"</string>
+    <string name="bottom_sheet_icon_picker_action_change_icon">"Change the icon"</string>
+    <string name="bottom_sheet_icon_picker_action_remove_icon">"Remove the icon"</string>
+    <string name="bottom_sheet_icon_picker_action_change_bg_color">"Change background color"</string>
+
+    <string name="dialog_color_picker_title_icon_picker_background_color">"Select the color"</string>
+    <string name="dialog_color_picker_title">"Pick a color"</string>
+    <string name="dialog_wallet_picker_title">"Wallets"</string>
+    <string name="dialog_event_picker_title">"Events"</string>
+    <string name="dialog_category_picker_title">"Categories"</string>
+    <string name="dialog_budget_type_picker_title">"Budget types"</string>
+    <string name="dialog_place_picker_title">"Places"</string>
+    <string name="dialog_people_picker_title">"People"</string>
+    <string name="dialog_filter_search_title">"Filter"</string>
+    <string name="dialog_change_log_title">"Change Log"</string>
+    <string name="dialog_overview_setting_title">"Advanced settings"</string>
+    <string name="dialog_recurrence_title">"Repeat"</string>
+
+    <string name="error_input_name_not_valid">"Not a valid name"</string>
+    <string name="error_input_currency_not_valid">"Not a valid currency"</string>
+    <string name="error_input_date_range_not_valid">"Not a valid date range"</string>
+    <string name="error_input_missing_budget_type">"Select a budget type"</string>
+    <string name="error_input_missing_wallet">"Select a wallet"</string>
+    <string name="error_input_missing_multiple_wallets">"Select at least one wallet"</string>
+    <string name="error_input_invalid_multiple_wallets">"Wallets must have the same currency"</string>
+    <string name="error_input_missing_date">"Select a date"</string>
+    <string name="error_input_missing_start_date">"Select a start date"</string>
+    <string name="error_input_missing_end_date">"Select a end date"</string>
+    <string name="error_input_invalid_date_range">"Invalid date range"</string>
+    <string name="error_input_missing_category">"Select a category"</string>
+    <string name="error_input_missing_description">"Provide a description"</string>
+
+    <string name="system_category_transfer">Transfer</string>
+    <string name="system_category_transfer_tax">Transfer tax</string>
+    <string name="system_category_debt">Debt</string>
+    <string name="system_category_debt_paid">Debt paid</string>
+    <string name="system_category_credit">Credit</string>
+    <string name="system_category_credit_paid">Credit paid</string>
+    <string name="system_category_generic_tax">Tax</string>
+    <string name="system_category_saving_in">Deposit</string>
+    <string name="system_category_saving_out">Withdraw</string>
+
+    <string name="default_category_tip">"Tip"</string>
+    <string name="default_category_prize">"Prize"</string>
+    <string name="default_category_salary">"Salary"</string>
+    <string name="default_category_interests">"Interests"</string>
+    <string name="default_category_sale">"Sale"</string>
+    <string name="default_category_car_expenses">"Car expenses"</string>
+    <string name="default_category_travel">"Travel"</string>
+    <string name="default_category_friends">"Friends"</string>
+    <string name="default_category_technology">"Technology"</string>
+    <string name="default_category_food_drinks">"Food and drinks"</string>
+    <string name="default_category_hobby">"Hobby"</string>
+
+    <string name="relative_string_ended_on">"Ended on: %s"</string>
+    <string name="relative_string_will_end_on">"Will end on: %s"</string>
+    <string name="relative_string_money_to_settle_debt">"%s left to settle this debt"</string>
+    <string name="relative_string_debt_completed">"This debt has been completed"</string>
+    <string name="relative_string_expired_on">"Expired on: %s"</string>
+    <string name="relative_string_will_expire_on">"Will expired on: %s"</string>
+    <string name="relative_string_version_name">"Version %s"</string>
+
+    <string name="adapter_current_money">"Current:"</string>
+    <string name="adapter_needed_money">"Needed:"</string>
+    <string name="adapter_used_money">"Used:"</string>
+    <string name="adapter_available_money">"Available:"</string>
+    <string name="adapter_tax_money">"Tax:"</string>
+
+    <string name="header_debts_to_pay">"To pay:"</string>
+    <string name="header_debts_to_receive">"To receive:"</string>
+    <string name="header_debts_archived">"Archived"</string>
+
+    <string name="message_no_currency_found">"No currency found"</string>
+    <string name="message_no_wallet_found">"No wallet found"</string>
+    <string name="message_no_transaction_found">"No transaction found"</string>
+    <string name="message_no_transfer_found">"No transfer found"</string>
+    <string name="message_no_category_found">"No category found"</string>
+    <string name="message_no_debt_found">"No debt found"</string>
+    <string name="message_no_budget_found">"No budget found"</string>
+    <string name="message_no_saving_found">"No saving found"</string>
+    <string name="message_no_event_found">"No event found"</string>
+    <string name="message_no_recurrence_found">"No recurrence found"</string>
+    <string name="message_no_model_found">"No model found"</string>
+    <string name="message_no_place_found">"No place found"</string>
+    <string name="message_no_person_found">"No person found"</string>
+    <string name="message_no_icon_found">"No icon found"</string>
+
+    <string name="cover_message_backup_external_memory_title">"The application can create and restore the backups directly from the external storage of the device"</string>
+    <string name="cover_message_backup_dropbox_title">"The application can create and restore the backups from your personal Dropbox account"</string>
+    <string name="cover_message_backup_google_drive_title">"The application can create and restore the backups from your personal Google Drive account"</string>
+    <string name="cover_message_backup_external_memory_button">"Continue"</string>
+    <string name="cover_message_backup_dropbox_button">"Login"</string>
+    <string name="cover_message_backup_google_drive_button">"Login"</string>
+
+    <string name="empty_message_secondary_panel">"Select one element from the left panel to see the details"</string>
+    <string name="empty_message_backup_cover">"Select the service that you want to use to store and retrieve your personal backups"</string>
+
+    <string name="title_warning">"Warning"</string>
+    <string name="title_request_permission">"Permission request"</string>
+    <string name="title_backup_create">"Create backup"</string>
+    <string name="title_backup_creation">"Creating backup"</string>
+    <string name="title_backup_restore">"Restore backup"</string>
+    <string name="title_backup_restoring">"Restoring backup"</string>
+    <string name="title_success">"Success"</string>
+    <string name="title_failed">"Failed"</string>
+    <string name="title_error">"Error"</string>
+    <string name="title_atm_search">"Search ATM"</string>
+    <string name="title_bank_search">"Search bank"</string>
+    <string name="title_changelog">"Changelog"</string>
+    <string name="title_licenses">"Licenses"</string>
+    <string name="title_debt_insert_master_transaction">"Well done"</string>
+    <string name="title_currency_exchange_rate">"Exchange rate"</string>
+    <string name="message_permission_required_external_storage">"The permission to access the external storage is required in order to read and write files. Please enable it."</string>
+    <string name="message_permission_required_not_granted">"Permission denied. Please go to application setting and enable it."</string>
+    <string name="message_backup_create">"Are you sure you want create a new backup? The operation cannot be stopped. If you want you can set a password to protect the backup file."</string>
+    <string name="message_backup_restore_standard">"Are you sure you want to restore this backup? All current data will be lost and the operation cannot be stopped. Proceed?"</string>
+    <string name="message_backup_restore_protected">"Are you sure you want to restore this backup? All current data will be lost and the operation cannot be stopped. The backup is protected by a password, please enter it and proceed."</string>
+    <string name="message_backup_restore_legacy">"Are you sure you want to restore this backup? All current data will be lost and the operation cannot be stopped. WARNING!: this is a legacy backup and the application may fail to import it. Proceed?"</string>
+    <string name="message_backup_status_creation">"Creation of backup file in progress…"</string>
+    <string name="message_backup_status_uploading">"Uploading of backup file in progress…"</string>
+    <string name="message_backup_status_downloading">"Downloading of backup file in progress…"</string>
+    <string name="message_backup_status_restoring">"Restoring of backup file in progress…"</string>
+    <string name="message_backup_creation_success">"Backup created correctly."</string>
+    <string name="message_backup_restoring_success">"Backup restored correctly."</string>
+    <string name="message_backup_creation_failed">"Failure during the creation of the backup. Message: %s"</string>
+    <string name="message_backup_restoring_failed">"Failure during the restoring of the backup. Message: %s"</string>
+    <string name="message_backup_service_dropbox_disconnect">"Are you sure you want to disconnect your Dropbox account?"</string>
+    <string name="message_backup_service_google_drive_disconnect">"Are you sure you want to disconnect your Google Drive account?"</string>
+    <string name="message_action_archive_wallet">"Are you sure you want to archive this wallet? It will not be visible in the menu anymore."</string>
+    <string name="message_action_unarchive_wallet">"Are you sure you want to unarchive this wallet? It will be visible in the menu again."</string>
+    <string name="message_action_archive_debt">"Are you sure you want to archive this debt?"</string>
+    <string name="message_action_unarchive_debt">"Are you sure you want to unarchive this debt?"</string>
+    <string name="message_action_archive_saving">"Are you sure you want to archive this saving?"</string>
+    <string name="message_action_unarchive_saving">"Are you sure you want to unarchive this saving?"</string>
+    <string name="message_error_activity_not_found">"No application found on this device to handle the request."</string>
+    <string name="message_delete_wallet">"Are you sure you want to delete this wallet? All the related data will be removed."</string>
+    <string name="message_error_delete_wallet_of_transfer">"This wallet cannot be deleted because is used in one or more transfers. Please remove the related transfers to delete this wallet."</string>
+    <string name="message_delete_category">"Are you sure you want to delete this category?"</string>
+    <string name="message_error_insert_category_deep_hierarchy">"Nested child categories are not supported: the selected parent category is already a child of another category."</string>
+    <string name="message_error_insert_category_not_consistent">"The selected parent category is not of the same type of this category."</string>
+    <string name="message_error_update_category_deep_hierarchy">"Nested child categories are not supported: this category has one or more children and cannot be updated as child category."</string>
+    <string name="message_error_update_category_not_consistent">"The selected parent category is not of the same type of this category."</string>
+    <string name="message_error_delete_category_with_children">"This category cannot be deleted because it has one or more children. Please remove them before."</string>
+    <string name="message_error_delete_category_in_use">"This category cannot be deleted because it is in use. Please remove any references to this category and retry."</string>
+    <string name="message_error_delete_system_category">"This category cannot be deleted because it is a system category."</string>
+    <string name="message_delete_transaction">"Are you sure you want to delete this transaction?"</string>
+    <string name="message_delete_transfer">"Are you sure you want to delete this transfer?"</string>
+    <string name="message_error_delete_transaction_of_transfer">"This transaction cannot be deleted because is part of a transfer. Please remove the related transfer to delete this transaction."</string>
+    <string name="message_delete_debt">"Are you sure you want to delete this debt? All the related data will be removed."</string>
+    <string name="message_delete_budget">"Are you sure you want to delete this budget?"</string>
+    <string name="message_delete_saving">"Are you sure you want to delete this saving? All the related data will be removed."</string>
+    <string name="message_delete_event">"Are you sure you want to delete this event?"</string>
+    <string name="message_delete_transaction_model">"Are you sure you want to delete this transaction model?"</string>
+    <string name="message_delete_transfer_model">"Are you sure you want to delete this transfer model?"</string>
+    <string name="message_delete_recurrent_transaction">"Are you sure you want to delete this recurrent transaction? All the already generated transactions will not be removed."</string>
+    <string name="message_delete_recurrent_transfer">"Are you sure you want to delete this recurrent transfer? All the already generated transfers will not be removed."</string>
+    <string name="message_delete_place">"Are you sure you want to delete this place?"</string>
+    <string name="message_delete_person">"Are you sure you want to delete this person?"</string>
+    <string name="message_debt_insert_master_transaction">"Do you want to add a master transaction for this debt?"</string>
+
+    <string name="message_async_init">"Initialization …"</string>
+
+    <string name="snackbar_message_model_transaction_added">"Transaction added"</string>
+    <string name="snackbar_message_model_transfer_added">"Transfer added"</string>
+    <string name="snackbar_message_model_transaction_removed">"Transaction removed"</string>
+    <string name="snackbar_message_model_transfer_removed">"Transfer removed"</string>
+
+    <string name="spinner_item_group_type_daily">"Group daily"</string>
+    <string name="spinner_item_group_type_weekly">"Group weekly"</string>
+    <string name="spinner_item_group_type_monthly">"Group monthly"</string>
+    <string name="spinner_item_group_type_yearly">"Group yearly"</string>
+    <string name="spinner_item_type_cash_flow">"Cash flow"</string>
+    <string name="spinner_item_type_category">"Category"</string>
+    <string name="spinner_item_cash_flow_incomes">"Only incomes"</string>
+    <string name="spinner_item_cash_flow_expenses">"Only expenses"</string>
+    <string name="spinner_item_cash_flow_net_incomes">"Net incomes"</string>
+
+    <string name="spinner_item_start_date">"From:   %s"</string>
+    <string name="spinner_item_end_date">"To:   %s"</string>
+
+    <string name="service_backup_drop_box">"DropBox"</string>
+    <string name="service_backup_google_drive">"Google Drive"</string>
+    <string name="service_backup_external_memory">"External Memory"</string>
+
+    <string name="setting_title_user_interface">"User interface"</string>
+    <string name="setting_title_utility">"Utilities"</string>
+    <string name="setting_title_database">"Database"</string>
+    <string name="setting_title_about">"About"</string>
+
+    <string name="setting_category_ui_appearance">"Appearance"</string>
+    <string name="setting_category_ui_theme">"Theme"</string>
+    <string name="setting_title_ui_income_color">"Income color"</string>
+    <string name="setting_title_ui_expense_color">"Expense color"</string>
+    <string name="setting_title_ui_custom_digits">"Display style of digits"</string>
+    <string name="setting_summary_ui_custom_digits">"Personalize the display style of digits"</string>
+    <string name="setting_title_ui_date_format">"Date format"</string>
+    <string name="setting_title_ui_first_day_week">"First day of week"</string>
+    <string name="setting_title_ui_first_day_month">"First day of month"</string>
+    <string name="setting_title_ui_group_type">"Grouping"</string>
+    <string name="setting_title_ui_theme_color_primary">"Color primary"</string>
+    <string name="setting_title_ui_theme_color_accent">"Color accent"</string>
+    <string name="setting_title_ui_theme_type">"Type"</string>
+
+    <string name="setting_category_utility_notification">"Notification"</string>
+    <string name="setting_category_utility_security">"Security"</string>
+    <string name="setting_category_utility_exchange_rates">"Exchange rates"</string>
+    <string name="setting_title_daily_reminder">"Daily reminder"</string>
+    <string name="setting_summary_daily_reminder">"Every day at: %02d:00"</string>
+    <string name="setting_title_security">"Access protection"</string>
+    <string name="setting_title_security_change_pin">"Change pin code"</string>
+    <string name="setting_title_security_change_sequence">"Change unlock sequence"</string>
+    <string name="setting_title_exchange_rate_source">"Service"</string>
+    <string name="setting_title_exchange_rate_api_key">"Custom api-key"</string>
+    <string name="setting_summary_exchange_rate_api_key">"Api-key: %s"</string>
+    <string name="setting_summary_exchange_rate_api_key_missing">"Api-key is missing"</string>
+    <string name="setting_title_exchange_rate_update">"Update exchange rates"</string>
+    <string name="setting_summary_exchange_rate_update">"Last update: %s"</string>
+    <string name="setting_subtitle_user_interface">"Personalize it as you want"</string>
+    <string name="setting_subtitle_utility">"Setup the available tools"</string>
+    <string name="setting_subtitle_database">"Manage your data"</string>
+    <string name="setting_subtitle_about">"Credits and licences"</string>
+    <string name="setting_item_daily_reminder_none">"Disabled"</string>
+    <string name="setting_item_security_none">"Disabled"</string>
+    <string name="setting_item_security_pin">"Pin code"</string>
+    <string name="setting_item_security_sequence">"Sequence"</string>
+    <string name="setting_item_security_fingerprint">"Fingerprint"</string>
+    <string name="setting_item_ui_group_type_daily">"Daily"</string>
+    <string name="setting_item_ui_group_type_weekly">"Weekly"</string>
+    <string name="setting_item_ui_group_type_monthly">"Monthly"</string>
+    <string name="setting_item_ui_group_type_yearly">"Yearly"</string>
+    <string name="setting_item_ui_theme_type_light">"Light"</string>
+    <string name="setting_item_ui_theme_type_dark">"Dark"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"Deep dark"</string>
+    <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Insert api-key"</string>
+    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
+    <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"This service requires a valid api-key in order to work. This means that this application release was compiled without a default key, probably due to licensing issues. To be able to communicate with this external provider you must go to https://openexchangerates.org and register: you will receive a free key."</string>
+
+    <string name="setting_category_database_backup">"Backup"</string>
+    <string name="setting_title_database_backup_services">"Backup services"</string>
+    <string name="setting_summary_database_backup_services">"Create and restore the database"</string>
+
+    <string name="notification_title_daily_reminder_title">"Any transaction today?"</string>
+    <string name="notification_title_daily_reminder_text">"Tap here to add it immediately"</string>
+    <string name="notification_title_download_exchange_rates">"Update exchange rates"</string>
+    <string name="notification_content_downloading_data">"Downloading updated data…"</string>
+    <string name="notification_content_caching_data">"Storing updated data…"</string>
+    <string name="notification_content_error_message">"Error: %s"</string>
+    <string name="message_error_network_connection">"network connection"</string>
+    <string name="message_error_invalid_response">"invalid response"</string>
+    <string name="message_error_missing_api_key">"missing or invalid api key, please update the api key in settings in order to use this service"</string>
+
+    <string name="about_hint_version">"Build version"</string>
+    <string name="about_hint_changelog">"Changelog"</string>
+    <string name="about_hint_support">"Support the development"</string>
+    <string name="about_hint_rate_app">"Rate this app"</string>
+    <string name="about_hint_open_source_libraries">"Open source libraries"</string>
+    <string name="about_hint_report_bug">"Report a bug"</string>
+    <string name="about_hint_author">"Author"</string>
+    <string name="about_hint_developer">"Developer"</string>
+    <string name="about_hint_fork">"Fork on GitHub"</string>
+    <string name="about_hint_logo_designer">"Logo designer"</string>
+    <string name="about_hint_google_plus">"Google Plus"</string>
+    <string name="about_hint_website">"Website"</string>
+    <string name="about_hint_icon_licenses">"Images and icons"</string>
+    <string name="about_hint_icon_image_intro">"Intro images"</string>
+    <string name="about_hint_md_icons">"Material design icons"</string>
+    <string name="about_hint_icon_pack">"Icon pack"</string>
+    <string name="about_hint_translators">"Translators"</string>
+
+    <string name="activity_launcher_legacy_edition_upgrade_title">"Upgrading…"</string>
+    <string name="activity_launcher_first_start_title">"Welcome to MoneyWallet"</string>
+    <string name="activity_launcher_first_start_content">"Is it the first time you use this application or do you want to restore a previous backup?"</string>
+    <string name="activity_launcher_first_start_button_first_time">"First time"</string>
+    <string name="activity_launcher_first_start_button_restore_backup">"Restore backup"</string>
+
+    <string name="activity_intro_title_slide_1">"No more bad surprises"</string>
+    <string name="activity_intro_title_slide_2">"Discover and plan"</string>
+    <string name="activity_intro_title_slide_3">"Open source"</string>
+    <string name="activity_intro_title_slide_4">"Cloud backups"</string>
+    <string name="activity_intro_title_slide_5">"Well done"</string>
+    <string name="activity_intro_description_slide_1">"It will help you track all your expenses"</string>
+    <string name="activity_intro_description_slide_2">"You can analyze where you spend a lot and setup some budget"</string>
+    <string name="activity_intro_description_slide_3">"The project is now open source and everyone can contribute"</string>
+    <string name="activity_intro_description_slide_4">"It support the most used cloud services to help you never lose your data"</string>
+    <string name="activity_intro_description_slide_5">"You will now be redirected to create your first wallet"</string>
+
+    <string name="help_create_new_pin_code">"Create a new pin code"</string>
+    <string name="help_verify_created_pin_code">"Reinsert the pin code"</string>
+    <string name="help_verify_created_pin_code_failed">"Code mismatch, create a new pin code"</string>
+    <string name="help_insert_pin_code">"Insert the pin code"</string>
+    <string name="help_insert_pin_code_failed">"Wrong pin code, retry"</string>
+    <string name="help_insert_old_pin_code">"Insert the old pin code"</string>
+    <string name="help_create_new_sequence">"Create a new sequence"</string>
+    <string name="help_verify_created_sequence">"Reinsert the sequence"</string>
+    <string name="help_verify_created_sequence_failed">"Sequence mismatch, create a new sequence"</string>
+    <string name="help_insert_sequence">"Insert the sequence"</string>
+    <string name="help_insert_sequence_failed">"Wrong sequence, retry"</string>
+    <string name="help_insert_old_sequence">"Insert the old sequence"</string>
+    <string name="help_create_fingerprint">"Use fingerprint to confirm"</string>
+    <string name="help_insert_fingerprint">"Use fingerprint to unlock"</string>
+    <string name="help_insert_fingerprint_failed">"Verification failed, retry"</string>
+    <string name="help_fingerprint_not_initialized">"No fingerprint registered on this device"</string>
+
+    <string name="icon_category_clothes">"Clothes"</string>
+    <string name="icon_category_people">"People"</string>
+    <string name="icon_category_toys">"Toys"</string>
+    <string name="icon_category_travel_and_transportation">"Travel and transportation"</string>
+    <string name="icon_category_home">"Home"</string>
+    <string name="icon_category_animals">"Animals"</string>
+    <string name="icon_category_shopping">"Shopping"</string>
+    <string name="icon_category_sport_and_free_time">"Sport and free time"</string>
+    <string name="icon_category_payments">"Payments"</string>
+    <string name="icon_category_party">"Party"</string>
+    <string name="icon_category_food_and_drinks">"Food and drinks"</string>
+    <string name="icon_category_baby">"Baby"</string>
+    <string name="icon_category_beauty_and_wellness">"Beauty and wellness"</string>
+    <string name="icon_category_technology">"Technology"</string>
+    <string name="icon_category_finance">"Finance"</string>
+
+    <string name="keyboard_9">9</string>
+    <string name="keyboard_8">8</string>
+    <string name="keyboard_7">7</string>
+    <string name="keyboard_6">6</string>
+    <string name="keyboard_5">5</string>
+    <string name="keyboard_4">4</string>
+    <string name="keyboard_3">3</string>
+    <string name="keyboard_2">2</string>
+    <string name="keyboard_1">1</string>
+    <string name="keyboard_0">0</string>
+    <string name="keyboard_000">000</string>
+    <string name="keyboard_point">.</string>
+    <string name="keyboard_clear">"C"</string>
+    <string name="keyboard_multiplication">"×"</string>
+    <string name="keyboard_division">"÷"</string>
+    <string name="keyboard_addition">"+"</string>
+    <string name="keyboard_subtraction">"−"</string>
+    <string name="keyboard_equal">"="</string>
+    <string name="keyboard_commit">">"</string>
+
+    <string name="recurrence_type_daily">"Daily"</string>
+    <string name="recurrence_type_weekly">"Weekly"</string>
+    <string name="recurrence_type_monthly">"Monthly"</string>
+    <string name="recurrence_type_yearly">"Yearly"</string>
+
+    <string name="recurrence_hint_from">"From"</string>
+    <string name="recurrence_hint_every">"Every"</string>
+    <string name="recurrence_hint_days">"days"</string>
+    <string name="recurrence_hint_weeks">"weeks"</string>
+    <string name="recurrence_hint_months">"months"</string>
+    <string name="recurrence_hint_years">"years"</string>
+    <string name="recurrence_hint_times">"times"</string>
+
+    <string name="recurrence_type_weekly_sunday">"on Sunday"</string>
+    <string name="recurrence_type_weekly_monday">"on Monday"</string>
+    <string name="recurrence_type_weekly_tuesday">"on Tuesday"</string>
+    <string name="recurrence_type_weekly_wednesday">"on Wednesday"</string>
+    <string name="recurrence_type_weekly_thursday">"on Thursday"</string>
+    <string name="recurrence_type_weekly_friday">"on Friday"</string>
+    <string name="recurrence_type_weekly_saturday">"on Saturday"</string>
+    <string name="recurrence_type_monthly_repeat_same_day">"on the same day each month"</string>
+
+    <string name="recurrence_end_type_forever">"Forever"</string>
+    <string name="recurrence_end_type_until">"Until"</string>
+    <string name="recurrence_end_type_for">"For"</string>
+
+    <string name="recurrence_hint_repeat_every_day">"Repeat every day, "</string>
+    <string name="recurrence_hint_repeat_every_n_days">"Repeat every %d days, "</string>
+    <string name="recurrence_hint_repeat_every_week">"Repeat every week, "</string>
+    <string name="recurrence_hint_repeat_every_n_weeks">"Repeat every %d weeks, "</string>
+    <string name="recurrence_hint_repeat_every_month">"Repeat every month, "</string>
+    <string name="recurrence_hint_repeat_every_n_months">"Repeat every %d months, "</string>
+    <string name="recurrence_hint_repeat_every_year">"Repeat every year, "</string>
+    <string name="recurrence_hint_repeat_every_n_years">"Repeat every %d years, "</string>
+    <string name="recurrence_hint_repeat_weekly_sunday">"on Sunday, "</string>
+    <string name="recurrence_hint_repeat_weekly_monday">"on Monday, "</string>
+    <string name="recurrence_hint_repeat_weekly_tuesday">"on Tuesday, "</string>
+    <string name="recurrence_hint_repeat_weekly_wednesday">"on Wednesday, "</string>
+    <string name="recurrence_hint_repeat_weekly_thursday">"on Thursday, "</string>
+    <string name="recurrence_hint_repeat_weekly_friday">"on Friday, "</string>
+    <string name="recurrence_hint_repeat_weekly_saturday">"on Saturday, "</string>
+    <string name="recurrence_hint_repeat_starting_from">"starting from %s, "</string>
+    <string name="recurrence_hint_repeat_forever">"forever"</string>
+    <string name="recurrence_hint_repeat_until">"until %s"</string>
+    <string name="recurrence_hint_repeat_for_one_occurrence">"for 1 occurrence"</string>
+    <string name="recurrence_hint_repeat_for_n_occurrence">"for %d occurrences"</string>
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedProgressWheel
+        android:id="@+id/secondary_panel_progress_wheel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:matProg_progressIndeterminate="true" />
+
+    <LinearLayout
+        android:id="@+id/secondary_panel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/start_date_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:inputType="textNoSuggestions"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_start_date"
+            app:mtv_leftIcon="@drawable/ic_today_black_24dp"
+            app:mtv_bottomLineEnabled="true" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/end_date_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_end_date"
+            app:mtv_leftIcon="@drawable/ic_calendar_black_24dp"
+            app:mtv_bottomLineEnabled="true" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/note_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            android:inputType="textMultiLine"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_note"
+            app:mtv_leftIcon="@drawable/ic_content_paste_black_24dp"
+            app:mtv_bottomLineEnabled="true" />
+
+    </LinearLayout>
+
+</FrameLayout>

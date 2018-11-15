@@ -1,0 +1,143 @@
+[
+  {
+    "name":"Material Dialogs",
+    "author":"afollestad",
+    "website":"https://github.com/afollestad/material-dialogs",
+    "version":"0.9.6.0",
+    "copyright":"Copyright (c) 2014-2016 Aidan Michael Follestad",
+    "license":"MIT"
+  },{
+    "name":"MaterialDrawer",
+    "author":"mikepenz",
+    "website":"https://github.com/mikepenz/MaterialDrawer",
+    "version":"6.0.8",
+    "copyright":"Copyright 2018 Mike Penz",
+    "license":"APACHE"
+  },{
+    "name":"Material-ish Progress",
+    "author":"pnikosis",
+    "website":"https://github.com/pnikosis/materialish-progress",
+    "version":"1.7",
+    "copyright":"Copyright 2014 Nico Hormazábal",
+    "license":"APACHE"
+  },{
+    "name":"BottomSheetBuilder",
+    "author":"rubensousa",
+    "website":"https://github.com/rubensousa/BottomSheetBuilder",
+    "version":"1.6.1",
+    "copyright":"Copyright 2016 Rúben Sousa",
+    "license":"APACHE"
+  },{
+    "name":"BottomSheetPickers",
+    "author":"philliphsu",
+    "website":"https://github.com/philliphsu/BottomSheetPickers",
+    "version":"2.4.1",
+    "copyright":"Copyright 2017 Phillip Hsu",
+    "license":"APACHE"
+  },{
+    "name":"Datepicker-timeline",
+    "author":"badoualy",
+    "website":"https://github.com/badoualy/datepicker-timeline",
+    "version":"1.0.1",
+    "copyright":"Copyright (c) 2016 Yannick Badoual",
+    "license":"MIT"
+  },{
+    "name":"ExpansionPanel",
+    "author":"florent37",
+    "website":"https://github.com/florent37/ExpansionPanel",
+    "version":"1.1.1",
+    "copyright":"Copyright 2017 Florent37, Inc.",
+    "license":"APACHE"
+  },{
+    "name":"Commons-io",
+    "author":"apache",
+    "website":"https://github.com/apache/commons-io",
+    "version":"2.6",
+    "copyright":"Copyright 2002-2017 The Apache Software Foundation",
+    "license":"APACHE"
+  },{
+    "name":"Dropbox-sdk-java",
+    "author":"dropbox",
+    "website":"https://github.com/dropbox/dropbox-sdk-java",
+    "version":"3.0.8",
+    "copyright":"Copyright (c) 2015 Dropbox Inc., http://www.dropbox.com",
+    "license":"MIT"
+  },{
+    "name":"Zip4j",
+    "author":"lingala",
+    "website":"http://www.lingala.net/zip4j",
+    "version":"1.3.2",
+    "copyright":"Copyright (c) Srikanth Reddy Lingala",
+    "license":"APACHE"
+  },{
+    "name":"Material-about-library",
+    "author":"daniel-stoneuk",
+    "website":"https://github.com/daniel-stoneuk/material-about-library",
+    "version":"2.2.4",
+    "copyright":"Copyright 2016-2018 Daniel Stone",
+    "license":"APACHE"
+  },{
+    "name":"AppIntro",
+    "author":"apl-devs",
+    "website":"https://github.com/apl-devs/AppIntro",
+    "version":"4.2.3",
+    "copyright":"Copyright 2015 Paolo Rotolo, 2018 APL Devs",
+    "license":"APACHE"
+  },{
+    "name":"PinLockView",
+    "author":"aritraroy",
+    "website":"https://github.com/aritraroy/PinLockView",
+    "version":"2.1.0",
+    "copyright":"Copyright 2017 aritraroy",
+    "license":"APACHE"
+  },{
+    "name":"PatternLockView",
+    "author":"aritraroy",
+    "website":"https://github.com/aritraroy/PatternLockView",
+    "version":"1.0.0",
+    "copyright":"Copyright 2017 aritraroy",
+    "license":"APACHE"
+  },{
+    "name":"Android-fingerprint-authentication",
+    "author":"multidots",
+    "website":"https://github.com/multidots/android-fingerprint-authentication",
+    "version":"1.0.1",
+    "copyright":"Copyright (c) 2016 Multidots Solutions Pvt Ltd",
+    "license":"MIT"
+  },{
+    "name":"MPAndroidChart",
+    "author":"PhilJay",
+    "website":"https://github.com/PhilJay/MPAndroidChart",
+    "version":"3.0.3",
+    "copyright":"Copyright 2018 Philipp Jahoda",
+    "license":"APACHE"
+  },{
+    "name":"Material-ViewPagerIndicator",
+    "author":"ronaldsmartin",
+    "website":"https://github.com/ronaldsmartin/Material-ViewPagerIndicator",
+    "version":"1.0.4",
+    "copyright":"Copyright 2016 Ronald Martin",
+    "license":"APACHE"
+  },{
+    "name":"MaterialSpinner",
+    "author":"jaredrummler",
+    "website":"https://github.com/jaredrummler/MaterialSpinner",
+    "version":"1.2.5",
+    "copyright":"Copyright (C) 2016 Jared Rummler",
+    "license":"APACHE"
+  },{
+    "name":"Glide",
+    "author":"bumptech",
+    "website":"https://github.com/bumptech/glide",
+    "version":"4.8.0",
+    "copyright":"Copyright 2014 Google, Inc. All rights reserved.",
+    "license":"CUSTOM"
+  },{
+    "name":"lib-recur",
+    "author":"dmfs",
+    "website":"https://github.com/dmfs/lib-recur",
+    "version":"0.11.1",
+    "copyright":"Copyright (c) Marten Gajda 2015",
+    "license":"APACHE"
+  }
+]

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/material_component_lists_padding_top"
+            android:paddingBottom="@dimen/material_component_lists_padding_bottom"
+            android:clipToPadding="false" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedProgressWheel
+            android:id="@+id/progress_wheel"
+            android:layout_width="@dimen/material_component_progress_wheel_width"
+            android:layout_height="@dimen/material_component_progress_wheel_height"
+            android:layout_gravity="center"
+            app:matProg_progressIndeterminate="true" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:id="@+id/empty_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:theme_textColor="textColorSecondary" />
+
+    </FrameLayout>
+
+</merge>

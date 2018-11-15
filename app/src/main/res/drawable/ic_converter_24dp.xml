@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!-- Author: http://www.flaticon.com/ -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32.68dp"
+    android:height="32.68dp"
+    android:viewportWidth="32.68"
+    android:viewportHeight="32.68">
+
+    <path
+        android:fillColor="#000000"
+        android:pathData="M16.958,22.779v-1.236l0.384-0.008c1.321,0,2.247-0.235,2.777-0.706c0.529-0.472,0.795-1.29,0.795-2.458
+c0-1.086-0.243-1.832-0.729-2.239c-0.488-0.407-1.426-0.649-2.812-0.726l-0.415-0.016v-2.765h0.292c1.023,0,1.535,0.41,1.535,1.229
+l0.009,0.2h1.805v-0.253c0-1.085-0.257-1.828-0.771-2.228s-1.471-0.599-2.869-0.599V9.899h-1.26v1.075
+c-1.465,0-2.467,0.209-3.008,0.626c-0.539,0.417-0.811,1.192-0.811,2.324c0,1.167,0.27,1.963,0.807,2.389
+c0.539,0.425,1.541,0.636,3.012,0.636v2.996l-0.276-0.006c-0.753,0-1.237-0.1-1.455-0.297c-0.218-0.197-0.327-0.636-0.327-1.316
+v-0.191h-1.865l-0.008,0.376c0,1.116,0.268,1.899,0.803,2.351s1.461,0.677,2.775,0.677l0.354,0.007v1.236h1.258V22.779z
+M16.958,17.02c0.845,0,1.399,0.09,1.667,0.271c0.267,0.179,0.398,0.55,0.398,1.112c0,1.029-0.601,1.543-1.799,1.543h-0.269
+L16.958,17.02L16.958,17.02z
+M15.422,15.315c-1.102,0-1.65-0.458-1.65-1.375c0-0.875,0.553-1.313,1.658-1.313l0.27-0.008v2.711
+C15.526,15.319,15.433,15.315,15.422,15.315z
+M5.34,16.34h2.339L3.84,21.564L0,16.34h2.34c0-7.72,6.279-14,14-14v3
+C10.276,5.34,5.34,10.274,5.34,16.34z
+M32.68,16.34h-2.34c0,7.72-6.279,14-14,14v-3c6.064,0,11-4.936,11-11h-2.339l3.839-5.225
+L32.68,16.34z" />
+</vector>

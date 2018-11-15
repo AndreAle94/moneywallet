@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/toolbar_delimiter_horizontal_guideline"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="?attr/actionBarSize" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:minHeight="@dimen/layout_single_panel_app_bar_layout_min_height"
+        app:theme_backgroundColor="colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedToolbar
+            android:id="@+id/primary_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:theme_backgroundColor="colorPrimary" />
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/layout_single_panel_primary_panel_margin_left"
+        android:layout_marginRight="@dimen/layout_single_panel_primary_panel_margin_right"
+        android:layout_marginStart="@dimen/layout_single_panel_primary_panel_margin_left"
+        android:layout_marginEnd="@dimen/layout_single_panel_primary_panel_margin_right"
+        android:translationZ="@dimen/layout_single_panel_primary_panel_elevation"
+        app:fcv_max_width="@dimen/layout_single_panel_primary_panel_max_width"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_delimiter_horizontal_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout
+                android:id="@+id/app_bar_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:theme_backgroundColor="colorPrimary" >
+
+                <!-- In this area is placed the app bar layout -->
+
+            </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/primary_panel_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <!-- In this area is placed the panel layout -->
+
+                </LinearLayout>
+
+            </com.oriondev.moneywallet.ui.view.theme.ThemedScrollView>
+
+        </LinearLayout>
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView>
+
+</android.support.constraint.ConstraintLayout>

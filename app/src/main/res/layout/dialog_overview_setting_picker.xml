@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/start_date_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/end_date_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/group_type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/overview_type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/cash_flow_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialSpinner
+        android:id="@+id/category_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false" />
+
+</LinearLayout>

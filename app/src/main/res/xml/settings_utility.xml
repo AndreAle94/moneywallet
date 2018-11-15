@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
+        android:title="@string/setting_category_utility_notification" >
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="daily_reminder"
+            android:title="@string/setting_title_daily_reminder"
+            android:persistent="false"/>
+
+    </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
+
+    <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
+        android:title="@string/setting_category_utility_security" >
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="security_mode"
+            android:title="@string/setting_title_security"
+            android:persistent="false" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedPreference
+            android:key="security_change_key"/>
+
+    </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
+
+    <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
+        android:title="@string/setting_category_utility_exchange_rates" >
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="exchange_rate_source"
+            android:title="@string/setting_title_exchange_rate_source"
+            android:persistent="false" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedInputPreference
+            android:key="exchange_rate_api_key"
+            android:title="@string/setting_title_exchange_rate_api_key"/>
+
+        <com.oriondev.moneywallet.ui.preference.ThemedPreference
+            android:key="exchange_rate_update"
+            android:title="@string/setting_title_exchange_rate_update"/>
+
+    </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="NestedWeights">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/currency_from"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:foreground="?attr/selectableItemBackground" >
+
+                <ImageView
+                    android:id="@+id/image_currency_from"
+                    android:layout_width="@dimen/activity_currency_converter_image_size"
+                    android:layout_height="@dimen/activity_currency_converter_image_size"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_margin"
+                    android:layout_marginStart="@dimen/activity_currency_converter_margin"
+                    android:layout_centerVertical="true" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                    android:id="@+id/text_currency_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/image_currency_from"
+                    android:layout_toEndOf="@+id/image_currency_from"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_text_margin"
+                    android:layout_marginStart="@dimen/activity_currency_converter_text_margin"
+                    android:textSize="@dimen/activity_currency_converter_text_size"
+                    app:theme_textColor="textColorPrimary"
+                    tools:text="EUR" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                    android:id="@+id/money_currency_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/text_currency_from"
+                    android:layout_toEndOf="@+id/text_currency_from"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_margin"
+                    android:layout_marginRight="@dimen/activity_currency_converter_margin"
+                    android:textSize="@dimen/activity_currency_converter_text_size"
+                    android:gravity="end"
+                    app:theme_textColor="textColorPrimary"
+                    tools:text="345.89" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/currency_to"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:foreground="?attr/selectableItemBackground" >
+
+                <ImageView
+                    android:id="@+id/image_currency_to"
+                    android:layout_width="@dimen/activity_currency_converter_image_size"
+                    android:layout_height="@dimen/activity_currency_converter_image_size"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_margin"
+                    android:layout_marginStart="@dimen/activity_currency_converter_margin"
+                    android:layout_centerVertical="true" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                    android:id="@+id/text_currency_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/image_currency_to"
+                    android:layout_toEndOf="@+id/image_currency_to"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_text_margin"
+                    android:layout_marginStart="@dimen/activity_currency_converter_text_margin"
+                    android:textSize="@dimen/activity_currency_converter_text_size"
+                    app:theme_textColor="textColorPrimary"
+                    tools:text="USD" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                    android:id="@+id/money_currency_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/text_currency_to"
+                    android:layout_toEndOf="@+id/text_currency_to"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/activity_currency_converter_margin"
+                    android:layout_marginRight="@dimen/activity_currency_converter_margin"
+                    android:textSize="@dimen/activity_currency_converter_text_size"
+                    android:gravity="end"
+                    app:theme_textColor="textColorPrimary"
+                    tools:text="254.36" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedFloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_swap_vert_black_24dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="?attr/colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_7"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_8"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_9"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="?attr/colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_4"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_5"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_6"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="?attr/colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_1"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_2"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_3"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="?attr/colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_point"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_point"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadButton
+            android:id="@+id/keyboard_button_0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/keyboard_0"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedKeypadImageButton
+            android:id="@+id/keyboard_button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="?attr/selectableItemBackground"
+            android:textSize="@dimen/activity_currency_converter_button_text_size"
+            android:src="@drawable/ic_backspace_black_24dp"
+            android:contentDescription="@string/description_backspace_icon"
+            app:theme_backgroundColor="colorPrimary"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </LinearLayout>
+
+</LinearLayout>

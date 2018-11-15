@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="136.602"
+    android:viewportHeight="135.696"
+    android:width="136.602dp"
+    android:height="135.696dp">
+    <path
+        android:pathData="M4.494 67.848c0 -35.239 28.566 -63.806 63.807 -63.806 35.241 0 63.807 28.566 63.807 63.806 0 35.242 -28.566 63.807 -63.807 63.807 -35.241 0 -63.807 -28.565 -63.807 -63.807z"
+        android:fillColor="#e84849" />
+    <path
+        android:pathData="M80.902 75.994L101.6 55.295c5.342 -5.341 -0.021 -8.64 -5.363 -13.98L23.898 113.65c2.914 2.824 6.094 5.373 9.502 7.605L68.75 78.814c4.17 1.415 8.645 0.69 12.152 -2.82z"
+        android:fillColor="#e79e2d" />
+    <path
+        android:pathData="M23.898 113.65L96.236 41.314C90.896 35.973 87.597 30.61 82.256 35.952L61.559 56.651c-3.508 3.507 -4.234 7.979 -2.82 12.153l-42.846 35.424c2.361 3.397 5.045 6.551 8.005 9.422z"
+        android:fillColor="#d68a28" />
+    <path
+        android:pathData="M96.953 40.601C91.611 35.258 87.598 30.611 82.256 35.953L61.559 56.651c-2.521 2.521 16.82 21.866 19.344 19.343L101.6 55.295c5.341 -5.341 0.693 -9.355 -4.647 -14.694z"
+        android:fillColor="#cdcccb" />
+    <path
+        android:pathData="M96.953 40.601C91.611 35.258 87.598 30.611 82.256 35.953L61.559 56.651c-1.262 1.26 2.945 6.726 7.779 11.562L96.953 40.601Z"
+        android:fillColor="#aaaaaa" />
+    <path
+        android:pathData="M62.855 75.014C59.314 71.473 58.056 66.987 58.056 66.987L46.98 78.289c-1.363 1.361 10.975 13.594 12.338 12.23l11.18 -11.18c0 0.001 -4.1 -0.782 -7.643 -4.325z"
+        android:fillColor="#b2b2b2" />
+    <path
+        android:pathData="M62.664 74.824C59.275 71.318 58.057 66.986 58.057 66.986L46.98 78.289c-0.682 0.682 1.887 4.008 5.094 7.215l10.59 -10.68z"
+        android:fillColor="#8d9091" />
+    <path
+        android:pathData="M87.459 23.993L70.139 48.069C67.618 50.59 86.961 69.935 89.483 67.414L113.561 50.091C118.898 44.752 92.801 18.653 87.459 23.993Z"
+        android:fillColor="#3d4040" />
+    <path
+        android:pathData="M87.459 23.993l-17.32 24.076c-1.24 1.24 2.807 6.549 7.543 11.325L104.518 33.041C97.992 26.516 90.131 21.324 87.459 23.993Z"
+        android:fillColor="#343433" />
+    <path
+        android:pathData="M75.264 51.612c-0.213 0 -0.428 -0.067 -0.609 -0.207 -0.438 -0.336 -0.52 -0.964 -0.184 -1.401L91.75 27.477c0.334 -0.439 0.963 -0.521 1.4 -0.186 0.439 0.336 0.521 0.964 0.186 1.402L76.057 51.221c-0.198 0.257 -0.494 0.391 -0.793 0.391z"
+        android:fillColor="#1d1e1e" />
+    <path
+        android:pathData="M87.299 63.646c-0.301 0 -0.598 -0.135 -0.793 -0.392 -0.336 -0.438 -0.254 -1.066 0.184 -1.402l22.525 -17.279c0.439 -0.336 1.066 -0.253 1.402 0.185 0.336 0.438 0.254 1.066 -0.184 1.402L87.908 63.438c-0.181 0.14 -0.396 0.208 -0.609 0.208z"
+        android:fillColor="#2e2f2f" />
+    <path
+        android:pathData="M83.246 59.595c-0.271 0 -0.541 -0.11 -0.738 -0.326 -0.373 -0.408 -0.344 -1.04 0.064 -1.413l21.811 -19.901c0.408 -0.372 1.041 -0.343 1.412 0.065 0.373 0.407 0.344 1.04 -0.064 1.412L83.92 59.333c-0.191 0.175 -0.434 0.262 -0.674 0.262z"
+        android:fillColor="#2e2f2f" />
+    <path
+        android:pathData="M79.078 55.425c-0.24 0 -0.482 -0.087 -0.674 -0.262 -0.408 -0.372 -0.438 -1.005 -0.064 -1.412L98.24 31.94c0.371 -0.407 1.006 -0.437 1.412 -0.065 0.408 0.372 0.438 1.005 0.064 1.413l-19.9 21.811c-0.197 0.215 -0.466 0.326 -0.738 0.326z"
+        android:fillColor="#1d1e1e" />
+</vector>

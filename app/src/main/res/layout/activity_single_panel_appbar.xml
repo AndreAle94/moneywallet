@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<com.oriondev.moneywallet.ui.view.theme.ThemedCoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/primary_panel_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:theme_backgroundColor="colorWindowForeground" >
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout
+        android:id="@+id/app_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:theme_backgroundColor="colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedToolbar
+            android:id="@+id/primary_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:theme_backgroundColor="colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+        <!-- In this area is placed the app bar layout -->
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
+
+    <!-- In this area is placed the panel layout -->
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedFloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fragment_multi_panel_fab_margin"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_add_24dp"
+        app:borderWidth="0dp"
+        app:layout_behavior="com.oriondev.moneywallet.ui.behavior.ScrollingFloatingActionButtonBehavior" />
+
+</com.oriondev.moneywallet.ui.view.theme.ThemedCoordinatorLayout>

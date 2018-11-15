@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.oriondev.moneywallet">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:name=".App"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:allowBackup="false"
+        android:theme="@style/MoneyWalletAppTheme"
+        tools:replace="android:allowBackup" >
+        <activity android:name=".ui.activity.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.TutorialActivity" />
+        <activity android:name=".ui.activity.WalletListActivity" />
+        <activity android:name=".ui.activity.BackupListActivity" />
+        <activity android:name=".ui.activity.NewEditWalletActivity" />
+        <activity android:name=".ui.activity.NewEditTransactionActivity" />
+        <activity android:name=".ui.activity.NewEditTransferActivity" />
+        <activity android:name=".ui.activity.NewEditCategoryActivity" />
+        <activity android:name=".ui.activity.NewEditDebtActivity" />
+        <activity android:name=".ui.activity.NewEditBudgetActivity" />
+        <activity android:name=".ui.activity.NewEditSavingActivity" />
+        <activity android:name=".ui.activity.NewEditEventActivity" />
+        <activity android:name=".ui.activity.NewEditRecurrentTransactionActivity" />
+        <activity android:name=".ui.activity.NewEditRecurrentTransferActivity" />
+        <activity android:name=".ui.activity.NewEditTransactionModelActivity" />
+        <activity android:name=".ui.activity.NewEditTransferModelActivity" />
+        <activity android:name=".ui.activity.NewEditPlaceActivity" />
+        <activity android:name=".ui.activity.NewEditPersonActivity" />
+        <activity android:name=".ui.activity.CurrencyListActivity" />
+        <activity android:name=".ui.activity.CategoryPickerActivity" />
+        <activity android:name=".ui.activity.IconListActivity" />
+        <activity android:name=".ui.activity.CalculatorActivity" />
+        <activity android:name=".ui.activity.CurrencyConverterActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.SearchActivity" />
+        <activity android:name=".ui.activity.CalendarActivity" />
+        <activity android:name=".ui.activity.MapActivity" />
+        <activity android:name=".ui.activity.PeriodDetailActivity" />
+        <activity android:name=".ui.activity.TransactionListActivity" />
+        <activity android:name=".ui.activity.LockActivity" />
+
+        <provider
+            android:name=".storage.database.DataContentProvider"
+            android:authorities="com.oriondev.moneywallet.storage.data"
+            android:readPermission="com.oriondev.moneywallet.permission.READ_DATA"
+            android:writePermission="com.oriondev.moneywallet.permission.WRITE_DATA"
+            android:exported="true" />
+        <provider
+            android:name=".storage.database.SyncContentProvider"
+            android:authorities="com.oriondev.moneywallet.storage.sync"
+            android:exported="false" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.oriondev.moneywallet.storage.file"
+            android:grantUriPermissions="true"
+            android:exported="false" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+        <service android:name=".service.openexchangerates.OpenExchangeRatesCurrencyRateDownloadIntentService" />
+        <service android:name=".service.disk.DiskBackupHandlerIntentService" />
+        <service android:name=".service.AttachmentHandlerIntentService" />
+        <service android:name=".service.RecurrenceHandlerIntentService" />
+        <service android:name=".service.UpgradeLegacyEditionIntentService" />
+
+        <receiver android:name=".broadcast.DailyBroadcastReceiver" />
+        <receiver android:name=".broadcast.RecurrenceBroadcastReceiver" />
+        <receiver android:name=".broadcast.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <attr name="theme_backgroundColor" format="enum">
+        <enum name="colorPrimary" value="0"/>
+        <enum name="colorPrimaryDark" value="1"/>
+        <enum name="colorAccent" value="2"/>
+        <enum name="colorWindowBackground" value="3"/>
+        <enum name="colorWindowForeground" value="4"/>
+    </attr>
+
+    <declare-styleable name="ThemedTextView">
+        <attr name="theme_textColor" format="enum">
+            <enum name="textColorPrimary" value="0"/>
+            <enum name="textColorSecondary" value="1"/>
+            <enum name="textColorPrimaryInverse" value="2"/>
+            <enum name="textColorSecondaryInverse" value="3"/>
+            <enum name="colorPrimary" value="4"/>
+            <enum name="colorAccent" value="5"/>
+            <enum name="textOverColorPrimary" value="6"/>
+            <enum name="textOverColorPrimaryDark" value="7"/>
+            <enum name="textOverColorAccent" value="8"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ThemedToolbar">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedAppBarLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedConstraintLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedLinearLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedRelativeLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedFrameLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedCoordinatorLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ForegroundCardView">
+        <attr name="fcv_max_width" format="dimension"/>
+        <attr name="fcv_max_height" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="ThemedTabLayout">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedEditText">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedMaterialEditText">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedButton">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedKeypadButton">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedKeypadImageButton">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedPinLockView">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedPatternLockView">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedImageView">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemedMonthView">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialEditText">
+
+        <attr name="met_mode" format="enum">
+            <enum name="normalMode" value="0"/>
+            <enum name="floatingLabel" value="1"/>
+        </attr>
+
+        <attr name="met_leftIcon" format="reference" />
+        <attr name="met_leftIconMargin" format="dimension" />
+        <attr name="met_leftIconColorFocused" format="color" />
+        <attr name="met_leftIconColorNormal" format="color" />
+        <attr name="met_leftIconColorError" format="color" />
+        <attr name="met_leftIconColorDisabled" format="color" />
+
+        <attr name="met_floatingLabelText" format="string" />
+        <attr name="met_floatingLabelTextSize" format="dimension" />
+        <attr name="met_floatingLabelTextColorFocused" format="color" />
+        <attr name="met_floatingLabelTextColorNormal" format="color" />
+        <attr name="met_floatingLabelTextColorDisabled" format="color" />
+        <attr name="met_floatingLabelTextTypeface" format="string" />
+
+        <attr name="met_bottomLineColorFocused" format="color" />
+        <attr name="met_bottomLineColorNormal" format="color" />
+        <attr name="met_bottomLineColorError" format="color" />
+        <attr name="met_bottomLineColorDisabled" format="color" />
+        <attr name="met_bottomLineColorFocusedSize" format="dimension" />
+        <attr name="met_bottomLineColorUnfocusedSize" format="dimension" />
+
+        <attr name="met_errorTextColor" format="color" />
+        <attr name="met_errorTextSize" format="dimension" />
+        <attr name="met_errorTextTypeface" format="string" />
+
+        <attr name="met_showCancelButton" format="boolean" />
+        <attr name="met_cancelButton" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="MaterialTextView">
+
+        <attr name="mtv_mode" format="enum">
+            <enum name="normalMode" value="0"/>
+            <enum name="floatingLabel" value="1"/>
+        </attr>
+
+        <attr name="mtv_leftIcon" format="reference" />
+        <attr name="mtv_leftIconMargin" format="dimension" />
+        <attr name="mtv_leftIconColor" format="color" />
+
+        <attr name="mtv_floatingLabelText" format="string" />
+        <attr name="mtv_floatingLabelTextSize" format="dimension" />
+        <attr name="mtv_floatingLabelTextColor" format="color" />
+        <attr name="mtv_floatingLabelTextTypeface" format="string" />
+
+        <attr name="mtv_bottomLineEnabled" format="boolean" />
+        <attr name="mtv_bottomLineColor" format="color" />
+        <attr name="mtv_bottomLineSize" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="PieChart">
+
+        <attr name="pie_iconRadius" format="float" />
+        <attr name="pie_iconPadding" format="float" />
+        <attr name="pie_iconCenterDistance" format="float" />
+        <attr name="pie_chartExternalRadius" format="float" />
+        <attr name="pie_chartHoleRadius" format="float" />
+        <attr name="pie_chartShadowRadius" format="float" />
+
+        <attr name="pie_chartHoleColor" format="color" />
+        <attr name="pie_chartShadowColor" format="color" />
+        <attr name="pie_chartLineColor" format="color" />
+        <attr name="pie_chartLineSize" format="float" />
+        <attr name="pie_chartHoleEnabled" format="boolean" />
+        <attr name="pie_chartShadowEnabled" format="boolean" />
+        <attr name="pie_chartPercentageEnabled" format="boolean" />
+
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="vertical" >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+        android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
+            android:id="@+id/address_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_address"
+            android:inputType="text"
+            app:met_mode="floatingLabel"
+            app:met_leftIcon="@drawable/ic_place_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/place_picker_image_view"/>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+            android:id="@+id/place_picker_image_view"
+            android:layout_width="@dimen/material_component_button_with_image_width"
+            android:layout_height="@dimen/material_component_button_with_image_height"
+            android:layout_marginBottom="@dimen/material_component_button_with_image_material_edit_text_baseline_margin"
+            android:padding="@dimen/material_component_button_with_image_padding"
+            android:src="@drawable/ic_map_black_24dp"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/description_place_picker_icon"
+            app:layout_constraintStart_toEndOf="@+id/address_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:theme_backgroundColor="colorWindowBackground" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedCardView
+        android:id="@+id/map_card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_component_card_margin"
+        android:foreground="?attr/selectableItemBackground" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <include layout="@layout/view_card_map" />
+
+            <LinearLayout
+                android:id="@+id/button_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_lists_card_action_button_height"
+                android:padding="@dimen/material_component_lists_card_action_button_padding"
+                android:orientation="horizontal"
+                android:gravity="end"
+                style="?android:attr/buttonBarStyle" >
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedCardButton
+                    android:id="@+id/remove_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/material_component_lists_card_action_button_padding"
+                    android:layout_marginStart="@dimen/material_component_lists_card_action_button_padding"
+                    android:text="@string/action_remove"
+                    android:background="?attr/selectableItemBackground"
+                    style="?android:attr/buttonBarButtonStyle" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedCardView>
+
+</merge>

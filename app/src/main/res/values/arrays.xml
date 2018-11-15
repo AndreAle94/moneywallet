@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string-array name="group_types">
+        <item>@string/setting_item_ui_group_type_daily</item>
+        <item>@string/setting_item_ui_group_type_weekly</item>
+        <item>@string/setting_item_ui_group_type_monthly</item>
+        <item>@string/setting_item_ui_group_type_yearly</item>
+    </string-array>
+    <string-array name="theme_types">
+        <item>@string/setting_item_ui_theme_type_light</item>
+        <item>@string/setting_item_ui_theme_type_dark</item>
+        <item>@string/setting_item_ui_theme_type_deep_dark</item>
+    </string-array>
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedProgressWheel
+        android:id="@+id/secondary_panel_progress_wheel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:matProg_progressIndeterminate="true" />
+
+    <LinearLayout
+        android:id="@+id/secondary_panel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_description"
+            app:mtv_leftIcon="@drawable/ic_format_align_left_black_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Description here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/category_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_category"
+            app:mtv_leftIcon="@drawable/ic_table_large_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Category here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/wallet_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_wallet"
+            app:mtv_leftIcon="@drawable/ic_folder_black_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Wallet here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/event_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_event"
+            app:mtv_leftIcon="@drawable/ic_assistant_photo_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Event here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/place_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_place"
+            app:mtv_leftIcon="@drawable/ic_place_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Place here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialTextView
+            android:id="@+id/note_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
+            android:layout_marginBottom="@dimen/material_activity_body_edit_text_margin_bottom"
+            app:mtv_mode="floatingLabel"
+            app:mtv_floatingLabelText="@string/hint_note"
+            app:mtv_leftIcon="@drawable/ic_content_paste_black_24dp"
+            app:mtv_bottomLineEnabled="true"
+            tools:text="Note here" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedCheckBox
+            android:id="@+id/confirmed_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_activity_body_check_box_top_bottom_margin"
+            android:layout_marginLeft="@dimen/material_activity_body_check_box_start_end_margin"
+            android:layout_marginRight="@dimen/material_activity_body_check_box_start_end_margin"
+            android:paddingLeft="@dimen/material_activity_body_check_box_start_padding"
+            android:paddingStart="@dimen/material_activity_body_check_box_start_padding"
+            android:hint="@string/hint_confirmed"
+            android:checked="true"
+            android:clickable="false"
+            tools:ignore="RtlSymmetry" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedCheckBox
+            android:id="@+id/count_in_total_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_activity_body_check_box_top_bottom_margin"
+            android:layout_marginLeft="@dimen/material_activity_body_check_box_start_end_margin"
+            android:layout_marginRight="@dimen/material_activity_body_check_box_start_end_margin"
+            android:paddingLeft="@dimen/material_activity_body_check_box_start_padding"
+            android:paddingStart="@dimen/material_activity_body_check_box_start_padding"
+            android:hint="@string/hint_show_in_total"
+            android:checked="true"
+            android:clickable="false"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+</FrameLayout>

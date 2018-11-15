@@ -1,0 +1,220 @@
+{
+  "categories": [
+    {
+      "name": "icon_category_clothes",
+      "icons": [
+        {
+          "resource": "ic_icon_slippers"
+        },
+        {
+          "resource": "ic_icon_shoewear"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_toys",
+      "icons": [
+        {
+          "resource": "ic_icon_abacus"
+        },
+        {
+          "resource": "ic_icon_abacus_2"
+        },
+        {
+          "resource": "ic_icon_dart_board_2"
+        },
+        {
+          "resource": "ic_icon_science"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_travel_and_transportation",
+      "icons": [
+        {
+          "resource": "ic_icon_mill"
+        },
+        {
+          "resource": "ic_icon_factory"
+        },
+        {
+          "resource": "ic_icon_handbag"
+        },
+        {
+          "resource": "ic_icon_bus"
+        },
+        {
+          "resource": "ic_icon_bicycle_2"
+        },
+        {
+          "resource": "ic_icon_ship_2"
+        },
+        {
+          "resource": "ic_icon_car"
+        },
+        {
+          "resource": "ic_icon_truck"
+        },
+        {
+          "resource": "ic_icon_car_2"
+        },
+        {
+          "resource": "ic_icon_bag"
+        },
+        {
+          "resource": "ic_icon_plane_ticket"
+        },
+        {
+          "resource": "ic_icon_plane_ticket_2"
+        },
+        {
+          "resource": "ic_icon_ambulance"
+        },
+        {
+          "resource": "ic_icon_map_position"
+        },
+        {
+          "resource": "ic_icon_double_decker_bus"
+        },
+        {
+          "resource": "ic_icon_path_direction"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_home",
+      "icons": [
+        {
+          "resource": "ic_icon_water_tab_1"
+        },
+        {
+          "resource": "ic_icon_clock"
+        },
+        {
+          "resource": "ic_icon_cooker"
+        },
+        {
+          "resource": "ic_icon_shower_bathroom"
+        },
+        {
+          "resource": "ic_icon_armchair_lamp"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_shopping",
+      "icons": [
+        {
+          "resource": "ic_icon_umbrella"
+        },
+        {
+          "resource": "ic_icon_gift"
+        },
+        {
+          "resource": "ic_icon_perfume"
+        },
+        {
+          "resource": "ic_icon_water_bottle"
+        },
+        {
+          "resource": "ic_icon_paperclip_paper"
+        },
+        {
+          "resource": "ic_icon_thermometer_2"
+        },
+        {
+          "resource": "ic_icon_barcode"
+        },
+        {
+          "resource": "ic_icon_sale"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_sport_and_free_time",
+      "icons": [
+        {
+          "resource": "ic_icon_baseball"
+        },
+        {
+          "resource": "ic_icon_golf_ball"
+        },
+        {
+          "resource": "ic_icon_basketball"
+        },
+        {
+          "resource": "ic_icon_brush"
+        },
+        {
+          "resource": "ic_icon_pencil_brush"
+        },
+        {
+          "resource": "ic_icon_pencil"
+        },
+        {
+          "resource": "ic_icon_book"
+        },
+        {
+          "resource": "ic_icon_bookmark"
+        },
+        {
+          "resource": "ic_icon_bookmark_2"
+        },
+        {
+          "resource": "ic_icon_folding_fan"
+        },
+        {
+          "resource": "ic_icon_pass"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_food_and_drinks",
+      "icons": [
+        {
+          "resource": "ic_icon_cocktail"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_technology",
+      "icons": [
+        {
+          "resource": "ic_icon_android_phone_white"
+        },
+        {
+          "resource": "ic_icon_android_phone_black"
+        },
+        {
+          "resource": "ic_icon_ipad_white"
+        },
+        {
+          "resource": "ic_icon_computer_mouse"
+        },
+        {
+          "resource": "ic_icon_usb_stick_1"
+        },
+        {
+          "resource": "ic_icon_screen_graph"
+        },
+        {
+          "resource": "ic_icon_equalizer"
+        }
+      ]
+    },
+    {
+      "name": "icon_category_finance",
+      "icons": [
+        {
+          "resource": "ic_icon_wallet_2"
+        },
+        {
+          "resource": "ic_icon_atm"
+        },
+        {
+          "resource": "ic_icon_pos"
+        }
+      ]
+    }
+  ]
+}

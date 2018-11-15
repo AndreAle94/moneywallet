@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
+        android:title="@string/setting_category_ui_appearance" >
+
+        <com.oriondev.moneywallet.ui.preference.ColorPreference
+            android:key="income_color"
+            android:title="@string/setting_title_ui_income_color" />
+
+        <com.oriondev.moneywallet.ui.preference.ColorPreference
+            android:key="expense_color"
+            android:title="@string/setting_title_ui_expense_color" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedPreference
+            android:key="custom_digits"
+            android:title="@string/setting_title_ui_custom_digits"
+            android:summary="@string/setting_summary_ui_custom_digits" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="date_format"
+            android:title="@string/setting_title_ui_date_format"
+            android:persistent="false" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="first_day_week"
+            android:title="@string/setting_title_ui_first_day_week"
+            android:persistent="false" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="first_day_month"
+            android:title="@string/setting_title_ui_first_day_month"
+            android:persistent="false" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="group_type"
+            android:title="@string/setting_title_ui_group_type"
+            android:persistent="false" />
+
+    </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
+
+    <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
+        android:title="@string/setting_category_ui_theme" >
+
+        <com.oriondev.moneywallet.ui.preference.ColorPreference
+            android:key="theme_color_primary"
+            android:title="@string/setting_title_ui_theme_color_primary" />
+
+        <com.oriondev.moneywallet.ui.preference.ColorPreference
+            android:key="theme_color_accent"
+            android:title="@string/setting_title_ui_theme_color_accent" />
+
+        <com.oriondev.moneywallet.ui.preference.ThemedListPreference
+            android:key="theme_type"
+            android:title="@string/setting_title_ui_theme_type"
+            android:persistent="false" />
+
+    </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>

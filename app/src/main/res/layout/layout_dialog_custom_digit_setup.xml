@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:theme_backgroundColor="colorPrimary" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:id="@+id/display_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="36sp"
+            android:gravity="end"
+            app:theme_textColor="textOverColorPrimary"
+            tools:text="€ 1.245,89" />
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedRelativeLayout>
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedSwitchCompat
+        android:id="@+id/show_currency_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/hint_show_currency_symbol"
+        android:textSize="14sp" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedSwitchCompat
+        android:id="@+id/group_digits_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/hint_group_digits"
+        android:textSize="14sp" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedSwitchCompat
+        android:id="@+id/round_decimals_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/hint_round_decimals"
+        android:textSize="14sp" />
+
+</LinearLayout>

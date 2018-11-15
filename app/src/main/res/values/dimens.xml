@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <dimen name="fragment_multi_panel_fab_margin">16dp</dimen>
+
+    <dimen name="view_header_height">48dp</dimen>
+
+    <dimen name="view_header_text_margin">16dp</dimen>
+
+    <dimen name="material_activity_header_icon_width">44dp</dimen>
+    <dimen name="material_activity_header_icon_height">44dp</dimen>
+    <dimen name="material_activity_header_icon_start_margin">16dp</dimen>
+    <dimen name="material_activity_header_layout_height">80dp</dimen>
+    <dimen name="material_activity_header_text_start_margin">16dp</dimen>
+    <dimen name="material_activity_header_text_end_margin">16dp</dimen>
+
+    <dimen name="material_activity_body_edit_text_margin_top">8dp</dimen>
+    <dimen name="material_activity_body_edit_text_margin_bottom">8dp</dimen>
+    <dimen name="material_activity_body_check_box_top_bottom_margin">8dp</dimen>
+    <dimen name="material_activity_body_check_box_start_end_margin">16dp</dimen>
+    <dimen name="material_activity_body_check_box_start_padding">16dp</dimen>
+
+    <dimen name="material_component_lists_padding_top">8dp</dimen>
+    <dimen name="material_component_lists_padding_bottom">8dp</dimen>
+    <dimen name="material_component_lists_one_line_avatar_width">40dp</dimen>
+    <dimen name="material_component_lists_one_line_avatar_height">40dp</dimen>
+    <dimen name="material_component_lists_one_line_with_avatar_height">56dp</dimen>
+    <dimen name="material_component_lists_one_line_avatar_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_one_line_primary_text_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_one_line_primary_text_end_margin">16dp</dimen>
+    <dimen name="material_component_lists_one_line_with_avatar_primary_text_size">16sp</dimen>
+    <dimen name="material_component_lists_two_line_avatar_width">40dp</dimen>
+    <dimen name="material_component_lists_two_line_avatar_height">40dp</dimen>
+    <dimen name="material_component_lists_two_line_avatar_half_width">20dp</dimen>
+    <dimen name="material_component_lists_two_line_avatar_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_two_line_primary_text_start_margin">72dp</dimen>
+    <dimen name="material_component_lists_two_line_primary_text_end_margin">16dp</dimen>
+    <dimen name="material_component_lists_two_line_icon_width">24dp</dimen>
+    <dimen name="material_component_lists_two_line_icon_height">24dp</dimen>
+    <dimen name="material_component_lists_two_line_icon_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_two_line_with_icon_height">72dp</dimen>
+    <dimen name="material_component_lists_two_line_with_icon_primary_text_size">16sp</dimen>
+    <dimen name="material_component_lists_two_line_with_icon_secondary_text_size">14sp</dimen>
+    <dimen name="material_component_lists_two_line_with_avatar_height">72dp</dimen>
+    <dimen name="material_component_lists_two_line_with_avatar_primary_text_size">16sp</dimen>
+    <dimen name="material_component_lists_two_line_with_avatar_secondary_text_size">14sp</dimen>
+    <dimen name="material_component_dialog_lists_start_margin">24dp</dimen>
+    <dimen name="material_component_dialog_lists_end_margin">24dp</dimen>
+    <dimen name="material_component_dialog_lists_avatar_width">32dp</dimen>
+    <dimen name="material_component_dialog_lists_avatar_height">32dp</dimen>
+    <dimen name="material_component_dialog_lists_selector_width">24dp</dimen>
+    <dimen name="material_component_dialog_lists_selector_height">24dp</dimen>
+    <dimen name="material_component_dialog_lists_height">60dp</dimen>
+    <dimen name="material_component_dialog_lists_with_avatar_height">60dp</dimen>
+    <dimen name="material_component_dialog_lists_with_avatar_text_start_margin">24dp</dimen>
+    <dimen name="material_component_dialog_lists_with_avatar_text_end_margin">24dp</dimen>
+
+    <dimen name="material_component_lists_header_height">48dp</dimen>
+    <dimen name="material_component_lists_header_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_header_end_margin">16dp</dimen>
+    <dimen name="material_component_lists_header_text_size">14sp</dimen>
+
+    <dimen name="material_component_lists_card_top_layout_height">64dp</dimen>
+    <dimen name="material_component_lists_card_start_margin">8dp</dimen>
+    <dimen name="material_component_lists_card_end_margin">8dp</dimen>
+    <dimen name="material_component_lists_card_top_margin">4dp</dimen>
+    <dimen name="material_component_lists_card_bottom_margin">4dp</dimen>
+    <dimen name="material_component_lists_card_avatar_width">40dp</dimen>
+    <dimen name="material_component_lists_card_avatar_height">40dp</dimen>
+    <dimen name="material_component_lists_card_avatar_top_margin">16dp</dimen>
+    <dimen name="material_component_lists_card_avatar_start_margin">16dp</dimen>
+    <dimen name="material_component_lists_card_avatar_end_margin">16dp</dimen>
+    <dimen name="material_component_lists_card_avatar_bottom_margin">16dp</dimen>
+    <dimen name="material_component_lists_card_progress_bar_height">4dp</dimen>
+    <dimen name="material_component_lists_card_action_button_padding">8dp</dimen>
+    <dimen name="material_component_lists_card_action_button_height">52dp</dimen>
+
+    <dimen name="material_component_lists_card_button_internal_padding">8dp</dimen>
+    <dimen name="material_component_lists_card_button_min_width">64dp</dimen>
+    <dimen name="material_component_lists_card_button_text_size">13sp</dimen>
+
+    <dimen name="material_component_button_with_image_width">48dp</dimen>
+    <dimen name="material_component_button_with_image_height">48dp</dimen>
+    <dimen name="material_component_button_with_image_padding">12dp</dimen>
+    <dimen name="material_component_button_with_image_material_edit_text_baseline_margin">2dp</dimen>
+
+    <dimen name="material_component_floating_label_text_size">14sp</dimen>
+    <dimen name="material_component_bottom_line_error_text_size">14sp</dimen>
+
+    <dimen name="material_component_card_margin">8dp</dimen>
+    <dimen name="material_component_card_with_map_height">200dp</dimen>
+
+    <dimen name="material_component_progress_wheel_width">80dp</dimen>
+    <dimen name="material_component_progress_wheel_height">80dp</dimen>
+
+    <dimen name="material_component_dialog_min_height">100dp</dimen>
+
+    <dimen name="header_money_text_size">28sp</dimen>
+    <dimen name="header_money_secondary_text_size">18sp</dimen>
+    <dimen name="cover_layout_text_padding">12dp</dimen>
+
+    <dimen name="activity_launcher_first_start_padding_left">20dp</dimen>
+    <dimen name="activity_launcher_first_start_padding_right">20dp</dimen>
+    <dimen name="activity_launcher_first_start_icon_width">200dp</dimen>
+    <dimen name="activity_launcher_first_start_icon_height">200dp</dimen>
+    <dimen name="activity_launcher_first_start_title_text_size">28sp</dimen>
+    <dimen name="activity_launcher_first_start_content_text_size">18sp</dimen>
+    <dimen name="activity_launcher_first_start_layout_button_margin_top">18dp</dimen>
+    <dimen name="activity_launcher_first_start_layout_button_margin_bottom">18dp</dimen>
+
+    <dimen name="activity_currency_converter_margin">24dp</dimen>
+    <dimen name="activity_currency_converter_image_size">56dp</dimen>
+    <dimen name="activity_currency_converter_text_margin">8dp</dimen>
+    <dimen name="activity_currency_converter_text_size">24sp</dimen>
+    <dimen name="activity_currency_converter_button_text_size">30sp</dimen>
+
+    <dimen name="activity_calculator_display_text_size">56sp</dimen>
+    <dimen name="activity_calculator_display_padding">8dp</dimen>
+    <dimen name="activity_calculator_button_text_size">30sp</dimen>
+
+    <dimen name="activity_lock_pin_lock_view_text_size">24sp</dimen>
+    <dimen name="activity_lock_pattern_lock_view_width">300dp</dimen>
+    <dimen name="activity_lock_pattern_lock_view_height">300dp</dimen>
+
+    <dimen name="material_component_header_layout_text_size">28sp</dimen>
+
+    <dimen name="layout_multi_panel_secondary_panel_empty_screen_padding">16dp</dimen>
+    <dimen name="layout_multi_panel_secondary_panel_empty_screen_icon_width">200dp</dimen>
+    <dimen name="layout_multi_panel_secondary_panel_empty_screen_icon_height">200dp</dimen>
+    <dimen name="layout_multi_panel_secondary_panel_empty_screen_text_size">18sp</dimen>
+
+    <!-- Month -->
+    <dimen name="view_mti_month_width">72dp</dimen>
+    <dimen name="view_mti_month_height">48dp</dimen>
+    <dimen name="view_mti_month_lbl_padding_horizontal">8dp</dimen>
+    <dimen name="view_mti_month_lbl_padding_vertical">5dp</dimen>
+    <dimen name="view_mti_month_lbl_text">14sp</dimen>
+
+    <!-- Timeline -->
+    <dimen name="view_mti_timeline_width">50dp</dimen>
+    <dimen name="view_mti_timeline_height">78dp</dimen>
+    <dimen name="view_mti_timeline_lbl_day_text">12sp</dimen>
+    <dimen name="view_mti_timeline_lbl_date_text">14sp</dimen>
+    <dimen name="view_mti_timeline_lbl_value">12dp</dimen>
+
+    <dimen name="view_pie_chart_height">320dp</dimen>
+    <dimen name="view_pie_chart_margin_top">12dp</dimen>
+    <dimen name="view_pie_chart_margin_bottom">12dp</dimen>
+    <dimen name="view_pie_chart_indicator_radius">5dp</dimen>
+
+    <dimen name="view_recurrence_picker_padding">8dp</dimen>
+
+</resources>

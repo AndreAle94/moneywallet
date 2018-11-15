@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<merge
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/material_activity_header_layout_height">
+
+        <ImageView
+            android:id="@+id/avatar_image_view"
+            android:layout_width="@dimen/material_activity_header_icon_width"
+            android:layout_height="@dimen/material_activity_header_icon_height"
+            android:layout_marginLeft="@dimen/material_activity_header_icon_start_margin"
+            android:layout_marginStart="@dimen/material_activity_header_icon_start_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:id="@+id/name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/material_activity_header_text_start_margin"
+            android:layout_marginStart="@dimen/material_activity_header_text_start_margin"
+            android:layout_marginRight="@dimen/material_activity_header_text_end_margin"
+            android:layout_marginEnd="@dimen/material_activity_header_text_end_margin"
+            android:textSize="@dimen/material_component_header_layout_text_size"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avatar_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:theme_textColor="textOverColorPrimary"
+            tools:text="Item name" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</merge>

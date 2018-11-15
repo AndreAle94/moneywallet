@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!-- drawable/dropbox.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="24dp"
+    android:width="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="#000" android:pathData="M12,14.56L16.35,18.16L18.2,16.95V18.3L12,22L5.82,18.3V16.95L7.68,18.16L12,14.56M7.68,2.5L12,6.09L16.32,2.5L22.5,6.5L18.23,9.94L22.5,13.36L16.32,17.39L12,13.78L7.68,17.39L1.5,13.36L5.77,9.94L1.5,6.5L7.68,2.5M12,13.68L18.13,9.94L12,6.19L5.87,9.94L12,13.68Z" />
+</vector>

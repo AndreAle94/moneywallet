@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300.000000dp"
+    android:height="300.000000dp"
+    android:viewportWidth="300.000000"
+    android:viewportHeight="300.000000">
+
+    <group
+            android:translateY="300.000000"
+            android:scaleX="0.100000"
+            android:scaleY="-0.100000">
+        <path
+            android:fillColor="#000000"
+            android:pathData="M1760 2663 c-14 -2 -71 -13 -128 -24 -132 -24 -242 -24 -450 2 -151 18 -224 19
+-268 2 -9 -3 30 -37 99 -85 61 -44 127 -91 145 -105 l33 -25 -106 -109 c-335 -351
+-560 -733 -616 -1049 -18 -105 -14 -273 9 -367 39 -154 125 -297 254 -419 61 -58
+87 -75 139 -93 248 -81 642 -103 974 -52 218 33 248 43 331 106 151 116 255 267
+310 452 23 76 27 106 27 223 0 140 -13 220 -54 342 -92 275 -296 585 -576 879 l-83
+86 130 103 c71 56 127 106 125 111 -14 22 -208 37 -295 22z m-212 -645 c5 -7 12
+-24 14 -38 3 -22 9 -26 56 -31 148 -19 272 -122 272 -228 0 -53 -20 -88 -58 -102
+-40 -15 -74 5 -111 67 -43 70 -93 114 -130 114 l-29 0 -7 -146 c-4 -80 -4 -148 -1
+-151 3 -3 38 -19 77 -35 170 -68 253 -167 266 -316 14 -167 -93 -264 -351 -317 -27
+-6 -28 -7 -22 -50 9 -57 -5 -85 -44 -85 -36 0 -50 23 -50 83 l0 44 -57 6 c-84 9
+-178 59 -225 122 -96 125 -82 275 24 275 54 0 83 -31 98 -106 10 -46 21 -67 50 -96
+21 -21 47 -38 58 -38 11 0 27 -3 35 -6 12 -4 16 13 21 98 4 57 9 133 12 169 6 66 5
+66 -21 73 -58 15 -161 73 -212 120 -71 64 -95 113 -101 202 -4 65 -2 77 24 124 46
+85 148 149 274 172 55 11 60 14 60 38 0 14 5 31 12 38 16 16 53 15 66 0z" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M1380 1781 c-49 -26 -75 -65 -74 -110 2 -51 25 -83 83 -115 80 -43 79 -45 80 109
+l2 135 -28 0 c-16 0 -44 -8 -63 -19z" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M1527 1223 c-4 -38 -7 -108 -7 -157 l0 -88 37 7 c90 17 143 71 143 145 0 61 -29 99
+-105 134 -29 15 -56 26 -58 26 -2 0 -7 -30 -10 -67z" />
+    </group>
+</vector>

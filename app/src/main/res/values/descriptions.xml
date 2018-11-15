@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="description_backup_service_icon">"Backup service icon"</string>
+    <string name="description_currency_icon">"Currency icon"</string>
+    <string name="description_wallet_icon">"Wallet icon"</string>
+    <string name="description_transaction_icon">"Transaction icon"</string>
+    <string name="description_transfer_icon">"Transfer icon"</string>
+    <string name="description_category_icon">"Category icon"</string>
+    <string name="description_debt_icon">"Debt icon"</string>
+    <string name="description_event_icon">"Event icon"</string>
+    <string name="description_place_icon">"Place icon"</string>
+    <string name="description_person_icon">"Person icon"</string>
+    <string name="description_budget_type_icon">"Budget type icon"</string>
+    <string name="description_selector_icon">"Selector icon"</string>
+    <string name="description_remove_icon">"Remove icon"</string>
+    <string name="description_file_icon">"File icon"</string>
+    <string name="description_attachment_icon">"Attachment icon"</string>
+    <string name="description_backspace_icon">"Backspace icon"</string>
+    <string name="description_place_picker_icon">"Place picker icon"</string>
+    <string name="description_setting_category_icon">"Setting category icon"</string>
+</resources>

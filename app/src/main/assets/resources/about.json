@@ -1,0 +1,72 @@
+{
+  "repository": {
+    "code_url": "https://github.com/AndreAle94/moneywallet",
+    "issue_url": "https://github.com/AndreAle94/moneywallet/issues",
+    "donation_url": "https://github.com/AndreAle94/moneywallet#donations"
+  },
+  "other_info": [
+    {
+      "name_resource": "about_hint_author",
+      "items": [
+        {
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "Andrea Alemani",
+          "link": "https://github.com/AndreAle94"
+        },{
+          "icon": "ic_github_circle_black_24dp",
+          "title_resource": "about_hint_fork",
+          "link": "https://github.com/AndreAle94/moneywallet"
+        }
+      ]
+    },{
+      "name_resource": "about_hint_logo_designer",
+      "items": [
+        {
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "Adam Lapinski"
+        },{
+          "icon": "ic_google_plus_black_24dp",
+          "title_resource": "about_hint_google_plus",
+          "link": "https://plus.google.com/u/0/+AdamLapinski_Yeti"
+        },{
+          "icon": "ic_public_black_24dp",
+          "title_resource": "about_hint_website",
+          "link": "http://www.yeti-designs.com"
+        }
+      ]
+    },{
+      "name_resource": "about_hint_icon_licenses",
+      "items": [
+        {
+          "icon": "ic_freepik_logo_24dp",
+          "title": "Freepik",
+          "subtitle_resource": "about_hint_icon_image_intro",
+          "link": "https://www.freepik.com"
+        },{
+          "icon": "ic_material_design_icons_logo_24dp",
+          "title": "Materialdesignicons.com",
+          "subtitle_resource": "about_hint_md_icons",
+          "link": "https://materialdesignicons.com"
+        },{
+          "icon": "ic_round_icons_logo_24dp",
+          "title": "Round icons",
+          "subtitle_resource": "about_hint_icon_pack",
+          "link": "https://roundicons.com"
+        }
+      ]
+    },{
+      "name_resource": "about_hint_translators",
+      "items": [
+        {
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "Andrea Alemani",
+          "subtitle": "English, Italian"
+        },{
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "Denise Maiolino",
+          "subtitle": "Italian"
+        }
+      ]
+    }
+  ]
+}

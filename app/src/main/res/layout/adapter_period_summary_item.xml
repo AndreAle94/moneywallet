@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/material_component_lists_one_line_with_avatar_height"
+    android:background="?attr/selectableItemBackground" >
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+        android:id="@+id/name_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/material_component_lists_one_line_primary_text_start_margin"
+        android:layout_marginStart="@dimen/material_component_lists_one_line_primary_text_start_margin"
+        android:layout_marginRight="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:layout_marginEnd="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:textSize="@dimen/material_component_lists_one_line_with_avatar_primary_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/money_text_view"
+        app:theme_textColor="textColorPrimary"
+        tools:text="Period here" />
+
+    <TextView
+        android:id="@+id/money_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:layout_marginEnd="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:textSize="@dimen/material_component_lists_one_line_with_avatar_primary_text_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="€ 500.00" />
+
+</android.support.constraint.ConstraintLayout>
