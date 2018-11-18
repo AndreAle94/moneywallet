@@ -142,10 +142,20 @@
 
     <dimen name="material_component_header_layout_text_size">28sp</dimen>
 
+    <dimen name="layout_multi_panel_app_bar_layout_min_height">112dp</dimen>
+    <dimen name="layout_multi_panel_primary_panel_max_width">540dp</dimen>
+    <dimen name="layout_multi_panel_primary_panel_margin_left">88dp</dimen>
+    <dimen name="layout_multi_panel_primary_panel_margin_right">88dp</dimen>
+    <dimen name="layout_multi_panel_secondary_panel_elevation">4dp</dimen>
     <dimen name="layout_multi_panel_secondary_panel_empty_screen_padding">16dp</dimen>
     <dimen name="layout_multi_panel_secondary_panel_empty_screen_icon_width">200dp</dimen>
     <dimen name="layout_multi_panel_secondary_panel_empty_screen_icon_height">200dp</dimen>
     <dimen name="layout_multi_panel_secondary_panel_empty_screen_text_size">18sp</dimen>
+    <dimen name="layout_single_panel_app_bar_layout_min_height">112dp</dimen>
+    <dimen name="layout_single_panel_primary_panel_max_width">540dp</dimen>
+    <dimen name="layout_single_panel_primary_panel_margin_left">88dp</dimen>
+    <dimen name="layout_single_panel_primary_panel_margin_right">88dp</dimen>
+    <dimen name="layout_single_panel_primary_panel_elevation">4dp</dimen>
 
     <!-- Month -->
     <dimen name="view_mti_month_width">72dp</dimen>
