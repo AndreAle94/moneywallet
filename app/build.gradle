@@ -30,7 +30,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [
-                DropBoxApiKey: ApiKey_Dropbox,
+                DropBoxApiKey: ApiKey_Dropbox.replaceAll('"', ''),
                 GoogleApiKey: ApiKey_Google
         ]
         buildConfigField ('String', 'API_KEY_DROPBOX', ApiKey_Dropbox)
