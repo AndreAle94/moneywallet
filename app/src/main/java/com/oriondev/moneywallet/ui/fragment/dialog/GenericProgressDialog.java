@@ -27,7 +27,7 @@ import android.support.v4.app.DialogFragment;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
-import com.oriondev.moneywallet.service.AbstractBackupHandlerIntentService;
+import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
 /**
@@ -69,16 +69,16 @@ public class GenericProgressDialog extends DialogFragment {
         if (dialog != null) {
             dialog.setCancelable(false);
             switch (status) {
-                case AbstractBackupHandlerIntentService.STATUS_BACKUP_CREATION:
+                case BackupHandlerIntentService.STATUS_BACKUP_CREATION:
                     dialog.setContent(R.string.message_backup_status_creation);
                     break;
-                case AbstractBackupHandlerIntentService.STATUS_BACKUP_UPLOADING:
+                case BackupHandlerIntentService.STATUS_BACKUP_UPLOADING:
                     dialog.setContent(R.string.message_backup_status_uploading);
                     break;
-                case AbstractBackupHandlerIntentService.STATUS_BACKUP_DOWNLOADING:
+                case BackupHandlerIntentService.STATUS_BACKUP_DOWNLOADING:
                     dialog.setContent(R.string.message_backup_status_downloading);
                     break;
-                case AbstractBackupHandlerIntentService.STATUS_BACKUP_RESTORING:
+                case BackupHandlerIntentService.STATUS_BACKUP_RESTORING:
                     dialog.setContent(R.string.message_backup_status_restoring);
                     break;
             }

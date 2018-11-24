@@ -19,10 +19,8 @@
 
 package com.oriondev.moneywallet.storage.database.backup;
 
-import android.support.v4.app.Fragment;
-
+import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.model.BackupService;
-import com.oriondev.moneywallet.storage.database.BackupServices;
 
 import java.util.List;
 
@@ -43,11 +41,7 @@ public class BackupManager {
     }
 
     public static List<BackupService> getBackupServices() {
-        return BackupServices.getBackupServices();
-    }
-
-    public static Fragment getBackupServicePanel(BackupService service, boolean allowBackup, boolean allowRestore) {
-        return BackupServices.getBackupServiceFragment(service, allowBackup, allowRestore);
+        return BackendServiceFactory.getBackupServices();
     }
 
     public static String getExtension(boolean encrypted) {

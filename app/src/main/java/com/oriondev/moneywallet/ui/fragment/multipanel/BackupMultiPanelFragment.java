@@ -32,9 +32,9 @@ import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.BackupService;
-import com.oriondev.moneywallet.storage.database.backup.BackupManager;
 import com.oriondev.moneywallet.ui.adapter.recycler.BackupServiceAdapter;
 import com.oriondev.moneywallet.ui.fragment.base.MultiPanelFragment;
+import com.oriondev.moneywallet.ui.fragment.secondary.BackupHandlerFragment;
 
 /**
  * Created by andre on 21/03/2018.
@@ -112,7 +112,7 @@ public class BackupMultiPanelFragment extends MultiPanelFragment implements Back
             fragmentManager.beginTransaction().show(fragment).commit();
         } else if (service != null) {
             int containerId = mSecondaryPanelFragmentContainer.getId();
-            fragment = BackupManager.getBackupServicePanel(service, mAllowBackup, mAllowRestore);
+            fragment = BackupHandlerFragment.newInstance(service.getIdentifier(), mAllowBackup, mAllowRestore);
             fragmentManager.beginTransaction().replace(containerId, fragment, tag).commit();
         }
         showCoverLayout(service == null);

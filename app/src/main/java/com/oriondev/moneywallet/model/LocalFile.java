@@ -24,11 +24,12 @@ import android.os.Parcelable;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by andre on 21/03/2018.
  */
-public class LocalFile implements IFile, Parcelable {
+public class LocalFile implements IFile {
 
     private final File mFile;
 
@@ -75,16 +76,6 @@ public class LocalFile implements IFile, Parcelable {
 
     public File getFile() {
         return mFile;
-    }
-
-    public ArrayList<LocalFile> getChildren() {
-        ArrayList<LocalFile> children = new ArrayList<>();
-        if (mFile.isDirectory() && mFile.listFiles() != null) {
-            for (File file : mFile.listFiles()) {
-                children.add(new LocalFile(file));
-            }
-        }
-        return children;
     }
 
     @Override

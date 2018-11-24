@@ -93,8 +93,8 @@
         </provider>
 
         <service android:name=".service.openexchangerates.OpenExchangeRatesCurrencyRateDownloadIntentService" />
-        <service android:name=".service.disk.DiskBackupHandlerIntentService" />
         <service android:name=".service.AttachmentHandlerIntentService" />
+        <service android:name=".service.BackupHandlerIntentService" />
         <service android:name=".service.RecurrenceHandlerIntentService" />
         <service android:name=".service.UpgradeLegacyEditionIntentService" />
 

@@ -40,13 +40,19 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.api.BackendException;
+import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
+import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.IFile;
-import com.oriondev.moneywallet.service.AbstractBackupHandlerIntentService;
+import com.oriondev.moneywallet.service.BackupHandlerIntentService;
+import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.database.backup.BackupManager;
 import com.oriondev.moneywallet.ui.adapter.recycler.BackupFileAdapter;
 import com.oriondev.moneywallet.ui.fragment.base.MultiPanelFragment;
@@ -58,19 +64,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andre on 21/03/2018.
+ * Created by andrea on 21/11/18.
  */
-public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fragment implements BackupFileAdapter.Controller<T>, SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
+public class BackupHandlerFragment extends Fragment implements BackupFileAdapter.Controller, SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener, AbstractBackendServiceDelegate.BackendServiceStatusListener {
 
-    private static final String ARG_ALLOW_BACKUP = "AbstractBackupHandlerFragment::Arguments::AllowBackup";
-    private static final String ARG_ALLOW_RESTORE = "AbstractBackupHandlerFragment::Arguments::AllowRestore";
+    private static final String ARG_ALLOW_BACKUP = "BackupHandlerFragment::Arguments::AllowBackup";
+    private static final String ARG_ALLOW_RESTORE = "BackupHandlerFragment::Arguments::AllowRestore";
+    private static final String ARG_BACKEND_ID = "BackupHandlerFragment::Arguments::BackendId";
+
+    private static final IFile ROOT_FOLDER = null;
 
     private boolean mAllowBackup;
     private boolean mAllowRestore;
-    private List<T> mFileStack;
+    private AbstractBackendServiceDelegate mBackendService;
+    private List<IFile> mFileStack;
 
     private AdvancedRecyclerView mAdvancedRecyclerView;
-    private BackupFileAdapter<T> mBackupAdapter;
+    private BackupFileAdapter mBackupAdapter;
 
     private View mCoverLayout;
     private View mPrimaryLayout;
@@ -79,11 +89,14 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
 
     private LocalBroadcastManager mLocalBroadcastManager;
 
-    protected static Bundle generateArguments(boolean allowBackup, boolean allowRestore) {
+    public static BackupHandlerFragment newInstance(String backendId, boolean allowBackup, boolean allowRestore) {
+        BackupHandlerFragment fragment = new BackupHandlerFragment();
         Bundle arguments = new Bundle();
         arguments.putBoolean(ARG_ALLOW_BACKUP, allowBackup);
         arguments.putBoolean(ARG_ALLOW_RESTORE, allowRestore);
-        return arguments;
+        arguments.putString(ARG_BACKEND_ID, backendId);
+        fragment.setArguments(arguments);
+        return fragment;
     }
 
     @Override
@@ -93,6 +106,8 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         if (arguments != null) {
             mAllowBackup = arguments.getBoolean(ARG_ALLOW_BACKUP, true);
             mAllowRestore = arguments.getBoolean(ARG_ALLOW_RESTORE, true);
+            String backendId = arguments.getString(ARG_BACKEND_ID, null);
+            mBackendService = BackendServiceFactory.getServiceById(backendId, this);
             mFileStack = new ArrayList<>();
         } else {
             throw new IllegalStateException("Arguments bundle is null, please instantiate the fragment using the newInstance() method instead.");
@@ -105,6 +120,19 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
             intentFilter.addAction(LocalAction.ACTION_BACKUP_SERVICE_FINISHED);
             mLocalBroadcastManager = LocalBroadcastManager.getInstance(activity);
             mLocalBroadcastManager.registerReceiver(mLocalBroadcastReceiver, intentFilter);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mBackendService != null) {
+            if (mBackendService.isServiceEnabled(getActivity())) {
+                hideCoverView();
+                loadCurrentFolder();
+            } else {
+                showCoverView();
+            }
         }
     }
 
@@ -160,7 +188,7 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         mAdvancedRecyclerView = view.findViewById(R.id.advanced_recycler_view);
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floating_action_button);
         mAdvancedRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mBackupAdapter = new BackupFileAdapter<>(this);
+        mBackupAdapter = new BackupFileAdapter(this);
         mAdvancedRecyclerView.setAdapter(mBackupAdapter);
         mAdvancedRecyclerView.setOnRefreshListener(this);
         if (mAllowBackup) {
@@ -168,23 +196,31 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
 
                 @Override
                 public void onClick(View v) {
-                    if (!mFileStack.isEmpty()) {
-                        ThemedDialog.buildMaterialDialog(v.getContext())
-                                .title(R.string.title_backup_create)
-                                .content(R.string.message_backup_create)
-                                .negativeText(android.R.string.cancel)
-                                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
-                                .input(R.string.hint_password, 0, new MaterialDialog.InputCallback() {
+                    ThemedDialog.buildMaterialDialog(v.getContext())
+                            .title(R.string.title_backup_create)
+                            .content(R.string.message_backup_create)
+                            .negativeText(android.R.string.cancel)
+                            .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
+                            .input(R.string.hint_password, 0, new MaterialDialog.InputCallback() {
 
-                                    @Override
-                                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                        T file = mFileStack.get(mFileStack.size() - 1);
-                                        createBackup(file, input.length() == 0 ? null : input.toString());
+                                @Override
+                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                    Activity activity = getActivity();
+                                    if (activity != null) {
+                                        IFile folder = mFileStack.isEmpty() ? ROOT_FOLDER : mFileStack.get(mFileStack.size() - 1);
+                                        Intent intent = new Intent(activity, BackupHandlerIntentService.class);
+                                        intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
+                                        intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_BACKUP);
+                                        intent.putExtra(BackupHandlerIntentService.PARENT_FOLDER, folder);
+                                        if (input.length() > 0) {
+                                            intent.putExtra(BackupHandlerIntentService.PASSWORD, input.toString());
+                                        }
+                                        activity.startService(intent);
                                     }
+                                }
 
-                                })
-                                .show();
-                    }
+                            })
+                            .show();
                 }
 
             });
@@ -194,7 +230,31 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         return view;
     }
 
-    protected abstract View onCreateCoverView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
+    protected View onCreateCoverView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.layout_panel_cover_text_button, container, true);
+        setCoverToolbar((Toolbar) view.findViewById(R.id.cover_toolbar));
+        TextView coverTextView = view.findViewById(R.id.cover_text_view);
+        Button coverActionButton = view.findViewById(R.id.cover_action_button);
+        // personalize the views
+        if (mBackendService != null) {
+            coverTextView.setText(mBackendService.getBackupCoverMessage());
+            coverActionButton.setText(mBackendService.getBackupCoverAction());
+            coverActionButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    try {
+                        mBackendService.setup(getActivity());
+                    } catch (BackendException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+        }
+        // return the reference to the cover layout
+        return view.findViewById(R.id.cover_layout);
+    }
 
     protected void setCoverToolbar(Toolbar toolbar) {
         mCoverToolbar = toolbar;
@@ -214,15 +274,29 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         }
     }
 
-    protected abstract int getTitle();
+    protected int getTitle() {
+        return mBackendService != null ? mBackendService.getName() : 0;
+    }
 
     @MenuRes
     protected int onInflateMenu() {
+        if (!BackendServiceFactory.SERVICE_ID_EXTERNAL_MEMORY.equals(mBackendService.getId())) {
+            return R.menu.menu_backup_service_remote;
+        }
         return 0;
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_disconnect:
+                try {
+                    mBackendService.teardown(getActivity());
+                } catch (BackendException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
         return false;
     }
 
@@ -230,29 +304,33 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         return mFileStack.isEmpty();
     }
 
-    protected void loadRootFolder(T root) {
-        mFileStack.add(root);
-        loadCurrentFolder();
-    }
-
     public void loadCurrentFolder() {
-        loadFolder(mFileStack.isEmpty() ? null : mFileStack.get(mFileStack.size() - 1));
+        loadFolder(mFileStack.isEmpty() ? ROOT_FOLDER : mFileStack.get(mFileStack.size() - 1));
     }
 
-    protected abstract void loadFolder(T folder);
-
-    @Override
-    public void navigateBack() {
-        int stackSize = mFileStack.size();
-        if (stackSize > 1) {
-            mFileStack.remove(stackSize - 1);
-            mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.LOADING);
-            loadFolder(mFileStack.get(mFileStack.size() - 1));
+    protected void loadFolder(IFile folder) {
+        Activity activity = getActivity();
+        if (activity != null) {
+            Intent intent = new Intent(activity, BackupHandlerIntentService.class);
+            intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
+            intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_LIST);
+            intent.putExtra(BackupHandlerIntentService.PARENT_FOLDER, folder);
+            activity.startService(intent);
         }
     }
 
     @Override
-    public void onFileClick(final T file) {
+    public void navigateBack() {
+        int stackSize = mFileStack.size();
+        if (stackSize > 0) {
+            mFileStack.remove(stackSize - 1);
+            mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.LOADING);
+            loadCurrentFolder();
+        }
+    }
+
+    @Override
+    public void onFileClick(final IFile file) {
         if (file.isDirectory()) {
             mFileStack.add(file);
             mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.LOADING);
@@ -270,7 +348,11 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
 
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    restoreBackup(file, null);
+                                    Intent intent = new Intent(getActivity(), BackupHandlerIntentService.class);
+                                    intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
+                                    intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
+                                    intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
+                                    getActivity().startService(intent);
                                 }
 
                             })
@@ -285,7 +367,12 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
 
                                 @Override
                                 public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                    restoreBackup(file, input.toString());
+                                    Intent intent = new Intent(getActivity(), BackupHandlerIntentService.class);
+                                    intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
+                                    intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
+                                    intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
+                                    intent.putExtra(BackupHandlerIntentService.PASSWORD, input.toString());
+                                    getActivity().startService(intent);
                                 }
 
                             })
@@ -300,7 +387,11 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
 
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    restoreBackup(file, null);
+                                    Intent intent = new Intent(getActivity(), BackupHandlerIntentService.class);
+                                    intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
+                                    intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
+                                    intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
+                                    getActivity().startService(intent);
                                 }
 
                             })
@@ -310,15 +401,34 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         }
     }
 
-    protected abstract void createBackup(T folder, String password);
-
-    protected abstract void restoreBackup(T file, String password);
-
     @Override
     public void onRefresh() {
-        int stackSize = mFileStack.size();
-        if (stackSize > 0) {
-            loadFolder(mFileStack.get(stackSize - 1));
+        loadCurrentFolder();
+    }
+
+    @Override
+    public void onBackendStatusChange(boolean enabled) {
+        if (enabled) {
+            hideCoverView();
+            if (isStackEmpty()) {
+                loadCurrentFolder();
+            }
+        } else {
+            showCoverView();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        if (!mBackendService.handlePermissionsResult(getActivity(), requestCode, permissions, grantResults)) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!mBackendService.handleActivityResult(getActivity(), requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -328,22 +438,22 @@ public abstract class AbstractBackupHandlerFragment<T extends IFile> extends Fra
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (TextUtils.equals(action, LocalAction.ACTION_BACKUP_SERVICE_STARTED)) {
-                int operation = intent.getIntExtra(AbstractBackupHandlerIntentService.SERVICE_ACTION, 0);
-                if (operation == AbstractBackupHandlerIntentService.ACTION_LIST) {
+                int operation = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
+                if (operation == BackupHandlerIntentService.ACTION_LIST) {
                     mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.LOADING);
                 }
             } else if (TextUtils.equals(action, LocalAction.ACTION_BACKUP_SERVICE_FINISHED)) {
-                int operation = intent.getIntExtra(AbstractBackupHandlerIntentService.SERVICE_ACTION, 0);
-                if (operation == AbstractBackupHandlerIntentService.ACTION_LIST) {
-                    List<T> files = intent.getParcelableArrayListExtra(AbstractBackupHandlerIntentService.FOLDER_CONTENT);
-                    mBackupAdapter.setFileList(files, mFileStack.size() > 1);
+                int operation = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
+                if (operation == BackupHandlerIntentService.ACTION_LIST) {
+                    List<IFile> files = intent.getParcelableArrayListExtra(BackupHandlerIntentService.FOLDER_CONTENT);
+                    mBackupAdapter.setFileList(files, mFileStack.size() > 0);
                     if (mBackupAdapter.getItemCount() == 0) {
                         mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.EMPTY);
                     } else {
                         mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.READY);
                     }
-                } else if (operation == AbstractBackupHandlerIntentService.ACTION_BACKUP) {
-                    T backup = intent.getParcelableExtra(AbstractBackupHandlerIntentService.BACKUP_FILE);
+                } else if (operation == BackupHandlerIntentService.ACTION_BACKUP) {
+                    IFile backup = intent.getParcelableExtra(BackupHandlerIntentService.BACKUP_FILE);
                     mBackupAdapter.addFileToList(backup);
                 }
             }

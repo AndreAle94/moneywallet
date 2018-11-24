@@ -34,8 +34,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <service android:name=".service.dropbox.DropBoxBackupHandlerIntentService" />
-        <service android:name=".service.google.GoogleDriveBackupHandlerIntentService" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -45,20 +45,6 @@ public class GoogleDriveFile implements IFile, Parcelable {
         mIsDirectory = in.readByte() != 0;
     }
 
-    public GoogleDriveFile(DriveFolder folder) {
-        mDriveId = folder.getDriveId();
-        mName = "unknown";
-        mSize = -1L;
-        mIsDirectory = true;
-    }
-
-    public GoogleDriveFile(DriveFile file) {
-        mDriveId = file.getDriveId();
-        mName = "unknown";
-        mSize = -1L;
-        mIsDirectory = false;
-    }
-
     public GoogleDriveFile(Metadata metadata) {
         mDriveId = metadata.getDriveId();
         mName = metadata.getTitle();

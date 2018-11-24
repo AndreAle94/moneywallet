@@ -40,20 +40,20 @@ import java.util.List;
 /**
  * Created by andre on 21/03/2018.
  */
-public class BackupFileAdapter<T extends IFile> extends RecyclerView.Adapter<BackupFileAdapter.ViewHolder> implements Comparator<T> {
+public class BackupFileAdapter extends RecyclerView.Adapter<BackupFileAdapter.ViewHolder> implements Comparator<IFile> {
 
-    private final Controller<T> mController;
+    private final Controller mController;
 
-    private List<T> mFileList;
+    private List<IFile> mFileList;
     private boolean mCanNavigateBack;
 
-    public BackupFileAdapter(Controller<T> controller) {
+    public BackupFileAdapter(Controller controller) {
         mController = controller;
         mFileList = null;
         mCanNavigateBack = false;
     }
 
-    public void setFileList(List<T> fileList, boolean canNavigateBack) {
+    public void setFileList(List<IFile> fileList, boolean canNavigateBack) {
         mFileList = fileList;
         mCanNavigateBack = canNavigateBack;
         if (mFileList != null) {
@@ -62,7 +62,7 @@ public class BackupFileAdapter<T extends IFile> extends RecyclerView.Adapter<Bac
         notifyDataSetChanged();
     }
 
-    public void addFileToList(T file) {
+    public void addFileToList(IFile file) {
         mFileList.add(file);
         if (mFileList != null) {
             Collections.sort(mFileList, this);
@@ -86,7 +86,7 @@ public class BackupFileAdapter<T extends IFile> extends RecyclerView.Adapter<Bac
             holder.mSecondaryTextView.setText(R.string.hint_navigate_up);
         } else {
             holder.mAvatarImageView.setVisibility(View.VISIBLE);
-            T file = mFileList.get(position - (mCanNavigateBack ? 1 : 0));
+            IFile file = mFileList.get(position - (mCanNavigateBack ? 1 : 0));
             holder.mPrimaryTextView.setText(file.getName());
             if (file.isDirectory()) {
                 holder.mAvatarImageView.setImageResource(R.drawable.ic_folder_open_black_24dp);
@@ -113,7 +113,7 @@ public class BackupFileAdapter<T extends IFile> extends RecyclerView.Adapter<Bac
     }
 
     @Override
-    public int compare(T file1, T file2) {
+    public int compare(IFile file1, IFile file2) {
         if (file1.isDirectory()) {
             if (file2.isDirectory()) {
                 return file1.getName().compareTo(file2.getName());
@@ -160,10 +160,10 @@ public class BackupFileAdapter<T extends IFile> extends RecyclerView.Adapter<Bac
         }
     }
 
-    public interface Controller<T extends IFile> {
+    public interface Controller {
 
         void navigateBack();
 
-        void onFileClick(T file);
+        void onFileClick(IFile file);
     }
 }

@@ -17,37 +17,44 @@
  * along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.oriondev.moneywallet.storage.database;
+package com.oriondev.moneywallet.api;
 
-import android.support.v4.app.Fragment;
+import android.content.Context;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.api.disk.DiskBackendService;
+import com.oriondev.moneywallet.api.disk.DiskBackendServiceAPI;
 import com.oriondev.moneywallet.model.BackupService;
-import com.oriondev.moneywallet.ui.fragment.secondary.ExternalMemoryBackupHandlerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andrea on 17/10/18.
+ * Created by andrea on 21/11/18.
  */
+public class BackendServiceFactory {
 
-public class BackupServices {
+    public static final String SERVICE_ID_EXTERNAL_MEMORY = "ExternalMemory";
 
-    private static final String SERVICE_ID_EXTERNAL_MEMORY = "ExternalMemory";
+    public static AbstractBackendServiceDelegate getServiceById(String backendId, AbstractBackendServiceDelegate.BackendServiceStatusListener listener) {
+        switch (backendId) {
+            case SERVICE_ID_EXTERNAL_MEMORY:
+                return new DiskBackendService(listener);
+        }
+        return null;
+    }
+
+    public static IBackendServiceAPI getServiceAPIById(Context context, String backendId) throws BackendException {
+        switch (backendId) {
+            case SERVICE_ID_EXTERNAL_MEMORY:
+                return new DiskBackendServiceAPI();
+        }
+        return null;
+    }
 
     public static List<BackupService> getBackupServices() {
         List<BackupService> services = new ArrayList<>();
         services.add(new BackupService(SERVICE_ID_EXTERNAL_MEMORY, R.drawable.ic_sd_24dp, R.string.service_backup_external_memory));
         return services;
-    }
-
-    public static Fragment getBackupServiceFragment(BackupService service, boolean allowBackup, boolean allowRestore) {
-        switch (service.getIdentifier()) {
-            case SERVICE_ID_EXTERNAL_MEMORY:
-                return ExternalMemoryBackupHandlerFragment.newInstance(allowBackup, allowRestore);
-            default:
-                throw new IllegalArgumentException("Unknown service");
-        }
     }
 }

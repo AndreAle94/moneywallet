@@ -35,7 +35,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.oriondev.moneywallet.broadcast.LocalAction;
-import com.oriondev.moneywallet.service.AbstractBackupHandlerIntentService;
+import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 
 import java.util.List;
@@ -801,8 +801,8 @@ public class DataContentProvider extends ContentProvider {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
-                int action = intent.getIntExtra(AbstractBackupHandlerIntentService.SERVICE_ACTION, 0);
-                if (action == AbstractBackupHandlerIntentService.ACTION_RESTORE) {
+                int action = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
+                if (action == BackupHandlerIntentService.ACTION_RESTORE) {
                     initializeDatabase(context);
                     PreferenceManager.setCurrentWallet(context, PreferenceManager.NO_CURRENT_WALLET);
                 }
