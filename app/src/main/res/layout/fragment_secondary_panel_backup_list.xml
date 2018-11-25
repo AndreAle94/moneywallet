@@ -64,6 +64,47 @@
 
     </LinearLayout>
 
-    <!-- Here is inflated the cover layout if required -->
+    <com.oriondev.moneywallet.ui.view.theme.ThemedRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cover_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:theme_backgroundColor="colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:id="@+id/cover_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/cover_layout_text_padding"
+                app:theme_textColor="textOverColorPrimary"
+                tools:text="This is an awesome text to display in the cover layout" />
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedButton
+                android:id="@+id/cover_action_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:theme_backgroundColor="colorAccent"
+                tools:text="Action" />
+
+        </LinearLayout>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedToolbar
+            android:id="@+id/cover_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            app:theme_backgroundColor="colorPrimary" />
+
+    </com.oriondev.moneywallet.ui.view.theme.ThemedRelativeLayout>
 
 </FrameLayout>

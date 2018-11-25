@@ -37,6 +37,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,6 @@ import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.IFile;
-import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.database.backup.BackupManager;
 import com.oriondev.moneywallet.ui.adapter.recycler.BackupFileAdapter;
@@ -85,6 +85,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
     private View mCoverLayout;
     private View mPrimaryLayout;
 
+    private Toolbar mToolbar;
     private Toolbar mCoverToolbar;
 
     private LocalBroadcastManager mLocalBroadcastManager;
@@ -146,15 +147,16 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_secondary_panel_external_storage_backup_list, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_secondary_panel_backup_list, container, false);
         mPrimaryLayout = view.findViewById(R.id.primary_layout);
-        mCoverLayout = onCreateCoverView(inflater, view, savedInstanceState);
-        Toolbar toolbar = view.findViewById(R.id.secondary_toolbar);
-        toolbar.setTitle(getTitle());
+        mToolbar = view.findViewById(R.id.secondary_toolbar);
+        mCoverLayout = view.findViewById(R.id.cover_layout);
+        mCoverToolbar = view.findViewById(R.id.cover_toolbar);
+        mToolbar.setTitle(getTitle());
         Fragment parent = getParentFragment();
         if (parent instanceof MultiPanelFragment && !((MultiPanelFragment) parent).isExtendedLayout()) {
-            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -165,11 +167,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                 }
 
             });
-            int menuResId = onInflateMenu();
-            if (menuResId > 0) {
-                toolbar.inflateMenu(menuResId);
-                toolbar.setOnMenuItemClickListener(this);
-            }
+            mToolbar.inflateMenu(R.menu.menu_backup_service_remote);
+            mToolbar.setOnMenuItemClickListener(this);
             if (mCoverToolbar != null) {
                 mCoverToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
                 mCoverToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -227,15 +226,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
         } else {
             floatingActionButton.setVisibility(View.GONE);
         }
-        return view;
-    }
-
-    protected View onCreateCoverView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_panel_cover_text_button, container, true);
-        setCoverToolbar((Toolbar) view.findViewById(R.id.cover_toolbar));
         TextView coverTextView = view.findViewById(R.id.cover_text_view);
         Button coverActionButton = view.findViewById(R.id.cover_action_button);
-        // personalize the views
         if (mBackendService != null) {
             coverTextView.setText(mBackendService.getBackupCoverMessage());
             coverActionButton.setText(mBackendService.getBackupCoverAction());
@@ -252,12 +244,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
 
             });
         }
-        // return the reference to the cover layout
-        return view.findViewById(R.id.cover_layout);
-    }
-
-    protected void setCoverToolbar(Toolbar toolbar) {
-        mCoverToolbar = toolbar;
+        return view;
     }
 
     protected void showCoverView() {
@@ -269,6 +256,9 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
 
     protected void hideCoverView() {
         if (mCoverLayout != null) {
+            // setup menu item visibility
+            setMenuItemVisibility(R.id.action_disconnect, !BackendServiceFactory.SERVICE_ID_EXTERNAL_MEMORY.equals(mBackendService.getId()));
+            // setup layout visibility
             mCoverLayout.setVisibility(View.GONE);
             mPrimaryLayout.setVisibility(View.VISIBLE);
         }
@@ -280,10 +270,17 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
 
     @MenuRes
     protected int onInflateMenu() {
-        if (!BackendServiceFactory.SERVICE_ID_EXTERNAL_MEMORY.equals(mBackendService.getId())) {
-            return R.menu.menu_backup_service_remote;
+        return R.menu.menu_backup_service_remote;
+    }
+
+    protected void setMenuItemVisibility(int id, boolean visible) {
+        Menu menu = mToolbar.getMenu();
+        if (menu != null) {
+            MenuItem menuItem = menu.findItem(id);
+            if (menuItem != null) {
+                menuItem.setVisible(visible);
+            }
         }
-        return 0;
     }
 
     @Override
@@ -295,6 +292,9 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                 } catch (BackendException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.action_auto_backup:
+                // TODO: handle auto-backup capability
                 break;
         }
         return false;

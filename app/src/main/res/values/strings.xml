@@ -206,6 +206,7 @@
     <string name="menu_action_open_map">"Map"</string>
     <string name="menu_action_show_transaction_list">"Show transactions"</string>
     <string name="menu_action_service_disconnect">"Disconnect"</string>
+    <string name="menu_action_service_auto_backup">"Auto backup"</string>
 
     <string name="bottom_sheet_icon_picker_title">"Personalize the icon"</string>
     <string name="bottom_sheet_icon_picker_action_select_icon">"Select an icon"</string>
