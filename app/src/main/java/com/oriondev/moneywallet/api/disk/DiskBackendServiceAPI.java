@@ -30,6 +30,7 @@ import com.oriondev.moneywallet.model.LocalFile;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
 import com.oriondev.moneywallet.utils.ProgressOutputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
@@ -90,6 +91,17 @@ public class DiskBackendServiceAPI extends AbstractBackendServiceAPI<LocalFile> 
             }
         }
         return fileList;
+    }
+
+    @Override
+    public LocalFile newFolder(LocalFile parent, String name) throws BackendException {
+        File folder = new File(getFolder(parent), name);
+        try {
+            FileUtils.forceMkdir(folder);
+            return new LocalFile(folder);
+        } catch (IOException e) {
+            throw new BackendException(e.getMessage());
+        }
     }
 
     private File getFolder(LocalFile folder) {

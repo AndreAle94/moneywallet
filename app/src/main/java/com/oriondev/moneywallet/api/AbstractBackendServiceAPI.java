@@ -73,4 +73,15 @@ public abstract class AbstractBackendServiceAPI<T extends IFile> implements IBac
     }
 
     protected abstract List<IFile> list(@Nullable T folder) throws BackendException;
+
+    @Override
+    public IFile createFolder(IFile parent, String name) throws BackendException {
+        if (parent == null || mType.isInstance(parent)) {
+            return newFolder((T) parent, name);
+        } else {
+            throw new BackendException("Backend cannot create a folder in a folder that is not an instance of " + mType.getName());
+        }
+    }
+
+    protected abstract T newFolder(T parent, String name) throws BackendException;
 }

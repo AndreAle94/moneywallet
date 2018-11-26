@@ -54,9 +54,11 @@ import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.database.backup.BackupManager;
+import com.oriondev.moneywallet.ui.activity.BackendExplorerActivity;
 import com.oriondev.moneywallet.ui.adapter.recycler.BackupFileAdapter;
 import com.oriondev.moneywallet.ui.fragment.base.MultiPanelFragment;
 import com.oriondev.moneywallet.ui.fragment.base.NavigableFragment;
+import com.oriondev.moneywallet.ui.fragment.dialog.AutoBackupSettingDialog;
 import com.oriondev.moneywallet.ui.view.AdvancedRecyclerView;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
@@ -88,6 +90,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
     private Toolbar mToolbar;
     private Toolbar mCoverToolbar;
 
+    private AutoBackupSettingDialog mAutoBackupSettingDialog;
+
     private LocalBroadcastManager mLocalBroadcastManager;
 
     public static BackupHandlerFragment newInstance(String backendId, boolean allowBackup, boolean allowRestore) {
@@ -113,6 +117,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
         } else {
             throw new IllegalStateException("Arguments bundle is null, please instantiate the fragment using the newInstance() method instead.");
         }
+        // initialize the dialog fragment used to schedule auto-backups
+        mAutoBackupSettingDialog = new AutoBackupSettingDialog();
         // bind to local broadcast manager to get notified of background operations
         Activity activity = getActivity();
         if (activity != null) {
@@ -294,7 +300,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                 }
                 break;
             case R.id.action_auto_backup:
-                // TODO: handle auto-backup capability
+                String tag = getTag() + "::AutoBackupSettingDialog";
+                mAutoBackupSettingDialog.show(getChildFragmentManager(), tag, mBackendService.getId());
                 break;
         }
         return false;

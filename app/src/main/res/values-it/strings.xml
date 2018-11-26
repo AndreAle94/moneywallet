@@ -138,10 +138,18 @@
     <string name="hint_search_something">"Cerca qualcosa"</string>
     <string name="hint_exchange_rate">"Cambia valuta"</string>
     <string name="hint_recurrence_finished">"Terminato"</string>
+    <string name="hint_new_folder">"Nuova cartella"</string>
 
     <string name="hint_show_currency_symbol">"Mostra simbolo corrente"</string>
     <string name="hint_group_digits">"Group digits"</string>
     <string name="hint_round_decimals">"Round decimals"</string>
+    <string name="hint_auto_backup_enabled">"Servizio abilitato"</string>
+    <string name="hint_auto_backup_wifi_only">"Solo quando connesso a reti WiFi"</string>
+    <string name="hint_auto_backup_only_if_data_changed">"Solo quando i dati sono cambiati"</string>
+    <string name="hint_auto_backup_show_notification">"Mostra i progressi in una notifica"</string>
+    <string name="hint_auto_backup_every_n_hours">"Ogni %d ore"</string>
+    <string name="hint_auto_backup_folder">"Cartella"</string>
+    <string name="hint_auto_backup_root_folder">"Radice"</string>
 
     <string name="total_wallet_name">"Totale"</string>
 
@@ -179,6 +187,9 @@
     <string name="title_activity_search_transaction">"Cerca"</string>
     <string name="title_activity_calendar">"Calendario"</string>
     <string name="title_activity_map">"Mappa"</string>
+    <string name="title_activity_backend_explorer">"Esplora backend"</string>
+    <string name="title_activity_backend_file_picker">"Seleziona un file"</string>
+    <string name="title_activity_backend_folder_picker">"Seleziona una cartella"</string>
 
     <string name="title_fragment_item_wallet">"Portafoglio"</string>
     <string name="title_fragment_item_transaction">"Transazione"</string>
@@ -207,6 +218,7 @@
     <string name="menu_action_show_transaction_list">"Mostra transazione"</string>
     <string name="menu_action_service_disconnect">"Disconnetti"</string>
     <string name="menu_action_service_auto_backup">"Backup automatico"</string>
+    <string name="menu_action_select_folder">"Seleziona cartella"</string>
 
     <string name="bottom_sheet_icon_picker_title">"Personalizza icona"</string>
     <string name="bottom_sheet_icon_picker_action_select_icon">"Seleziona un icona"</string>
@@ -226,6 +238,7 @@
     <string name="dialog_change_log_title">"Change Log"</string>
     <string name="dialog_overview_setting_title">"Impostazioni avanzate"</string>
     <string name="dialog_recurrence_title">"Ripeti"</string>
+    <string name="dialog_auto_backup_title">"Backup automatico"</string>
 
     <string name="error_input_name_not_valid">"Nome non valido"</string>
     <string name="error_input_currency_not_valid">"Valuta non valida"</string>
@@ -295,6 +308,7 @@
     <string name="message_no_place_found">"Nessun luogo trovato"</string>
     <string name="message_no_person_found">"Nessuna persona trovata"</string>
     <string name="message_no_icon_found">"Nessuna icona trovata"</string>
+    <string name="message_no_file_found">"Nessun file trovato"</string>
 
     <string name="cover_message_backup_external_memory_title">"L'applicazione può creare e rigenerare il backup direttamente dalla memoria esterna del dispositivo"</string>
     <string name="cover_message_backup_dropbox_title">"L'applicazione può creare e rigenerare il backup direttamente dal tuo account Dropbox personale"</string>
@@ -312,6 +326,7 @@
     <string name="title_backup_creation">"Creazione backup"</string>
     <string name="title_backup_restore">"Ripristina backup"</string>
     <string name="title_backup_restoring">"Ripristino backup"</string>
+    <string name="title_backend_create_folder">"Nuova cartella"</string>
     <string name="title_success">"Successo"</string>
     <string name="title_failed">"Fallito"</string>
     <string name="title_error">"Errore"</string>
@@ -321,6 +336,7 @@
     <string name="title_licenses">"Licenze"</string>
     <string name="title_debt_insert_master_transaction">"Ben fatto"</string>
     <string name="title_currency_exchange_rate">"Tasso di cambio"</string>
+    <string name="message_backend_create_folder">"Inserisci il nome della cartella che vuoi creare"</string>
     <string name="message_permission_required_external_storage">"Il permesso per accedere alla memoria esterna è necessario per leggere e scrivere i file. Si prega di abilitarlo."</string>
     <string name="message_permission_required_not_granted">"Permesso negato. Vai alle impostazioni dell'applicazione e abilitalo."</string>
     <string name="message_backup_create">"Sei sicuro di voler creare un nuovo backup? L'operazione non può essere interrotta. Se lo desideri, puoi impostare una password per proteggere il file di backup."</string>

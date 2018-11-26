@@ -28,6 +28,10 @@ public class LocalAction {
     public static final String ACTION_BACKUP_SERVICE_RUNNING = "LocalBroadCast::BackupServiceRunning";
     public static final String ACTION_BACKUP_SERVICE_FINISHED = "LocalBroadCast::BackupServiceFinished";
     public static final String ACTION_BACKUP_SERVICE_FAILED = "LocalBroadCast::BackupServiceFailed";
+    public static final String ACTION_BACKEND_SERVICE_STARTED = "LocalBroadCast::BackendServiceStarted";
+    public static final String ACTION_BACKEND_SERVICE_RUNNING = "LocalBroadCast::BackendServiceRunning";
+    public static final String ACTION_BACKEND_SERVICE_FINISHED = "LocalBroadCast::BackendServiceFinished";
+    public static final String ACTION_BACKEND_SERVICE_FAILED = "LocalBroadCast::BackendServiceFailed";
     public static final String ACTION_EXCHANGE_RATES_UPDATED = "LocalBroadCast::ExchangeRatesUpdated";
     public static final String ACTION_ATTACHMENT_OP_STARTED = "LocalBroadCast::AttachmentOperationStarted";
     public static final String ACTION_ATTACHMENT_OP_FINISHED = "LocalBroadCast::AttachmentOperationFinished";

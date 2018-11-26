@@ -25,9 +25,12 @@ import android.os.Build;
 import android.view.View;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.storage.database.backup.BackupManager;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -119,6 +122,16 @@ public class Utils {
 
     public static int getRandomMDColor() {
         return PALETTE[new Random().nextInt(PALETTE.length)];
+    }
+
+    public static ArrayList<IFile> wrapAsArrayList(List<IFile> list) {
+        if (list instanceof ArrayList) {
+            return (ArrayList<IFile>) list;
+        } else {
+            ArrayList<IFile> wrappedList = new ArrayList<>();
+            wrappedList.addAll(list);
+            return wrappedList;
+        }
     }
 
 }

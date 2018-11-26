@@ -48,8 +48,9 @@ public class BackendServiceFactory {
         switch (backendId) {
             case SERVICE_ID_EXTERNAL_MEMORY:
                 return new DiskBackendServiceAPI();
+            default:
+                throw new BackendException("Invalid backend");
         }
-        return null;
     }
 
     public static List<BackupService> getBackupServices() {

@@ -138,10 +138,18 @@
     <string name="hint_search_something">"Search something"</string>
     <string name="hint_exchange_rate">"Exchange rate"</string>
     <string name="hint_recurrence_finished">"Ended"</string>
+    <string name="hint_new_folder">"New folder"</string>
 
     <string name="hint_show_currency_symbol">"Show currency symbol"</string>
     <string name="hint_group_digits">"Group digits"</string>
     <string name="hint_round_decimals">"Round decimals"</string>
+    <string name="hint_auto_backup_enabled">"Service enabled"</string>
+    <string name="hint_auto_backup_wifi_only">"Only on WiFi network"</string>
+    <string name="hint_auto_backup_only_if_data_changed">"Only if data is changed"</string>
+    <string name="hint_auto_backup_show_notification">"Show progress notification"</string>
+    <string name="hint_auto_backup_every_n_hours">"Every %d hours"</string>
+    <string name="hint_auto_backup_folder">"Folder"</string>
+    <string name="hint_auto_backup_root_folder">"Root"</string>
 
     <string name="total_wallet_name">"Total"</string>
 
@@ -179,6 +187,9 @@
     <string name="title_activity_search_transaction">"Search"</string>
     <string name="title_activity_calendar">"Calendar"</string>
     <string name="title_activity_map">"Map"</string>
+    <string name="title_activity_backend_explorer">"Explore backend"</string>
+    <string name="title_activity_backend_file_picker">"Pick a file"</string>
+    <string name="title_activity_backend_folder_picker">"Pick a folder"</string>
 
     <string name="title_fragment_item_wallet">"Wallet"</string>
     <string name="title_fragment_item_transaction">"Transaction"</string>
@@ -207,6 +218,7 @@
     <string name="menu_action_show_transaction_list">"Show transactions"</string>
     <string name="menu_action_service_disconnect">"Disconnect"</string>
     <string name="menu_action_service_auto_backup">"Auto backup"</string>
+    <string name="menu_action_select_folder">"Select folder"</string>
 
     <string name="bottom_sheet_icon_picker_title">"Personalize the icon"</string>
     <string name="bottom_sheet_icon_picker_action_select_icon">"Select an icon"</string>
@@ -226,6 +238,7 @@
     <string name="dialog_change_log_title">"Change Log"</string>
     <string name="dialog_overview_setting_title">"Advanced settings"</string>
     <string name="dialog_recurrence_title">"Repeat"</string>
+    <string name="dialog_auto_backup_title">"Auto backup"</string>
 
     <string name="error_input_name_not_valid">"Not a valid name"</string>
     <string name="error_input_currency_not_valid">"Not a valid currency"</string>
@@ -295,6 +308,7 @@
     <string name="message_no_place_found">"No place found"</string>
     <string name="message_no_person_found">"No person found"</string>
     <string name="message_no_icon_found">"No icon found"</string>
+    <string name="message_no_file_found">"No file found"</string>
 
     <string name="cover_message_backup_external_memory_title">"The application can create and restore the backups directly from the external storage of the device"</string>
     <string name="cover_message_backup_dropbox_title">"The application can create and restore the backups from your personal Dropbox account"</string>
@@ -312,6 +326,7 @@
     <string name="title_backup_creation">"Creating backup"</string>
     <string name="title_backup_restore">"Restore backup"</string>
     <string name="title_backup_restoring">"Restoring backup"</string>
+    <string name="title_backend_create_folder">"New folder"</string>
     <string name="title_success">"Success"</string>
     <string name="title_failed">"Failed"</string>
     <string name="title_error">"Error"</string>
@@ -321,6 +336,7 @@
     <string name="title_licenses">"Licenses"</string>
     <string name="title_debt_insert_master_transaction">"Well done"</string>
     <string name="title_currency_exchange_rate">"Exchange rate"</string>
+    <string name="message_backend_create_folder">"Insert the name of the folder that you want to create"</string>
     <string name="message_permission_required_external_storage">"The permission to access the external storage is required in order to read and write files. Please enable it."</string>
     <string name="message_permission_required_not_granted">"Permission denied. Please go to application setting and enable it."</string>
     <string name="message_backup_create">"Are you sure you want create a new backup? The operation cannot be stopped. If you want you can set a password to protect the backup file."</string>

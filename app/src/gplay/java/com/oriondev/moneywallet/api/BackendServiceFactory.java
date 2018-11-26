@@ -62,8 +62,9 @@ public class BackendServiceFactory {
                 return new GoogleDriveBackendServiceAPI(context);
             case SERVICE_ID_EXTERNAL_MEMORY:
                 return new DiskBackendServiceAPI();
+            default:
+                throw new BackendException("Invalid backend");
         }
-        return null;
     }
 
     public static List<BackupService> getBackupServices() {

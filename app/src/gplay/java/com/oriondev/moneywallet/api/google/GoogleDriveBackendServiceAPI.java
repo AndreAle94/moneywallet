@@ -55,6 +55,8 @@ import java.util.concurrent.ExecutionException;
  */
 public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<GoogleDriveFile> {
 
+    private static final String MIME_TYPE_FOLDER = "application/vnd.google-apps.folder";
+
     private final DriveResourceClient mDriveResourceClient;
 
     public GoogleDriveBackendServiceAPI(Context context) throws BackendException {
@@ -115,6 +117,22 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             throw new BackendException(e.getMessage());
         }
         return fileList;
+    }
+
+    @Override
+    protected GoogleDriveFile newFolder(GoogleDriveFile parent, String name) throws BackendException {
+        try {
+            DriveFolder driveFolder = getFolder(parent);
+            MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                    .setTitle(name)
+                    .setMimeType(MIME_TYPE_FOLDER)
+                    .setStarred(true)
+                    .build();
+            DriveFolder folder = Tasks.await(mDriveResourceClient.createFolder(driveFolder, changeSet));
+            return new GoogleDriveFile(Tasks.await(mDriveResourceClient.getMetadata(folder)));
+        } catch (ExecutionException | InterruptedException e) {
+            throw new BackendException(e.getMessage());
+        }
     }
 
     private DriveFolder getFolder(GoogleDriveFile folder) throws BackendException {

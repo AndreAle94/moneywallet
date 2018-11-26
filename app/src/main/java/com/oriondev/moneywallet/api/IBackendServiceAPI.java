@@ -36,4 +36,6 @@ public interface IBackendServiceAPI {
     File downloadFile(File folder, IFile file, ProgressOutputStream.DownloadProgressListener listener) throws BackendException;
 
     List<IFile> getFolderContent(IFile folder) throws BackendException;
+
+    IFile createFolder(IFile parent, String name) throws BackendException;
 }

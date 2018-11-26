@@ -27,6 +27,7 @@ import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
+import com.dropbox.core.v2.files.FolderMetadata;
 import com.dropbox.core.v2.files.ListFolderResult;
 import com.dropbox.core.v2.files.Metadata;
 import com.dropbox.core.v2.files.WriteMode;
@@ -102,6 +103,19 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
                 result = mDropBoxClient.files().listFolderContinue(result.getCursor());
             }
             return files;
+        } catch (DbxException e) {
+            throw new BackendException(e.getMessage());
+        }
+    }
+
+    @Override
+    protected DropBoxFile newFolder(DropBoxFile parent, String name) throws BackendException {
+        String path = getFolderPath(parent) + "/" + name;
+        try {
+            FolderMetadata metadata = mDropBoxClient.files()
+                    .createFolderV2(path)
+                    .getMetadata();
+            return new DropBoxFile(metadata);
         } catch (DbxException e) {
             throw new BackendException(e.getMessage());
         }

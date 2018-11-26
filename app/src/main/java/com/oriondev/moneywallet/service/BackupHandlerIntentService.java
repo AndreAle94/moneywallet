@@ -44,6 +44,7 @@ import com.oriondev.moneywallet.storage.database.backup.LegacyBackupImporter;
 import com.oriondev.moneywallet.utils.DateUtils;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
 import com.oriondev.moneywallet.utils.ProgressOutputStream;
+import com.oriondev.moneywallet.utils.Utils;
 
 import org.apache.commons.io.FileUtils;
 
@@ -266,7 +267,7 @@ public class BackupHandlerIntentService extends IntentService {
     private void notifyListTaskFinished(List<IFile> files) {
         Intent intent = new Intent(LocalAction.ACTION_BACKUP_SERVICE_FINISHED);
         intent.putExtra(ACTION, ACTION_LIST);
-        intent.putParcelableArrayListExtra(FOLDER_CONTENT, wrapAsArrayList(files));
+        intent.putParcelableArrayListExtra(FOLDER_CONTENT, Utils.wrapAsArrayList(files));
         mBroadcastManager.sendBroadcast(intent);
     }
 
@@ -275,16 +276,6 @@ public class BackupHandlerIntentService extends IntentService {
         intent.putExtra(ACTION, ACTION_BACKUP);
         intent.putExtra(BACKUP_FILE, file);
         mBroadcastManager.sendBroadcast(intent);
-    }
-
-    private ArrayList<IFile> wrapAsArrayList(List<IFile> list) {
-        if (list instanceof ArrayList) {
-            return (ArrayList<IFile>) list;
-        } else {
-            ArrayList<IFile> wrappedList = new ArrayList<>();
-            wrappedList.addAll(list);
-            return wrappedList;
-        }
     }
 
     private void notifyTaskFailure(int action, String message) {

@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.oriondev.moneywallet.R;
@@ -206,6 +207,30 @@ import java.lang.reflect.Field;
                             useDarker
                     )
             );
+        }
+    }
+
+    /*package-local*/ static void applyTint(@NonNull SeekBar seekBar, @ColorInt int color, boolean useDarker) {
+        ColorStateList colorStateList = new ColorStateList(
+                new int[][] {
+                        new int[] {-android.R.attr.state_enabled},
+                        new int[] {android.R.attr.state_enabled}
+                },
+                new int[] {
+                        useDarker ? COLOR_CONTROL_DISABLED_DARK : COLOR_CONTROL_DISABLED_LIGHT,
+                        color
+                }
+        );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            seekBar.setThumbTintList(colorStateList);
+            seekBar.setProgressTintList(colorStateList);
+        } else {
+            Drawable progressDrawable = createTintedDrawable(seekBar.getProgressDrawable(), colorStateList);
+            seekBar.setProgressDrawable(progressDrawable);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                Drawable thumbDrawable = createTintedDrawable(seekBar.getThumb(), colorStateList);
+                seekBar.setThumb(thumbDrawable);
+            }
         }
     }
 

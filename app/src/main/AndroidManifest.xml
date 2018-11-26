@@ -71,6 +71,7 @@
         <activity android:name=".ui.activity.PeriodDetailActivity" />
         <activity android:name=".ui.activity.TransactionListActivity" />
         <activity android:name=".ui.activity.LockActivity" />
+        <activity android:name=".ui.activity.BackendExplorerActivity" />
 
         <provider
             android:name=".storage.database.DataContentProvider"
@@ -95,6 +96,7 @@
         <service android:name=".service.openexchangerates.OpenExchangeRatesCurrencyRateDownloadIntentService" />
         <service android:name=".service.AttachmentHandlerIntentService" />
         <service android:name=".service.BackupHandlerIntentService" />
+        <service android:name=".service.BackendHandlerIntentService" />
         <service android:name=".service.RecurrenceHandlerIntentService" />
         <service android:name=".service.UpgradeLegacyEditionIntentService" />
 
