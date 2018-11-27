@@ -30,6 +30,7 @@ import com.oriondev.moneywallet.api.BackendException;
 import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.api.IBackendServiceAPI;
+import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
 import com.oriondev.moneywallet.model.IFile;
@@ -41,6 +42,7 @@ import com.oriondev.moneywallet.storage.database.backup.BackupManager;
 import com.oriondev.moneywallet.storage.database.backup.DefaultBackupExporter;
 import com.oriondev.moneywallet.storage.database.backup.DefaultBackupImporter;
 import com.oriondev.moneywallet.storage.database.backup.LegacyBackupImporter;
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.utils.DateUtils;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
 import com.oriondev.moneywallet.utils.ProgressOutputStream;
@@ -63,6 +65,9 @@ public class BackupHandlerIntentService extends IntentService {
 
     public static final String ACTION = "BackupHandlerIntentService::Argument::Action";
     public static final String BACKEND_ID = "BackupHandlerIntentService::Argument::BackendId";
+    public static final String AUTO_BACKUP = "BackupHandlerIntentService::Argument::AutoBackup";
+    public static final String ONLY_ON_WIFI = "BackupHandlerIntentService::Argument::OnlyOnWifi";
+    public static final String SHOW_NOTIFICATION = "BackupHandlerIntentService::Argument::ShowNotification";
     public static final String BACKUP_FILE = "BackupHandlerIntentService::Argument::BackupFile";
     public static final String ERROR_MESSAGE = "BackupHandlerIntentService::Argument::ErrorMessage";
     public static final String FOLDER_CONTENT = "BackupHandlerIntentService::Argument::FolderContent";
@@ -215,7 +220,9 @@ public class BackupHandlerIntentService extends IntentService {
                 restoreLocalBackupFile(backup, password);
                 notifyTaskProgress(ACTION_RESTORE, STATUS_BACKUP_RESTORING, 100);
                 notifyTaskFinished(ACTION_RESTORE);
+                PreferenceManager.setLastTimeDataIsChanged(0L);
                 RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
+                AutoBackupBroadcastReceiver.scheduleAutoBackupTask(this);
             } catch (Exception e) {
                 e.printStackTrace();
                 notifyTaskFailure(ACTION_RESTORE, e.getMessage());

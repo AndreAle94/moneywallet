@@ -19,18 +19,70 @@
 
 package com.oriondev.moneywallet.broadcast;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.oriondev.moneywallet.api.BackendServiceFactory;
+import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.service.BackupHandlerIntentService;
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+
+import java.util.Set;
 
 /**
  * Created by andrea on 27/11/18.
  */
 public class AutoBackupBroadcastReceiver extends BroadcastReceiver {
 
+    private static final int MILLIS_IN_HOUR = 1000 * 60 * 60;
+
     public static void scheduleAutoBackupTask(Context context) {
-        // TODO: schedule auto backup task if in future,
-        // TODO: fire it immediately if already expired
+        cancelPendingIntent(context);
+        Set<String> backendIdSet = PreferenceManager.getAutoBackupEnabledServices();
+        if (backendIdSet != null && !backendIdSet.isEmpty()) {
+            Long nextTimestamp = null;
+            for (String backendId : backendIdSet) {
+                long lastTimestamp = PreferenceManager.getAutoBackupLastTime(backendId);
+                int hourOffset = PreferenceManager.getAutoBackupHoursOffset(backendId);
+                long nextOccurrence = lastTimestamp + (hourOffset * MILLIS_IN_HOUR);
+                if (nextTimestamp == null || nextOccurrence < nextTimestamp) {
+                    nextTimestamp = nextOccurrence;
+                }
+            }
+            if (nextTimestamp != null) {
+                if (nextTimestamp <= System.currentTimeMillis()) {
+                    startBackgroundTask(context);
+                } else {
+                    schedulePendingIntent(context, nextTimestamp);
+                }
+            }
+        }
+    }
+
+    private static void schedulePendingIntent(Context context, long timestamp) {
+        PendingIntent pendingIntent = createPendingIntent(context);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, pendingIntent);
+            System.out.println("[ALARM] AutoBackupTask scheduled at: " + timestamp);
+        }
+    }
+
+    private static void cancelPendingIntent(Context context) {
+        PendingIntent pendingIntent = createPendingIntent(context);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
+    }
+
+    private static PendingIntent createPendingIntent(Context context) {
+        Intent intent = new Intent(context, AutoBackupBroadcastReceiver.class);
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
@@ -39,7 +91,35 @@ public class AutoBackupBroadcastReceiver extends BroadcastReceiver {
     }
 
     private static void startBackgroundTask(Context context) {
-        System.out.println("[ALARM] BackupTask fired now");
-        // TODO: start auto backup service
+        System.out.println("[ALARM] AutoBackupTask fired now");
+        Set<String> backendIdSet = PreferenceManager.getAutoBackupEnabledServices();
+        if (backendIdSet != null && !backendIdSet.isEmpty()) {
+            for (String backendId : backendIdSet) {
+                long lastTimestamp = PreferenceManager.getAutoBackupLastTime(backendId);
+                int hourOffset = PreferenceManager.getAutoBackupHoursOffset(backendId);
+                long nextOccurrence = lastTimestamp + (hourOffset * MILLIS_IN_HOUR);
+                if (nextOccurrence <= System.currentTimeMillis()) {
+                    if (!PreferenceManager.isAutoBackupWhenDataIsChangedOnly(backendId) || PreferenceManager.getLastTimeDataIsChanged() > lastTimestamp) {
+                        boolean onlyOnWiFi = PreferenceManager.isAutoBackupOnWiFiOnly(backendId);
+                        boolean showNotification = PreferenceManager.isAutoBackupWithNotification(backendId);
+                        IFile folder = BackendServiceFactory.getFile(backendId, PreferenceManager.getAutoBackupFolder(backendId));
+                        // build the intent to start the service
+                        Intent intent = new Intent(context, BackupHandlerIntentService.class);
+                        intent.putExtra(BackupHandlerIntentService.BACKEND_ID, backendId);
+                        intent.putExtra(BackupHandlerIntentService.AUTO_BACKUP, true);
+                        intent.putExtra(BackupHandlerIntentService.ONLY_ON_WIFI, onlyOnWiFi);
+                        intent.putExtra(BackupHandlerIntentService.SHOW_NOTIFICATION, showNotification);
+                        intent.putExtra(BackupHandlerIntentService.PARENT_FOLDER, folder);
+                        context.startService(intent);
+                    }
+                    // register the next occurrence as the last time the auto backup
+                    // for this specific backend has been executed: if an error occur
+                    // and the backup process is interrupted, the error is shown in
+                    // a specific notification (no auto rescheduling because we don't
+                    // know if the error is a recoverable error or a critical one)
+                    PreferenceManager.setAutoBackupLastTime(backendId, nextOccurrence);
+                }
+            }
+        }
     }
 }

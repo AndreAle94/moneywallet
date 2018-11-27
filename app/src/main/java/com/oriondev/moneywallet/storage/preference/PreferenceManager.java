@@ -36,6 +36,8 @@ import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.model.LockMode;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by andrea on 24/01/18.
@@ -64,12 +66,16 @@ public class PreferenceManager {
     private static final String SEND_ANONYMOUS_DATA = "send_anonymous_data";
     private static final String SERVICE_API_KEY = "user_api_key_";
 
+    private static final String AUTO_BACKUP_ENABLED_SERVICES = "auto_backup_enabled_services";
     private static final String BACKEND_AUTO_BACKUP_ENABLED = "auto_backup_enabled_";
     private static final String BACKEND_AUTO_BACKUP_WIFI_ONLY = "auto_backup_wifi_only_";
     private static final String BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ = "auto_backup_show_notification_";
     private static final String BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY = "auto_backup_data_changed_only_";
     private static final String BACKEND_AUTO_BACKUP_OFFSET = "auto_backup_hour_offset_";
     private static final String BACKEND_AUTO_BACKUP_FOLDER = "auto_backup_folder_";
+    private static final String BACKEND_AUTO_BACKUP_LAST_TIME = "auto_backup_last_time_";
+
+    private static final String LAST_DATA_CHANGE_TIME = "last_data_change_time";
 
     public static final int LOCK_MODE_NONE = 0;
     public static final int LOCK_MODE_PIN = 1;
@@ -197,6 +203,20 @@ public class PreferenceManager {
 
     public static void setAutoBackupEnabled(String backendId, boolean enabled) {
         mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_ENABLED + backendId, enabled).apply();
+        Set<String> backendIdSet = mPreferences.getStringSet(AUTO_BACKUP_ENABLED_SERVICES, null);
+        if (enabled) {
+            if (backendIdSet == null) {
+                backendIdSet = new HashSet<>();
+            }
+            backendIdSet.add(backendId);
+        } else if (backendIdSet != null) {
+            backendIdSet.remove(backendId);
+            mPreferences.edit()
+                    .remove(BACKEND_AUTO_BACKUP_FOLDER + backendId)
+                    .remove(BACKEND_AUTO_BACKUP_LAST_TIME + backendId)
+                    .apply();
+        }
+        mPreferences.edit().putStringSet(AUTO_BACKUP_ENABLED_SERVICES, backendIdSet).apply();
     }
 
     public static void setAutoBackupOnWiFiOnly(String backendId, boolean wifiOnly) {
@@ -217,6 +237,14 @@ public class PreferenceManager {
 
     public static void setAutoBackupFolder(String backendId, String folder) {
         mPreferences.edit().putString(BACKEND_AUTO_BACKUP_FOLDER + backendId, folder).apply();
+    }
+
+    public static void setAutoBackupLastTime(String backendId, long timestamp) {
+        mPreferences.edit().putLong(BACKEND_AUTO_BACKUP_LAST_TIME + backendId, timestamp).apply();
+    }
+
+    public static void setLastTimeDataIsChanged(long timestamp) {
+        mPreferences.edit().putLong(LAST_DATA_CHANGE_TIME, timestamp).apply();
     }
 
     public static long getCurrentWallet() {
@@ -314,6 +342,10 @@ public class PreferenceManager {
         return mPreferences.getString(SERVICE_API_KEY + String.valueOf(service), null);
     }
 
+    public static Set<String> getAutoBackupEnabledServices() {
+        return mPreferences.getStringSet(AUTO_BACKUP_ENABLED_SERVICES, null);
+    }
+
     public static boolean isAutoBackupEnabled(String backendId) {
         return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_ENABLED + backendId, false);
     }
@@ -336,6 +368,14 @@ public class PreferenceManager {
 
     public static String getAutoBackupFolder(String backendId) {
         return mPreferences.getString(BACKEND_AUTO_BACKUP_FOLDER + backendId, null);
+    }
+
+    public static long getAutoBackupLastTime(String backendId) {
+        return mPreferences.getLong(BACKEND_AUTO_BACKUP_LAST_TIME + backendId, System.currentTimeMillis());
+    }
+
+    public static long getLastTimeDataIsChanged() {
+        return mPreferences.getLong(LAST_DATA_CHANGE_TIME, 0L);
     }
 
     private static void notifyCurrentWalletIsChanged(Context context, long walletId) {

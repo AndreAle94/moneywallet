@@ -632,6 +632,7 @@ public class DataContentProvider extends ContentProvider {
                 break;
         }
         if (objectId > 0L) {
+            PreferenceManager.setLastTimeDataIsChanged(System.currentTimeMillis());
             ContentResolver contentResolver = getContentResolver();
             Uri objectUri = ContentUris.withAppendedId(uri, objectId);
             if (contentResolver != null) {
@@ -710,6 +711,7 @@ public class DataContentProvider extends ContentProvider {
         }
         ContentResolver contentResolver = getContentResolver();
         if (contentResolver != null && result > 0) {
+            PreferenceManager.setLastTimeDataIsChanged(System.currentTimeMillis());
             contentResolver.notifyChange(notifyUri, null);
         }
         return result;
@@ -763,6 +765,7 @@ public class DataContentProvider extends ContentProvider {
                 break;
         }
         if (result > 0) {
+            PreferenceManager.setLastTimeDataIsChanged(System.currentTimeMillis());
             ContentResolver contentResolver = getContentResolver();
             if (contentResolver != null) {
                 contentResolver.notifyChange(uri, null);
