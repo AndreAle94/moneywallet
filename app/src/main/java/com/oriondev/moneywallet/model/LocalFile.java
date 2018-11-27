@@ -37,6 +37,10 @@ public class LocalFile implements IFile {
         mFile = file;
     }
 
+    public LocalFile(String encoded) {
+        mFile = new File(encoded);
+    }
+
     private LocalFile(Parcel in) {
         mFile = new File(in.readString());
     }
@@ -72,6 +76,11 @@ public class LocalFile implements IFile {
     @Override
     public long getSize() {
         return mFile.length();
+    }
+
+    @Override
+    public String encodeToString() {
+        return mFile.getPath();
     }
 
     public File getFile() {

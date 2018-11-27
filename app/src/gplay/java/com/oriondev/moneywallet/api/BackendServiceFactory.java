@@ -29,6 +29,10 @@ import com.oriondev.moneywallet.api.dropbox.DropboxBackendServiceAPI;
 import com.oriondev.moneywallet.api.google.GoogleDriveBackendService;
 import com.oriondev.moneywallet.api.google.GoogleDriveBackendServiceAPI;
 import com.oriondev.moneywallet.model.BackupService;
+import com.oriondev.moneywallet.model.DropBoxFile;
+import com.oriondev.moneywallet.model.GoogleDriveFile;
+import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.model.LocalFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +42,9 @@ import java.util.List;
  */
 public class BackendServiceFactory {
 
-    public static final String SERVICE_ID_DROPBOX = "DropBox";
-    public static final String SERVICE_ID_GOOGLE_DRIVE = "GoogleDrive";
-    public static final String SERVICE_ID_EXTERNAL_MEMORY = "ExternalMemory";
+    public static final String SERVICE_ID_DROPBOX = "dropbox";
+    public static final String SERVICE_ID_GOOGLE_DRIVE = "google_drive";
+    public static final String SERVICE_ID_EXTERNAL_MEMORY = "external_memory";
 
     public static AbstractBackendServiceDelegate getServiceById(String backendId, AbstractBackendServiceDelegate.BackendServiceStatusListener listener) {
         switch (backendId) {
@@ -73,5 +77,19 @@ public class BackendServiceFactory {
         services.add(new BackupService(SERVICE_ID_GOOGLE_DRIVE, R.drawable.ic_google_drive_24dp, R.string.service_backup_google_drive));
         services.add(new BackupService(SERVICE_ID_EXTERNAL_MEMORY, R.drawable.ic_sd_24dp, R.string.service_backup_external_memory));
         return services;
+    }
+
+    public static IFile getFile(String backendId, String encoded) {
+        if (encoded != null) {
+            switch (backendId) {
+                case SERVICE_ID_DROPBOX:
+                    return new DropBoxFile(encoded);
+                case SERVICE_ID_GOOGLE_DRIVE:
+                    return new GoogleDriveFile(encoded);
+                case SERVICE_ID_EXTERNAL_MEMORY:
+                    return new LocalFile(encoded);
+            }
+        }
+        return null;
     }
 }

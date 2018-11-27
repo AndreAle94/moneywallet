@@ -33,4 +33,6 @@ public interface IFile extends Parcelable {
     boolean isDirectory();
 
     long getSize();
+
+    String encodeToString();
 }

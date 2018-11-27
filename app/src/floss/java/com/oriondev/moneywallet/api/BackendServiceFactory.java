@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class BackendServiceFactory {
 
-    public static final String SERVICE_ID_EXTERNAL_MEMORY = "ExternalMemory";
+    public static final String SERVICE_ID_EXTERNAL_MEMORY = "external_memory";
 
     public static AbstractBackendServiceDelegate getServiceById(String backendId, AbstractBackendServiceDelegate.BackendServiceStatusListener listener) {
         switch (backendId) {
@@ -57,5 +57,15 @@ public class BackendServiceFactory {
         List<BackupService> services = new ArrayList<>();
         services.add(new BackupService(SERVICE_ID_EXTERNAL_MEMORY, R.drawable.ic_sd_24dp, R.string.service_backup_external_memory));
         return services;
+    }
+
+    public static IFile getFile(String backendId, String encoded) {
+        if (encoded != null) {
+            switch (backendId) {
+                case SERVICE_ID_EXTERNAL_MEMORY:
+                    return new LocalFile(encoded);
+            }
+        }
+        return null;
     }
 }

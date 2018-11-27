@@ -25,11 +25,20 @@ import android.os.Parcelable;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.FolderMetadata;
 import com.dropbox.core.v2.files.Metadata;
+import com.google.android.gms.drive.DriveId;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by andre on 21/03/2018.
  */
 public class DropBoxFile implements IFile, Parcelable {
+
+    private static final String NAME = "name";
+    private static final String PATH = "path";
+    private static final String SIZE = "size";
+    private static final String DIRECTORY = "directory";
 
     private final String mName;
     private final String mPath;
@@ -49,6 +58,18 @@ public class DropBoxFile implements IFile, Parcelable {
         } else {
             mSize = -1L;
             mIsDirectory = mName.contains(".");
+        }
+    }
+
+    public DropBoxFile(String encoded) {
+        try {
+            JSONObject object = new JSONObject(encoded);
+            mName = object.optString(NAME);
+            mPath = object.optString(PATH);
+            mSize = object.optLong(SIZE);
+            mIsDirectory = object.getBoolean(DIRECTORY);
+        } catch (JSONException e) {
+            throw new RuntimeException("Cannot decode file from string: " + e.getMessage());
         }
     }
 
@@ -94,6 +115,20 @@ public class DropBoxFile implements IFile, Parcelable {
     @Override
     public long getSize() {
         return mSize;
+    }
+
+    @Override
+    public String encodeToString() {
+        try {
+            JSONObject object = new JSONObject();
+            object.put(NAME, mName);
+            object.put(PATH, mPath);
+            object.put(SIZE, mSize);
+            object.put(DIRECTORY, mIsDirectory);
+            return object.toString();
+        } catch (JSONException e) {
+            throw new RuntimeException("Cannot encode file to string: " + e.getMessage());
+        }
     }
 
     @Override

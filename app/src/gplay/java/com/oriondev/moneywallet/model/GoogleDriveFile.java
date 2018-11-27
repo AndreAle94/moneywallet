@@ -27,10 +27,18 @@ import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
 import com.google.android.gms.drive.Metadata;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by andre on 21/03/2018.
  */
 public class GoogleDriveFile implements IFile, Parcelable {
+
+    private static final String ID = "id";
+    private static final String NAME = "name";
+    private static final String SIZE = "size";
+    private static final String DIRECTORY = "directory";
 
     private final DriveId mDriveId;
     private final String mName;
@@ -50,6 +58,18 @@ public class GoogleDriveFile implements IFile, Parcelable {
         mName = metadata.getTitle();
         mSize = metadata.getFileSize();
         mIsDirectory = metadata.isFolder();
+    }
+
+    public GoogleDriveFile(String encoded) {
+        try {
+            JSONObject object = new JSONObject(encoded);
+            mDriveId = DriveId.decodeFromString(object.getString(ID));
+            mName = object.optString(NAME);
+            mSize = object.optLong(SIZE);
+            mIsDirectory = object.getBoolean(DIRECTORY);
+        } catch (JSONException e) {
+            throw new RuntimeException("Cannot decode file from string: " + e.getMessage());
+        }
     }
 
     public static final Creator<GoogleDriveFile> CREATOR = new Creator<GoogleDriveFile>() {
@@ -85,6 +105,20 @@ public class GoogleDriveFile implements IFile, Parcelable {
     @Override
     public long getSize() {
         return mSize;
+    }
+
+    @Override
+    public String encodeToString() {
+        try {
+            JSONObject object = new JSONObject();
+            object.put(ID, mDriveId.encodeToString());
+            object.put(NAME, mName);
+            object.put(SIZE, mSize);
+            object.put(DIRECTORY, mIsDirectory);
+            return object.toString();
+        } catch (JSONException e) {
+            throw new RuntimeException("Cannot encode file to string: " + e.getMessage());
+        }
     }
 
     public DriveFolder getDriveFolder() {

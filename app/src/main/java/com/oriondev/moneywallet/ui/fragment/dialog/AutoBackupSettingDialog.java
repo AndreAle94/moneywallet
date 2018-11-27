@@ -35,8 +35,10 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.api.BackendServiceFactory;
+import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
 import com.oriondev.moneywallet.model.IFile;
-import com.oriondev.moneywallet.service.BackendHandlerIntentService;
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.activity.BackendExplorerActivity;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
@@ -136,7 +138,12 @@ public class AutoBackupSettingDialog extends DialogFragment {
 
             });
             if (savedInstanceState == null) {
-                // TODO: fill ui with current settings
+                mServiceEnabledSwitchCompat.setChecked(PreferenceManager.isAutoBackupEnabled(mBackendId));
+                mOnlyWiFiCheckBox.setChecked(PreferenceManager.isAutoBackupOnWiFiOnly(mBackendId));
+                mShowNotificationCheckBox.setChecked(PreferenceManager.isAutoBackupWithNotification(mBackendId));
+                mOnlyDataChangedCheckBox.setChecked(PreferenceManager.isAutoBackupWhenDataIsChangedOnly(mBackendId));
+                mOffsetSeekBar.setProgress((PreferenceManager.getAutoBackupHoursOffset(mBackendId) - OFFSET_MIN_HOURS) / OFFSET_BETWEEN_HOURS);
+                mFolder = BackendServiceFactory.getFile(mBackendId, PreferenceManager.getAutoBackupFolder(mBackendId));
             }
             onFolderChanged();
         }
@@ -164,8 +171,13 @@ public class AutoBackupSettingDialog extends DialogFragment {
     }
 
     private void onSaveSetting() {
-        // TODO: save current settings for mBackendId
-        // TODO: reschedule next auto-backup
+        PreferenceManager.setAutoBackupEnabled(mBackendId, mServiceEnabledSwitchCompat.isChecked());
+        PreferenceManager.setAutoBackupOnWiFiOnly(mBackendId, mOnlyWiFiCheckBox.isChecked());
+        PreferenceManager.setAutoBackupWithNotification(mBackendId, mShowNotificationCheckBox.isChecked());
+        PreferenceManager.setAutoBackupWhenDataIsChangedOnly(mBackendId, mOnlyDataChangedCheckBox.isChecked());
+        PreferenceManager.setAutoBackupHoursOffset(mBackendId, OFFSET_MIN_HOURS + (mOffsetSeekBar.getProgress() * OFFSET_BETWEEN_HOURS));
+        PreferenceManager.setAutoBackupFolder(mBackendId, mFolder != null ? mFolder.encodeToString() : null);
+        AutoBackupBroadcastReceiver.scheduleAutoBackupTask(getActivity());
     }
 
     @Override

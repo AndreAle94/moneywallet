@@ -43,6 +43,7 @@ public class BackupMultiPanelFragment extends MultiPanelFragment implements Back
 
     private static final String ARG_ALLOW_BACKUP = "BackupMultiPanelFragment::Arguments::AllowBackup";
     private static final String ARG_ALLOW_RESTORE = "BackupMultiPanelFragment::Arguments::AllowRestore";
+    private static final String SS_SHOW_COVER_LAYOUT = "BackupMultiPanelFragment::Arguments::ShowCoverLayout";
 
     public static BackupMultiPanelFragment newInstance(boolean allowBackup, boolean allowRestore) {
         BackupMultiPanelFragment fragment = new BackupMultiPanelFragment();
@@ -58,6 +59,8 @@ public class BackupMultiPanelFragment extends MultiPanelFragment implements Back
 
     private boolean mAllowBackup;
     private boolean mAllowRestore;
+
+    private boolean mShowCoverLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,14 @@ public class BackupMultiPanelFragment extends MultiPanelFragment implements Back
         mSecondaryPanelCoverLayout = view.findViewById(R.id.secondary_panel_cover_layout);
         mSecondaryPanelFragmentContainer = view.findViewById(R.id.secondary_panel_fragment_container);
         // show the cover layout as default panel
-        showCoverLayout(true);
+        mShowCoverLayout = savedInstanceState == null || savedInstanceState.getBoolean(SS_SHOW_COVER_LAYOUT);
+        showCoverLayout(mShowCoverLayout);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SS_SHOW_COVER_LAYOUT, mShowCoverLayout);
     }
 
     @Override
@@ -115,7 +125,8 @@ public class BackupMultiPanelFragment extends MultiPanelFragment implements Back
             fragment = BackupHandlerFragment.newInstance(service.getIdentifier(), mAllowBackup, mAllowRestore);
             fragmentManager.beginTransaction().replace(containerId, fragment, tag).commit();
         }
-        showCoverLayout(service == null);
+        mShowCoverLayout = service == null;
+        showCoverLayout(mShowCoverLayout);
         showSecondaryPanel();
     }
 

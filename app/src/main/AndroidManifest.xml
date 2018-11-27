@@ -102,6 +102,7 @@
 
         <receiver android:name=".broadcast.DailyBroadcastReceiver" />
         <receiver android:name=".broadcast.RecurrenceBroadcastReceiver" />
+        <receiver android:name=".broadcast.AutoBackupBroadcastReceiver" />
         <receiver android:name=".broadcast.BootBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
