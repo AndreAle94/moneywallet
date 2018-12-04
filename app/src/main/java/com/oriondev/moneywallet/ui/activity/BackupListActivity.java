@@ -41,6 +41,7 @@ import com.oriondev.moneywallet.ui.activity.base.BaseActivity;
 import com.oriondev.moneywallet.ui.fragment.base.NavigableFragment;
 import com.oriondev.moneywallet.ui.fragment.dialog.GenericProgressDialog;
 import com.oriondev.moneywallet.ui.fragment.multipanel.BackupMultiPanelFragment;
+import com.oriondev.moneywallet.ui.fragment.secondary.BackupHandlerFragment;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
 /**
@@ -117,6 +118,14 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null) {
+                String callerId = intent.getStringExtra(BackupHandlerIntentService.CALLER_ID);
+                if (!BackupHandlerFragment.BACKUP_SERVICE_CALLER_ID.equals(callerId)) {
+                    // the service has sent a message using the local broadcast manager but it
+                    // is not directed to this fragment. we can simply ignore it. this is useful
+                    // to avoid that the dialog appear when the auto backup is fired by the
+                    // system and the user is browsing the backup section of the application.
+                    return;
+                }
                 switch (intent.getAction()) {
                     case LocalAction.ACTION_BACKUP_SERVICE_STARTED:
                         if (mProgressDialog == null) {
@@ -186,7 +195,8 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
                             mProgressDialog.dismiss();
                             mProgressDialog = null;
                         }
-                        String message = intent.getStringExtra(BackupHandlerIntentService.ERROR_MESSAGE);
+                        Exception exception = (Exception) intent.getSerializableExtra(BackupHandlerIntentService.EXCEPTION);
+                        String message = exception.getMessage();
                         titleRes = R.string.title_failed;
                         String messageString;
                         switch (intent.getIntExtra(BackupHandlerIntentService.ACTION, 0)) {

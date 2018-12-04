@@ -309,6 +309,7 @@
     <string name="message_no_person_found">"No person found"</string>
     <string name="message_no_icon_found">"No icon found"</string>
     <string name="message_no_file_found">"No file found"</string>
+    <string name="message_error_backend_recoverable">"Connection problem. Please retry."</string>
 
     <string name="cover_message_backup_external_memory_title">"The application can create and restore the backups directly from the external storage of the device"</string>
     <string name="cover_message_backup_dropbox_title">"The application can create and restore the backups from your personal Dropbox account"</string>
@@ -469,9 +470,22 @@
     <string name="notification_title_daily_reminder_title">"Any transaction today?"</string>
     <string name="notification_title_daily_reminder_text">"Tap here to add it immediately"</string>
     <string name="notification_title_download_exchange_rates">"Update exchange rates"</string>
+    <string name="notification_title_backup_creation">"Backup creation"</string>
+    <string name="notification_title_backup_restoring">"Backup restoring"</string>
+    <string name="notification_title_backup_creation_failed">"Backup creation failed"</string>
+    <string name="notification_title_backup_restoring_failed">"Backup restoring failed"</string>
     <string name="notification_content_downloading_data">"Downloading updated data…"</string>
     <string name="notification_content_caching_data">"Storing updated data…"</string>
     <string name="notification_content_error_message">"Error: %s"</string>
+    <string name="notification_content_backup_file_creation">"Writing local backup file…"</string>
+    <string name="notification_content_backup_file_uploading">"Uploading backup file…"</string>
+    <string name="notification_content_backup_file_downloading">"Downloading backup file…"</string>
+    <string name="notification_content_backup_file_restoring">"Reading backup file…"</string>
+    <string name="notification_content_backup_error_wifi_network">"The operation has been programmed to be performed only when the device is connected to a WiFi network. Connect to a WiFi network and try again."</string>
+    <string name="notification_content_backup_error_backend_recoverable">"There was an error while communicating with the backend service. Check your internet connection and try again."</string>
+    <string name="notification_content_backup_error_backend">"There was an error with the backend and the auto backup has been disabled. Check if there is any problem."</string>
+    <string name="notification_content_backup_error_internal">"There was an internal error during the operation, which is probably a bug. Please report it to the developer."</string>
+    <string name="notification_action_retry">"Retry"</string>
     <string name="message_error_network_connection">"network connection"</string>
     <string name="message_error_invalid_response">"invalid response"</string>
     <string name="message_error_missing_api_key">"missing or invalid api key, please update the api key in settings in order to use this service"</string>

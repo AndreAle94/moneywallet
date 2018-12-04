@@ -91,4 +91,12 @@
         app:mtv_bottomLineEnabled="true"
         tools:text="Folder name here" />
 
+    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
+        android:id="@+id/auto_backup_password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        app:met_mode="floatingLabel" />
+
 </LinearLayout>

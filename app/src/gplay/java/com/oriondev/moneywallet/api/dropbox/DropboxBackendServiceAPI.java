@@ -20,11 +20,12 @@
 package com.oriondev.moneywallet.api.dropbox;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.NetworkIOException;
+import com.dropbox.core.http.StandardHttpRequestor;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.FolderMetadata;
@@ -34,7 +35,6 @@ import com.dropbox.core.v2.files.WriteMode;
 import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.api.AbstractBackendServiceAPI;
 import com.oriondev.moneywallet.api.BackendException;
-import com.oriondev.moneywallet.api.IBackendServiceAPI;
 import com.oriondev.moneywallet.model.DropBoxFile;
 import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by andrea on 24/11/18.
@@ -56,7 +57,14 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
         super(DropBoxFile.class);
         String accessToken = DropboxBackendService.getAccessToken(context);
         if (accessToken != null) {
-            DbxRequestConfig config = DbxRequestConfig.newBuilder(BuildConfig.API_KEY_DROPBOX).build();
+            DbxRequestConfig config = DbxRequestConfig.newBuilder(BuildConfig.API_KEY_DROPBOX)
+                    // we can lower the read timeout to 20 seconds to avoid to have the service locked
+                    // when the device goes offline and the library is performing http requests.
+                    .withHttpRequestor(new StandardHttpRequestor(StandardHttpRequestor.Config.builder()
+                            .withReadTimeout(20, TimeUnit.SECONDS)
+                            .build())
+                    )
+                    .build();
             mDropBoxClient = new DbxClientV2(config, accessToken);
         } else {
             throw new BackendException("Dropbox backend cannot be initialized: missing access token");
@@ -72,7 +80,7 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
                     .uploadAndFinish(new ProgressInputStream(file, listener));
             return new DropBoxFile(metadata);
         } catch (IOException | DbxException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -84,7 +92,7 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
                     .download(new ProgressOutputStream(destination, file.getSize(), listener));
             return destination;
         } catch (IOException | DbxException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -104,7 +112,7 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
             }
             return files;
         } catch (DbxException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -117,7 +125,7 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
                     .getMetadata();
             return new DropBoxFile(metadata);
         } catch (DbxException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -126,5 +134,9 @@ public class DropboxBackendServiceAPI extends AbstractBackendServiceAPI<DropBoxF
             return "";
         }
         return folder.getPath();
+    }
+
+    private boolean isRecoverable(Exception exception) {
+        return exception instanceof IOException || exception instanceof NetworkIOException;
     }
 }

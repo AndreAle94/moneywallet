@@ -23,8 +23,10 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.DailyBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
+import com.oriondev.moneywallet.storage.preference.BackendManager;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.view.theme.ThemeEngine;
 import com.oriondev.moneywallet.utils.CurrencyManager;
@@ -38,6 +40,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         PreferenceManager.initialize(this);
+        BackendManager.initialize(this);
         ThemeEngine.initialize(this);
         CurrencyManager.initialize(this);
         initializeScheduledTimers();
@@ -49,6 +52,7 @@ public class App extends Application {
         // canceled by the OS. This is the best place where all those things can be scheduled again.
         DailyBroadcastReceiver.scheduleDailyNotification(this);
         RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
+        AutoBackupBroadcastReceiver.scheduleAutoBackupTask(this);
     }
 
     @Override

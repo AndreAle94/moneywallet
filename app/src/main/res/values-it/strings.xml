@@ -309,6 +309,7 @@
     <string name="message_no_person_found">"Nessuna persona trovata"</string>
     <string name="message_no_icon_found">"Nessuna icona trovata"</string>
     <string name="message_no_file_found">"Nessun file trovato"</string>
+    <string name="message_error_backend_recoverable">"Errore di connessione. Riprova."</string>
 
     <string name="cover_message_backup_external_memory_title">"L'applicazione può creare e rigenerare il backup direttamente dalla memoria esterna del dispositivo"</string>
     <string name="cover_message_backup_dropbox_title">"L'applicazione può creare e rigenerare il backup direttamente dal tuo account Dropbox personale"</string>
@@ -469,9 +470,22 @@
     <string name="notification_title_daily_reminder_title">"Qualche transazione oggi?"</string>
     <string name="notification_title_daily_reminder_text">"Tocca qui per aggiungerlo immediatamente"</string>
     <string name="notification_title_download_exchange_rates">"Aggiorna i tassi di cambio"</string>
+    <string name="notification_title_backup_creation">"Creazione backup"</string>
+    <string name="notification_title_backup_restoring">"Ripristino backup"</string>
+    <string name="notification_title_backup_creation_failed">"Creazione backup fallito"</string>
+    <string name="notification_title_backup_restoring_failed">"Ripristino backup fallito"</string>
     <string name="notification_content_downloading_data">"Download di dati aggiornati…"</string>
     <string name="notification_content_caching_data">"Ripristino dati aggiornati…"</string>
     <string name="notification_content_error_message">"Errore: %s"</string>
+    <string name="notification_content_backup_file_creation">"Scrittura del file locale…"</string>
+    <string name="notification_content_backup_file_uploading">"Caricamento del file di backup…"</string>
+    <string name="notification_content_backup_file_downloading">"Scaricamento del file di backup…"</string>
+    <string name="notification_content_backup_file_restoring">"Lettura del file di backup…"</string>
+    <string name="notification_content_backup_error_wifi_network">"L'operazione è stata programmata per essere eseguita solo quando il dispositivo è connesso a una rete WiFi. Connettiti a una rete WiFi e riprova."</string>
+    <string name="notification_content_backup_error_backend_recoverable">"C'è stato un errore di comunicazione con il servizio di backend. Controlla la tua connessione internet e riprova."</string>
+    <string name="notification_content_backup_error_backend">"C'è stato un errore con il backend e l'auto backup è stato disabilitato. Controlla se c'è qualche problema."</string>
+    <string name="notification_content_backup_error_internal">"C'è stato un errore interno durante l'operazione, probabilmente si tratta di un bug. Per favore segnalalo allo sviluppatore."</string>
+    <string name="notification_action_retry">"Riprova"</string>
     <string name="message_error_network_connection">"Connessione di rete"</string>
     <string name="message_error_invalid_response">"Risposta non valida"</string>
     <string name="message_error_missing_api_key">"Api-key mancante o invalida, per favore aggiorna la chiave nelle impostazioni per utilizzare il servizio"</string>

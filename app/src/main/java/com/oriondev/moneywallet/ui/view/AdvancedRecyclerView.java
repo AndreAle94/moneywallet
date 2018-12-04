@@ -41,6 +41,8 @@ public class AdvancedRecyclerView extends SwipeRefreshLayout {
     private ProgressWheel mProgressWheel;
     private TextView mEmptyTextView;
 
+    private int mEmptyTextRes;
+    private int mErrorTextRes;
     private State mCurrentState;
 
     public AdvancedRecyclerView(Context context) {
@@ -81,7 +83,11 @@ public class AdvancedRecyclerView extends SwipeRefreshLayout {
     }
 
     public void setEmptyText(@StringRes int resId) {
-        mEmptyTextView.setText(resId);
+        mEmptyTextRes = resId;
+    }
+
+    public void setErrorText(@StringRes int resId) {
+        mErrorTextRes = resId;
     }
 
     public void setState(State state) {
@@ -90,6 +96,7 @@ public class AdvancedRecyclerView extends SwipeRefreshLayout {
                 case EMPTY:
                     mRecyclerView.setVisibility(View.GONE);
                     mProgressWheel.setVisibility(View.GONE);
+                    mEmptyTextView.setText(mEmptyTextRes);
                     mEmptyTextView.setVisibility(View.VISIBLE);
                     setRefreshing(false);
                     break;
@@ -111,6 +118,13 @@ public class AdvancedRecyclerView extends SwipeRefreshLayout {
                     mEmptyTextView.setVisibility(View.GONE);
                     setRefreshing(false);
                     break;
+                case ERROR:
+                    mRecyclerView.setVisibility(View.GONE);
+                    mProgressWheel.setVisibility(View.GONE);
+                    mEmptyTextView.setText(mErrorTextRes);
+                    mEmptyTextView.setVisibility(View.VISIBLE);
+                    setRefreshing(false);
+                    break;
             }
         }
     }
@@ -119,6 +133,7 @@ public class AdvancedRecyclerView extends SwipeRefreshLayout {
         EMPTY,
         LOADING,
         REFRESHING,
-        READY
+        READY,
+        ERROR
     }
 }

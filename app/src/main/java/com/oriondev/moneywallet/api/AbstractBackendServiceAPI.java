@@ -43,10 +43,10 @@ public abstract class AbstractBackendServiceAPI<T extends IFile> implements IBac
 
     @Override
     public IFile uploadFile(IFile folder, File file, ProgressInputStream.UploadProgressListener listener) throws BackendException {
-        if (folder == null || mType.isInstance(file)) {
+        if (folder == null || mType.isInstance(folder)) {
             return upload((T) folder, file, listener);
         } else {
-            throw new BackendException("Backend cannot upload a file to a folder that is not an instance of " + mType.getName());
+            throw new ClassCastException("Backend cannot upload a file to a folder that is not an instance of " + mType.getName() + ". The provided folder is an instance of: " + folder.getClass().getName());
         }
     }
 
@@ -57,7 +57,7 @@ public abstract class AbstractBackendServiceAPI<T extends IFile> implements IBac
         if (mType.isInstance(file)) {
             return download(folder, (T) file, listener);
         } else {
-            throw new BackendException("Backend cannot download a file that is not an instance of " + mType.getName());
+            throw new ClassCastException("Backend cannot download a file that is not an instance of " + mType.getName() + ". The provided file is an instance of: " + folder.getClass().getName());
         }
     }
 
@@ -68,7 +68,7 @@ public abstract class AbstractBackendServiceAPI<T extends IFile> implements IBac
         if (folder == null || mType.isInstance(folder)) {
             return list((T) folder);
         } else {
-            throw new BackendException("Backend cannot list the content of a folder that is not an instance of " + mType.getName());
+            throw new ClassCastException("Backend cannot list the content of a folder that is not an instance of " + mType.getName() + ". The provided folder is an instance of: " + folder.getClass().getName());
         }
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractBackendServiceAPI<T extends IFile> implements IBac
         if (parent == null || mType.isInstance(parent)) {
             return newFolder((T) parent, name);
         } else {
-            throw new BackendException("Backend cannot create a folder in a folder that is not an instance of " + mType.getName());
+            throw new ClassCastException("Backend cannot create a folder in a folder that is not an instance of " + mType.getName() + ". The provided folder is an instance of: " + parent.getClass().getName());
         }
     }
 

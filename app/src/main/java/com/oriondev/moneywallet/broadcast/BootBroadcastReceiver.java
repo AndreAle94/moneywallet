@@ -35,6 +35,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
         if (ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             DailyBroadcastReceiver.scheduleDailyNotification(context);
             RecurrenceBroadcastReceiver.scheduleRecurrenceTask(context);
+            AutoBackupBroadcastReceiver.scheduleAutoBackupTask(context);
         }
     }
 }

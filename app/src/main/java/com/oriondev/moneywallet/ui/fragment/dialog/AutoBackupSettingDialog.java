@@ -29,6 +29,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
 import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.storage.preference.BackendManager;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.activity.BackendExplorerActivity;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
@@ -65,6 +67,7 @@ public class AutoBackupSettingDialog extends DialogFragment {
     private TextView mOffsetTextView;
     private SeekBar mOffsetSeekBar;
     private TextView mFolderTextView;
+    private EditText mPasswordEditText;
 
     private IFile mFolder;
 
@@ -102,14 +105,14 @@ public class AutoBackupSettingDialog extends DialogFragment {
             mOffsetTextView = view.findViewById(R.id.auto_backup_offset_text_view);
             mOffsetSeekBar = view.findViewById(R.id.auto_backup_offset_seek_bar);
             mFolderTextView = view.findViewById(R.id.auto_backup_folder_text_view);
+            mPasswordEditText = view.findViewById(R.id.auto_backup_password_edit_text);
             // set listeners
             mOffsetSeekBar.setMax((OFFSET_MAX_HOURS - OFFSET_MIN_HOURS) / OFFSET_BETWEEN_HOURS);
             mOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    int hours = OFFSET_MIN_HOURS + (progress * OFFSET_BETWEEN_HOURS);
-                    mOffsetTextView.setText(getString(R.string.hint_auto_backup_every_n_hours, hours));
+                    AutoBackupSettingDialog.this.onProgressChanged(progress);
                 }
 
                 @Override
@@ -138,13 +141,15 @@ public class AutoBackupSettingDialog extends DialogFragment {
 
             });
             if (savedInstanceState == null) {
-                mServiceEnabledSwitchCompat.setChecked(PreferenceManager.isAutoBackupEnabled(mBackendId));
-                mOnlyWiFiCheckBox.setChecked(PreferenceManager.isAutoBackupOnWiFiOnly(mBackendId));
-                mShowNotificationCheckBox.setChecked(PreferenceManager.isAutoBackupWithNotification(mBackendId));
-                mOnlyDataChangedCheckBox.setChecked(PreferenceManager.isAutoBackupWhenDataIsChangedOnly(mBackendId));
-                mOffsetSeekBar.setProgress((PreferenceManager.getAutoBackupHoursOffset(mBackendId) - OFFSET_MIN_HOURS) / OFFSET_BETWEEN_HOURS);
-                mFolder = BackendServiceFactory.getFile(mBackendId, PreferenceManager.getAutoBackupFolder(mBackendId));
+                mServiceEnabledSwitchCompat.setChecked(BackendManager.isAutoBackupEnabled(mBackendId));
+                mOnlyWiFiCheckBox.setChecked(BackendManager.isAutoBackupOnWiFiOnly(mBackendId));
+                mShowNotificationCheckBox.setChecked(BackendManager.isAutoBackupWithNotification(mBackendId));
+                mOnlyDataChangedCheckBox.setChecked(BackendManager.isAutoBackupWhenDataIsChangedOnly(mBackendId));
+                mOffsetSeekBar.setProgress((BackendManager.getAutoBackupHoursOffset(mBackendId) - OFFSET_MIN_HOURS) / OFFSET_BETWEEN_HOURS);
+                mFolder = BackendServiceFactory.getFile(mBackendId, BackendManager.getAutoBackupFolder(mBackendId));
+                mPasswordEditText.setText(BackendManager.getAutoBackupPassword(mBackendId));
             }
+            onProgressChanged(mOffsetSeekBar.getProgress());
             onFolderChanged();
         }
         return dialog;
@@ -162,6 +167,11 @@ public class AutoBackupSettingDialog extends DialogFragment {
         show(fragmentManager, tag);
     }
 
+    private void onProgressChanged(int progress) {
+        int hours = OFFSET_MIN_HOURS + (progress * OFFSET_BETWEEN_HOURS);
+        mOffsetTextView.setText(getString(R.string.hint_auto_backup_every_n_hours, hours));
+    }
+
     private void onFolderChanged() {
         if (mFolder != null) {
             mFolderTextView.setText(mFolder.getName());
@@ -171,12 +181,13 @@ public class AutoBackupSettingDialog extends DialogFragment {
     }
 
     private void onSaveSetting() {
-        PreferenceManager.setAutoBackupEnabled(mBackendId, mServiceEnabledSwitchCompat.isChecked());
-        PreferenceManager.setAutoBackupOnWiFiOnly(mBackendId, mOnlyWiFiCheckBox.isChecked());
-        PreferenceManager.setAutoBackupWithNotification(mBackendId, mShowNotificationCheckBox.isChecked());
-        PreferenceManager.setAutoBackupWhenDataIsChangedOnly(mBackendId, mOnlyDataChangedCheckBox.isChecked());
-        PreferenceManager.setAutoBackupHoursOffset(mBackendId, OFFSET_MIN_HOURS + (mOffsetSeekBar.getProgress() * OFFSET_BETWEEN_HOURS));
-        PreferenceManager.setAutoBackupFolder(mBackendId, mFolder != null ? mFolder.encodeToString() : null);
+        BackendManager.setAutoBackupEnabled(mBackendId, mServiceEnabledSwitchCompat.isChecked());
+        BackendManager.setAutoBackupOnWiFiOnly(mBackendId, mOnlyWiFiCheckBox.isChecked());
+        BackendManager.setAutoBackupWithNotification(mBackendId, mShowNotificationCheckBox.isChecked());
+        BackendManager.setAutoBackupWhenDataIsChangedOnly(mBackendId, mOnlyDataChangedCheckBox.isChecked());
+        BackendManager.setAutoBackupHoursOffset(mBackendId, OFFSET_MIN_HOURS + (mOffsetSeekBar.getProgress() * OFFSET_BETWEEN_HOURS));
+        BackendManager.setAutoBackupFolder(mBackendId, mFolder != null ? mFolder.encodeToString() : null);
+        BackendManager.setAutoBackupPassword(mBackendId, mPasswordEditText.getText().toString());
         AutoBackupBroadcastReceiver.scheduleAutoBackupTask(getActivity());
     }
 

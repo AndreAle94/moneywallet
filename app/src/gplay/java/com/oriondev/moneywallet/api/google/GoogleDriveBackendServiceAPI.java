@@ -84,7 +84,7 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             DriveFile driveFile = Tasks.await(mDriveResourceClient.createFile(driveFolder, changeSet, driveContents));
             return new GoogleDriveFile(Tasks.await(mDriveResourceClient.getMetadata(driveFile)));
         } catch (IOException | InterruptedException | ExecutionException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -98,7 +98,7 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             IOUtils.copy(inputStream, outputStream);
             inputStream.close();
         } catch (IOException | InterruptedException | ExecutionException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
         return destination;
     }
@@ -114,7 +114,7 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             }
             buffer.release();
         } catch (InterruptedException | ExecutionException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
         return fileList;
     }
@@ -131,7 +131,7 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             DriveFolder folder = Tasks.await(mDriveResourceClient.createFolder(driveFolder, changeSet));
             return new GoogleDriveFile(Tasks.await(mDriveResourceClient.getMetadata(folder)));
         } catch (ExecutionException | InterruptedException e) {
-            throw new BackendException(e.getMessage());
+            throw new BackendException(e.getMessage(), isRecoverable(e));
         }
     }
 
@@ -140,9 +140,13 @@ public class GoogleDriveBackendServiceAPI extends AbstractBackendServiceAPI<Goog
             try {
                 return Tasks.await(mDriveResourceClient.getAppFolder());
             } catch (ExecutionException | InterruptedException e) {
-                throw new BackendException(e.getMessage());
+                throw new BackendException(e.getMessage(), isRecoverable(e));
             }
         }
         return folder.getDriveFolder();
+    }
+
+    private boolean isRecoverable(Exception e) {
+        return e instanceof IOException;
     }
 }

@@ -63,17 +63,7 @@ public class PreferenceManager {
     private static final String EXCHANGE_RATE_LAST_UPDATE = "exchange_rate_last_update";
     private static final String DAILY_REMINDER = "daily_reminder";
     private static final String FIRST_START = "first_start";
-    private static final String SEND_ANONYMOUS_DATA = "send_anonymous_data";
     private static final String SERVICE_API_KEY = "user_api_key_";
-
-    private static final String AUTO_BACKUP_ENABLED_SERVICES = "auto_backup_enabled_services";
-    private static final String BACKEND_AUTO_BACKUP_ENABLED = "auto_backup_enabled_";
-    private static final String BACKEND_AUTO_BACKUP_WIFI_ONLY = "auto_backup_wifi_only_";
-    private static final String BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ = "auto_backup_show_notification_";
-    private static final String BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY = "auto_backup_data_changed_only_";
-    private static final String BACKEND_AUTO_BACKUP_OFFSET = "auto_backup_hour_offset_";
-    private static final String BACKEND_AUTO_BACKUP_FOLDER = "auto_backup_folder_";
-    private static final String BACKEND_AUTO_BACKUP_LAST_TIME = "auto_backup_last_time_";
 
     private static final String LAST_DATA_CHANGE_TIME = "last_data_change_time";
 
@@ -201,48 +191,6 @@ public class PreferenceManager {
         mPreferences.edit().putString(SERVICE_API_KEY + String.valueOf(service), key).apply();
     }
 
-    public static void setAutoBackupEnabled(String backendId, boolean enabled) {
-        mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_ENABLED + backendId, enabled).apply();
-        Set<String> backendIdSet = mPreferences.getStringSet(AUTO_BACKUP_ENABLED_SERVICES, null);
-        if (enabled) {
-            if (backendIdSet == null) {
-                backendIdSet = new HashSet<>();
-            }
-            backendIdSet.add(backendId);
-        } else if (backendIdSet != null) {
-            backendIdSet.remove(backendId);
-            mPreferences.edit()
-                    .remove(BACKEND_AUTO_BACKUP_FOLDER + backendId)
-                    .remove(BACKEND_AUTO_BACKUP_LAST_TIME + backendId)
-                    .apply();
-        }
-        mPreferences.edit().putStringSet(AUTO_BACKUP_ENABLED_SERVICES, backendIdSet).apply();
-    }
-
-    public static void setAutoBackupOnWiFiOnly(String backendId, boolean wifiOnly) {
-        mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_WIFI_ONLY + backendId, wifiOnly).apply();
-    }
-
-    public static void setAutoBackupWithNotification(String backendId, boolean showNotification) {
-        mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ + backendId, showNotification).apply();
-    }
-
-    public static void setAutoBackupWhenDataIsChangedOnly(String backendId, boolean dataChangedOnly) {
-        mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY + backendId, dataChangedOnly).apply();
-    }
-
-    public static void setAutoBackupHoursOffset(String backendId, int offset) {
-        mPreferences.edit().putInt(BACKEND_AUTO_BACKUP_OFFSET + backendId, offset).apply();
-    }
-
-    public static void setAutoBackupFolder(String backendId, String folder) {
-        mPreferences.edit().putString(BACKEND_AUTO_BACKUP_FOLDER + backendId, folder).apply();
-    }
-
-    public static void setAutoBackupLastTime(String backendId, long timestamp) {
-        mPreferences.edit().putLong(BACKEND_AUTO_BACKUP_LAST_TIME + backendId, timestamp).apply();
-    }
-
     public static void setLastTimeDataIsChanged(long timestamp) {
         mPreferences.edit().putLong(LAST_DATA_CHANGE_TIME, timestamp).apply();
     }
@@ -334,44 +282,8 @@ public class PreferenceManager {
         return mPreferences.getBoolean(FIRST_START, false);
     }
 
-    public static boolean isSendAnonymousDataEnabled() {
-        return mPreferences.getBoolean(SEND_ANONYMOUS_DATA, true);
-    }
-
     public static String getServiceApiKey(int service) {
         return mPreferences.getString(SERVICE_API_KEY + String.valueOf(service), null);
-    }
-
-    public static Set<String> getAutoBackupEnabledServices() {
-        return mPreferences.getStringSet(AUTO_BACKUP_ENABLED_SERVICES, null);
-    }
-
-    public static boolean isAutoBackupEnabled(String backendId) {
-        return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_ENABLED + backendId, false);
-    }
-
-    public static boolean isAutoBackupOnWiFiOnly(String backendId) {
-        return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_WIFI_ONLY + backendId, false);
-    }
-
-    public static boolean isAutoBackupWithNotification(String backendId) {
-        return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ + backendId, true);
-    }
-
-    public static boolean isAutoBackupWhenDataIsChangedOnly(String backendId) {
-        return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY + backendId, true);
-    }
-
-    public static int getAutoBackupHoursOffset(String backendId) {
-        return mPreferences.getInt(BACKEND_AUTO_BACKUP_OFFSET + backendId, 48);
-    }
-
-    public static String getAutoBackupFolder(String backendId) {
-        return mPreferences.getString(BACKEND_AUTO_BACKUP_FOLDER + backendId, null);
-    }
-
-    public static long getAutoBackupLastTime(String backendId) {
-        return mPreferences.getLong(BACKEND_AUTO_BACKUP_LAST_TIME + backendId, System.currentTimeMillis());
     }
 
     public static long getLastTimeDataIsChanged() {

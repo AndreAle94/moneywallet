@@ -74,6 +74,8 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
     private static final String ARG_ALLOW_RESTORE = "BackupHandlerFragment::Arguments::AllowRestore";
     private static final String ARG_BACKEND_ID = "BackupHandlerFragment::Arguments::BackendId";
 
+    public static final String BACKUP_SERVICE_CALLER_ID = "BackupHandlerFragment";
+
     private static final IFile ROOT_FOLDER = null;
 
     private boolean mAllowBackup;
@@ -125,6 +127,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
             IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(LocalAction.ACTION_BACKUP_SERVICE_STARTED);
             intentFilter.addAction(LocalAction.ACTION_BACKUP_SERVICE_FINISHED);
+            intentFilter.addAction(LocalAction.ACTION_BACKUP_SERVICE_FAILED);
             mLocalBroadcastManager = LocalBroadcastManager.getInstance(activity);
             mLocalBroadcastManager.registerReceiver(mLocalBroadcastReceiver, intentFilter);
         }
@@ -194,6 +197,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floating_action_button);
         mAdvancedRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mBackupAdapter = new BackupFileAdapter(this);
+        mAdvancedRecyclerView.setEmptyText(R.string.message_no_file_found);
         mAdvancedRecyclerView.setAdapter(mBackupAdapter);
         mAdvancedRecyclerView.setOnRefreshListener(this);
         if (mAllowBackup) {
@@ -220,6 +224,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                                         if (input.length() > 0) {
                                             intent.putExtra(BackupHandlerIntentService.PASSWORD, input.toString());
                                         }
+                                        intent.putExtra(BackupHandlerIntentService.CALLER_ID, BACKUP_SERVICE_CALLER_ID);
                                         activity.startService(intent);
                                     }
                                 }
@@ -322,6 +327,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
             intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
             intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_LIST);
             intent.putExtra(BackupHandlerIntentService.PARENT_FOLDER, folder);
+            intent.putExtra(BackupHandlerIntentService.CALLER_ID, BACKUP_SERVICE_CALLER_ID);
             activity.startService(intent);
         }
     }
@@ -359,6 +365,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                                     intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
                                     intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
                                     intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
+                                    intent.putExtra(BackupHandlerIntentService.CALLER_ID, BACKUP_SERVICE_CALLER_ID);
                                     getActivity().startService(intent);
                                 }
 
@@ -379,6 +386,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                                     intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
                                     intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
                                     intent.putExtra(BackupHandlerIntentService.PASSWORD, input.toString());
+                                    intent.putExtra(BackupHandlerIntentService.CALLER_ID, BACKUP_SERVICE_CALLER_ID);
                                     getActivity().startService(intent);
                                 }
 
@@ -398,6 +406,7 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                                     intent.putExtra(BackupHandlerIntentService.BACKEND_ID, mBackendService.getId());
                                     intent.putExtra(BackupHandlerIntentService.ACTION, BackupHandlerIntentService.ACTION_RESTORE);
                                     intent.putExtra(BackupHandlerIntentService.BACKUP_FILE, file);
+                                    intent.putExtra(BackupHandlerIntentService.CALLER_ID, BACKUP_SERVICE_CALLER_ID);
                                     getActivity().startService(intent);
                                 }
 
@@ -444,6 +453,14 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            String callerId = intent.getStringExtra(BackupHandlerIntentService.CALLER_ID);
+            if (!BACKUP_SERVICE_CALLER_ID.equals(callerId)) {
+                // the service has sent a message using the local broadcast manager but it
+                // is not directed to this fragment. we can simply ignore it. this is useful
+                // to avoid that the dialog appear when the auto backup is fired by the
+                // system and the user is browsing the backup section of the application.
+                return;
+            }
             if (TextUtils.equals(action, LocalAction.ACTION_BACKUP_SERVICE_STARTED)) {
                 int operation = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
                 if (operation == BackupHandlerIntentService.ACTION_LIST) {
@@ -462,6 +479,22 @@ public class BackupHandlerFragment extends Fragment implements BackupFileAdapter
                 } else if (operation == BackupHandlerIntentService.ACTION_BACKUP) {
                     IFile backup = intent.getParcelableExtra(BackupHandlerIntentService.BACKUP_FILE);
                     mBackupAdapter.addFileToList(backup);
+                }
+            } else if (TextUtils.equals(action, LocalAction.ACTION_BACKUP_SERVICE_FAILED)) {
+                int operation = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
+                if (operation == BackupHandlerIntentService.ACTION_LIST) {
+                    Exception exception = (Exception) intent.getSerializableExtra(BackupHandlerIntentService.EXCEPTION);
+                    if (exception instanceof BackendException && ((BackendException) exception).isRecoverable()) {
+                        mBackupAdapter.setFileList(null, false);
+                        mAdvancedRecyclerView.setErrorText(R.string.message_error_backend_recoverable);
+                        mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.ERROR);
+                    } else {
+                        try {
+                            mBackendService.teardown(getActivity());
+                        } catch (BackendException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }
