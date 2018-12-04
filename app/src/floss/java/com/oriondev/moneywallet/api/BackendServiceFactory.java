@@ -25,6 +25,8 @@ import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.disk.DiskBackendService;
 import com.oriondev.moneywallet.api.disk.DiskBackendServiceAPI;
 import com.oriondev.moneywallet.model.BackupService;
+import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.model.LocalFile;
 
 import java.util.ArrayList;
 import java.util.List;
