@@ -625,4 +625,9 @@
     <string name="recurrence_hint_repeat_for_one_occurrence">"for 1 occurrence"</string>
     <string name="recurrence_hint_repeat_for_n_occurrence">"for %d occurrences"</string>
 
+    <string name="notification_channel_name_backup">"Backup"</string>
+    <string name="notification_channel_name_reminder">"Reminder"</string>
+    <string name="notification_channel_name_exchange_rate">"Exchange rates"</string>
+    <string name="notification_channel_name_error">"Error"</string>
+
 </resources>

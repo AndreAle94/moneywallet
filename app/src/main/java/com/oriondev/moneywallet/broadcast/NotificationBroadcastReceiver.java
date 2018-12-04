@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.oriondev.moneywallet.service.BackupHandlerIntentService;
+import com.oriondev.moneywallet.ui.notification.NotificationContract;
 
 /**
  * Created by andrea on 01/12/18.
@@ -42,7 +43,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
             if (ACTION_RETRY_BACKUP_CREATION.equals(intent.getAction())) {
                 // cancel the old notification
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                notificationManager.cancel(BackupHandlerIntentService.NOTIFICATION_ID);
+                notificationManager.cancel(NotificationContract.NOTIFICATION_ID_BACKUP_ERROR);
                 // re-start the intent service
                 Bundle extras = intent.getBundleExtra(ACTION_INTENT_ARGUMENTS);
                 if (extras != null) {

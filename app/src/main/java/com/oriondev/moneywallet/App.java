@@ -20,7 +20,10 @@
 package com.oriondev.moneywallet;
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.support.multidex.MultiDex;
 
 import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
@@ -28,6 +31,7 @@ import com.oriondev.moneywallet.broadcast.DailyBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
 import com.oriondev.moneywallet.storage.preference.BackendManager;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+import com.oriondev.moneywallet.ui.notification.NotificationContract;
 import com.oriondev.moneywallet.ui.view.theme.ThemeEngine;
 import com.oriondev.moneywallet.utils.CurrencyManager;
 
@@ -43,6 +47,7 @@ public class App extends Application {
         BackendManager.initialize(this);
         ThemeEngine.initialize(this);
         CurrencyManager.initialize(this);
+        NotificationContract.initializeNotificationChannels(this);
         initializeScheduledTimers();
     }
 

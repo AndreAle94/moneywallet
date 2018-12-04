@@ -125,7 +125,6 @@ public class AttachmentHandlerIntentService extends IntentService {
     }
 
     private void notifyOperationStarted(Attachment attachment, int action) {
-        System.out.println("notifyOperationStarted");
         Intent intent = new Intent(LocalAction.ACTION_ATTACHMENT_OP_STARTED);
         intent.putExtra(ATTACHMENT, attachment);
         intent.putExtra(ACTION, action);
@@ -133,7 +132,6 @@ public class AttachmentHandlerIntentService extends IntentService {
     }
 
     private void notifyOperationFinished(Attachment attachment, int action) {
-        System.out.println("notifyOperationFinished");
         Intent intent = new Intent(LocalAction.ACTION_ATTACHMENT_OP_FINISHED);
         intent.putExtra(ATTACHMENT, attachment);
         intent.putExtra(ACTION, action);
@@ -141,7 +139,6 @@ public class AttachmentHandlerIntentService extends IntentService {
     }
 
     private void notifyOperationFailed(Attachment attachment, int action, String error) {
-        System.out.println("notifyOperationFailed");
         Intent intent = new Intent(LocalAction.ACTION_ATTACHMENT_OP_FAILED);
         intent.putExtra(ATTACHMENT, attachment);
         intent.putExtra(ACTION, action);

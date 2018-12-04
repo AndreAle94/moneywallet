@@ -469,7 +469,7 @@
 
     <string name="notification_title_daily_reminder_title">"Qualche transazione oggi?"</string>
     <string name="notification_title_daily_reminder_text">"Tocca qui per aggiungerlo immediatamente"</string>
-    <string name="notification_title_download_exchange_rates">"Aggiorna i tassi di cambio"</string>
+    <string name="notification_title_download_exchange_rates">"Aggiornamento tassi di cambio"</string>
     <string name="notification_title_backup_creation">"Creazione backup"</string>
     <string name="notification_title_backup_restoring">"Ripristino backup"</string>
     <string name="notification_title_backup_creation_failed">"Creazione backup fallito"</string>
@@ -624,5 +624,10 @@
     <string name="recurrence_hint_repeat_until">"fino a %s"</string>
     <string name="recurrence_hint_repeat_for_one_occurrence">"per una occorrenza"</string>
     <string name="recurrence_hint_repeat_for_n_occurrence">"per %d occorrenze"</string>
+
+    <string name="notification_channel_name_backup">"Backup"</string>
+    <string name="notification_channel_name_reminder">"Promemoria"</string>
+    <string name="notification_channel_name_exchange_rate">"Tassi di cambio"</string>
+    <string name="notification_channel_name_error">"Errori"</string>
 
 </resources>

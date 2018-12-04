@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.broadcast;
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -31,6 +32,7 @@ import android.support.v4.app.NotificationCompat;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.activity.NewEditTransactionActivity;
+import com.oriondev.moneywallet.ui.notification.NotificationContract;
 import com.oriondev.moneywallet.utils.Utils;
 
 import java.util.Calendar;
@@ -39,9 +41,6 @@ import java.util.Calendar;
  * Created by andrea on 28/07/18.
  */
 public class DailyBroadcastReceiver extends BroadcastReceiver {
-
-    private static final int NOTIFICATION_ID = 34263;
-    private static final String CHANNEL_ID = "channel1";
 
     public static void scheduleDailyNotification(Context context) {
         int hour = PreferenceManager.getCurrentDailyReminder();
@@ -83,15 +82,17 @@ public class DailyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent i = new Intent(context, NewEditTransactionActivity.class);
         PendingIntent pending = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NotificationContract.NOTIFICATION_CHANNEL_REMINDER)
                 .setSmallIcon(Utils.isAtLeastLollipop() ? R.drawable.ic_notification : R.mipmap.ic_launcher)
                 .setContentTitle(context.getString(R.string.notification_title_daily_reminder_title))
                 .setContentText(context.getString(R.string.notification_title_daily_reminder_text))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getString(R.string.notification_title_daily_reminder_text)))
+                .setCategory(NotificationCompat.CATEGORY_REMINDER)
                 .setAutoCancel(true)
                 .setContentIntent(pending);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
-            notificationManager.notify(NOTIFICATION_ID, builder.build());
+            notificationManager.notify(NotificationContract.NOTIFICATION_ID_REMINDER, builder.build());
         }
         // reschedule the notification for the next time
         scheduleDailyNotification(context, PreferenceManager.getCurrentDailyReminder());

@@ -56,6 +56,7 @@ import com.oriondev.moneywallet.storage.database.backup.DefaultBackupImporter;
 import com.oriondev.moneywallet.storage.database.backup.LegacyBackupImporter;
 import com.oriondev.moneywallet.storage.preference.BackendManager;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+import com.oriondev.moneywallet.ui.notification.NotificationContract;
 import com.oriondev.moneywallet.utils.DateUtils;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
 import com.oriondev.moneywallet.utils.ProgressOutputStream;
@@ -89,9 +90,6 @@ public class BackupHandlerIntentService extends IntentService {
     public static final String PROGRESS_STATUS = "BackupHandlerIntentService::Argument::ProgressStatus";
     public static final String PROGRESS_VALUE = "BackupHandlerIntentService::Argument::ProgressValue";
     public static final String CALLER_ID = "BackupHandlerIntentService::Argument::CallerId";
-
-    public static final int NOTIFICATION_ID = 34263;
-    private static final String CHANNEL_ID = "channel2";
 
     private static final String ATTACHMENT_FOLDER = "attachments";
     private static final String BACKUP_CACHE_FOLDER = "backups";
@@ -144,8 +142,9 @@ public class BackupHandlerIntentService extends IntentService {
                 mBroadcastManager = LocalBroadcastManager.getInstance(this);
                 // if the notification is required, start the service in foreground
                 if (showNotification && (action == ACTION_BACKUP || action == ACTION_RESTORE)) {
-                    mNotificationBuilder = getBaseNotificationBuilder()
-                            .setProgress(0, 0, true);
+                    mNotificationBuilder = getBaseNotificationBuilder(NotificationContract.NOTIFICATION_CHANNEL_BACKUP)
+                            .setProgress(0, 0, true)
+                            .setCategory(NotificationCompat.CATEGORY_PROGRESS);
                 }
                 // send a local message to notify the receivers that the task is started
                 notifyTaskStarted(action);
@@ -319,8 +318,8 @@ public class BackupHandlerIntentService extends IntentService {
         return null;
     }
 
-    private NotificationCompat.Builder getBaseNotificationBuilder() {
-        return new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
+    private NotificationCompat.Builder getBaseNotificationBuilder(String channelId) {
+        return new NotificationCompat.Builder(getBaseContext(), channelId)
                 .setSmallIcon(Utils.isAtLeastLollipop() ? R.drawable.ic_notification : R.mipmap.ic_launcher);
     }
 
@@ -347,7 +346,7 @@ public class BackupHandlerIntentService extends IntentService {
         // update the notification if required
         if (mNotificationBuilder != null) {
             mNotificationBuilder.setContentTitle(getNotificationContentTitle(action, false));
-            startForeground(NOTIFICATION_ID, mNotificationBuilder.build());
+            startForeground(NotificationContract.NOTIFICATION_ID_BACKUP_PROGRESS, mNotificationBuilder.build());
         }
     }
 
@@ -363,7 +362,7 @@ public class BackupHandlerIntentService extends IntentService {
         if (mNotificationBuilder != null) {
             mNotificationBuilder.setContentText(getNotificationContentText(status));
             mNotificationBuilder.setProgress(100, progress, false);
-            startForeground(NOTIFICATION_ID, mNotificationBuilder.build());
+            startForeground(NotificationContract.NOTIFICATION_ID_BACKUP_PROGRESS, mNotificationBuilder.build());
         }
     }
 
@@ -406,9 +405,9 @@ public class BackupHandlerIntentService extends IntentService {
         mBroadcastManager.sendBroadcast(intent);
         // update the notification if required
         if (mNotificationBuilder != null || mAutoBackup) {
-            mNotificationBuilder = getBaseNotificationBuilder()
+            mNotificationBuilder = getBaseNotificationBuilder(NotificationContract.NOTIFICATION_CHANNEL_ERROR)
                     .setContentTitle(getNotificationContentTitle(action, true))
-                    .setCategory(Notification.CATEGORY_ERROR);
+                    .setCategory(NotificationCompat.CATEGORY_ERROR);
             if (exception instanceof WiFiNotConnectedException) {
                 // create a copy of the arguments used in this service
                 Bundle intentArguments = new Bundle();
@@ -462,7 +461,7 @@ public class BackupHandlerIntentService extends IntentService {
             // because when the intent service has finished the notification
             // is removed even if the stopForeground is set to false
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
+            notificationManager.notify(NotificationContract.NOTIFICATION_ID_BACKUP_ERROR, mNotificationBuilder.build());
         }
     }
 
