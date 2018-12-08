@@ -19,7 +19,6 @@
 
 package com.oriondev.moneywallet.background;
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
 
 import com.oriondev.moneywallet.model.Icon;
@@ -50,9 +49,7 @@ import java.util.List;
  * of the author explicitly says that those icons cannot be released in public. For this reason
  * the public repository has very few icons (only the ones that are license-free).
  */
-public class IconGroupLoader extends AsyncTaskLoader<List<IconGroup>> {
-
-    private List<IconGroup> mIconGroups;
+public class IconGroupLoader extends AbstractGenericLoader<List<IconGroup>> {
 
     public IconGroupLoader(Context context) {
         super(context);
@@ -100,38 +97,6 @@ public class IconGroupLoader extends AsyncTaskLoader<List<IconGroup>> {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(name, "string", packageName);
         return context.getString(resId);
-    }
-
-    @Override
-    public void deliverResult(List<IconGroup> iconGroups) {
-        mIconGroups = iconGroups;
-        if (isStarted()) {
-            super.deliverResult(iconGroups);
-        }
-    }
-
-    @Override
-    protected void onStartLoading() {
-        if (mIconGroups != null) {
-            deliverResult(mIconGroups);
-        }
-        if (takeContentChanged() || mIconGroups == null) {
-            forceLoad();
-        }
-    }
-
-    @Override
-    protected void onStopLoading() {
-        // Attempt to cancel the current load task if possible.
-        cancelLoad();
-    }
-
-    @Override
-    protected void onReset() {
-        super.onReset();
-        // Ensure the loader is stopped
-        onStopLoading();
-        mIconGroups = null;
     }
 
     private class AlphabeticIconComparator implements Comparator<IconGroup> {

@@ -19,10 +19,11 @@
 
 package com.oriondev.moneywallet.ui.activity;
 
-import android.app.LoaderManager;
 import android.content.Intent;
-import android.content.Loader;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.DisplayMetrics;
@@ -43,7 +44,7 @@ import java.util.List;
 /**
  * Created by andrea on 03/02/18.
  */
-public class IconListActivity extends SinglePanelActivity implements SwipeRefreshLayout.OnRefreshListener, LoaderManager.LoaderCallbacks<List<IconGroup>>,IconAdapter.Controller {
+public class IconListActivity extends SinglePanelActivity implements SwipeRefreshLayout.OnRefreshListener, LoaderManager.LoaderCallbacks<List<IconGroup>>, IconAdapter.Controller {
 
     public static final String RESULT_ICON = "IconListActivity::Result::SelectedIcon";
 
@@ -99,7 +100,7 @@ public class IconListActivity extends SinglePanelActivity implements SwipeRefres
 
     @Override
     protected void onViewCreated(Bundle savedInstanceState) {
-        getLoaderManager().restartLoader(ICON_LOADER_ID, null, this);
+        getSupportLoaderManager().restartLoader(ICON_LOADER_ID, null, this);
     }
 
     @Override
@@ -122,17 +123,18 @@ public class IconListActivity extends SinglePanelActivity implements SwipeRefres
 
     @Override
     public void onRefresh() {
-        getLoaderManager().restartLoader(ICON_LOADER_ID, null, this);
+        getSupportLoaderManager().restartLoader(ICON_LOADER_ID, null, this);
         mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.REFRESHING);
     }
 
+    @NonNull
     @Override
     public Loader<List<IconGroup>> onCreateLoader(int id, Bundle args) {
         return new IconGroupLoader(this);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<IconGroup>> loader, List<IconGroup> iconGroups) {
+    public void onLoadFinished(@NonNull Loader<List<IconGroup>> loader, List<IconGroup> iconGroups) {
         mAdapter.setIconGroups(iconGroups);
         if (iconGroups != null && iconGroups.size() > 0) {
             mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.READY);
@@ -142,7 +144,7 @@ public class IconListActivity extends SinglePanelActivity implements SwipeRefres
     }
 
     @Override
-    public void onLoaderReset(Loader<List<IconGroup>> loader) {
+    public void onLoaderReset(@NonNull Loader<List<IconGroup>> loader) {
         // nothing to release
     }
 }
