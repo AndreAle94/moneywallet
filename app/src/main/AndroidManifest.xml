@@ -73,6 +73,7 @@
         <activity android:name=".ui.activity.TransactionListActivity" />
         <activity android:name=".ui.activity.LockActivity" />
         <activity android:name=".ui.activity.BackendExplorerActivity" />
+        <activity android:name=".ui.activity.DonationActivity" />
 
         <provider
             android:name=".storage.database.DataContentProvider"

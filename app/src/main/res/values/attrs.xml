@@ -111,6 +111,10 @@
         <attr name="theme_backgroundColor" />
     </declare-styleable>
 
+    <declare-styleable name="ThemedSquaredImageView">
+        <attr name="theme_backgroundColor" />
+    </declare-styleable>
+
     <declare-styleable name="ThemedMonthView">
         <attr name="theme_backgroundColor" />
     </declare-styleable>

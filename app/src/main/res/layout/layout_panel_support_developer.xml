@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<com.oriondev.moneywallet.ui.view.theme.ThemedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@string/activity_donation_first_title"
+            app:theme_textColor="textColorPrimary" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:text="@string/activity_donation_first_content"
+            app:theme_textColor="textColorSecondary" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:id="@+id/donation_option_one_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/donation_option_two_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" >
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedSquaredImageView
+                    android:id="@+id/donation_option_one_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:theme_backgroundColor="colorWindowForeground" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedButton
+                    android:id="@+id/donation_option_one_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:theme_backgroundColor="colorAccent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/donation_option_two_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/donation_option_one_layout"
+                app:layout_constraintEnd_toStartOf="@+id/donation_option_three_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" >
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/donation_option_two_layout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" >
+
+                        <com.oriondev.moneywallet.ui.view.theme.ThemedSquaredImageView
+                            android:id="@+id/donation_option_two_image_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            app:theme_backgroundColor="colorWindowForeground" />
+
+                        <com.oriondev.moneywallet.ui.view.theme.ThemedButton
+                            android:id="@+id/donation_option_two_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:theme_backgroundColor="colorAccent" />
+
+                    </LinearLayout>
+
+                </com.oriondev.moneywallet.ui.view.theme.ThemedCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/donation_option_three_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintStart_toEndOf="@+id/donation_option_two_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" >
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedSquaredImageView
+                    android:id="@+id/donation_option_three_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:theme_backgroundColor="colorWindowForeground" />
+
+                <com.oriondev.moneywallet.ui.view.theme.ThemedButton
+                    android:id="@+id/donation_option_three_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:theme_backgroundColor="colorAccent" />
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@string/activity_donation_second_title"
+            app:theme_textColor="textColorPrimary" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:text="@string/activity_donation_second_content"
+            app:theme_textColor="textColorSecondary" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/activity_donation_third_title"
+            app:theme_textColor="textColorPrimary" />
+
+        <!-- Action list -->
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/action_share_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="?attr/selectableItemBackground" >
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_share_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:theme_backgroundColor="colorWindowForeground" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/action_share_guideline"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="56dp"/>
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:id="@+id/action_share_title_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_share_title"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/action_share_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:theme_textColor="textColorPrimary" />
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_share_content"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/action_share_title_text_view"
+                app:layout_constraintStart_toEndOf="@+id/action_share_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:theme_textColor="textColorSecondary" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/action_rate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="?attr/selectableItemBackground" >
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_star_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:theme_backgroundColor="colorWindowForeground" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/action_rate_guideline"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="56dp"/>
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:id="@+id/action_rate_title_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_rate_title"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/action_rate_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:theme_textColor="textColorPrimary" />
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_rate_content"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/action_rate_title_text_view"
+                app:layout_constraintStart_toEndOf="@+id/action_rate_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:theme_textColor="textColorSecondary" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/action_translate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="?attr/selectableItemBackground" >
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_translate_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:theme_backgroundColor="colorWindowForeground" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/action_translate_guideline"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="56dp"/>
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:id="@+id/action_translate_title_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_translate_title"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/action_translate_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:theme_textColor="textColorPrimary" />
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_translate_content"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/action_translate_title_text_view"
+                app:layout_constraintStart_toEndOf="@+id/action_translate_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:theme_textColor="textColorSecondary" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/action_contribute_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="?attr/selectableItemBackground" >
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_github_circle_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:theme_backgroundColor="colorWindowForeground" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/action_contribute_guideline"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="56dp"/>
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:id="@+id/action_contribute_title_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_contribute_title"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/action_contribute_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:theme_textColor="textColorPrimary" />
+
+            <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_donation_action_contribute_content"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/action_contribute_title_text_view"
+                app:layout_constraintStart_toEndOf="@+id/action_contribute_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:theme_textColor="textColorSecondary" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:text="@string/activity_donation_final_content"
+            app:theme_textColor="textColorSecondary" />
+
+    </LinearLayout>
+
+</com.oriondev.moneywallet.ui.view.theme.ThemedScrollView>

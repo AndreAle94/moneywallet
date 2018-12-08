@@ -39,6 +39,7 @@ import com.danielstone.materialaboutlibrary.util.ViewTypeManager;
 import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.License;
+import com.oriondev.moneywallet.ui.activity.DonationActivity;
 import com.oriondev.moneywallet.ui.fragment.dialog.ChangeLogDialog;
 import com.oriondev.moneywallet.ui.fragment.dialog.LicenseDialog;
 import com.oriondev.moneywallet.ui.view.theme.ITheme;
@@ -109,11 +110,13 @@ public class AboutFragment extends MaterialAboutFragment {
 
                             @Override
                             public void onClick() {
+                                /*
                                 try {
                                     JSONObject repositoryObj = aboutObj.getJSONObject("repository");
                                     Uri uri = Uri.parse(repositoryObj.getString("donation_url"));
                                     startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                                } catch (ActivityNotFoundException | JSONException ignore) {}
+                                } catch (ActivityNotFoundException | JSONException ignore) {}*/
+                                startActivity(new Intent(getActivity(), DonationActivity.class));
                             }
 
                         })

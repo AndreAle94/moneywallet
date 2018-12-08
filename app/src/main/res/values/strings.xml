@@ -36,6 +36,7 @@
     <string name="menu_search_atm">"Search atm"</string>
     <string name="menu_search_bank">"Search bank"</string>
     <string name="menu_setting">"Settings"</string>
+    <string name="menu_support_developer">"Support developer"</string>
     <string name="menu_about">"About"</string>
 
     <!-- Transactions -->
@@ -190,6 +191,7 @@
     <string name="title_activity_backend_explorer">"Explore backend"</string>
     <string name="title_activity_backend_file_picker">"Pick a file"</string>
     <string name="title_activity_backend_folder_picker">"Pick a folder"</string>
+    <string name="title_activity_support_developer">"Support developer"</string>
 
     <string name="title_fragment_item_wallet">"Wallet"</string>
     <string name="title_fragment_item_transaction">"Transaction"</string>
@@ -629,5 +631,23 @@
     <string name="notification_channel_name_reminder">"Reminder"</string>
     <string name="notification_channel_name_exchange_rate">"Exchange rates"</string>
     <string name="notification_channel_name_error">"Error"</string>
+
+    <string name="activity_donation_first_title">"Thank You!"</string>
+    <string name="activity_donation_first_content">"If you like this application and you find it useful, consider buying me a beer. It will support this project and encourage me to keep it in development."</string>
+    <string name="activity_donation_second_title">"Why should I?"</string>
+    <string name="activity_donation_second_content">"Someone might say, “The best things in life are free” and I agree with it. You can not buy friendship, love or a memory of a beautiful sunrise. That's why I decided to share the source code of this application for free. But unfortunately, life is not free. You have only 24 hours every day of scarce time and you have to make decisions how to spend them to support yourself. If you like this project and you want to see it evolving in future, think about supporting my work to allow me to allocate more time on it. Any contribution makes an immense difference."</string>
+    <string name="activity_donation_third_title">"Can not contribute monetary? No problem, you can still help a lot!"</string>
+    <string name="activity_donation_crypto_address_copied">"Address copied"</string>
+    <string name="activity_donation_action_share_title">"Share"</string>
+    <string name="activity_donation_action_share_content">"Spread the word among your friends"</string>
+    <string name="activity_donation_action_share_message">"Hi, take a look at %s"</string>
+    <string name="activity_donation_action_share_using">"Share using"</string>
+    <string name="activity_donation_action_rate_title">"Rate"</string>
+    <string name="activity_donation_action_rate_content">"Write a 5 start review telling us what you think about it"</string>
+    <string name="activity_donation_action_translate_title">"Translate"</string>
+    <string name="activity_donation_action_translate_content">"Localize the strings in your language"</string>
+    <string name="activity_donation_action_contribute_title">"Contribute"</string>
+    <string name="activity_donation_action_contribute_content">"The source code is public and everyone can collaborate"</string>
+    <string name="activity_donation_final_content">"Every contribution, monetary or non-monetary, is equal and make substantial difference for me. Hope you enjoy it and thanks again for choosing to use this application."</string>
 
 </resources>

@@ -1,0 +1,28 @@
+{
+  "monetary": {
+    "option_one": {
+      "icon": "ic_litecoin_24dp",
+      "name": "Litecoin",
+      "crypto_scheme": "litecoin",
+      "crypto_link": "LZW1AUMWN4BdUvSu8fujEYVLgqWH2HsLZs"
+    },
+    "option_two": {
+      "icon": "ic_bitcoin_24dp",
+      "name": "Bitcoin",
+      "crypto_scheme": "bitcoin",
+      "crypto_link": "1J3APoaFT2jcqRzpb8bEt2rwUn3mDpWE5U"
+    },
+    "option_three": {
+      "icon": "ic_ethereum_24dp",
+      "name": "Ethereum",
+      "crypto_scheme": "ethereum",
+      "crypto_link": "0x4ee996Bf75a89c75B18b4f0509c8c77B87D81392"
+    }
+  },
+  "non-monetary": {
+    "share_link": "http://play.google.com/store/apps/details?id=com.oriondev.moneywallet",
+    "rate_link": "http://play.google.com/store/apps/details?id=com.oriondev.moneywallet",
+    "translate_link": "https://github.com/AndreAle94/moneywallet/blob/master/app/src/main/res/values/strings.xml",
+    "contribute_link": "https://github.com/AndreAle94/moneywallet"
+  }
+}

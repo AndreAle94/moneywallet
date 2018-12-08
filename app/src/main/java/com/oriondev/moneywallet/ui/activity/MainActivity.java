@@ -38,6 +38,7 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.SupportActivity;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
@@ -111,7 +112,8 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     private static final int ID_SECTION_ATM = 13;
     private static final int ID_SECTION_BANK = 14;
     private static final int ID_SECTION_SETTING = 15;
-    private static final int ID_SECTION_ABOUT = 16;
+    private static final int ID_SECTION_SUPPORT_DEVELOPER = 16;
+    private static final int ID_SECTION_ABOUT = 17;
 
     private final static int ID_ACTION_NEW_WALLET = 1;
     private final static int ID_ACTION_MANAGE_WALLET = 2;
@@ -172,6 +174,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
                         createDrawerItem(ID_SECTION_BANK, R.drawable.ic_account_balance_24dp, R.string.menu_search_bank),
                         new DividerDrawerItem(),
                         createDrawerItem(ID_SECTION_SETTING, R.drawable.ic_settings_24dp, R.string.menu_setting),
+                        createDrawerItem(ID_SECTION_SUPPORT_DEVELOPER, R.drawable.ic_favorite_border_black_24dp, R.string.menu_support_developer),
                         createDrawerItem(ID_SECTION_ABOUT, R.drawable.ic_info_outline_24dp, R.string.menu_about)
                 )
                 .withOnDrawerItemClickListener(this)
@@ -309,6 +312,9 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
                     break;
                 case ID_SECTION_BANK:
                     showBankSearchDialog();
+                    break;
+                case ID_SECTION_SUPPORT_DEVELOPER:
+                    startActivity(new Intent(this, DonationActivity.class));
                     break;
                 case ID_SECTION_ABOUT:
                     startActivity(new Intent(this, AboutActivity.class));

@@ -23,6 +23,7 @@ This project is completely free, I decided to completely remove the in-app purch
 - BTC: 1J3APoaFT2jcqRzpb8bEt2rwUn3mDpWE5U
 - BCH: qzaw9naw5c367r4du2eg6fvmkr7smwagru53lt67zl
 - ETH: 0x4ee996Bf75a89c75B18b4f0509c8c77B87D81392
+- LTC: LZW1AUMWN4BdUvSu8fujEYVLgqWH2HsLZs
 
 ## Build
 You can compile the application very simply: just clone this repository locally to your computer and Android Studio will take care of the rest.
