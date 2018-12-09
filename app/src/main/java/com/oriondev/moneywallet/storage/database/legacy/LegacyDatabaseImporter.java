@@ -435,7 +435,7 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 transaction.mStartDate = DateUtils.getSQLDateString(recurrenceSetting.getStartDate());
                 transaction.mLastOccurrence = getRecurrenceLastOccurrence(contentResolver, legacyId, transaction.mStartDate);
                 Date nextOccurrence = recurrenceSetting.getNextOccurrence(DateUtils.getDateFromSQLDateString(transaction.mLastOccurrence));
-                transaction.mNextOccurrence = DateUtils.getSQLDateString(nextOccurrence);
+                transaction.mNextOccurrence = nextOccurrence != null ? DateUtils.getSQLDateString(nextOccurrence) : null;
                 transaction.mRule = recurrenceSetting.getRule();
                 transaction.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Recurrence.UUID);
                 transaction.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Recurrence.DELETED);
