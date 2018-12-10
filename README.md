@@ -27,10 +27,14 @@ This project is completely free, I decided to completely remove the in-app purch
 
 ## Build
 You can compile the application very simply: just clone this repository locally to your computer and Android Studio will take care of the rest.
-You have four different options to build it with two choices. The first choice is which version you want to build:
+You have four different options to build it with two choices.
+The first choice is which version you want to build:
+
 - proprietary: this build flavor is designed to integrate Google Drive and Dropbox for a better user experience. It contains proprietary libraries (not open source) and requires the inclusion of valid api-keys to use these services. These keys must be registered in the file called gradle.properties in the root folder of the project before compiling.
 - floss: this build flavor is designed to contain only open source code and for this reason the integration with Google Drive and Dropbox has been removed.
+
 The second choice is which map provider you want to use and you can choose between:
+
 - gmap: this build flavor uses Google Map as map provider and requires you to provide a valid API-key. This key must be registered in the file called gradle.properties in the root folder of the project before compiling.
 - osm: this build flavor uses OpenStreetMap as map provider.
 
