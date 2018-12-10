@@ -1,0 +1,10 @@
+[
+  {
+    "name":"Dropbox-sdk-java",
+    "author":"dropbox",
+    "website":"https://github.com/dropbox/dropbox-sdk-java",
+    "version":"3.0.8",
+    "copyright":"Copyright (c) 2015 Dropbox Inc., http://www.dropbox.com",
+    "license":"MIT"
+  }
+]

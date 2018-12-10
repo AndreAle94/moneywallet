@@ -46,9 +46,17 @@ public class LicenseLoader extends AbstractGenericLoader<List<License>> {
     @Override
     public List<License> loadInBackground() {
         List<License> licenses = new ArrayList<>();
+        licenses.addAll(loadLicenseFile("libraries_base.json"));
+        licenses.addAll(loadLicenseFile("libraries_version.json"));
+        licenses.addAll(loadLicenseFile("libraries_map.json"));
+        return licenses;
+    }
+
+    private List<License> loadLicenseFile(String resource) {
+        List<License> licenses = new ArrayList<>();
         StringBuilder jsonBuilder = new StringBuilder();
         try {
-            InputStream inputStream = getContext().getAssets().open("resources/libraries.json");
+            InputStream inputStream = getContext().getAssets().open("resources/" + resource);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = bufferedReader.readLine()) != null) {

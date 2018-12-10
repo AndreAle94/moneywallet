@@ -42,8 +42,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions "version"
+    flavorDimensions "version", "map"
     productFlavors {
+        // version
         gplay {
             dimension "version"
             versionNameSuffix "-gplay"
@@ -51,6 +52,13 @@ android {
         floss {
             dimension "version"
             versionNameSuffix "-floss"
+        }
+        // map
+        gmap {
+            dimension "map"
+        }
+        osm {
+            dimension "map"
         }
     }
 }
@@ -94,10 +102,11 @@ dependencies {
     gplayImplementation('com.dropbox.core:dropbox-core-sdk:3.0.8')
     gplayImplementation googlePlayServices.auth
     gplayImplementation googlePlayServices.signin
-    gplayImplementation googlePlayServices.places
     gplayImplementation googlePlayServices.drive
+    // google-map dependencies
+    gmapImplementation googlePlayServices.places
     // floss dependencies
-    flossImplementation 'org.osmdroid:osmdroid-android:6.0.2'
+    osmImplementation 'org.osmdroid:osmdroid-android:6.0.2'
     // test dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
