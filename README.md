@@ -1,5 +1,10 @@
 # MoneyWallet - Expense Manager [BETA]
 [![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
+      alt="Download from Google Play" 
+      height="80">](https://play.google.com/store/apps/details?id=com.oriondev.moneywallet)
+      
 ![Showcase](https://github.com/AndreAle94/moneywallet/raw/master/pictures/showcase.png)
 
 MoneyWallet is an application designed to help you keep track of your expenses. This repository contains the source code of the latest version, completely rewritten from scratch.
