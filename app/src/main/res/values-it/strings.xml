@@ -387,6 +387,7 @@
     <string name="message_delete_place">"Sei sicuro di voler eliminare questo luogo?"</string>
     <string name="message_delete_person">"sei sicuro di voler eliminare questa persona?"</string>
     <string name="message_debt_insert_master_transaction">"Vuoi aggiungere una transazione principale per questo debito?"</string>
+    <string name="message_error_legacy_upgrade_failed">"E' avvenuto un errore durante l'upgrade interno del database. Per favore, sii paziente e notifica questo messaggio allo sviluppatore. Non disinstallare l'applicazione dal dispositivo o perderai tutti i tuoi dati. Sarai ora reindirizzato all'applicazione per verificare se qualcosa è stato danneggiato. Messaggio di errore: %s"</string>
 
     <string name="message_async_init">"Inizializzazione …"</string>
 

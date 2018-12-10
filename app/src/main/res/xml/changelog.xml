@@ -20,7 +20,7 @@
 
 <changelog>
 
-    <version versionName="4.0.0" versionDate="Unknown">
+    <version versionName="4.0.3" versionDate="Dec 11, 2018">
         <change>[b]New![/b] The Application has been rewritten from scratch.</change>
         <change>[b]New![/b] The application is now free.</change>
         <change>[b]New![/b] The application is now open source.</change>

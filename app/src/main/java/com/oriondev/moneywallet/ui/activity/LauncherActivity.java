@@ -24,16 +24,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.Button;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
 import com.oriondev.moneywallet.service.UpgradeLegacyEditionIntentService;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.activity.base.ThemedActivity;
+import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
@@ -41,7 +45,11 @@ import com.pnikosis.materialishprogress.ProgressWheel;
  */
 public class LauncherActivity extends ThemedActivity {
 
+    private static final String SS_UPGRADE_ERROR = "LauncherActivity::SavedState::UpgradeLegacyEditionError";
+
     private static final int REQUEST_FIRST_START = 273;
+
+    private String mUpgradeLegacyEditionError = null;
 
     private ProgressWheel mProgressWheel;
 
@@ -61,6 +69,9 @@ public class LauncherActivity extends ThemedActivity {
             if (savedInstanceState == null) {
                 mProgressWheel.setVisibility(View.INVISIBLE);
                 startService(new Intent(this, UpgradeLegacyEditionIntentService.class));
+            } else {
+                mUpgradeLegacyEditionError = savedInstanceState.getString(SS_UPGRADE_ERROR);
+                showUpgradeLegacyEditionErrorMessage();
             }
         } else {
             if (!PreferenceManager.isFirstStartDone()) {
@@ -93,6 +104,12 @@ public class LauncherActivity extends ThemedActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(SS_UPGRADE_ERROR, mUpgradeLegacyEditionError);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
@@ -101,6 +118,26 @@ public class LauncherActivity extends ThemedActivity {
     private void startMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    private void showUpgradeLegacyEditionErrorMessage() {
+        if (mProgressWheel != null) {
+            mProgressWheel.setVisibility(View.INVISIBLE);
+        }
+        ThemedDialog.buildMaterialDialog(LauncherActivity.this)
+                .title(R.string.title_failed)
+                .content(R.string.message_error_legacy_upgrade_failed, mUpgradeLegacyEditionError)
+                .positiveText(android.R.string.ok)
+                .negativeText(android.R.string.cancel)
+                .onAny(new MaterialDialog.SingleButtonCallback() {
+
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        startMainActivity();
+                    }
+
+                })
+                .show();
     }
 
     @Override
@@ -130,10 +167,8 @@ public class LauncherActivity extends ThemedActivity {
                         startMainActivity();
                         break;
                     case LocalAction.ACTION_LEGACY_EDITION_UPGRADE_FAILED:
-                        if (mProgressWheel != null) {
-                            mProgressWheel.setVisibility(View.INVISIBLE);
-                        }
-                        // TODO: display an error message
+                        mUpgradeLegacyEditionError = intent.getStringExtra(UpgradeLegacyEditionIntentService.ERROR_MESSAGE);
+                        showUpgradeLegacyEditionErrorMessage();
                         break;
                 }
             }

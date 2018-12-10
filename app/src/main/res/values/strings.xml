@@ -387,6 +387,7 @@
     <string name="message_delete_place">"Are you sure you want to delete this place?"</string>
     <string name="message_delete_person">"Are you sure you want to delete this person?"</string>
     <string name="message_debt_insert_master_transaction">"Do you want to add a master transaction for this debt?"</string>
+    <string name="message_error_legacy_upgrade_failed">"An error has occurred while upgrading the internal database. Please, be patient and notify this message to the developer. Do not uninstall the application or you will lose your data. You will be redirected to the application to check if something got corrupted. Error message: %s"</string>
 
     <string name="message_async_init">"Initialization …"</string>
 

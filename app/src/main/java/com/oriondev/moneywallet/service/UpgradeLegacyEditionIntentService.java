@@ -36,7 +36,7 @@ import com.oriondev.moneywallet.storage.database.LegacyEditionImporter;
  */
 public class UpgradeLegacyEditionIntentService extends IntentService {
 
-    private static final String ERROR_MESSAGE = "UpgradeLegacyEditionIntentService::ErrorMessage";
+    public static final String ERROR_MESSAGE = "UpgradeLegacyEditionIntentService::ErrorMessage";
 
     private final LocalBroadcastManager mBroadcastManager;
 
@@ -53,16 +53,21 @@ public class UpgradeLegacyEditionIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         notifyServiceStarted();
+        Exception exception = null;
         try {
             LegacyEditionImporter importer = new LegacyEditionImporter(this);
             importer.importDatabase();
             importer.importAttachments();
             importer.importPreferences();
         } catch (Exception e) {
-            notifyServiceFailed(e.getMessage());
+            exception = e;
         }
-        RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
-        notifyServiceFinished();
+        if (exception != null) {
+            notifyServiceFailed(exception.getMessage());
+        } else {
+            RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
+            notifyServiceFinished();
+        }
     }
 
     private void notifyServiceStarted() {
