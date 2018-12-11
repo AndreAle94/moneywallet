@@ -110,7 +110,7 @@ public class LegacyEditionImporter {
                         } catch (IOException e) {
                             throw new ImportException(e.getMessage());
                         }
-                        mDatabaseImporter.importAttachment(contentResolver, child.getName(), uniqueId, attachment.length());
+                        mDatabaseImporter.importAttachment(contentResolver, uniqueId, attachment.length());
                     }
                 }
             }

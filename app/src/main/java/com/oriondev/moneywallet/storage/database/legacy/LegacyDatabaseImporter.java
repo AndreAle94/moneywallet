@@ -36,6 +36,7 @@ import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.storage.database.DatabaseImporter;
 import com.oriondev.moneywallet.storage.database.ImportException;
 import com.oriondev.moneywallet.storage.database.SQLDatabaseImporter;
+import com.oriondev.moneywallet.storage.database.SQLiteDataException;
 import com.oriondev.moneywallet.storage.database.model.Attachment;
 import com.oriondev.moneywallet.storage.database.model.Budget;
 import com.oriondev.moneywallet.storage.database.model.BudgetWallet;
@@ -52,9 +53,12 @@ import com.oriondev.moneywallet.utils.DateUtils;
 import com.oriondev.moneywallet.utils.Utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -114,11 +118,16 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 wallet.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Wallet.UUID);
                 wallet.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Wallet.DELETED);
                 wallet.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Wallet.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, wallet);
-                // cache the old id and the new id to reconstruct the relationships
-                long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Wallet.ID);
-                mCacheWallet.put(legacyId, id);
-                mCacheWalletCurrency.put(legacyId, wallet.mCurrency);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, wallet);
+                    // cache the old id and the new id to reconstruct the relationships
+                    long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Wallet.ID);
+                    mCacheWallet.put(legacyId, id);
+                    mCacheWalletCurrency.put(legacyId, wallet.mCurrency);
+                } catch (Exception ignore) {
+                    // if an exception occur, the wallet id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -163,8 +172,13 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                     category.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Category.UUID);
                     category.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Category.DELETED);
                     category.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Category.LAST_EDIT);
-                    long id = SQLDatabaseImporter.insert(contentResolver, category);
-                    mCacheCategory.put(legacyId, id);
+                    try {
+                        long id = SQLDatabaseImporter.insert(contentResolver, category);
+                        mCacheCategory.put(legacyId, id);
+                    } catch (Exception ignore) {
+                        // if an exception occur, the category id is not inserted in the cache
+                        // and all the related stuff will be discarded during the migration
+                    }
                 }
             }
             cursor.close();
@@ -184,9 +198,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 category.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Category.UUID);
                 category.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Category.DELETED);
                 category.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Category.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, category);
-                long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Category.ID);
-                mCacheCategory.put(legacyId, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, category);
+                    long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Category.ID);
+                    mCacheCategory.put(legacyId, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the category id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -226,9 +245,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 event.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Event.UUID);
                 event.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Event.DELETED);
                 event.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Event.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, event);
-                long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Event.ID);
-                mCacheEvent.put(legacyId, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, event);
+                    long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Event.ID);
+                    mCacheEvent.put(legacyId, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the event id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -269,8 +293,13 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 place.mUUID = UUID.randomUUID().toString();
                 place.mLastEdit = System.currentTimeMillis();
                 place.mDeleted = false;
-                long id = SQLDatabaseImporter.insert(contentResolver, place);
-                mCachePlace.put(place.mName, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, place);
+                    mCachePlace.put(place.mName, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the place id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -306,9 +335,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 debt.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Debt.UUID);
                 debt.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Debt.DELETED);
                 debt.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Debt.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, debt);
-                long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Debt.ID);
-                mCacheDebt.put(legacyId, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, debt);
+                    long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Debt.ID);
+                    mCacheDebt.put(legacyId, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the debt id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -354,16 +388,21 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                     budget.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Budget.UUID);
                     budget.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Budget.DELETED);
                     budget.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Budget.LAST_EDIT);
-                    long id = SQLDatabaseImporter.insert(contentResolver, budget);
-                    // for each linked wallet, insert a link in the new database
-                    for (Long legacyId : legacyIds) {
-                        BudgetWallet budgetWallet = new BudgetWallet();
-                        budgetWallet.mBudget = id;
-                        budgetWallet.mWallet = mCacheWallet.get(legacyId);
-                        budgetWallet.mUUID = UUID.randomUUID().toString();
-                        budgetWallet.mLastEdit = System.currentTimeMillis();
-                        budgetWallet.mDeleted = false;
-                        SQLDatabaseImporter.insert(contentResolver, budgetWallet);
+                    try {
+                        long id = SQLDatabaseImporter.insert(contentResolver, budget);
+                        // for each linked wallet, insert a link in the new database
+                        for (Long legacyId : legacyIds) {
+                            BudgetWallet budgetWallet = new BudgetWallet();
+                            budgetWallet.mBudget = id;
+                            budgetWallet.mWallet = mCacheWallet.get(legacyId);
+                            budgetWallet.mUUID = UUID.randomUUID().toString();
+                            budgetWallet.mLastEdit = System.currentTimeMillis();
+                            budgetWallet.mDeleted = false;
+                            SQLDatabaseImporter.insert(contentResolver, budgetWallet);
+                        }
+                    } catch (Exception ignore) {
+                        // if an exception occur, the budget is not inserted in the database
+                        // and all the related budget-wallet entities are not created
                     }
                 }
             }
@@ -374,9 +413,21 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
     private Long[] decodeWallets(String stringToDecode) {
         if (stringToDecode != null) {
             String[] parts = stringToDecode.split(String.valueOf(';'));
-            Long[] answer = new Long[parts.length - 1];
+            List<Long> walletIds = new ArrayList<>();
             for (int i = 1; i < parts.length; i++) {
-                answer[i - 1] = Long.parseLong(parts[i]);
+                try {
+                    long walletId = Long.parseLong(parts[i]);
+                    if (mCacheWallet.get(walletId) != null) {
+                        walletIds.add(walletId);
+                    }
+                } catch (NumberFormatException ignore) {
+                    // malformed wallet string!
+                }
+            }
+            // convert list to array
+            Long[] answer = new Long[walletIds.size()];
+            for (int i = 0; i < answer.length; i++) {
+                answer[i] = walletIds.get(i);
             }
             return answer;
         }
@@ -405,9 +456,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 saving.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Saving.UUID);
                 saving.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Saving.DELETED);
                 saving.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Saving.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, saving);
-                long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Saving.ID);
-                mCacheSaving.put(legacyId, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, saving);
+                    long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Saving.ID);
+                    mCacheSaving.put(legacyId, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the saving id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -433,15 +489,20 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 String encodedInfo = getStringSafely(cursor, LegacyDatabaseSchema.Recurrence.ENCODED_INFO);
                 RecurrenceSetting recurrenceSetting = parseRecurrenceSetting(encodedInfo);
                 transaction.mStartDate = DateUtils.getSQLDateString(recurrenceSetting.getStartDate());
-                transaction.mLastOccurrence = getRecurrenceLastOccurrence(contentResolver, legacyId, transaction.mStartDate);
+                transaction.mLastOccurrence = getRecurrenceLastOccurrence(legacyId, transaction.mStartDate);
                 Date nextOccurrence = recurrenceSetting.getNextOccurrence(DateUtils.getDateFromSQLDateString(transaction.mLastOccurrence));
                 transaction.mNextOccurrence = nextOccurrence != null ? DateUtils.getSQLDateString(nextOccurrence) : null;
                 transaction.mRule = recurrenceSetting.getRule();
                 transaction.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Recurrence.UUID);
                 transaction.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Recurrence.DELETED);
                 transaction.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, transaction);
-                mCacheRecurrences.put(legacyId, id);
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, transaction);
+                    mCacheRecurrences.put(legacyId, id);
+                } catch (Exception ignore) {
+                    // if an exception occur, the recurrence id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
+                }
             }
             cursor.close();
         }
@@ -505,7 +566,7 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
         return builder.build();
     }
 
-    private String getRecurrenceLastOccurrence(ContentResolver contentResolver, long id, String startDate) {
+    private String getRecurrenceLastOccurrence(long id, String startDate) {
         // we need to query the maximum value of the transaction date where the date
         // is previous or equals today
         String rawQuery = "SELECT MAX(" + LegacyDatabaseSchema.Transaction.DATE + ") FROM " +
@@ -553,11 +614,19 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 transaction.mConfirmed = true;
                 transaction.mCountInTotal = true;
                 if (!cursor.isNull(cursor.getColumnIndex(LegacyDatabaseSchema.Transaction.DEBT))) {
-                    transaction.mType = Contract.TransactionType.DEBT;
                     transaction.mDebt = mCacheDebt.get(getLongSafely(cursor, LegacyDatabaseSchema.Transaction.DEBT));
+                    if (transaction.mDebt != null) {
+                        transaction.mType = Contract.TransactionType.DEBT;
+                    } else {
+                        transaction.mType = Contract.TransactionType.STANDARD;
+                    }
                 } else if (!cursor.isNull(cursor.getColumnIndex(LegacyDatabaseSchema.Transaction.SAVING))) {
-                    transaction.mType = Contract.TransactionType.SAVING;
                     transaction.mSaving = mCacheSaving.get(getLongSafely(cursor, LegacyDatabaseSchema.Transaction.SAVING));
+                    if (transaction.mSaving != null) {
+                        transaction.mType = Contract.TransactionType.SAVING;
+                    } else {
+                        transaction.mType = Contract.TransactionType.STANDARD;
+                    }
                 } else if (!cursor.isNull(cursor.getColumnIndex(LegacyDatabaseSchema.Transaction.TRANSFER))) {
                     transaction.mType = Contract.TransactionType.TRANSFER;
                 } else {
@@ -566,37 +635,42 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 transaction.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Transaction.UUID);
                 transaction.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Transaction.DELETED);
                 transaction.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Transaction.LAST_EDIT);
-                long id = SQLDatabaseImporter.insert(contentResolver, transaction);
-                mCacheTransaction.add(transaction.mUUID);
-                // handle the case of a transfer transaction
-                if (transaction.mType == Contract.TransactionType.TRANSFER) {
-                    String transferId = getStringSafely(cursor, LegacyDatabaseSchema.Transaction.TRANSFER);
-                    Transfer transfer = mCacheTransfer.get(transferId);
-                    if (transfer == null) {
-                        transfer = new Transfer();
-                    }
-                    if (transaction.mDirection == Contract.Direction.INCOME) {
-                        transfer.mTransactionTo = id;
-                    } else if (transaction.mDirection == Contract.Direction.EXPENSE) {
-                        long legacyCategoryId = getLongSafely(cursor, LegacyDatabaseSchema.Transaction.CATEGORY);
-                        String categoryTag = mCacheCategoryTag.get(legacyCategoryId);
-                        if (Contract.CategoryTag.TRANSFER_TAX.equals(categoryTag)) {
-                            transfer.mTransactionTax = id;
-                        } else if (Contract.CategoryTag.TRANSFER.equals(categoryTag)) {
-                            transfer.mTransactionFrom = id;
-                            transfer.mDescription = transaction.mDescription;
-                            transfer.mDate = transaction.mDate;
-                            transfer.mNote = transaction.mNote;
-                            transfer.mPlace = transaction.mPlace;
-                            transfer.mEvent = transaction.mEvent;
-                            transfer.mConfirmed = true;
-                            transfer.mCountInTotal = true;
-                            transfer.mUUID = UUID.randomUUID().toString();
-                            transfer.mDeleted = false;
-                            transfer.mLastEdit = System.currentTimeMillis();
+                try {
+                    long id = SQLDatabaseImporter.insert(contentResolver, transaction);
+                    mCacheTransaction.add(transaction.mUUID);
+                    // handle the case of a transfer transaction
+                    if (transaction.mType == Contract.TransactionType.TRANSFER) {
+                        String transferId = getStringSafely(cursor, LegacyDatabaseSchema.Transaction.TRANSFER);
+                        Transfer transfer = mCacheTransfer.get(transferId);
+                        if (transfer == null) {
+                            transfer = new Transfer();
                         }
+                        if (transaction.mDirection == Contract.Direction.INCOME) {
+                            transfer.mTransactionTo = id;
+                        } else if (transaction.mDirection == Contract.Direction.EXPENSE) {
+                            long legacyCategoryId = getLongSafely(cursor, LegacyDatabaseSchema.Transaction.CATEGORY);
+                            String categoryTag = mCacheCategoryTag.get(legacyCategoryId);
+                            if (Contract.CategoryTag.TRANSFER_TAX.equals(categoryTag)) {
+                                transfer.mTransactionTax = id;
+                            } else if (Contract.CategoryTag.TRANSFER.equals(categoryTag)) {
+                                transfer.mTransactionFrom = id;
+                                transfer.mDescription = transaction.mDescription;
+                                transfer.mDate = transaction.mDate;
+                                transfer.mNote = transaction.mNote;
+                                transfer.mPlace = transaction.mPlace;
+                                transfer.mEvent = transaction.mEvent;
+                                transfer.mConfirmed = true;
+                                transfer.mCountInTotal = true;
+                                transfer.mUUID = UUID.randomUUID().toString();
+                                transfer.mDeleted = false;
+                                transfer.mLastEdit = System.currentTimeMillis();
+                            }
+                        }
+                        mCacheTransfer.put(transferId, transfer);
                     }
-                    mCacheTransfer.put(transferId, transfer);
+                } catch (Exception ignore) {
+                    // if an exception occur, the transaction id is not inserted in the cache
+                    // and all the related stuff will be discarded during the migration
                 }
             }
             cursor.close();
@@ -616,13 +690,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
     @Override
     public void importTransfers(ContentResolver contentResolver) throws ImportException {
         for (Transfer transfer : mCacheTransfer.values()) {
-            if (transfer.mTransactionFrom == null) {
-                throw new ImportException("Transfer is missing the source transaction");
+            if (transfer.mTransactionFrom != null && transfer.mTransactionTo != null) {
+                try {
+                    SQLDatabaseImporter.insert(contentResolver, transfer);
+                } catch (Exception ignore) {
+                    // if an exception occur, the transfer has not been correctly inserted and the
+                    // related transactions are registered as standard transactions
+                }
             }
-            if (transfer.mTransactionTo == null) {
-                throw new ImportException("Transfer is missing the destination transaction");
-            }
-            SQLDatabaseImporter.insert(contentResolver, transfer);
         }
     }
 
@@ -655,7 +730,7 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
         return mCacheTransaction.contains(legacyIdentifier) ? UUID.randomUUID().toString() : null;
     }
 
-    public void importAttachment(ContentResolver contentResolver, String legacyIdentifier, String file, long size) throws ImportException {
+    public void importAttachment(ContentResolver contentResolver, String file, long size) throws ImportException {
         Attachment attachment = new Attachment();
         attachment.mFile = file;
         attachment.mName = file;
@@ -664,7 +739,11 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
         attachment.mUUID = UUID.randomUUID().toString();
         attachment.mLastEdit = System.currentTimeMillis();
         attachment.mDeleted = false;
-        SQLDatabaseImporter.insert(contentResolver, attachment);
+        try {
+            SQLDatabaseImporter.insert(contentResolver, attachment);
+        } catch (Exception ignore) {
+            // simply ignore this case
+        }
     }
 
     private String getIconSafely(Cursor cursor, String columnName, String name) {

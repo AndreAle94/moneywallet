@@ -152,7 +152,7 @@ public class LegacyBackupImporter extends AbstractBackupImporter {
                         if (identifier != null) {
                             zipFile.extractFile(header, attachmentFolder.getPath(), null, identifier);
                             File attachment = new File(attachmentFolder, identifier);
-                            mDatabaseImporter.importAttachment(contentResolver, name, identifier, attachment.length());
+                            mDatabaseImporter.importAttachment(contentResolver, identifier, attachment.length());
                         }
                     }
                 }
