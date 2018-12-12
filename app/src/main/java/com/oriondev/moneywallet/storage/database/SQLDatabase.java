@@ -1648,7 +1648,7 @@ import java.util.UUID;
                 cursor.close();
             }
         }
-        if (contentValues.containsKey(Contract.Category.PARENT)) {
+        if (contentValues.containsKey(Contract.Category.PARENT) && contentValues.getAsLong(Contract.Category.PARENT) != null) {
             // check if category that has a parent id set has already some children
             projection = new String[] {Schema.Category.ID};
             where = Schema.Category.PARENT + " = ?";
