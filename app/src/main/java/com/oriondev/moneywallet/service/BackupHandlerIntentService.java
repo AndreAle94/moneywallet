@@ -26,18 +26,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
+import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.R;
-import com.oriondev.moneywallet.api.AbstractBackendServiceAPI;
 import com.oriondev.moneywallet.api.BackendException;
-import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.api.IBackendServiceAPI;
 import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
@@ -66,7 +65,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -81,7 +79,7 @@ public class BackupHandlerIntentService extends IntentService {
     public static final String BACKEND_ID = "BackupHandlerIntentService::Argument::BackendId";
     public static final String AUTO_BACKUP = "BackupHandlerIntentService::Argument::AutoBackup";
     public static final String ONLY_ON_WIFI = "BackupHandlerIntentService::Argument::OnlyOnWifi";
-    public static final String SHOW_NOTIFICATION = "BackupHandlerIntentService::Argument::ShowNotification";
+    public static final String RUN_FOREGROUND = "BackupHandlerIntentService::Argument::RunForeground";
     public static final String BACKUP_FILE = "BackupHandlerIntentService::Argument::BackupFile";
     public static final String EXCEPTION = "BackupHandlerIntentService::Argument::Exception";
     public static final String FOLDER_CONTENT = "BackupHandlerIntentService::Argument::FolderContent";
@@ -109,7 +107,7 @@ public class BackupHandlerIntentService extends IntentService {
 
     private static final boolean DEFAULT_AUTO_BACKUP = false;
     private static final boolean DEFAULT_ONLY_ON_WIFI = false;
-    private static final boolean DEFAULT_SHOW_NOTIFICATION = false;
+    private static final boolean DEFAULT_RUN_FOREGROUND = false;
 
     private boolean mAutoBackup;
 
@@ -118,6 +116,15 @@ public class BackupHandlerIntentService extends IntentService {
     private String mCallerId;
     private LocalBroadcastManager mBroadcastManager;
     private NotificationCompat.Builder mNotificationBuilder;
+
+    public static void startInForeground(Context context, Intent intent) {
+        intent.putExtra(BackupHandlerIntentService.RUN_FOREGROUND, true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intent);
+        } else {
+            context.startService(intent);
+        }
+    }
 
     public BackupHandlerIntentService() {
         super("BackupHandlerIntentService");
@@ -131,7 +138,7 @@ public class BackupHandlerIntentService extends IntentService {
             String backendId = intent.getStringExtra(BACKEND_ID);
             mAutoBackup = intent.getBooleanExtra(AUTO_BACKUP, DEFAULT_AUTO_BACKUP);
             boolean onlyOnWiFi = intent.getBooleanExtra(ONLY_ON_WIFI, DEFAULT_ONLY_ON_WIFI);
-            boolean showNotification = intent.getBooleanExtra(SHOW_NOTIFICATION, DEFAULT_SHOW_NOTIFICATION);
+            boolean runForeground = intent.getBooleanExtra(RUN_FOREGROUND, DEFAULT_RUN_FOREGROUND);
             mCallerId = intent.getStringExtra(CALLER_ID);
             // execute the action in a safe code-block: if an exception is thrown, it
             // is handled by both the local broadcast manager as an error and reported
@@ -141,7 +148,7 @@ public class BackupHandlerIntentService extends IntentService {
                 // initialize the broadcast manager
                 mBroadcastManager = LocalBroadcastManager.getInstance(this);
                 // if the notification is required, start the service in foreground
-                if (showNotification && (action == ACTION_BACKUP || action == ACTION_RESTORE)) {
+                if (runForeground && (action == ACTION_BACKUP || action == ACTION_RESTORE)) {
                     mNotificationBuilder = getBaseNotificationBuilder(NotificationContract.NOTIFICATION_CHANNEL_BACKUP)
                             .setProgress(0, 0, true)
                             .setCategory(NotificationCompat.CATEGORY_PROGRESS);
@@ -177,10 +184,6 @@ public class BackupHandlerIntentService extends IntentService {
                 exception = e;
                 e.printStackTrace();
             }
-            // clear the environment
-            if (mNotificationBuilder != null) {
-                stopForeground(true);
-            }
             // handle the exception if the task failed
             if (exception != null) {
                 if (exception instanceof BackendException) {
@@ -191,6 +194,10 @@ public class BackupHandlerIntentService extends IntentService {
                     }
                 }
                 notifyTaskFailure(intent, exception);
+            }
+            // clear the environment
+            if (mNotificationBuilder != null) {
+                stopForeground(true);
             }
         }
     }
@@ -415,7 +422,7 @@ public class BackupHandlerIntentService extends IntentService {
                 intentArguments.putString(BACKEND_ID, baseIntent.getStringExtra(BACKEND_ID));
                 intentArguments.putBoolean(AUTO_BACKUP, baseIntent.getBooleanExtra(AUTO_BACKUP, DEFAULT_AUTO_BACKUP));
                 intentArguments.putBoolean(ONLY_ON_WIFI, baseIntent.getBooleanExtra(ONLY_ON_WIFI, DEFAULT_ONLY_ON_WIFI));
-                intentArguments.putBoolean(SHOW_NOTIFICATION, baseIntent.getBooleanExtra(SHOW_NOTIFICATION, DEFAULT_SHOW_NOTIFICATION));
+                intentArguments.putBoolean(RUN_FOREGROUND, baseIntent.getBooleanExtra(RUN_FOREGROUND, DEFAULT_RUN_FOREGROUND));
                 intentArguments.putString(PASSWORD, baseIntent.getStringExtra(PASSWORD));
                 intentArguments.putParcelable(PARENT_FOLDER, baseIntent.getParcelableExtra(PARENT_FOLDER));
                 intentArguments.putParcelable(BACKUP_FILE, baseIntent.getParcelableExtra(BACKUP_FILE));
@@ -436,7 +443,7 @@ public class BackupHandlerIntentService extends IntentService {
                     intentArguments.putString(BACKEND_ID, baseIntent.getStringExtra(BACKEND_ID));
                     intentArguments.putBoolean(AUTO_BACKUP, baseIntent.getBooleanExtra(AUTO_BACKUP, DEFAULT_AUTO_BACKUP));
                     intentArguments.putBoolean(ONLY_ON_WIFI, baseIntent.getBooleanExtra(ONLY_ON_WIFI, DEFAULT_ONLY_ON_WIFI));
-                    intentArguments.putBoolean(SHOW_NOTIFICATION, baseIntent.getBooleanExtra(SHOW_NOTIFICATION, DEFAULT_SHOW_NOTIFICATION));
+                    intentArguments.putBoolean(RUN_FOREGROUND, baseIntent.getBooleanExtra(RUN_FOREGROUND, DEFAULT_RUN_FOREGROUND));
                     intentArguments.putString(PASSWORD, baseIntent.getStringExtra(PASSWORD));
                     intentArguments.putParcelable(PARENT_FOLDER, baseIntent.getParcelableExtra(PARENT_FOLDER));
                     intentArguments.putParcelable(BACKUP_FILE, baseIntent.getParcelableExtra(BACKUP_FILE));

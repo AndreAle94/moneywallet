@@ -55,15 +55,6 @@
         android:textSize="@dimen/material_dialog_check_box_text_size"
         android:checked="true" />
 
-    <com.oriondev.moneywallet.ui.view.theme.ThemedCheckBox
-        android:id="@+id/auto_backup_notification_check_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/material_dialog_check_box_start_padding"
-        android:text="@string/hint_auto_backup_show_notification"
-        android:textSize="@dimen/material_dialog_check_box_text_size"
-        android:checked="true" />
-
     <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
         android:id="@+id/auto_backup_offset_text_view"
         android:layout_width="match_parent"

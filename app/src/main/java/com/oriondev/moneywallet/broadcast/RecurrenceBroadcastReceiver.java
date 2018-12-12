@@ -142,6 +142,6 @@ public class RecurrenceBroadcastReceiver extends BroadcastReceiver {
 
     private static void startBackgroundTask(Context context) {
         System.out.println("[ALARM] RecurrenceTask fired now");
-        context.startService(new Intent(context, RecurrenceHandlerIntentService.class));
+        RecurrenceHandlerIntentService.enqueueWork(context, new Intent());
     }
 }

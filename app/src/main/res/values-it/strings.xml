@@ -147,7 +147,6 @@
     <string name="hint_auto_backup_enabled">"Servizio abilitato"</string>
     <string name="hint_auto_backup_wifi_only">"Solo quando connesso a reti WiFi"</string>
     <string name="hint_auto_backup_only_if_data_changed">"Solo quando i dati sono cambiati"</string>
-    <string name="hint_auto_backup_show_notification">"Mostra i progressi in una notifica"</string>
     <string name="hint_auto_backup_every_n_hours">"Ogni %d ore"</string>
     <string name="hint_auto_backup_folder">"Cartella"</string>
     <string name="hint_auto_backup_root_folder">"Radice"</string>

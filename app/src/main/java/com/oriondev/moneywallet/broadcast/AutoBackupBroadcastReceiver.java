@@ -102,7 +102,6 @@ public class AutoBackupBroadcastReceiver extends BroadcastReceiver {
                 if (nextOccurrence <= System.currentTimeMillis()) {
                     if (!BackendManager.isAutoBackupWhenDataIsChangedOnly(backendId) || PreferenceManager.getLastTimeDataIsChanged() > lastTimestamp) {
                         boolean onlyOnWiFi = BackendManager.isAutoBackupOnWiFiOnly(backendId);
-                        boolean showNotification = BackendManager.isAutoBackupWithNotification(backendId);
                         IFile folder = BackendServiceFactory.getFile(backendId, BackendManager.getAutoBackupFolder(backendId));
                         String password = BackendManager.getAutoBackupPassword(backendId);
                         // build the intent to start the service
@@ -111,10 +110,9 @@ public class AutoBackupBroadcastReceiver extends BroadcastReceiver {
                         intent.putExtra(BackupHandlerIntentService.BACKEND_ID, backendId);
                         intent.putExtra(BackupHandlerIntentService.AUTO_BACKUP, true);
                         intent.putExtra(BackupHandlerIntentService.ONLY_ON_WIFI, onlyOnWiFi);
-                        intent.putExtra(BackupHandlerIntentService.SHOW_NOTIFICATION, showNotification);
                         intent.putExtra(BackupHandlerIntentService.PARENT_FOLDER, folder);
                         intent.putExtra(BackupHandlerIntentService.PASSWORD, password);
-                        context.startService(intent);
+                        BackupHandlerIntentService.startInForeground(context, intent);
                     }
                     // register the next occurrence as the last time the auto backup
                     // for this specific backend has been executed: if an error occur

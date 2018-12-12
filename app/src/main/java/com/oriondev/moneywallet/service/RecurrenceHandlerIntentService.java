@@ -19,13 +19,14 @@
 
 package com.oriondev.moneywallet.service;
 
-import android.app.IntentService;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
 import com.oriondev.moneywallet.storage.database.Contract;
@@ -42,14 +43,16 @@ import java.util.Date;
 /**
  * Created by andrea on 11/11/18.
  */
-public class RecurrenceHandlerIntentService extends IntentService {
+public class RecurrenceHandlerIntentService extends JobIntentService {
 
-    public RecurrenceHandlerIntentService() {
-        super("RecurrenceHandlerIntentService");
+    private static final int JOB_ID = 3564;
+
+    public static void enqueueWork(Context context, Intent intent) {
+        enqueueWork(context, RecurrenceHandlerIntentService.class, JOB_ID, intent);
     }
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         addMissingRecurrentTransactionOccurrences();
         addMissingRecurrentTransferOccurrences();
         RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);

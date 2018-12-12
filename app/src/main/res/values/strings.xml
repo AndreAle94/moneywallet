@@ -147,7 +147,6 @@
     <string name="hint_auto_backup_enabled">"Service enabled"</string>
     <string name="hint_auto_backup_wifi_only">"Only on WiFi network"</string>
     <string name="hint_auto_backup_only_if_data_changed">"Only if data is changed"</string>
-    <string name="hint_auto_backup_show_notification">"Show progress notification"</string>
     <string name="hint_auto_backup_every_n_hours">"Every %d hours"</string>
     <string name="hint_auto_backup_folder">"Folder"</string>
     <string name="hint_auto_backup_root_folder">"Root"</string>

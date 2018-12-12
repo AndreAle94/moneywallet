@@ -63,7 +63,6 @@ public class AutoBackupSettingDialog extends DialogFragment {
     private SwitchCompat mServiceEnabledSwitchCompat;
     private CheckBox mOnlyWiFiCheckBox;
     private CheckBox mOnlyDataChangedCheckBox;
-    private CheckBox mShowNotificationCheckBox;
     private TextView mOffsetTextView;
     private SeekBar mOffsetSeekBar;
     private TextView mFolderTextView;
@@ -101,7 +100,6 @@ public class AutoBackupSettingDialog extends DialogFragment {
             mServiceEnabledSwitchCompat = view.findViewById(R.id.auto_backup_enable_switch);
             mOnlyWiFiCheckBox = view.findViewById(R.id.auto_backup_wifi_check_box);
             mOnlyDataChangedCheckBox = view.findViewById(R.id.auto_backup_data_change_check_box);
-            mShowNotificationCheckBox = view.findViewById(R.id.auto_backup_notification_check_box);
             mOffsetTextView = view.findViewById(R.id.auto_backup_offset_text_view);
             mOffsetSeekBar = view.findViewById(R.id.auto_backup_offset_seek_bar);
             mFolderTextView = view.findViewById(R.id.auto_backup_folder_text_view);
@@ -143,7 +141,6 @@ public class AutoBackupSettingDialog extends DialogFragment {
             if (savedInstanceState == null) {
                 mServiceEnabledSwitchCompat.setChecked(BackendManager.isAutoBackupEnabled(mBackendId));
                 mOnlyWiFiCheckBox.setChecked(BackendManager.isAutoBackupOnWiFiOnly(mBackendId));
-                mShowNotificationCheckBox.setChecked(BackendManager.isAutoBackupWithNotification(mBackendId));
                 mOnlyDataChangedCheckBox.setChecked(BackendManager.isAutoBackupWhenDataIsChangedOnly(mBackendId));
                 mOffsetSeekBar.setProgress((BackendManager.getAutoBackupHoursOffset(mBackendId) - OFFSET_MIN_HOURS) / OFFSET_BETWEEN_HOURS);
                 mFolder = BackendServiceFactory.getFile(mBackendId, BackendManager.getAutoBackupFolder(mBackendId));
@@ -183,7 +180,6 @@ public class AutoBackupSettingDialog extends DialogFragment {
     private void onSaveSetting() {
         BackendManager.setAutoBackupEnabled(mBackendId, mServiceEnabledSwitchCompat.isChecked());
         BackendManager.setAutoBackupOnWiFiOnly(mBackendId, mOnlyWiFiCheckBox.isChecked());
-        BackendManager.setAutoBackupWithNotification(mBackendId, mShowNotificationCheckBox.isChecked());
         BackendManager.setAutoBackupWhenDataIsChangedOnly(mBackendId, mOnlyDataChangedCheckBox.isChecked());
         BackendManager.setAutoBackupHoursOffset(mBackendId, OFFSET_MIN_HOURS + (mOffsetSeekBar.getProgress() * OFFSET_BETWEEN_HOURS));
         BackendManager.setAutoBackupFolder(mBackendId, mFolder != null ? mFolder.encodeToString() : null);

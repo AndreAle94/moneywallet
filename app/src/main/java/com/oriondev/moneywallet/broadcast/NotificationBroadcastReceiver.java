@@ -45,13 +45,17 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 notificationManager.cancel(NotificationContract.NOTIFICATION_ID_BACKUP_ERROR);
                 // re-start the intent service
-                Bundle extras = intent.getBundleExtra(ACTION_INTENT_ARGUMENTS);
-                if (extras != null) {
-                    Intent retryIntent = new Intent(context, BackupHandlerIntentService.class);
-                    retryIntent.putExtras(extras);
-                    context.startService(retryIntent);
+                Bundle arguments = intent.getBundleExtra(ACTION_INTENT_ARGUMENTS);
+                if (arguments != null) {
+                    restartAutoBackupIntentService(context, arguments);
                 }
             }
         }
+    }
+
+    private void restartAutoBackupIntentService(Context context, Bundle arguments) {
+        Intent intent = new Intent(context, BackupHandlerIntentService.class);
+        intent.putExtras(arguments);
+        BackupHandlerIntentService.startInForeground(context, intent);
     }
 }

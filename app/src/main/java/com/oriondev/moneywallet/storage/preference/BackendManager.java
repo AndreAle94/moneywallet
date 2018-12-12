@@ -35,7 +35,6 @@ public class BackendManager {
     private static final String AUTO_BACKUP_ENABLED_SERVICES = "auto_backup_enabled_services";
     private static final String BACKEND_AUTO_BACKUP_ENABLED = "auto_backup_enabled_";
     private static final String BACKEND_AUTO_BACKUP_WIFI_ONLY = "auto_backup_wifi_only_";
-    private static final String BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ = "auto_backup_show_notification_";
     private static final String BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY = "auto_backup_data_changed_only_";
     private static final String BACKEND_AUTO_BACKUP_OFFSET = "auto_backup_hour_offset_";
     private static final String BACKEND_AUTO_BACKUP_FOLDER = "auto_backup_folder_";
@@ -71,10 +70,6 @@ public class BackendManager {
         mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_WIFI_ONLY + backendId, wifiOnly).apply();
     }
 
-    public static void setAutoBackupWithNotification(String backendId, boolean showNotification) {
-        mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ + backendId, showNotification).apply();
-    }
-
     public static void setAutoBackupWhenDataIsChangedOnly(String backendId, boolean dataChangedOnly) {
         mPreferences.edit().putBoolean(BACKEND_AUTO_BACKUP_DATA_CHANGED_ONLY + backendId, dataChangedOnly).apply();
     }
@@ -105,10 +100,6 @@ public class BackendManager {
 
     public static boolean isAutoBackupOnWiFiOnly(String backendId) {
         return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_WIFI_ONLY + backendId, false);
-    }
-
-    public static boolean isAutoBackupWithNotification(String backendId) {
-        return mPreferences.getBoolean(BACKEND_AUTO_BACKUP_SHOW_NOTIFICATION_ + backendId, true);
     }
 
     public static boolean isAutoBackupWhenDataIsChangedOnly(String backendId) {
