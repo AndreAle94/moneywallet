@@ -165,7 +165,7 @@ public class IconPicker extends Fragment implements ColorChooserDialog.ColorCall
         String trimmed = source != null ? source.trim() : null;
         if (!TextUtils.isEmpty(trimmed)) {
             String[] parts = trimmed.split(" ");
-            if (parts.length >= 2) {
+            if (parts.length >= 2 && !parts[0].isEmpty() && !parts[1].isEmpty()) {
                 String builder = String.valueOf(parts[0].charAt(0)) + parts[1].charAt(0);
                 return builder.toUpperCase();
             } else {
