@@ -162,7 +162,7 @@ public class IconPicker extends Fragment implements ColorChooserDialog.ColorCall
     }
 
     public static String getColorIconString(String source) {
-        String trimmed = source != null ? source.trim() : null;
+        String trimmed = source != null ? source.trim().replaceAll(" +", " ") : null;
         if (!TextUtils.isEmpty(trimmed)) {
             String[] parts = trimmed.split(" ");
             if (parts.length >= 2 && !parts[0].isEmpty() && !parts[1].isEmpty()) {
