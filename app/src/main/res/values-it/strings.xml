@@ -96,7 +96,7 @@
     <string name="hint_start_money">"Cifra iniziale"</string>
     <string name="hint_not_exclude_wallet">"Mostra questo portafoglio nel calcolo totale"</string>
     <string name="hint_category">"Categoria"</string>
-    <string name="hint_parent_category">"Parent category"</string>
+    <string name="hint_parent_category">"Categoria superiore"</string>
     <string name="hint_show_category_report">"Mostra questa categoria nel resoconto"</string>
     <string name="hint_show_category_report_on">"Questa categoria è inclusa nel resoconto"</string>
     <string name="hint_show_category_report_off">"Questa categoria non è inclusa nel resoconto"</string>
@@ -365,9 +365,9 @@
     <string name="message_delete_wallet">"Sei sicuro di voler eliminare questo portafoglio? Tutti i dati relativi saranno rimossi."</string>
     <string name="message_error_delete_wallet_of_transfer">"Questo potafoglio non può essere eliminato perché è utilizzato in uno o più trasferimenti. per favore rimuovere i relativi trasferimenti per eliminare questo portafoglio."</string>
     <string name="message_delete_category">"Sei sicuro di voler eliminare questa categoria?"</string>
-    <string name="message_error_insert_category_deep_hierarchy">"Le categorie innstate su più livelli non sono supportate: la categoria impostata come superiore è una sottocategoria."</string>
+    <string name="message_error_insert_category_deep_hierarchy">"Le categorie innestate su più livelli non sono supportate: la categoria impostata come superiore è una sottocategoria."</string>
     <string name="message_error_insert_category_not_consistent">"La categoria superiore non è dello stesso tipo di questa categoria."</string>
-    <string name="message_error_update_category_deep_hierarchy">"Le categorie innstate su più livelli non sono supportate: questa categoria ha una o più sottocategiorie e non può essere impostata come sottocategoria."</string>
+    <string name="message_error_update_category_deep_hierarchy">"Le categorie innestate su più livelli non sono supportate: questa categoria ha una o più sottocategiorie e non può essere impostata come sottocategoria."</string>
     <string name="message_error_update_category_not_consistent">"La categoria superiore non è dello stesso tipo di questa categoria."</string>
     <string name="message_error_delete_category_with_children">"Questa categoria non può essere eliminata perché ha uno o più figli. Si prega di rimuoverli prima."</string>
     <string name="message_error_delete_category_in_use">"Questa categoria non può essere eliminata perché è in uso. Si prega di rimuovere eventuali riferimenti a questa categoria e riprovare."</string>
