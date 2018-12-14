@@ -73,6 +73,16 @@ public class MoneyFormatter {
         return new MoneyFormatter();
     }
 
+    public static long normalize(long money, int decimals, int finalDecimals) {
+        int offset = finalDecimals - decimals;
+        return normalize(money, offset);
+    }
+
+    public static long normalize(long money, int decimalOffset) {
+        double exponential = Math.pow(10d, decimalOffset);
+        return (long) (money * exponential);
+    }
+
     private MoneyFormatter() {
         mColorIn = PreferenceManager.getCurrentIncomeColor();
         mColorOut = PreferenceManager.getCurrentExpenseColor();

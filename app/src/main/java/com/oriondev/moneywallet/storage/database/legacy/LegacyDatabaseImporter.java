@@ -28,6 +28,7 @@ import android.support.v4.util.LongSparseArray;
 import android.text.TextUtils;
 
 import com.oriondev.moneywallet.model.ColorIcon;
+import com.oriondev.moneywallet.model.CurrencyUnit;
 import com.oriondev.moneywallet.model.Icon;
 import com.oriondev.moneywallet.model.RecurrenceSetting;
 import com.oriondev.moneywallet.picker.IconPicker;
@@ -49,7 +50,9 @@ import com.oriondev.moneywallet.storage.database.model.Saving;
 import com.oriondev.moneywallet.storage.database.model.Transaction;
 import com.oriondev.moneywallet.storage.database.model.Transfer;
 import com.oriondev.moneywallet.storage.database.model.Wallet;
+import com.oriondev.moneywallet.utils.CurrencyManager;
 import com.oriondev.moneywallet.utils.DateUtils;
+import com.oriondev.moneywallet.utils.MoneyFormatter;
 import com.oriondev.moneywallet.utils.Utils;
 
 import java.io.File;
@@ -70,6 +73,8 @@ import java.util.UUID;
  * LegacyBackupImporter when a legacy backup has been selected to be restored.
  */
 public class LegacyDatabaseImporter implements DatabaseImporter {
+
+    private static final int LEGACY_DECIMALS = 2;
 
     private final SQLiteDatabase mDatabase;
 
@@ -114,7 +119,7 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 wallet.mIcon = getIconSafely(cursor, LegacyDatabaseSchema.Wallet.ICON, wallet.mName);
                 wallet.mCurrency = getStringSafely(cursor, LegacyDatabaseSchema.Wallet.CURRENCY_ISO);
                 wallet.mCountInTotal = getBooleanSafely(cursor, LegacyDatabaseSchema.Wallet.IN_TOTAL);
-                wallet.mStartMoney = getLongSafely(cursor, LegacyDatabaseSchema.Wallet.INITIAL);
+                wallet.mStartMoney = normalize(wallet.mCurrency, getLongSafely(cursor, LegacyDatabaseSchema.Wallet.INITIAL));
                 wallet.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Wallet.UUID);
                 wallet.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Wallet.DELETED);
                 wallet.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Wallet.LAST_EDIT);
@@ -330,7 +335,10 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 debt.mWallet = mCacheWallet.get(getLongSafely(cursor, LegacyDatabaseSchema.Debt.WALLET));
                 debt.mNote = getStringSafely(cursor, LegacyDatabaseSchema.Debt.NOTE);
                 debt.mPlace = mCachePlace.get(getStringSafely(cursor, LegacyDatabaseSchema.Debt.PLACE));
-                debt.mMoney = getLongSafely(cursor, LegacyDatabaseSchema.Debt.IMPORT);
+                debt.mMoney = normalize(
+                        mCacheWalletCurrency.get(getLongSafely(cursor, LegacyDatabaseSchema.Debt.WALLET)),
+                        getLongSafely(cursor, LegacyDatabaseSchema.Debt.IMPORT)
+                );
                 debt.mArchived = false;
                 debt.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Debt.UUID);
                 debt.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Debt.DELETED);
@@ -383,8 +391,8 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                     }
                     budget.mStartDate = getStringSafely(cursor, LegacyDatabaseSchema.Budget.DATE_FROM);
                     budget.mEndDate = getStringSafely(cursor, LegacyDatabaseSchema.Budget.DATE_TO);
-                    budget.mMoney = getLongSafely(cursor, LegacyDatabaseSchema.Budget.MAX);
                     budget.mCurrency = mCacheWalletCurrency.get(legacyIds[0]);
+                    budget.mMoney = normalize(budget.mCurrency, getLongSafely(cursor, LegacyDatabaseSchema.Budget.MAX));
                     budget.mUUID = getStringSafely(cursor, LegacyDatabaseSchema.Budget.UUID);
                     budget.mDeleted = getBooleanSafely(cursor, LegacyDatabaseSchema.Budget.DELETED);
                     budget.mLastEdit = getLongSafely(cursor, LegacyDatabaseSchema.Budget.LAST_EDIT);
@@ -448,8 +456,14 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
                 Saving saving = new Saving();
                 saving.mDescription = getStringSafely(cursor, LegacyDatabaseSchema.Saving.DESCRIPTION);
                 saving.mIcon = getIconSafely(cursor, null, saving.mDescription);
-                saving.mStartMoney = getLongSafely(cursor, LegacyDatabaseSchema.Saving.INITIAL);
-                saving.mEndMoney = getLongSafely(cursor, LegacyDatabaseSchema.Saving.TARGET);
+                saving.mStartMoney = normalize(
+                        mCacheWalletCurrency.get(getLongSafely(cursor, LegacyDatabaseSchema.Saving.WALLET)),
+                        getLongSafely(cursor, LegacyDatabaseSchema.Saving.INITIAL)
+                );
+                saving.mEndMoney = normalize(
+                        mCacheWalletCurrency.get(getLongSafely(cursor, LegacyDatabaseSchema.Saving.WALLET)),
+                        getLongSafely(cursor, LegacyDatabaseSchema.Saving.TARGET)
+                );
                 saving.mWallet = mCacheWallet.get(getLongSafely(cursor, LegacyDatabaseSchema.Saving.WALLET));
                 saving.mEndDate = getStringSafely(cursor, LegacyDatabaseSchema.Saving.END_DATE);
                 saving.mComplete = getBooleanSafely(cursor, LegacyDatabaseSchema.Saving.COMPLETE);
@@ -477,7 +491,10 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
             while (cursor.moveToNext()) {
                 RecurrentTransaction transaction = new RecurrentTransaction();
                 long legacyId = getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.ID);
-                transaction.mMoney = getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.IMPORT);
+                transaction.mMoney = normalize(
+                        mCacheWalletCurrency.get(getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.WALLET)),
+                        getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.IMPORT)
+                );
                 transaction.mDescription = getStringSafely(cursor, LegacyDatabaseSchema.Recurrence.DESCRIPTION);
                 transaction.mCategory = mCacheCategory.get(getLongSafely(cursor, LegacyDatabaseSchema.Recurrence.CATEGORY));
                 transaction.mDirection = getBooleanSafely(cursor, LegacyDatabaseSchema.Recurrence.IS_IN) ? Contract.Direction.INCOME : Contract.Direction.EXPENSE;
@@ -601,7 +618,10 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 Transaction transaction = new Transaction();
-                transaction.mMoney = getLongSafely(cursor, LegacyDatabaseSchema.Transaction.IMPORT);
+                transaction.mMoney = normalize(
+                        mCacheWalletCurrency.get(getLongSafely(cursor, LegacyDatabaseSchema.Transaction.WALLET)),
+                        getLongSafely(cursor, LegacyDatabaseSchema.Transaction.IMPORT)
+                );
                 transaction.mDate = getDateTimeSafely(cursor, LegacyDatabaseSchema.Transaction.DATE);
                 transaction.mDescription = getStringSafely(cursor, LegacyDatabaseSchema.Transaction.DESCRIPTION);
                 transaction.mCategory = mCacheCategory.get(getLongSafely(cursor, LegacyDatabaseSchema.Transaction.CATEGORY));
@@ -813,5 +833,13 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
     @Override
     public void close() throws ImportException {
         mDatabase.close();
+    }
+
+    private static long normalize(String currency, long money) {
+        CurrencyUnit currencyUnit = CurrencyManager.getCurrency(currency);
+        if (currencyUnit != null && currencyUnit.getDecimals() != LEGACY_DECIMALS) {
+            return MoneyFormatter.normalize(money, LEGACY_DECIMALS, currencyUnit.getDecimals());
+        }
+        return money;
     }
 }

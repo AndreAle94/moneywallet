@@ -27,8 +27,12 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.SparseLongArray;
 
+import com.oriondev.moneywallet.model.CurrencyUnit;
+import com.oriondev.moneywallet.utils.CurrencyManager;
 import com.oriondev.moneywallet.utils.DateUtils;
+import com.oriondev.moneywallet.utils.MoneyFormatter;
 
 import org.dmfs.rfc5545.DateTime;
 import org.dmfs.rfc5545.recur.InvalidRecurrenceRuleException;
@@ -44,8 +48,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -55,7 +61,7 @@ import java.util.UUID;
 /*package-local*/ class SQLDatabase extends SQLiteOpenHelper {
 
     /*package-local*/ static final String DATABASE_NAME = "database.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String ENABLE_FOREIGN_KEYS = "PRAGMA foreign_keys=ON";
 
@@ -122,8 +128,20 @@ import java.util.UUID;
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        // not required
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < 2) {
+            // we need to patch the money belonging to wallets where the currency
+            // has a number of decimals different from 2 (we have made a mistake
+            // during the upgrade from the legacy database: we forgot to normalize
+            // where the decimals count is different from 2).
+            System.out.println("[onUpgrade] normalization of the database");
+            normalizeDatabase(db);
+        }
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     }
 
     private void addDefaultCurrencies(SQLiteDatabase db) {
@@ -4244,5 +4262,173 @@ import java.util.UUID;
      */
     private String getRecurrentItemUUID(String recurrenceUUID, Date date) {
         return String.format("%s:%s", recurrenceUUID, DateUtils.getSQLDateString(date));
+    }
+
+    private void normalizeDatabase(SQLiteDatabase db) {
+        Map<Long, Integer> walletToNormalize = new HashMap<>();
+        Map<String, Integer> isoToNormalize = new HashMap<>();
+        // we can start to check if the database contains a wallet with a currency to normalize,
+        // if yes, we can normalize it and keep track of the id of the wallet to speedup the
+        // normalization of other tables
+        String rawQuery = "SELECT " +
+                "w." + Schema.Wallet.ID + ", " +
+                "w." + Schema.Wallet.CURRENCY + ", " +
+                "w." + Schema.Wallet.START_MONEY + ", " +
+                "c." + Schema.Currency.DECIMALS +
+                " FROM " + Schema.Wallet.TABLE + " AS w " +
+                " LEFT JOIN " + Schema.Currency.TABLE + " AS c" +
+                " ON w." + Schema.Wallet.CURRENCY + " = c." + Schema.Currency.ISO;
+        Cursor cursor = db.rawQuery(rawQuery, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                long id = cursor.getLong(cursor.getColumnIndex(Schema.Wallet.ID));
+                String iso = cursor.getString(cursor.getColumnIndex(Schema.Wallet.CURRENCY));
+                int decimals = cursor.getInt(cursor.getColumnIndex(Schema.Currency.DECIMALS));
+                if (decimals != 2) {
+                    // cache the wallet id and the decimal offset to fix
+                    int offset = decimals - 2;
+                    walletToNormalize.put(id, offset);
+                    isoToNormalize.put(iso, offset);
+                    // update the wallet start money
+                    long startMoney = cursor.getLong(cursor.getColumnIndex(Schema.Wallet.START_MONEY));
+                    long fixedStartMoney = MoneyFormatter.normalize(startMoney, offset);
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.Wallet.START_MONEY, fixedStartMoney);
+                    String whereClause = Schema.Wallet.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.Wallet.TABLE, contentValues, whereClause, whereArgs);
+                } else {
+                    System.out.println("No need to normalize wallet id: " + id);
+                }
+            }
+            cursor.close();
+        }
+        // now, for any wallet id that is registered in the map, we have to update all the related
+        // data coming from the (wrong) upgraded legacy database.
+        for (Map.Entry<Long, Integer> wallet : walletToNormalize.entrySet()) {
+            System.out.println("Fixing wallet id: " + wallet.getKey());
+            // the argument is the same per each table to fix
+            String[] selectionArgs = new String[] {String.valueOf(wallet.getKey())};
+            // fix the debt table
+            String[] projection = new String[] {
+                    Schema.Debt.ID,
+                    Schema.Debt.MONEY
+            };
+            String selection = Schema.Debt.WALLET + " = ?";
+            cursor = db.query(Schema.Debt.TABLE, projection, selection, selectionArgs, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    // extract the current info from the table row
+                    long id = cursor.getLong(cursor.getColumnIndex(Schema.Debt.ID));
+                    long money = cursor.getLong(cursor.getColumnIndex(Schema.Debt.MONEY));
+                    long fixedMoney = MoneyFormatter.normalize(money, wallet.getValue());
+                    // update the row with the fixed money
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.Debt.MONEY, fixedMoney);
+                    String whereClause = Schema.Debt.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.Debt.TABLE, contentValues, whereClause, whereArgs);
+                }
+                cursor.close();
+            }
+            // fix the saving table
+            projection = new String[] {
+                    Schema.Saving.ID,
+                    Schema.Saving.START_MONEY,
+                    Schema.Saving.END_MONEY
+            };
+            selection = Schema.Saving.WALLET + " = ?";
+            cursor = db.query(Schema.Saving.TABLE, projection, selection, selectionArgs, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    // extract the current info from the table row
+                    long id = cursor.getLong(cursor.getColumnIndex(Schema.Saving.ID));
+                    long startMoney = cursor.getLong(cursor.getColumnIndex(Schema.Saving.START_MONEY));
+                    long endMoney = cursor.getLong(cursor.getColumnIndex(Schema.Saving.END_MONEY));
+                    long fixedStartMoney = MoneyFormatter.normalize(startMoney, wallet.getValue());
+                    long fixedEndMoney = MoneyFormatter.normalize(endMoney, wallet.getValue());
+                    // update the row with the fixed money
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.Saving.START_MONEY, fixedStartMoney);
+                    contentValues.put(Schema.Saving.END_MONEY, fixedEndMoney);
+                    String whereClause = Schema.Saving.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.Saving.TABLE, contentValues, whereClause, whereArgs);
+                }
+                cursor.close();
+            }
+            // fix the transaction table
+            projection = new String[] {
+                    Schema.Transaction.ID,
+                    Schema.Transaction.MONEY
+            };
+            selection = Schema.Transaction.WALLET + " = ?";
+            cursor = db.query(Schema.Transaction.TABLE, projection, selection, selectionArgs, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    // extract the current info from the table row
+                    long id = cursor.getLong(cursor.getColumnIndex(Schema.Transaction.ID));
+                    long money = cursor.getLong(cursor.getColumnIndex(Schema.Transaction.MONEY));
+                    long fixedMoney = MoneyFormatter.normalize(money, wallet.getValue());
+                    // update the row with the fixed money
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.Transaction.MONEY, fixedMoney);
+                    String whereClause = Schema.Transaction.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.Transaction.TABLE, contentValues, whereClause, whereArgs);
+                }
+                cursor.close();
+            }
+            // fix the recurrent transaction table
+            projection = new String[] {
+                    Schema.RecurrentTransaction.ID,
+                    Schema.RecurrentTransaction.MONEY
+            };
+            selection = Schema.RecurrentTransaction.WALLET + " = ?";
+            cursor = db.query(Schema.RecurrentTransaction.TABLE, projection, selection, selectionArgs, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    // extract the current info from the table row
+                    long id = cursor.getLong(cursor.getColumnIndex(Schema.RecurrentTransaction.ID));
+                    long money = cursor.getLong(cursor.getColumnIndex(Schema.RecurrentTransaction.MONEY));
+                    long fixedMoney = MoneyFormatter.normalize(money, wallet.getValue());
+                    // update the row with the fixed money
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.RecurrentTransaction.MONEY, fixedMoney);
+                    String whereClause = Schema.RecurrentTransaction.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.RecurrentTransaction.TABLE, contentValues, whereClause, whereArgs);
+                }
+                cursor.close();
+            }
+        }
+        // now we have to iterate the iso of the currencies to normalize in order to fix the
+        // money for the budget table (no reference to the single wallet id for performances)
+        for (Map.Entry<String, Integer> wallet : isoToNormalize.entrySet()) {
+            System.out.println("Fixing currency iso: " + wallet.getKey());
+            // fix the budget table (this must be done differently)
+            String[] projection = new String[] {
+                    Schema.Budget.ID,
+                    Schema.Budget.MONEY
+            };
+            String selection = Schema.Budget.CURRENCY + " = ?";
+            String[] selectionArgs = new String[] {wallet.getKey()};
+            cursor = db.query(Schema.Budget.TABLE, projection, selection, selectionArgs, null, null, null);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    // extract the current info from the table row
+                    long id = cursor.getLong(cursor.getColumnIndex(Schema.Budget.ID));
+                    long money = cursor.getLong(cursor.getColumnIndex(Schema.Budget.MONEY));
+                    long fixedMoney = MoneyFormatter.normalize(money, wallet.getValue());
+                    // update the row with the fixed money
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Schema.Budget.MONEY, fixedMoney);
+                    String whereClause = Schema.Budget.ID + " = ?";
+                    String[] whereArgs = new String[] {String.valueOf(id)};
+                    db.update(Schema.Budget.TABLE, contentValues, whereClause, whereArgs);
+                }
+                cursor.close();
+            }
+        }
     }
 }
