@@ -48,7 +48,7 @@ public class CardButton extends android.support.v7.widget.AppCompatButton {
     }
 
     private void initialize(Resources resources) {
-        setTypeface(TypefaceCache.get(getContext(), TypefaceCache.ROBOTO_MEDIUM));
+        // setTypeface(TypefaceCache.get(getContext(), TypefaceCache.ROBOTO_MEDIUM));
         setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.material_component_lists_card_button_text_size));
         setMinWidth(resources.getDimensionPixelSize(R.dimen.material_component_lists_card_button_min_width));
         int internalPadding = resources.getDimensionPixelSize(R.dimen.material_component_lists_card_button_internal_padding);
