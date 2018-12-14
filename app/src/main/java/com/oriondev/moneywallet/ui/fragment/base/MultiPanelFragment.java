@@ -21,6 +21,8 @@ package com.oriondev.moneywallet.ui.fragment.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -37,6 +39,7 @@ import android.view.ViewGroup;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.ui.activity.DrawerController;
 import com.oriondev.moneywallet.ui.activity.ToolbarController;
+import com.oriondev.moneywallet.utils.Utils;
 
 /**
  * Created by andrea on 09/02/18.
@@ -70,9 +73,19 @@ public abstract class MultiPanelFragment extends Fragment implements MultiPanelC
 
     protected void onSetupRootLayout(View view) {
         mPrimaryToolbar = view.findViewById(R.id.primary_toolbar);
-        mPrimaryPanel = view.findViewById(R.id.primary_panel);
-        mSecondaryPanel = view.findViewById(R.id.secondary_panel);
-        mPrimaryPanelBodyContainer = view.findViewById(R.id.primary_panel_body_container);
+        mPrimaryPanel = Utils.findViewGroupByIds(view,
+                R.id.primary_panel_constraint_layout,
+                R.id.primary_panel_card_view,
+                R.id.primary_panel_coordinator_layout
+        );
+        mSecondaryPanel = Utils.findViewGroupByIds(view,
+                R.id.secondary_panel_frame_layout,
+                R.id.secondary_panel_card_view
+        );
+        mPrimaryPanelBodyContainer = Utils.findViewGroupByIds(view,
+                R.id.primary_panel_body_container_frame_layout,
+                R.id.primary_panel_body_container_card_view
+        );
         mExtendedLayout = view.findViewById(R.id.half_screen_vertical_guideline) != null; // TODO find a way to identify the layout
         mFloatingActionButton = view.findViewById(R.id.floating_action_button);
         if (mFloatingActionButton != null) {

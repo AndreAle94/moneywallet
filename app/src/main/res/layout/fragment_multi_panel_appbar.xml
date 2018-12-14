@@ -26,7 +26,7 @@
 
     <!-- This is the layout of the main panel -->
     <com.oriondev.moneywallet.ui.view.theme.ThemedCoordinatorLayout
-        android:id="@+id/primary_panel"
+        android:id="@+id/primary_panel_coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:theme_backgroundColor="colorWindowForeground" >
@@ -63,7 +63,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedCoordinatorLayout>
 
     <FrameLayout
-        android:id="@+id/secondary_panel"
+        android:id="@+id/secondary_panel_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

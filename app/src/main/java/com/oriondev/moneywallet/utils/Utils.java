@@ -22,7 +22,9 @@ package com.oriondev.moneywallet.utils;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.IFile;
@@ -122,6 +124,16 @@ public class Utils {
 
     public static int getRandomMDColor() {
         return PALETTE[new Random().nextInt(PALETTE.length)];
+    }
+
+    public static ViewGroup findViewGroupByIds(View root, @IdRes int... resIds) {
+        for (int redId : resIds) {
+            ViewGroup view = root.findViewById(redId);
+            if (view != null) {
+                return view;
+            }
+        }
+        return null;
     }
 
     public static ArrayList<IFile> wrapAsArrayList(List<IFile> list) {

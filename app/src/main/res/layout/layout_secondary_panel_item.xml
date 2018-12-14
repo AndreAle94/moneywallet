@@ -57,7 +57,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedFrameLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedScrollView
-        android:id="@+id/main_screen_secondary_panel_layout"
+        android:id="@+id/main_screen_secondary_panel_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 

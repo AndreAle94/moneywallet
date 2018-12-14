@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.utils.Utils;
 
 /**
  * Created by andrea on 01/04/18.
@@ -53,7 +54,10 @@ public abstract class SecondaryPanelFragment extends Fragment implements Toolbar
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_secondary_panel_item, container, false);
         mEmptyLayout = view.findViewById(R.id.empty_screen_secondary_panel_layout);
-        mMainLayout = view.findViewById(R.id.main_screen_secondary_panel_layout);
+        mMainLayout = Utils.findViewGroupByIds(view,
+                R.id.main_screen_secondary_panel_scroll_view,
+                R.id.main_screen_secondary_panel_linear_layout
+        );
         ViewGroup headerLayout = view.findViewById(R.id.header_secondary_panel_layout);
         mToolbar = view.findViewById(R.id.secondary_toolbar);
         ViewGroup bodyLayout = view.findViewById(R.id.body_secondary_panel_layout);

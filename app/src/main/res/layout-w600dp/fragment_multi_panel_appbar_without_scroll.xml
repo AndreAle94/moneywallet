@@ -26,7 +26,7 @@
 
     <!-- This is the layout of the main panel -->
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/primary_panel"
+        android:id="@+id/primary_panel_constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
@@ -51,7 +51,7 @@
         </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
-            android:id="@+id/primary_panel_body_container"
+            android:id="@+id/primary_panel_body_container_card_view"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginLeft="@dimen/layout_multi_panel_primary_panel_margin_left"
@@ -81,7 +81,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/secondary_panel"
+        android:id="@+id/secondary_panel_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

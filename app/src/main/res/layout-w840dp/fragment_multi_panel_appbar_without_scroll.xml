@@ -80,7 +80,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
-        android:id="@+id/primary_panel"
+        android:id="@+id/primary_panel_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/layout_multi_panel_primary_panel_margin_left"
@@ -95,7 +95,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
-        android:id="@+id/secondary_panel"
+        android:id="@+id/secondary_panel_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="@dimen/layout_multi_panel_primary_panel_margin_right"
