@@ -486,7 +486,7 @@
     <string name="notification_content_backup_error_wifi_network">"L'operazione è stata programmata per essere eseguita solo quando il dispositivo è connesso a una rete WiFi. Connettiti a una rete WiFi e riprova."</string>
     <string name="notification_content_backup_error_backend_recoverable">"C'è stato un errore di comunicazione con il servizio di backend. Controlla la tua connessione internet e riprova."</string>
     <string name="notification_content_backup_error_backend">"C'è stato un errore con il backend e l'auto backup è stato disabilitato. Controlla se c'è qualche problema."</string>
-    <string name="notification_content_backup_error_internal">"C'è stato un errore interno durante l'operazione, probabilmente si tratta di un bug. Per favore segnalalo allo sviluppatore."</string>
+    <string name="notification_content_backup_error_internal">"C'è stato un errore interno durante l'operazione, probabilmente si tratta di un bug. Per favore riporta questo messaggio allo sviluppatore: %s"</string>
     <string name="notification_action_retry">"Riprova"</string>
     <string name="message_error_network_connection">"Connessione di rete"</string>
     <string name="message_error_invalid_response">"Risposta non valida"</string>

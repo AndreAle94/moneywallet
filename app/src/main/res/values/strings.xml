@@ -486,7 +486,7 @@
     <string name="notification_content_backup_error_wifi_network">"The operation has been programmed to be performed only when the device is connected to a WiFi network. Connect to a WiFi network and try again."</string>
     <string name="notification_content_backup_error_backend_recoverable">"There was an error while communicating with the backend service. Check your internet connection and try again."</string>
     <string name="notification_content_backup_error_backend">"There was an error with the backend and the auto backup has been disabled. Check if there is any problem."</string>
-    <string name="notification_content_backup_error_internal">"There was an internal error during the operation, which is probably a bug. Please report it to the developer."</string>
+    <string name="notification_content_backup_error_internal">"There was an internal error during the operation, which is probably a bug. Please report this message to the developer: %s"</string>
     <string name="notification_action_retry">"Retry"</string>
     <string name="message_error_network_connection">"network connection"</string>
     <string name="message_error_invalid_response">"invalid response"</string>

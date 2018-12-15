@@ -182,7 +182,6 @@ public class BackupHandlerIntentService extends IntentService {
                 }
             } catch (Exception e) {
                 exception = e;
-                e.printStackTrace();
             }
             // handle the exception if the task failed
             if (exception != null) {
@@ -461,8 +460,9 @@ public class BackupHandlerIntentService extends IntentService {
                     mNotificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_content_backup_error_backend)));
                 }
             } else {
-                mNotificationBuilder.setContentText(getString(R.string.notification_content_backup_error_internal));
-                mNotificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_content_backup_error_internal)));
+                String message = getString(R.string.notification_content_backup_error_internal, exception.getMessage());
+                mNotificationBuilder.setContentText(message);
+                mNotificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
             }
             // use the notification service instead of the foreground service
             // because when the intent service has finished the notification
