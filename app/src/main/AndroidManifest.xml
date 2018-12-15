@@ -100,7 +100,10 @@
         <service android:name=".service.AttachmentHandlerIntentService" />
         <service android:name=".service.BackupHandlerIntentService" />
         <service android:name=".service.BackendHandlerIntentService" />
-        <service android:name=".service.RecurrenceHandlerIntentService" />
+        <service
+            android:name=".service.RecurrenceHandlerIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
         <service android:name=".service.UpgradeLegacyEditionIntentService" />
 
         <receiver android:name=".broadcast.DailyBroadcastReceiver" />
