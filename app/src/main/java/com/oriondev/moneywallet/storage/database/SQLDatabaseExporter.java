@@ -64,7 +64,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Wallet.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Wallet.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Wallet.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Wallet.UUID));
         return object;
     }
 
@@ -80,7 +79,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Category.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Category.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Category.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Category.UUID));
         return object;
     }
 
@@ -96,7 +94,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Event.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Event.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Event.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Event.UUID));
         return object;
     }
 
@@ -106,13 +103,17 @@ public class SQLDatabaseExporter {
         object.mName = cursor.getString(cursor.getColumnIndex(Schema.Place.NAME));
         object.mIcon = cursor.getString(cursor.getColumnIndex(Schema.Place.ICON));
         object.mAddress = cursor.getString(cursor.getColumnIndex(Schema.Place.ADDRESS));
-        object.mLatitude = cursor.getDouble(cursor.getColumnIndex(Schema.Place.LATITUDE));
-        object.mLongitude = cursor.getDouble(cursor.getColumnIndex(Schema.Place.LONGITUDE));
+        if (!cursor.isNull(cursor.getColumnIndex(Schema.Place.LATITUDE)) && !cursor.isNull(cursor.getColumnIndex(Schema.Place.LONGITUDE))) {
+            object.mLatitude = cursor.getDouble(cursor.getColumnIndex(Schema.Place.LATITUDE));
+            object.mLongitude = cursor.getDouble(cursor.getColumnIndex(Schema.Place.LONGITUDE));
+        } else {
+            object.mLatitude = null;
+            object.mLongitude = null;
+        }
         object.mTag = cursor.getString(cursor.getColumnIndex(Schema.Place.TAG));
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Place.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Place.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Place.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Place.UUID));
         return object;
     }
 
@@ -126,7 +127,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Person.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Person.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Person.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Person.UUID));
         return object;
     }
 
@@ -157,7 +157,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Debt.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Debt.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Debt.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Debt.UUID));
         return object;
     }
 
@@ -184,7 +183,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Budget.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Budget.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Budget.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Budget.UUID));
         return object;
     }
 
@@ -213,7 +211,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Saving.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Saving.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Saving.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Saving.UUID));
         return object;
     }
 
@@ -288,7 +285,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Transaction.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Transaction.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Transaction.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Transaction.UUID));
         return object;
     }
 
@@ -340,7 +336,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Transfer.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Transfer.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Transfer.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Transfer.UUID));
         return object;
     }
 
@@ -386,7 +381,6 @@ public class SQLDatabaseExporter {
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Attachment.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Attachment.LAST_EDIT));
         object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Attachment.DELETED)) == 1;
-        String identifier = cursor.getString(cursor.getColumnIndex(Schema.Attachment.UUID));
         return object;
     }
 
