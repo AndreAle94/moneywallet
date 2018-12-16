@@ -270,6 +270,8 @@ public class PlaceItemFragment extends SecondaryPanelFragment implements LoaderM
                         cursor.getDouble(cursor.getColumnIndex(Contract.Place.LATITUDE)),
                         cursor.getDouble(cursor.getColumnIndex(Contract.Place.LONGITUDE))
                 );
+            } else {
+                mCoordinates = null;
             }
             onCoordinatesChanged();
         } else {

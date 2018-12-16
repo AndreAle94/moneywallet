@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.model.Coordinates;
 import com.oriondev.moneywallet.model.Icon;
 import com.oriondev.moneywallet.model.Place;
 import com.oriondev.moneywallet.picker.IconPicker;
@@ -211,8 +212,14 @@ public class NewEditPlaceActivity extends NewEditItemActivity implements IconPic
             contentValues.put(Contract.Place.NAME, mNameEditText.getTextAsString());
             contentValues.put(Contract.Place.ICON, mIconPicker.getCurrentIcon().toString());
             contentValues.put(Contract.Place.ADDRESS, mAddressEditText.getTextAsString());
-            contentValues.put(Contract.Place.LATITUDE, mPlacePicker.isSelected() ? mPlacePicker.getCurrentPlace().getCoordinates().getLatitude() : null);
-            contentValues.put(Contract.Place.LONGITUDE, mPlacePicker.isSelected() ? mPlacePicker.getCurrentPlace().getCoordinates().getLongitude() : null);
+            if (mPlacePicker.isSelected() && mPlacePicker.getCurrentPlace().hasCoordinates()) {
+                Coordinates coordinates = mPlacePicker.getCurrentPlace().getCoordinates();
+                contentValues.put(Contract.Place.LATITUDE, coordinates.getLatitude());
+                contentValues.put(Contract.Place.LONGITUDE, coordinates.getLongitude());
+            } else {
+                contentValues.putNull(Contract.Place.LATITUDE);
+                contentValues.putNull(Contract.Place.LONGITUDE);
+            }
             switch (mode) {
                 case NEW_ITEM:
                     contentResolver.insert(DataContentProvider.CONTENT_PLACES, contentValues);
