@@ -42,11 +42,6 @@ allprojects {
 
 ext {
     versions = [
-            versionCode: 60,
-            versionName: "4.0.3.4",
-            minSdkVersion: 21,
-            compileSdkVersion: 27,
-            targetSdkVersion: 27,
             supportLib: "27.1.1"
     ]
     supportDependencies = [

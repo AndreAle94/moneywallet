@@ -20,13 +20,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion versions.compileSdkVersion
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.oriondev.moneywallet"
-        minSdkVersion versions.minSdkVersion
-        targetSdkVersion versions.targetSdkVersion
-        versionCode versions.versionCode
-        versionName versions.versionName
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 60
+        versionName "4.0.3.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [
