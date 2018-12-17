@@ -1,0 +1,155 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="menu_transaction">"Transakcije"</string>
+    <string name="menu_category">"Kategorije"</string>
+    <string name="menu_overview">"Pregled"</string>
+    <string name="menu_debt">"Dugovi"</string>
+    <string name="menu_budget">"Budžeti"</string>
+    <string name="menu_saving">"Štednje"</string>
+    <string name="menu_event">"Događaji"</string>
+    <string name="menu_converter">"Pretvarač"</string>
+    <string name="menu_calculator">"Kalkulator"</string>
+    <string name="menu_search_atm">"Traži bankomat"</string>
+    <string name="menu_search_bank">"Traži banku"</string>
+    <string name="menu_setting">"Postavke"</string>
+    <string name="menu_about">"O aplikaciji"</string>
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transfers">"Prijenosi"</string>
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"Priljev"</string>
+    <string name="menu_category_tab_system">"Sistem"</string>
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"dugovi"</string>
+    <string name="menu_debt_tab_credit">"krediti"</string>
+    <!-- Budgets -->
+    <string name="menu_budget_tab_expired">"Isteklo"</string>
+    <!-- Savings -->
+    <string name="menu_saving_tab_completed">"Dovršeno"</string>
+    <!-- Events -->
+    <!-- Models -->
+    <string name="action_new_wallet">"Novi novčanik"</string>
+    <string name="action_manage_wallets">"Upravljaj novčanicima"</string>
+    <string name="action_pay_debt">"Plati"</string>
+    <string name="action_receive_debt">"Primi"</string>
+    <string name="action_withdraw">"Podigni"</string>
+    <string name="action_deposit">"Položi"</string>
+    <string name="action_withdraw_everything">"Podigni sve"</string>
+    <string name="action_add">"Dodaj unos"</string>
+    <string name="msg_no_wallet_found">"Dodirni ovdje i napravi jedan"</string>
+    <string name="msg_add_one_wallet">"Molim dodaj jedan novčanik"</string>
+    <string name="hint_description">"Opis"</string>
+    <string name="hint_category">"Kategorija"</string>
+    <string name="hint_date">"Datum"</string>
+    <string name="hint_start_date">"Datum početka"</string>
+    <string name="hint_end_date">"Datum završetka"</string>
+    <string name="hint_expiration_date">"Datum isteka"</string>
+    <string name="hint_wallet">"Novčanik"</string>
+    <string name="hint_wallets">"Novčanici"</string>
+    <string name="hint_wallet_from">"Iz"</string>
+    <string name="hint_wallet_to">"U"</string>
+    <string name="hint_event">"Događaj"</string>
+    <string name="hint_place">"Mjesto"</string>
+    <string name="hint_note">"Bilješka"</string>
+    <string name="hint_tax">"Porez na transakciju"</string>
+    <string name="hint_atm_name">"Naziv bankomata"</string>
+    <string name="hint_bank_name">"Naziv banke"</string>
+    <string name="hint_show_currency_symbol">"Prikaži oznaku valute"</string>
+    <string name="hint_group_digits">"Grupiraj znamenke"</string>
+    <string name="hint_round_decimals">"Zaokruži decimale"</string>
+    <string name="total_wallet_name">"Ukupno"</string>
+    <string name="title_activity_new_wallet">Novi novčanik</string>
+    <string name="title_activity_edit_wallet">Uredi novčanik</string>
+    <string name="title_activity_new_transaction">"Nova transakcija"</string>
+    <string name="title_activity_edit_transaction">"Uredi transakciju"</string>
+    <string name="title_activity_new_category">"Nova kategorija"</string>
+    <string name="title_activity_edit_category">"Uredi kategoriju"</string>
+    <string name="title_activity_new_debt">"Novi dug"</string>
+    <string name="title_activity_edit_debt">"Uredi dug"</string>
+    <string name="title_activity_new_budget">"Novi budžet"</string>
+    <string name="title_activity_edit_budget">"Uredi budžet"</string>
+    <string name="title_activity_new_saving">"Nova štednja"</string>
+    <string name="title_activity_edit_saving">"Uredi štednju"</string>
+    <string name="title_activity_new_event">"Novi događaj"</string>
+    <string name="title_activity_edit_event">"Uredi događaj"</string>
+    <string name="title_activity_category_picker">Odaberi ikonu</string>
+    <string name="title_activity_calculator">Kalkulator</string>
+    <string name="title_activity_currency_converter">"Pretvarač valuta"</string>
+    <string name="menu_advanced_settings">"Napredno"</string>
+    <string name="menu_action_edit_item">"Uredi"</string>
+    <string name="menu_action_delete_item">"Izbriši"</string>
+    <string name="menu_action_search_item">"Pretraži"</string>
+    <string name="menu_action_open_calendar">"Kalendar"</string>
+    <string name="menu_action_open_map">"Karta"</string>
+    <string name="menu_action_service_disconnect">"Odspoji"</string>
+    <string name="error_input_missing_wallet">"Molim odaberi ispravan novčanik"</string>
+    <string name="error_input_missing_category">"Molim odaberi ispravnu kategoriju"</string>
+    <string name="system_category_transfer">"Prebačeni novac"</string>
+    <string name="system_category_transfer_tax">"Porez na prijenos"</string>
+    <string name="system_category_debt">Dug</string>
+    <string name="system_category_debt_paid">Otplata duga</string>
+    <string name="system_category_credit">Kredit</string>
+    <string name="system_category_credit_paid">Otplata kredita</string>
+    <string name="system_category_generic_tax">Naknada</string>
+    <string name="system_category_saving_in">"Ušteda"</string>
+    <string name="system_category_saving_out">"Podizanje"</string>
+    <string name="default_category_tip">"Napojnica"</string>
+    <string name="default_category_prize">"Nagrada"</string>
+    <string name="default_category_salary">"Plaća"</string>
+    <string name="default_category_interests">"Interesi"</string>
+    <string name="default_category_sale">"Rasprodaja"</string>
+    <string name="default_category_car_expenses">"Troškovi za auto"</string>
+    <string name="default_category_travel">"Putovanje"</string>
+    <string name="default_category_friends">"Prijatelji"</string>
+    <string name="default_category_technology">"Tehnologija"</string>
+    <string name="default_category_food_drinks">"Hrana i pića"</string>
+    <string name="default_category_hobby">"Hobi"</string>
+    <string name="message_no_wallet_found">"Nije pronađen niti jedan novčanik"</string>
+    <string name="message_no_transaction_found">"Nije pronađena niti jedna transakcija"</string>
+    <string name="message_no_transfer_found">"Nije pronađen niti jedan prijenos"</string>
+    <string name="message_no_category_found">"Nije pronađena niti jedna kategorija"</string>
+    <string name="message_no_debt_found">"Nije pronađen niti jedan dug"</string>
+    <string name="message_no_recurrence_found">"Nije pronađeno niti jedno ponavljanje"</string>
+    <string name="setting_title_user_interface">"Korisničko sučelje"</string>
+    <string name="setting_title_utility">"Korisno"</string>
+    <string name="setting_title_about">"Informacija"</string>
+    <string name="setting_title_ui_income_color">"Boja priljeva"</string>
+    <string name="setting_title_ui_expense_color">"Boja odljeva"</string>
+    <string name="setting_title_ui_custom_digits">"Stil prikaza znamenki "</string>
+    <string name="setting_title_ui_date_format">"Oblik datuma"</string>
+    <string name="setting_title_ui_first_day_week">"Prvi dan tjedna"</string>
+    <string name="setting_title_ui_first_day_month">"Prvi dan mjeseca"</string>
+    <string name="setting_title_ui_group_type">"Tip grupacije"</string>
+    <string name="setting_title_ui_theme_color_primary">"Primarna boja"</string>
+    <string name="setting_title_ui_theme_color_accent">"Boja akcenta"</string>
+    <string name="setting_title_daily_reminder">"Dnevni podsjetnik"</string>
+    <string name="setting_item_ui_group_type_daily">"Grupiraj dnevno"</string>
+    <string name="setting_item_ui_group_type_weekly">"Grupiraj tjedno"</string>
+    <string name="setting_item_ui_group_type_monthly">"Grupiraj mjesečno"</string>
+    <string name="setting_item_ui_group_type_yearly">"Grupiraj godišnje"</string>
+    <string name="setting_item_ui_theme_type_light">"Svijetla tema"</string>
+    <string name="setting_item_ui_theme_type_dark">"Tamna tema"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"Jako tamna tema"</string>
+    <string name="notification_title_daily_reminder_title">Ima li danas transakcija?</string>
+    <string name="notification_title_daily_reminder_text">Dodirni ovdje da je odmah dodaš</string>
+    <string name="about_hint_version">"Inačica"</string>
+    <string name="about_hint_changelog">"Izvještaj promjena"</string>
+    <string name="about_hint_translators">"Prevoditelji"</string>
+</resources>

@@ -1,0 +1,139 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="menu_transaction">"Tranzacții"</string>
+    <string name="menu_category">"Categorii"</string>
+    <string name="menu_overview">"Prezentare generală"</string>
+    <string name="menu_debt">"Datorii"</string>
+    <string name="menu_budget">"Bugete"</string>
+    <string name="menu_saving">"Economii"</string>
+    <string name="menu_event">"Evenimente"</string>
+    <string name="menu_converter">"Convertizor"</string>
+    <string name="menu_calculator">"Calculator"</string>
+    <string name="menu_search_atm">"Caută Atm"</string>
+    <string name="menu_search_bank">"Caută Bancă"</string>
+    <string name="menu_setting">"Setări"</string>
+    <string name="menu_about">"Despre"</string>
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transfers">"Transferuri"</string>
+    <!-- Categories -->
+    <string name="menu_category_tab_system">"Sistem"</string>
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"datorii"</string>
+    <string name="menu_debt_tab_credit">"credite"</string>
+    <!-- Budgets -->
+    <string name="menu_budget_tab_expired">"Expirat"</string>
+    <!-- Savings -->
+    <string name="menu_saving_tab_completed">"Complet"</string>
+    <!-- Events -->
+    <!-- Models -->
+    <string name="action_new_wallet">"Portofel nou"</string>
+    <string name="action_manage_wallets">"Administrează Portofele"</string>
+    <string name="action_withdraw">"Retragere"</string>
+    <string name="action_deposit">"Depozit"</string>
+    <string name="action_add">"Adaugă intrare"</string>
+    <string name="msg_no_wallet_found">"Atingeți aici și adaugați un portofel"</string>
+    <string name="msg_add_one_wallet">"Vă rugăm să adăugați un Portofel"</string>
+    <string name="hint_description">"Descriere"</string>
+    <string name="hint_category">"Categorie"</string>
+    <string name="hint_date">"Dată"</string>
+    <string name="hint_start_date">"Data de început"</string>
+    <string name="hint_end_date">"Data de sfîrșit"</string>
+    <string name="hint_expiration_date">"Data de exprirare"</string>
+    <string name="hint_wallet">"Portofel"</string>
+    <string name="hint_wallets">"Portofele"</string>
+    <string name="hint_wallet_from">"De la"</string>
+    <string name="hint_wallet_to">"Pentru"</string>
+    <string name="hint_event">"Eveniment"</string>
+    <string name="hint_place">"Loc"</string>
+    <string name="hint_note">"Notă"</string>
+    <string name="hint_tax">"Taxă tranzacție"</string>
+    <string name="hint_atm_name">"Numele Atm-ului"</string>
+    <string name="hint_bank_name">"Numele Băncii"</string>
+    <string name="hint_show_currency_symbol">"Afișați simbolul monedei"</string>
+    <string name="hint_round_decimals">"Rotunjește zecimalele"</string>
+    <string name="total_wallet_name">"Total"</string>
+    <string name="title_activity_new_wallet">Portofel nou</string>
+    <string name="title_activity_edit_wallet">Modifică Portofel</string>
+    <string name="title_activity_new_transaction">"Tranzacție nouă"</string>
+    <string name="title_activity_edit_transaction">"Modifică tranzacția"</string>
+    <string name="title_activity_new_category">"Categorie nouă"</string>
+    <string name="title_activity_edit_category">"Modifică categorie"</string>
+    <string name="title_activity_new_debt">"Datorie nouă"</string>
+    <string name="title_activity_edit_debt">"Modifică Datorie"</string>
+    <string name="title_activity_new_budget">"Buget nou"</string>
+    <string name="title_activity_edit_budget">"Modifică Buget"</string>
+    <string name="title_activity_new_saving">"Economie nouă"</string>
+    <string name="title_activity_edit_saving">"Modifică Economie"</string>
+    <string name="title_activity_new_event">"Eveniment nou"</string>
+    <string name="title_activity_edit_event">"Modifică Eveniment"</string>
+    <string name="title_activity_category_picker">Alege o pictogramă</string>
+    <string name="title_activity_calculator">Calculator</string>
+    <string name="title_activity_currency_converter">"Convertor valutar"</string>
+    <string name="menu_advanced_settings">"Avansat"</string>
+    <string name="menu_action_edit_item">"Editare"</string>
+    <string name="menu_action_delete_item">"Ștergere"</string>
+    <string name="menu_action_search_item">"Căutare"</string>
+    <string name="menu_action_open_calendar">"Calendar"</string>
+    <string name="menu_action_open_map">"Hartă"</string>
+    <string name="menu_action_service_disconnect">"Deconectare"</string>
+    <string name="error_input_missing_wallet">"Vă rugăm să selectați un portofel valid"</string>
+    <string name="error_input_missing_category">"Vă rugăm să selectați o categorie validă"</string>
+    <string name="system_category_transfer">"Banii transferați"</string>
+    <string name="system_category_transfer_tax">"Impozit pe transfer"</string>
+    <string name="system_category_debt">Datorie</string>
+    <string name="system_category_debt_paid">Plata datoriei</string>
+    <string name="system_category_credit">Credit</string>
+    <string name="system_category_credit_paid">Plata creditului</string>
+    <string name="system_category_generic_tax">Impozit pe operațiune</string>
+    <string name="system_category_saving_in">"Economie"</string>
+    <string name="system_category_saving_out">"Retragere"</string>
+    <string name="default_category_prize">"Cîștiguri"</string>
+    <string name="default_category_salary">"Salariu"</string>
+    <string name="default_category_sale">"Vînzare"</string>
+    <string name="default_category_travel">"Călătorie"</string>
+    <string name="default_category_friends">"Prieteni"</string>
+    <string name="default_category_technology">"Tehnologie"</string>
+    <string name="default_category_food_drinks">"Mîncare si băuturi"</string>
+    <string name="default_category_hobby">"Pasiuni"</string>
+    <string name="message_no_wallet_found">"Nu a fost găsit nici un portofel"</string>
+    <string name="message_no_transaction_found">"Nici o tranzacție găsită"</string>
+    <string name="message_no_transfer_found">"Nici un transfer găsit"</string>
+    <string name="message_no_category_found">"Nici o categorie gasită"</string>
+    <string name="message_no_debt_found">"Nici o datorie gasită"</string>
+    <string name="setting_title_user_interface">"Interfață utilizator"</string>
+    <string name="setting_title_utility">"Utilitate"</string>
+    <string name="setting_title_about">"Informații"</string>
+    <string name="setting_title_ui_income_color">"Culoare Inflow"</string>
+    <string name="setting_title_ui_expense_color">"Culoare Outflow"</string>
+    <string name="setting_title_ui_custom_digits">"Stilul de afișare a cifrelor"</string>
+    <string name="setting_title_ui_date_format">"Formatul datei"</string>
+    <string name="setting_title_ui_first_day_week">"Prima zi a săptămînii"</string>
+    <string name="setting_title_ui_first_day_month">"Prima zi a lunii"</string>
+    <string name="setting_title_ui_group_type">"Tipul de Grup"</string>
+    <string name="setting_title_ui_theme_color_primary">"Culoarea primară"</string>
+    <string name="setting_title_daily_reminder">"Reamintire zilnică"</string>
+    <string name="setting_item_ui_group_type_daily">"Fii atent!"</string>
+    <string name="notification_title_daily_reminder_title">Vreo tranzacție astăzi?</string>
+    <string name="notification_title_daily_reminder_text">Atingeți aici pentru a o adăuga imediat</string>
+    <string name="about_hint_version">"Versiunea"</string>
+    <string name="about_hint_changelog">"Info modificări"</string>
+    <string name="about_hint_translators">"Traducători"</string>
+</resources>

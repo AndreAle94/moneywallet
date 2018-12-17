@@ -17,7 +17,7 @@
   ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">MoneyWallet</string>
 
     <string name="menu_transaction">"Transazioni"</string>

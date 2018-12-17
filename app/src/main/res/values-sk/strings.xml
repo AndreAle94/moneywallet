@@ -1,0 +1,155 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="menu_transaction">"Transakcie"</string>
+    <string name="menu_category">"Kategórie"</string>
+    <string name="menu_overview">"Prehľad"</string>
+    <string name="menu_debt">"Dlhy"</string>
+    <string name="menu_budget">"Rozpočty"</string>
+    <string name="menu_saving">"Úspory"</string>
+    <string name="menu_event">"Udalosti"</string>
+    <string name="menu_converter">"Konvertor"</string>
+    <string name="menu_calculator">"Kalkulačka"</string>
+    <string name="menu_search_atm">"Hľadať bankomat"</string>
+    <string name="menu_search_bank">"Hľadať banku"</string>
+    <string name="menu_setting">"Nastavenia"</string>
+    <string name="menu_about">"O aplikácii"</string>
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transfers">"Prevody"</string>
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"Príjem"</string>
+    <string name="menu_category_tab_system">"Systém"</string>
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"dlhy"</string>
+    <string name="menu_debt_tab_credit">"pohľadávky"</string>
+    <!-- Budgets -->
+    <string name="menu_budget_tab_expired">"Po splatnosti"</string>
+    <!-- Savings -->
+    <string name="menu_saving_tab_completed">"Dokončené"</string>
+    <!-- Events -->
+    <!-- Models -->
+    <string name="action_new_wallet">"Nová peňaženka"</string>
+    <string name="action_manage_wallets">"Spravovať peňaženky"</string>
+    <string name="action_pay_debt">"Zaplatiť"</string>
+    <string name="action_receive_debt">"Obdržať"</string>
+    <string name="action_withdraw">"Vybrať"</string>
+    <string name="action_deposit">"Záloha"</string>
+    <string name="action_withdraw_everything">"Vybrať všetko"</string>
+    <string name="action_add">"Pridať záznam"</string>
+    <string name="msg_no_wallet_found">"Kliknite tu a poďte pridať jednu"</string>
+    <string name="msg_add_one_wallet">"Prosím, pridajte jednu peňaženku"</string>
+    <string name="hint_description">"Popis"</string>
+    <string name="hint_category">"Kategória"</string>
+    <string name="hint_date">"Dátum"</string>
+    <string name="hint_start_date">"Dátum začatia"</string>
+    <string name="hint_end_date">"Dátum ukončenia"</string>
+    <string name="hint_expiration_date">"Dátum splatnosti"</string>
+    <string name="hint_wallet">"Peňaženka"</string>
+    <string name="hint_wallets">"Peňaženky"</string>
+    <string name="hint_wallet_from">"Od"</string>
+    <string name="hint_wallet_to">"Do"</string>
+    <string name="hint_event">"Udalosť"</string>
+    <string name="hint_place">"Miesto"</string>
+    <string name="hint_note">"Poznámka"</string>
+    <string name="hint_tax">"Daň z transakcie"</string>
+    <string name="hint_atm_name">"Názov bankomatu"</string>
+    <string name="hint_bank_name">"Názov banky"</string>
+    <string name="hint_show_currency_symbol">"Zobraziť symbol meny"</string>
+    <string name="hint_group_digits">"Zoskupenie číslic"</string>
+    <string name="hint_round_decimals">"Zaokrúhlenie desatinných miest"</string>
+    <string name="total_wallet_name">"Spolu"</string>
+    <string name="title_activity_new_wallet">Nová peňaženka</string>
+    <string name="title_activity_edit_wallet">Upraviť peňaženku</string>
+    <string name="title_activity_new_transaction">"Nová transakcia"</string>
+    <string name="title_activity_edit_transaction">"Upraviť transakciu"</string>
+    <string name="title_activity_new_category">"Nová kategória"</string>
+    <string name="title_activity_edit_category">"Upraviť kategóriu"</string>
+    <string name="title_activity_new_debt">"Nový dlh"</string>
+    <string name="title_activity_edit_debt">"Upraviť dlh"</string>
+    <string name="title_activity_new_budget">"Nový rozpočet"</string>
+    <string name="title_activity_edit_budget">"Upraviť rozpočet"</string>
+    <string name="title_activity_new_saving">"Nové úspory"</string>
+    <string name="title_activity_edit_saving">"Upraviť úspory"</string>
+    <string name="title_activity_new_event">"Nová udalosť"</string>
+    <string name="title_activity_edit_event">"Upraviť udalosť"</string>
+    <string name="title_activity_category_picker">Vyľba ikony</string>
+    <string name="title_activity_calculator">Kalkulačka</string>
+    <string name="title_activity_currency_converter">"Konvertor meny"</string>
+    <string name="menu_advanced_settings">"Pokročilé"</string>
+    <string name="menu_action_edit_item">"Upraviť"</string>
+    <string name="menu_action_delete_item">"Vymazať"</string>
+    <string name="menu_action_search_item">"Hľadať"</string>
+    <string name="menu_action_open_calendar">"Kalendár"</string>
+    <string name="menu_action_open_map">"Mapa"</string>
+    <string name="menu_action_service_disconnect">"Odpojiť"</string>
+    <string name="error_input_missing_wallet">"Prosím, vyberte platnú peňaženku"</string>
+    <string name="error_input_missing_category">"Prosím, vyberte platnú kategóriu"</string>
+    <string name="system_category_transfer">"Peniaze prevedené"</string>
+    <string name="system_category_transfer_tax">"Daň z prevodu"</string>
+    <string name="system_category_debt">Dlh</string>
+    <string name="system_category_debt_paid">Úhrada dlhu</string>
+    <string name="system_category_credit">Pohľadávka</string>
+    <string name="system_category_credit_paid">Inkaso pohľadávky</string>
+    <string name="system_category_generic_tax">Daň z prevádzky</string>
+    <string name="system_category_saving_in">"Úspory"</string>
+    <string name="system_category_saving_out">"Výber peňazí"</string>
+    <string name="default_category_tip">"Výhra"</string>
+    <string name="default_category_prize">"Odmena"</string>
+    <string name="default_category_salary">"Plat"</string>
+    <string name="default_category_interests">"Záujmy"</string>
+    <string name="default_category_sale">"Predaj"</string>
+    <string name="default_category_car_expenses">"Výdavky na auto"</string>
+    <string name="default_category_travel">"Cestovné"</string>
+    <string name="default_category_friends">"Priatelia"</string>
+    <string name="default_category_technology">"Technológie"</string>
+    <string name="default_category_food_drinks">"Jedlo a pitie"</string>
+    <string name="default_category_hobby">"Záľuby"</string>
+    <string name="message_no_wallet_found">"Žiadna peňaženka nenájdená"</string>
+    <string name="message_no_transaction_found">"Žiadne transakcie nenájdené"</string>
+    <string name="message_no_transfer_found">"Žiadne prevody nenájdené"</string>
+    <string name="message_no_category_found">"Žiadna kategória nenájdená"</string>
+    <string name="message_no_debt_found">"Žiadne dlhy nenájdené"</string>
+    <string name="message_no_recurrence_found">"Žiadne opakovanie nenájdené"</string>
+    <string name="setting_title_user_interface">"Používateľské rozhranie"</string>
+    <string name="setting_title_utility">"Užitočné"</string>
+    <string name="setting_title_about">"Informácie"</string>
+    <string name="setting_title_ui_income_color">"Farba príjmov"</string>
+    <string name="setting_title_ui_expense_color">"Farba výdavkov"</string>
+    <string name="setting_title_ui_custom_digits">"Štýl zobrazenia číslic"</string>
+    <string name="setting_title_ui_date_format">"Formát dátumu"</string>
+    <string name="setting_title_ui_first_day_week">"Prvý deň v týždni"</string>
+    <string name="setting_title_ui_first_day_month">"Prvý deň v mesiaci"</string>
+    <string name="setting_title_ui_group_type">"Typ zoskupovania"</string>
+    <string name="setting_title_ui_theme_color_primary">"Základná farba"</string>
+    <string name="setting_title_ui_theme_color_accent">"Farba zvýraznenia"</string>
+    <string name="setting_title_daily_reminder">"Denné pripomenutie"</string>
+    <string name="setting_item_ui_group_type_daily">"Zoskupiť denne"</string>
+    <string name="setting_item_ui_group_type_weekly">"Zoskupiť týždenne"</string>
+    <string name="setting_item_ui_group_type_monthly">"Zoskupiť mesačne"</string>
+    <string name="setting_item_ui_group_type_yearly">"Zoskupiť ročne"</string>
+    <string name="setting_item_ui_theme_type_light">"Svetlá téma"</string>
+    <string name="setting_item_ui_theme_type_dark">"Tmavá téma"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"Hlboká tmavá téma"</string>
+    <string name="notification_title_daily_reminder_title">Nejaká transakcia na dnes?</string>
+    <string name="notification_title_daily_reminder_text">Kliknite tu, pre okamžité pridanie</string>
+    <string name="about_hint_version">"Verzia"</string>
+    <string name="about_hint_changelog">"Zoznam zmien"</string>
+    <string name="about_hint_translators">"Prekladatelia"</string>
+</resources>

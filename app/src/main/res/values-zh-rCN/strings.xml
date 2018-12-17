@@ -1,0 +1,155 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="menu_transaction">"收支"</string>
+    <string name="menu_category">"分类"</string>
+    <string name="menu_overview">"概览"</string>
+    <string name="menu_debt">"债务"</string>
+    <string name="menu_budget">"预算"</string>
+    <string name="menu_saving">"存款"</string>
+    <string name="menu_event">"事件"</string>
+    <string name="menu_converter">"汇率换算"</string>
+    <string name="menu_calculator">"计算器"</string>
+    <string name="menu_search_atm">"搜索自动取款机"</string>
+    <string name="menu_search_bank">"搜索银行"</string>
+    <string name="menu_setting">"设置"</string>
+    <string name="menu_about">"关于"</string>
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transfers">"转账"</string>
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"收入"</string>
+    <string name="menu_category_tab_system">"系统"</string>
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"借入款项"</string>
+    <string name="menu_debt_tab_credit">"借出款项"</string>
+    <!-- Budgets -->
+    <string name="menu_budget_tab_expired">"已过期"</string>
+    <!-- Savings -->
+    <string name="menu_saving_tab_completed">"已完成"</string>
+    <!-- Events -->
+    <!-- Models -->
+    <string name="action_new_wallet">"新的钱包"</string>
+    <string name="action_manage_wallets">"管理钱包"</string>
+    <string name="action_pay_debt">"付款"</string>
+    <string name="action_receive_debt">"收款"</string>
+    <string name="action_withdraw">"收回"</string>
+    <string name="action_deposit">"储蓄"</string>
+    <string name="action_withdraw_everything">"收回全部"</string>
+    <string name="action_add">"增加条目"</string>
+    <string name="msg_no_wallet_found">"点击此处来添加一个"</string>
+    <string name="msg_add_one_wallet">"请添加一个钱包"</string>
+    <string name="hint_description">"描述"</string>
+    <string name="hint_category">"分类"</string>
+    <string name="hint_date">"日期"</string>
+    <string name="hint_start_date">"开始日期"</string>
+    <string name="hint_end_date">"结束日期"</string>
+    <string name="hint_expiration_date">"截止日期"</string>
+    <string name="hint_wallet">"钱包"</string>
+    <string name="hint_wallets">"钱包"</string>
+    <string name="hint_wallet_from">"从"</string>
+    <string name="hint_wallet_to">"到"</string>
+    <string name="hint_event">"事件"</string>
+    <string name="hint_place">"地点"</string>
+    <string name="hint_note">"笔记"</string>
+    <string name="hint_tax">"交易税"</string>
+    <string name="hint_atm_name">"自动取款机名称"</string>
+    <string name="hint_bank_name">"银行名称"</string>
+    <string name="hint_show_currency_symbol">"显示货币符号"</string>
+    <string name="hint_group_digits">"千位分隔符"</string>
+    <string name="hint_round_decimals">"省略小数"</string>
+    <string name="total_wallet_name">"所有钱包"</string>
+    <string name="title_activity_new_wallet">新的钱包</string>
+    <string name="title_activity_edit_wallet">编辑钱包</string>
+    <string name="title_activity_new_transaction">"新的交易"</string>
+    <string name="title_activity_edit_transaction">"编辑交易"</string>
+    <string name="title_activity_new_category">"新的分类"</string>
+    <string name="title_activity_edit_category">"编辑分类"</string>
+    <string name="title_activity_new_debt">"新的债务"</string>
+    <string name="title_activity_edit_debt">"编辑债务"</string>
+    <string name="title_activity_new_budget">"新的预算"</string>
+    <string name="title_activity_edit_budget">"编辑预算"</string>
+    <string name="title_activity_new_saving">"新的存款"</string>
+    <string name="title_activity_edit_saving">"编辑存款"</string>
+    <string name="title_activity_new_event">"新的事件"</string>
+    <string name="title_activity_edit_event">"编辑事件"</string>
+    <string name="title_activity_category_picker">选择一个图标</string>
+    <string name="title_activity_calculator">计算器</string>
+    <string name="title_activity_currency_converter">"货币换算"</string>
+    <string name="menu_advanced_settings">"高级"</string>
+    <string name="menu_action_edit_item">"编辑"</string>
+    <string name="menu_action_delete_item">"删除"</string>
+    <string name="menu_action_search_item">"搜索"</string>
+    <string name="menu_action_open_calendar">"日历"</string>
+    <string name="menu_action_open_map">"地图"</string>
+    <string name="menu_action_service_disconnect">"断开"</string>
+    <string name="error_input_missing_wallet">"请选择一个有效的钱包"</string>
+    <string name="error_input_missing_category">"请选择一个有效的分类"</string>
+    <string name="system_category_transfer">"转账"</string>
+    <string name="system_category_transfer_tax">"转账税"</string>
+    <string name="system_category_debt">借入款项</string>
+    <string name="system_category_debt_paid">借入款项偿还</string>
+    <string name="system_category_credit">借出款项</string>
+    <string name="system_category_credit_paid">借出款项偿还</string>
+    <string name="system_category_generic_tax">营业税</string>
+    <string name="system_category_saving_in">"存款"</string>
+    <string name="system_category_saving_out">"收回"</string>
+    <string name="default_category_tip">"小费"</string>
+    <string name="default_category_prize">"奖金"</string>
+    <string name="default_category_salary">"工资"</string>
+    <string name="default_category_interests">"利息"</string>
+    <string name="default_category_sale">"出售"</string>
+    <string name="default_category_car_expenses">"汽车费用"</string>
+    <string name="default_category_travel">"旅行"</string>
+    <string name="default_category_friends">"朋友"</string>
+    <string name="default_category_technology">"科技"</string>
+    <string name="default_category_food_drinks">"食物和饮料"</string>
+    <string name="default_category_hobby">"爱好"</string>
+    <string name="message_no_wallet_found">"找不到钱包"</string>
+    <string name="message_no_transaction_found">"找不到交易"</string>
+    <string name="message_no_transfer_found">"找不到转账"</string>
+    <string name="message_no_category_found">"找不到分类"</string>
+    <string name="message_no_debt_found">"找不到借入款项"</string>
+    <string name="message_no_recurrence_found">"找不到重复性交易"</string>
+    <string name="setting_title_user_interface">"用户界面"</string>
+    <string name="setting_title_utility">"功能"</string>
+    <string name="setting_title_about">"信息"</string>
+    <string name="setting_title_ui_income_color">"收入颜色"</string>
+    <string name="setting_title_ui_expense_color">"支出颜色"</string>
+    <string name="setting_title_ui_custom_digits">"数字的显示样式"</string>
+    <string name="setting_title_ui_date_format">"日期格式"</string>
+    <string name="setting_title_ui_first_day_week">"每周的起始日"</string>
+    <string name="setting_title_ui_first_day_month">"每月的起始日"</string>
+    <string name="setting_title_ui_group_type">"分组类型"</string>
+    <string name="setting_title_ui_theme_color_primary">"主色调"</string>
+    <string name="setting_title_ui_theme_color_accent">"高亮色"</string>
+    <string name="setting_title_daily_reminder">"每日提醒"</string>
+    <string name="setting_item_ui_group_type_daily">"按日分组"</string>
+    <string name="setting_item_ui_group_type_weekly">"按周分组"</string>
+    <string name="setting_item_ui_group_type_monthly">"按月分组"</string>
+    <string name="setting_item_ui_group_type_yearly">"按年分组"</string>
+    <string name="setting_item_ui_theme_type_light">"亮色主题"</string>
+    <string name="setting_item_ui_theme_type_dark">"暗色主题"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"纯黑主题"</string>
+    <string name="notification_title_daily_reminder_title">今天有任何交易吗？</string>
+    <string name="notification_title_daily_reminder_text">点击此处立即添加</string>
+    <string name="about_hint_version">"版本"</string>
+    <string name="about_hint_changelog">"更新日志"</string>
+    <string name="about_hint_translators">"翻译者"</string>
+</resources>
