@@ -1,0 +1,154 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+
+    <!-- Transactions -->
+
+    <!-- Categories -->
+
+    <!-- Debts -->
+
+    <!-- Budgets -->
+
+    <!-- Savings -->
+
+    <!-- Events -->
+
+    <!-- Models -->
+
+    <string name="action_new_wallet">Nouveau portefeuille</string>
+    <string name="action_manage_wallets">Gérer les portefeuilles</string>
+    <string name="action_pay_debt">Payer</string>
+    <string name="action_receive_debt">Recevoir</string>
+    <string name="action_add">Ajouter</string>
+    <string name="action_new">Nouveau</string>
+    <string name="action_edit">Éditer</string>
+    <string name="action_search">Rechercher</string>
+    <string name="action_remove">Supprimer</string>
+    <string name="action_open">Ouvrir</string>
+
+
+
+
+
+
+
+
+
+    <string name="bottom_sheet_icon_picker_title">Personnaliser l\'îcone</string>
+    <string name="bottom_sheet_icon_picker_action_select_icon">Sélectionner une icône</string>
+    <string name="bottom_sheet_icon_picker_action_change_icon">Changer l\'îcone</string>
+    <string name="bottom_sheet_icon_picker_action_remove_icon">Supprimer l\'îcone</string>
+    <string name="bottom_sheet_icon_picker_action_change_bg_color">Changer la couleur de l\'arrière plan</string>
+
+    <string name="dialog_wallet_picker_title">Portefeuilles</string>
+    <string name="dialog_category_picker_title">Catégories</string>
+    <string name="dialog_overview_setting_title">Paramètres avancés</string>
+    <string name="dialog_auto_backup_title">Sauvegarde automatique</string>
+
+    <string name="error_input_missing_wallet">Sélectionner un portefeuille</string>
+    <string name="error_input_missing_date">Sélectionnez une date</string>
+    <string name="error_input_missing_start_date">Sélectionnez une date de début</string>
+    <string name="error_input_missing_end_date">Sélectionnez une date de fin</string>
+    <string name="error_input_missing_category">Sélectionnez une catégorie</string>
+
+
+    <string name="default_category_prize">Prix</string>
+    <string name="default_category_salary">Salaire</string>
+    <string name="default_category_sale">Vente</string>
+    <string name="default_category_car_expenses">Dépenses de la voiture</string>
+    <string name="default_category_travel">Voyage</string>
+    <string name="default_category_friends">Amis</string>
+    <string name="default_category_technology">Technologie</string>
+    <string name="default_category_food_drinks">Nourriture et boissons</string>
+
+
+
+    <string name="header_debts_archived">Archivé</string>
+
+
+    <string name="cover_message_backup_external_memory_title">L\'application peut créer et restaurer les sauvegardes directement depuis le stockage de votre appareil</string>
+    <string name="cover_message_backup_dropbox_title">L\'application peut créer et restaurer les sauvegardes depuis votre compte Dropbox</string>
+    <string name="cover_message_backup_google_drive_title">L\'application peut créer et restaurer les sauvegardes depuis votre compte Google Drive</string>
+    <string name="cover_message_backup_external_memory_button">Continuer</string>
+    <string name="cover_message_backup_dropbox_button">Se connecter</string>
+    <string name="cover_message_backup_google_drive_button">Se connecter</string>
+
+    <string name="empty_message_secondary_panel">Sélectionnez un élément sur le panneau de gauche pour voir les détails</string>
+    <string name="empty_message_backup_cover">Sélectionnez le service que vous souhaitez utiliser pour stocker et retrouver vos sauvegardes</string>
+
+
+
+
+
+
+
+
+
+
+
+
+    <string name="about_hint_rate_app">Noter cette appli</string>
+    <string name="about_hint_open_source_libraries">Bibliothèques open source</string>
+    <string name="about_hint_report_bug">Signaler un bug</string>
+    <string name="about_hint_author">Auteur</string>
+    <string name="about_hint_developer">Développeur</string>
+    <string name="about_hint_google_plus">Google Plus</string>
+    <string name="about_hint_website">Site web</string>
+    <string name="about_hint_icon_licenses">Images et icônes</string>
+    <string name="about_hint_icon_pack">Pack d\'îcones</string>
+    <string name="about_hint_translators">Traducteurs</string>
+
+    <string name="activity_launcher_first_start_title">Bienvenue à MoneyWallet</string>
+    <string name="activity_launcher_first_start_content">C\'est la première fois que vous utilisez cette application ou voulez-vous restaurer une sauvegarde?</string>
+    <string name="activity_launcher_first_start_button_first_time">Première fois</string>
+    <string name="activity_launcher_first_start_button_restore_backup">Restaurer une sauvegarde</string>
+
+    <string name="activity_intro_title_slide_1">Plus de mauvaise surprises</string>
+    <string name="activity_intro_title_slide_3">Open source</string>
+    <string name="activity_intro_title_slide_4">Sauvegarde dans le cloud</string>
+    <string name="activity_intro_description_slide_1">Cette appli va vous aider à suivre toutes vos dépenses</string>
+    <string name="activity_intro_description_slide_2">Vous pouvez analyser où vous dépenser beaucoup et mettre en place un budget</string>
+    <string name="activity_intro_description_slide_3">Le projet est open source et tout le monde peut y contribuer</string>
+    <string name="activity_intro_description_slide_4">Il supporte la plupart des services cloud afin de vous aider à ne jamais perdre vos données</string>
+    <string name="activity_intro_description_slide_5">Vous allez être amené à créer votre premier portefeuille</string>
+
+
+
+
+
+
+
+
+
+
+    <string name="activity_donation_first_title">Merci!</string>
+    <string name="activity_donation_second_title">Pourquoi le devrais-je?</string>
+    <string name="activity_donation_crypto_address_copied">Adresse copiée</string>
+    <string name="activity_donation_action_share_title">Partager</string>
+    <string name="activity_donation_action_share_content">Passez le mot à vos amis</string>
+    <string name="activity_donation_action_share_message">Salut, jette un oeil à %s</string>
+    <string name="activity_donation_action_rate_title">Noter</string>
+    <string name="activity_donation_action_translate_title">Traduire</string>
+    <string name="activity_donation_action_contribute_title">Contribuer</string>
+    <string name="activity_donation_action_contribute_content">Le code source est public et tout le monde peut venir y contribuer</string>
+
+</resources>
