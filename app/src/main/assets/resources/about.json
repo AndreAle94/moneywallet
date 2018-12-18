@@ -173,6 +173,10 @@
           "icon": "ic_perm_identity_black_24dp",
           "title": "Federicocp",
           "subtitle": "Spanish (Latin America)"
+        },{
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "Hellohat",
+          "subtitle": "French"
         }
       ]
     }
