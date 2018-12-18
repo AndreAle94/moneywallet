@@ -21,6 +21,7 @@ package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.oriondev.moneywallet.storage.database.DatabaseExporter;
 import com.oriondev.moneywallet.storage.database.ExportException;
@@ -128,7 +129,7 @@ public class DefaultBackupExporter extends AbstractBackupExporter {
         parameters.setRootFolderInZip(root);
         parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
         parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
-        if (mPassword != null) {
+        if (!TextUtils.isEmpty(mPassword)) {
             parameters.setEncryptFiles(true);
             parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_AES);
             parameters.setAesKeyStrength(Zip4jConstants.AES_STRENGTH_256);

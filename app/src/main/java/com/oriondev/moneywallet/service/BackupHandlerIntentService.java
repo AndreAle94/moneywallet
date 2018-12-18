@@ -33,6 +33,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 
 import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.R;
@@ -242,7 +243,7 @@ public class BackupHandlerIntentService extends IntentService {
      * @return the backup file is success.
      */
     private File prepareLocalBackupFile(@NonNull File folder, @Nullable String password) throws ExportException, IOException {
-        File backupFile = createBackupFile(folder, BackupManager.getExtension(password != null));
+        File backupFile = createBackupFile(folder, BackupManager.getExtension(!TextUtils.isEmpty(password)));
         AbstractBackupExporter exporter = new DefaultBackupExporter(getContentResolver(), backupFile, password);
         exporter.exportDatabase(getFilesDir());
         exporter.exportAttachments(getAttachmentFolder());
