@@ -191,6 +191,8 @@
     <string name="title_activity_backend_file_picker">"Pick a file"</string>
     <string name="title_activity_backend_folder_picker">"Pick a folder"</string>
     <string name="title_activity_support_developer">"Support developer"</string>
+    <string name="title_activity_import_data">"Import data"</string>
+    <string name="title_activity_export_data">"Export data"</string>
 
     <string name="title_fragment_item_wallet">"Wallet"</string>
     <string name="title_fragment_item_transaction">"Transaction"</string>
@@ -468,6 +470,11 @@
     <string name="setting_category_database_backup">"Backup"</string>
     <string name="setting_title_database_backup_services">"Backup services"</string>
     <string name="setting_summary_database_backup_services">"Create and restore the database"</string>
+    <string name="setting_category_database_import_export">"Import/Export"</string>
+    <string name="setting_title_import_data">"Import data"</string>
+    <string name="setting_summary_import_data">"Read data from an external file"</string>
+    <string name="setting_title_export_data">"Export data"</string>
+    <string name="setting_summary_export_data">"Write data on an external file"</string>
 
     <string name="notification_title_daily_reminder_title">"Any transaction today?"</string>
     <string name="notification_title_daily_reminder_text">"Tap here to add it immediately"</string>
