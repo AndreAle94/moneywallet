@@ -93,8 +93,9 @@ public class TransferModelCursorAdapter extends AbstractCursorAdapter<TransferMo
         }
     }
 
+    @NonNull
     @Override
-    public TransferModelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TransferModelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.adapter_model_transfer_item, parent, false);
         return new TransferModelViewHolder(itemView);

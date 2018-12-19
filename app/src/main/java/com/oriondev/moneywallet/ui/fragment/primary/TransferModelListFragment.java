@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -60,6 +61,7 @@ public class TransferModelListFragment extends CursorListFragment implements Tra
         return new TransferModelCursorAdapter(this);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Activity activity = getActivity();
@@ -71,6 +73,7 @@ public class TransferModelListFragment extends CursorListFragment implements Tra
                     Contract.TransferModel.WALLET_FROM_CURRENCY,
                     Contract.TransferModel.WALLET_TO_NAME,
                     Contract.TransferModel.WALLET_TO_CURRENCY,
+                    Contract.TransferModel.WALLET_TO_ICON,
                     Contract.TransferModel.MONEY_FROM,
                     Contract.TransferModel.MONEY_TO,
                     Contract.TransferModel.MONEY_TAX
@@ -87,8 +90,9 @@ public class TransferModelListFragment extends CursorListFragment implements Tra
                 selectionArgs = new String[] {String.valueOf(currentWallet), String.valueOf(currentWallet)};
             }
             return new CursorLoader(activity, uri, projection, selection, selectionArgs, null);
+        } else {
+            throw new IllegalStateException("Activity is null");
         }
-        return null;
     }
 
     @Override
