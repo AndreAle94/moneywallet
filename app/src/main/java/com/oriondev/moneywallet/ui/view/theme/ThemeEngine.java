@@ -23,8 +23,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.UiThread;
+import android.support.v4.graphics.ColorUtils;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.oriondev.moneywallet.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -230,17 +233,21 @@ public class ThemeEngine implements ITheme {
 
     @Override
     public int getColorPrimary() {
-        return mPreferences.getInt(COLOR_PRIMARY, DEFAULT_COLOR_PRIMARY);
+        return noAlpha(mPreferences.getInt(COLOR_PRIMARY, DEFAULT_COLOR_PRIMARY));
     }
 
     @Override
     public int getColorPrimaryDark() {
-        return mPreferences.getInt(COLOR_PRIMARY_DARK, DEFAULT_COLOR_PRIMARY_DARK);
+        return noAlpha(mPreferences.getInt(COLOR_PRIMARY_DARK, DEFAULT_COLOR_PRIMARY_DARK));
     }
 
     @Override
     public int getColorAccent() {
-        return mPreferences.getInt(COLOR_ACCENT, DEFAULT_COLOR_ACCENT);
+        return noAlpha(mPreferences.getInt(COLOR_ACCENT, DEFAULT_COLOR_ACCENT));
+    }
+
+    private int noAlpha(int color) {
+        return ColorUtils.setAlphaComponent(color, 255);
     }
 
     @Override
