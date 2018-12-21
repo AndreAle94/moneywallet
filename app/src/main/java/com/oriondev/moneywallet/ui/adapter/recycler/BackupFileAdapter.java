@@ -33,6 +33,7 @@ import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -63,9 +64,12 @@ public class BackupFileAdapter extends RecyclerView.Adapter<BackupFileAdapter.Vi
     }
 
     public void addFileToList(IFile file) {
-        mFileList.add(file);
         if (mFileList != null) {
+            mFileList.add(file);
             Collections.sort(mFileList, this);
+        } else {
+            mFileList = new ArrayList<>();
+            mFileList.add(file);
         }
         notifyDataSetChanged();
     }
