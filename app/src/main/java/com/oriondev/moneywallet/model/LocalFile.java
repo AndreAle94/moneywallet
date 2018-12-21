@@ -87,6 +87,10 @@ public class LocalFile implements IFile {
         return mFile;
     }
 
+    public String getLocalPath() {
+        return mFile.getPath();
+    }
+
     @Override
     public int describeContents() {
         return 0;

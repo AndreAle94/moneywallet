@@ -39,6 +39,12 @@ public class LocalAction {
     public static final String ACTION_LEGACY_EDITION_UPGRADE_STARTED = "LocalBroadCast::LegacyEditionUpgradeStarted";
     public static final String ACTION_LEGACY_EDITION_UPGRADE_FINISHED = "LocalBroadCast::LegacyEditionUpgradeFinished";
     public static final String ACTION_LEGACY_EDITION_UPGRADE_FAILED = "LocalBroadCast::LegacyEditionUpgradeFailed";
+    public static final String ACTION_IMPORT_SERVICE_STARTED = "LocalBroadCast::ImportServiceStarted";
+    public static final String ACTION_IMPORT_SERVICE_FINISHED = "LocalBroadCast::ImportServiceFinished";
+    public static final String ACTION_IMPORT_SERVICE_FAILED = "LocalBroadCast::ImportServiceFailed";
+    public static final String ACTION_EXPORT_SERVICE_STARTED = "LocalBroadCast::ExportServiceStarted";
+    public static final String ACTION_EXPORT_SERVICE_FINISHED = "LocalBroadCast::ExportServiceFinished";
+    public static final String ACTION_EXPORT_SERVICE_FAILED = "LocalBroadCast::ExportServiceFailed";
 
     public static final String ACTION_DATABASE_CHANGED = "LocalBroadCast::DatabaseChanged";
 
