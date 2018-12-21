@@ -51,7 +51,7 @@ ext {
             annotations : "com.android.support:support-annotations:${versions.supportLib}",
             design : "com.android.support:design:${versions.supportLib}",
             preference: "com.android.support:preference-v7:${versions.supportLib}",
-            constraintlayout : "com.android.support.constraint:constraint-layout:1.0.2"
+            constraintlayout : "com.android.support.constraint:constraint-layout:1.1.2"
     ]
     googlePlayServices = [
             auth: "com.google.android.gms:play-services-auth:15.0.1",
