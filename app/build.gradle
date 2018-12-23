@@ -94,6 +94,9 @@ dependencies {
     implementation 'com.github.ronaldsmartin:Material-ViewPagerIndicator:1.0.4'
     implementation 'com.jaredrummler:material-spinner:1.2.5'
     implementation 'org.dmfs:lib-recur:0.11.1'
+    implementation 'com.opencsv:opencsv:4.4'
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    implementation 'com.itextpdf:itextpdf:5.5.13'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     // google play dependencies

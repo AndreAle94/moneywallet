@@ -36,12 +36,17 @@ import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 public class GenericProgressDialog extends DialogFragment {
 
     private static final String ARG_TITLE_RES = "GenericProgressDialog::Arguments::TitleRes";
+    private static final String ARG_CONTENT_RES = "GenericProgressDialog::Arguments::ContentRes";
+    private static final String ARG_INDETERMINATE = "GenericProgressDialog::Arguments::Indeterminate";
 
-    public static GenericProgressDialog newInstance(int title) {
+    public static GenericProgressDialog newInstance(int title, int content, boolean indeterminate) {
         GenericProgressDialog dialog = new GenericProgressDialog();
         Bundle arguments = new Bundle();
         arguments.putInt(ARG_TITLE_RES, title);
+        arguments.putInt(ARG_CONTENT_RES, content);
+        arguments.putBoolean(ARG_INDETERMINATE, indeterminate);
         dialog.setArguments(arguments);
+        dialog.setCancelable(false);
         return dialog;
     }
 
@@ -54,33 +59,28 @@ public class GenericProgressDialog extends DialogFragment {
         }
         Bundle arguments = getArguments();
         int titleRes = arguments != null ? arguments.getInt(ARG_TITLE_RES) : 0;
-        MaterialDialog dialog = ThemedDialog.buildMaterialDialog(activity)
-                .title(titleRes)
-                .content(R.string.message_async_init)
-                .progress(false, 100)
+        int contentRes = arguments != null ? arguments.getInt(ARG_CONTENT_RES) : 0;
+        boolean indeterminate = arguments != null && arguments.getBoolean(ARG_INDETERMINATE);
+        MaterialDialog.Builder builder = ThemedDialog.buildMaterialDialog(activity);
+                if (titleRes != 0) {
+                    builder.title(titleRes);
+                }
+                if (contentRes != 0) {
+                    builder.content(contentRes);
+                }
+        return builder.progress(indeterminate, 100)
                 .cancelable(false)
                 .build();
-        dialog.setCancelable(false);
-        return dialog;
     }
 
-    public void updateProgress(int status, int progress) {
+    public void updateProgress(int contentRes, int progress) {
         MaterialDialog dialog = (MaterialDialog) getDialog();
         if (dialog != null) {
             dialog.setCancelable(false);
-            switch (status) {
-                case BackupHandlerIntentService.STATUS_BACKUP_CREATION:
-                    dialog.setContent(R.string.message_backup_status_creation);
-                    break;
-                case BackupHandlerIntentService.STATUS_BACKUP_UPLOADING:
-                    dialog.setContent(R.string.message_backup_status_uploading);
-                    break;
-                case BackupHandlerIntentService.STATUS_BACKUP_DOWNLOADING:
-                    dialog.setContent(R.string.message_backup_status_downloading);
-                    break;
-                case BackupHandlerIntentService.STATUS_BACKUP_RESTORING:
-                    dialog.setContent(R.string.message_backup_status_restoring);
-                    break;
+            if (contentRes != 0) {
+                dialog.setContent(contentRes);
+            } else {
+                dialog.setContent(null);
             }
             dialog.setProgress(progress);
         }

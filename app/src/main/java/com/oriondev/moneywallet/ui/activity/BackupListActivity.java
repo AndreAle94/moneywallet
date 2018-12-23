@@ -131,10 +131,10 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
                         if (mProgressDialog == null) {
                             switch (intent.getIntExtra(BackupHandlerIntentService.ACTION, 0)) {
                                 case BackupHandlerIntentService.ACTION_BACKUP:
-                                    mProgressDialog = GenericProgressDialog.newInstance(R.string.title_backup_creation);
+                                    mProgressDialog = GenericProgressDialog.newInstance(R.string.title_backup_creation, R.string.message_async_init, false);
                                     break;
                                 case BackupHandlerIntentService.ACTION_RESTORE:
-                                    mProgressDialog = GenericProgressDialog.newInstance(R.string.title_backup_restoring);
+                                    mProgressDialog = GenericProgressDialog.newInstance(R.string.title_backup_restoring, R.string.message_async_init, false);
                                     break;
                                 default:
                                     return;
@@ -146,7 +146,22 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
                         if (mProgressDialog != null) {
                             int status = intent.getIntExtra(BackupHandlerIntentService.PROGRESS_STATUS, 0);
                             int value = intent.getIntExtra(BackupHandlerIntentService.PROGRESS_VALUE, 0);
-                            mProgressDialog.updateProgress(status, value);
+                            int contentRes = 0;
+                            switch (status) {
+                                case BackupHandlerIntentService.STATUS_BACKUP_CREATION:
+                                    contentRes = R.string.message_backup_status_creation;
+                                    break;
+                                case BackupHandlerIntentService.STATUS_BACKUP_UPLOADING:
+                                    contentRes = R.string.message_backup_status_uploading;
+                                    break;
+                                case BackupHandlerIntentService.STATUS_BACKUP_DOWNLOADING:
+                                    contentRes = R.string.message_backup_status_downloading;
+                                    break;
+                                case BackupHandlerIntentService.STATUS_BACKUP_RESTORING:
+                                    contentRes = R.string.message_backup_status_restoring;
+                                    break;
+                            }
+                            mProgressDialog.updateProgress(contentRes, value);
                         }
                         break;
                     case LocalAction.ACTION_BACKUP_SERVICE_FINISHED:

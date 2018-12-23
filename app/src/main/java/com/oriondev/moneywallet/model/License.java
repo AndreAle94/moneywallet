@@ -70,6 +70,12 @@ public class License {
                 return "Apache License";
             case MIT:
                 return "MIT License";
+            case GPL3:
+                return "GNU GPLv3";
+            case GPL2:
+                return "GNU GPLv2";
+            case AGPL:
+                return "GNU Affero GPL";
             case CUSTOM:
                 return "Custom License";
             default:
@@ -84,6 +90,12 @@ public class License {
                     return Type.MIT;
                 case "APACHE":
                     return Type.APACHE;
+                case "GPL2":
+                    return Type.GPL2;
+                case "GPL3":
+                    return Type.GPL3;
+                case "AGPL":
+                    return Type.AGPL;
                 case "CUSTOM":
                     return Type.CUSTOM;
             }
@@ -95,6 +107,9 @@ public class License {
         UNKNOWN,
         CUSTOM,
         APACHE,
+        GPL2,
+        GPL3,
+        AGPL,
         MIT
     }
 }

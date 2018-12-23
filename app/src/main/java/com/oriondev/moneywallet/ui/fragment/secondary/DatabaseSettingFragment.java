@@ -32,6 +32,7 @@ import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.ui.activity.BackupListActivity;
+import com.oriondev.moneywallet.ui.activity.ImportExportActivity;
 
 /**
  * Created by andre on 21/03/2018.
@@ -39,11 +40,15 @@ import com.oriondev.moneywallet.ui.activity.BackupListActivity;
 public class DatabaseSettingFragment extends PreferenceFragmentCompat {
 
     private Preference mBackupServicesPreference;
+    private Preference mImportDataPreference;
+    private Preference mExportDataPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings_database);
         mBackupServicesPreference = findPreference("backup_services");
+        mImportDataPreference = findPreference("import_data");
+        mExportDataPreference = findPreference("export_data");
     }
 
     @Override
@@ -55,6 +60,28 @@ public class DatabaseSettingFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(android.support.v7.preference.Preference preference) {
                 Intent intent = new Intent(getActivity(), BackupListActivity.class);
                 intent.putExtra(BackupListActivity.BACKUP_MODE, BackupListActivity.FULL);
+                startActivity(intent);
+                return false;
+            }
+
+        });
+        mImportDataPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(getActivity(), ImportExportActivity.class);
+                intent.putExtra(ImportExportActivity.MODE, ImportExportActivity.MODE_IMPORT);
+                startActivity(intent);
+                return false;
+            }
+
+        });
+        mExportDataPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(getActivity(), ImportExportActivity.class);
+                intent.putExtra(ImportExportActivity.MODE, ImportExportActivity.MODE_EXPORT);
                 startActivity(intent);
                 return false;
             }
