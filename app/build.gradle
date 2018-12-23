@@ -61,6 +61,12 @@ android {
     }
 }
 
+configurations {
+    all {
+        exclude module: 'commons-logging'
+    }
+}
+
 dependencies {
     // common dependencies
     implementation supportDependencies.appcompat
