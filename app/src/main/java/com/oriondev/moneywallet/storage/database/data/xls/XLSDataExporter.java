@@ -174,7 +174,7 @@ public class XLSDataExporter extends AbstractDataExporter {
             }
             return builder.toString();
         }
-        return getContext().getString(R.string.unknown);
+        return getContext().getString(R.string.hint_unknown);
     }
 
     private int getSheetIndex() {

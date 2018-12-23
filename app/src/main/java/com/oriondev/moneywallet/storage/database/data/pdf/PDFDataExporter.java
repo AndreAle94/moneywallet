@@ -119,7 +119,7 @@ public class PDFDataExporter extends AbstractDataExporter {
                 chapterTitleBuilder.append(wallet.getName());
             }
         } else {
-            chapterTitleBuilder.append(getContext().getString(R.string.unknown));
+            chapterTitleBuilder.append(getContext().getString(R.string.hint_unknown));
         }
         Font font = FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLDITALIC);
         Chunk chunk = new Chunk(chapterTitleBuilder.toString(), font);
