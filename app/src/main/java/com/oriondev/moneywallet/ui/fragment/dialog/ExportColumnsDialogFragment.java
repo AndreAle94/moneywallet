@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
-import com.oriondev.moneywallet.service.ImportExportIntentService;
+import com.oriondev.moneywallet.storage.database.data.AbstractDataExporter;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
 /**
@@ -28,10 +28,10 @@ public class ExportColumnsDialogFragment extends DialogFragment {
     };
 
     private static final String[] SERVICE_COLUMNS = new String[] {
-            ImportExportIntentService.COLUMN_EVENT,
-            ImportExportIntentService.COLUMN_PEOPLE,
-            ImportExportIntentService.COLUMN_PLACE,
-            ImportExportIntentService.COLUMN_NOTE
+            AbstractDataExporter.COLUMN_EVENT,
+            AbstractDataExporter.COLUMN_PEOPLE,
+            AbstractDataExporter.COLUMN_PLACE,
+            AbstractDataExporter.COLUMN_NOTE
     };
 
     public static ExportColumnsDialogFragment newInstance() {

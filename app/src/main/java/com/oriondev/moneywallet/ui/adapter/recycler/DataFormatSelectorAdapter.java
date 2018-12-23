@@ -48,10 +48,6 @@ public class DataFormatSelectorAdapter extends RecyclerView.Adapter<DataFormatSe
                 holder.mAvatarImageView.setImageResource(R.drawable.ic_file_pdf_24dp);
                 holder.mPrimaryTextView.setText(R.string.hint_data_format_pdf);
                 break;
-            case QIF:
-                holder.mAvatarImageView.setImageResource(R.drawable.ic_file_document_24dp);
-                holder.mPrimaryTextView.setText(R.string.hint_data_format_qif);
-                break;
         }
         boolean selected = mController.isDataFormatSelected(dataFormat);
         holder.mSelectorImageView.setVisibility(selected ? View.VISIBLE : View.GONE);

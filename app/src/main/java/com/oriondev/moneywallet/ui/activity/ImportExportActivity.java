@@ -32,6 +32,7 @@ import com.oriondev.moneywallet.picker.ImportExportFormatPicker;
 import com.oriondev.moneywallet.picker.LocalFilePicker;
 import com.oriondev.moneywallet.picker.WalletPicker;
 import com.oriondev.moneywallet.service.ImportExportIntentService;
+import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.ui.activity.base.SinglePanelActivity;
 import com.oriondev.moneywallet.ui.fragment.dialog.GenericProgressDialog;
 import com.oriondev.moneywallet.ui.view.text.MaterialEditText;
@@ -132,9 +133,8 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
 
             @Override
             public void onClick(View v) {
-                DataFormat[] dataFormats = new DataFormat[] {
-                        DataFormat.CSV,
-                        DataFormat.QIF
+                DataFormat[] dataFormats = new DataFormat[]{
+                        DataFormat.CSV
                 };
                 mDataFormatPicker.showPicker(dataFormats);
             }
@@ -144,11 +144,10 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
 
             @Override
             public void onClick(View v) {
-                DataFormat[] dataFormats = new DataFormat[] {
+                DataFormat[] dataFormats = new DataFormat[]{
                         DataFormat.CSV,
                         DataFormat.XLS,
-                        DataFormat.PDF,
-                        DataFormat.QIF
+                        DataFormat.PDF
                 };
                 mDataFormatPicker.showPicker(dataFormats);
             }
@@ -386,39 +385,51 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_import_data:
-                // TODO: maybe ask user to create a backup before starting
-                importData();
+                if (mImportFormatEditText.validate() && mImportFileEditText.validate()) {
+                    ThemedDialog.buildMaterialDialog(this)
+                            .title(R.string.title_warning)
+                            .content(R.string.message_data_import_without_backup)
+                            .positiveText(android.R.string.ok)
+                            .negativeText(android.R.string.cancel)
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    importData();
+                                }
+
+                            })
+                            .show();
+                }
                 break;
             case R.id.action_export_data:
-                exportData();
+                if (mExportFormatEditText.validate() && mWalletsEditText.validate() && mExportFolderEditText.validate()) {
+                    exportData();
+                }
                 break;
         }
         return false;
     }
 
     private void importData() {
-        if (mImportFormatEditText.validate() && mImportFileEditText.validate()) {
-            Intent intent = new Intent(this, ImportExportIntentService.class);
-            intent.putExtra(ImportExportIntentService.MODE, ImportExportIntentService.MODE_IMPORT);
-            intent.putExtra(ImportExportIntentService.FORMAT, mDataFormatPicker.getCurrentFormat());
-            intent.putExtra(ImportExportIntentService.FILE, mLocalFilePicker.getCurrentFile().getFile());
-            startService(intent);
-        }
+        Intent intent = new Intent(this, ImportExportIntentService.class);
+        intent.putExtra(ImportExportIntentService.MODE, ImportExportIntentService.MODE_IMPORT);
+        intent.putExtra(ImportExportIntentService.FORMAT, mDataFormatPicker.getCurrentFormat());
+        intent.putExtra(ImportExportIntentService.FILE, mLocalFilePicker.getCurrentFile().getFile());
+        startService(intent);
     }
 
     private void exportData() {
-        if (mExportFormatEditText.validate() && mWalletsEditText.validate() && mExportFolderEditText.validate()) {
-            Intent intent = new Intent(this, ImportExportIntentService.class);
-            intent.putExtra(ImportExportIntentService.MODE, ImportExportIntentService.MODE_EXPORT);
-            intent.putExtra(ImportExportIntentService.FORMAT, mDataFormatPicker.getCurrentFormat());
-            intent.putExtra(ImportExportIntentService.START_DATE, mStartDateTimePicker.getCurrentDateTime());
-            intent.putExtra(ImportExportIntentService.END_DATE, mEndDateTimePicker.getCurrentDateTime());
-            intent.putExtra(ImportExportIntentService.WALLETS, mWalletPicker.getCurrentWallets());
-            intent.putExtra(ImportExportIntentService.FOLDER, mLocalFilePicker.getCurrentFile().getFile());
-            intent.putExtra(ImportExportIntentService.UNIQUE_WALLET, mUniqueWalletCheckbox.isChecked());
-            intent.putExtra(ImportExportIntentService.OPTIONAL_COLUMNS, mExportColumnsPicker.getCurrentServiceColumns());
-            startService(intent);
-        }
+        Intent intent = new Intent(this, ImportExportIntentService.class);
+        intent.putExtra(ImportExportIntentService.MODE, ImportExportIntentService.MODE_EXPORT);
+        intent.putExtra(ImportExportIntentService.FORMAT, mDataFormatPicker.getCurrentFormat());
+        intent.putExtra(ImportExportIntentService.START_DATE, mStartDateTimePicker.getCurrentDateTime());
+        intent.putExtra(ImportExportIntentService.END_DATE, mEndDateTimePicker.getCurrentDateTime());
+        intent.putExtra(ImportExportIntentService.WALLETS, mWalletPicker.getCurrentWallets());
+        intent.putExtra(ImportExportIntentService.FOLDER, mLocalFilePicker.getCurrentFile().getFile());
+        intent.putExtra(ImportExportIntentService.UNIQUE_WALLET, mUniqueWalletCheckbox.isChecked());
+        intent.putExtra(ImportExportIntentService.OPTIONAL_COLUMNS, mExportColumnsPicker.getCurrentServiceColumns());
+        startService(intent);
     }
 
     @Override
@@ -434,22 +445,23 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                 case CSV:
                     mImportFormatEditText.setText(R.string.hint_data_format_csv);
                     mExportFormatEditText.setText(R.string.hint_data_format_csv);
-                    mExportColumnsEditText.setVisibility(View.VISIBLE);
+                    if (mMode == MODE_EXPORT) {
+                        mExportColumnsEditText.setVisibility(View.VISIBLE);
+                    }
                     break;
                 case XLS:
                     mImportFormatEditText.setText(R.string.hint_data_format_xls);
                     mExportFormatEditText.setText(R.string.hint_data_format_xls);
-                    mExportColumnsEditText.setVisibility(View.VISIBLE);
+                    if (mMode == MODE_EXPORT) {
+                        mExportColumnsEditText.setVisibility(View.VISIBLE);
+                    }
                     break;
                 case PDF:
                     mImportFormatEditText.setText(R.string.hint_data_format_pdf);
                     mExportFormatEditText.setText(R.string.hint_data_format_pdf);
-                    mExportColumnsEditText.setVisibility(View.VISIBLE);
-                    break;
-                case QIF:
-                    mImportFormatEditText.setText(R.string.hint_data_format_qif);
-                    mExportFormatEditText.setText(R.string.hint_data_format_qif);
-                    mExportColumnsEditText.setVisibility(View.GONE);
+                    if (mMode == MODE_EXPORT) {
+                        mExportColumnsEditText.setVisibility(View.VISIBLE);
+                    }
                     break;
             }
         } else {
@@ -511,9 +523,6 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                             case ".csv":
                                 mDataFormatPicker.setCurrentFormat(DataFormat.CSV);
                                 break;
-                            case ".qif":
-                                mDataFormatPicker.setCurrentFormat(DataFormat.QIF);
-                                break;
                         }
                     }
                 }
@@ -533,7 +542,6 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                     if (dataFormat != null) {
                         switch (dataFormat) {
                             case CSV:
-                            case QIF:
                                 mUniqueWalletCheckbox.setVisibility(View.GONE);
                                 break;
                             case XLS:
@@ -574,7 +582,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                 switch (action) {
                     case LocalAction.ACTION_IMPORT_SERVICE_STARTED:
                         if (mProgressDialog == null) {
-                            mProgressDialog = GenericProgressDialog.newInstance(R.string.title_data_importing, 0, true);
+                            mProgressDialog = GenericProgressDialog.newInstance(R.string.title_data_importing, R.string.message_data_import_running, true);
                         }
                         mProgressDialog.show(getSupportFragmentManager(), TAG_PROGRESS_DIALOG);
                         break;
@@ -603,7 +611,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                         break;
                     case LocalAction.ACTION_EXPORT_SERVICE_STARTED:
                         if (mProgressDialog == null) {
-                            mProgressDialog = GenericProgressDialog.newInstance(R.string.title_data_exporting, 0, true);
+                            mProgressDialog = GenericProgressDialog.newInstance(R.string.title_data_exporting, R.string.message_data_export_running, true);
                         }
                         mProgressDialog.show(getSupportFragmentManager(), TAG_PROGRESS_DIALOG);
                         break;
@@ -616,6 +624,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                                 .title(R.string.title_success)
                                 .content(R.string.message_data_export_success)
                                 .positiveText(android.R.string.ok)
+                                .negativeText(android.R.string.cancel)
                                 .onPositive(new MaterialDialog.SingleButtonCallback() {
 
                                     @Override

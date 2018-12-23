@@ -140,6 +140,15 @@
     <string name="hint_exchange_rate">"Cambia valuta"</string>
     <string name="hint_recurrence_finished">"Terminato"</string>
     <string name="hint_new_folder">"Nuova cartella"</string>
+    <string name="hint_import_format">"Formato file"</string>
+    <string name="hint_export_format">"Formato file"</string>
+    <string name="hint_import_file">"File da importare"</string>
+    <string name="hint_export_folder">"Cartella di destinazione"</string>
+    <string name="hint_export_optional_columns">"Colonne facoltative"</string>
+    <string name="hint_export_unique_wallet">"Unisci transazioni da portafogli differenti"</string>
+    <string name="hint_data_format_csv">"CSV"</string>
+    <string name="hint_data_format_xls">"XLS"</string>
+    <string name="hint_data_format_pdf">"PDF"</string>
 
     <string name="hint_show_currency_symbol">"Mostra simbolo corrente"</string>
     <string name="hint_group_digits">"Group digits"</string>
@@ -191,6 +200,8 @@
     <string name="title_activity_backend_file_picker">"Seleziona un file"</string>
     <string name="title_activity_backend_folder_picker">"Seleziona una cartella"</string>
     <string name="title_activity_support_developer">"Supporta sviluppatore"</string>
+    <string name="title_activity_import_data">"Importa dati"</string>
+    <string name="title_activity_export_data">"Esporta dati"</string>
 
     <string name="title_fragment_item_wallet">"Portafoglio"</string>
     <string name="title_fragment_item_transaction">"Transazione"</string>
@@ -220,6 +231,8 @@
     <string name="menu_action_service_disconnect">"Disconnetti"</string>
     <string name="menu_action_service_auto_backup">"Backup automatico"</string>
     <string name="menu_action_select_folder">"Seleziona cartella"</string>
+    <string name="menu_action_import_data">"Importa dati"</string>
+    <string name="menu_action_export_data">"Esporta dati"</string>
 
     <string name="bottom_sheet_icon_picker_title">"Personalizza icona"</string>
     <string name="bottom_sheet_icon_picker_action_select_icon">"Seleziona un icona"</string>
@@ -240,6 +253,8 @@
     <string name="dialog_overview_setting_title">"Impostazioni avanzate"</string>
     <string name="dialog_recurrence_title">"Ripeti"</string>
     <string name="dialog_auto_backup_title">"Backup automatico"</string>
+    <string name="dialog_data_format_picker_title">"Formato dati"</string>
+    <string name="dialog_export_optional_columns_title">"Colonne facoltative"</string>
 
     <string name="error_input_name_not_valid">"Nome non valido"</string>
     <string name="error_input_currency_not_valid">"Valuta non valida"</string>
@@ -254,6 +269,9 @@
     <string name="error_input_invalid_date_range">"Intervallo di date non valido"</string>
     <string name="error_input_missing_category">"Seleziona una categoria"</string>
     <string name="error_input_missing_description">"Fornisci una descrizione"</string>
+    <string name="error_input_missing_format">"Seleziona un formato"</string>
+    <string name="error_input_missing_input_file">"Seleziona un file di input"</string>
+    <string name="error_input_missing_output_folder">"Seleziona una cartella di destinazione"</string>
 
     <string name="system_category_transfer">Trasferisci</string>
     <string name="system_category_transfer_tax">Trasferisci tassa</string>
@@ -282,7 +300,7 @@
     <string name="relative_string_money_to_settle_debt">"%s lasciato per saldare questo debito"</string>
     <string name="relative_string_debt_completed">"Questo debito è stato completato"</string>
     <string name="relative_string_expired_on">"Scaduto: %s"</string>
-    <string name="relative_string_will_expire_on">"Sarà scaduto il: %s"</string>
+    <string name="relative_string_will_expire_on">"Scadrà il: %s"</string>
     <string name="relative_string_version_name">"Versione %s"</string>
 
     <string name="adapter_current_money">"Corrente:"</string>
@@ -338,6 +356,8 @@
     <string name="title_licenses">"Licenze"</string>
     <string name="title_debt_insert_master_transaction">"Ben fatto"</string>
     <string name="title_currency_exchange_rate">"Tasso di cambio"</string>
+    <string name="title_data_importing">"Importazione dati"</string>
+    <string name="title_data_exporting">"Esportazione dati"</string>
     <string name="message_backend_create_folder">"Inserisci il nome della cartella che vuoi creare"</string>
     <string name="message_permission_required_external_storage">"Il permesso per accedere alla memoria esterna è necessario per leggere e scrivere i file. Si prega di abilitarlo."</string>
     <string name="message_permission_required_not_granted">"Permesso negato. Vai alle impostazioni dell'applicazione e abilitalo."</string>
@@ -387,7 +407,14 @@
     <string name="message_delete_person">"sei sicuro di voler eliminare questa persona?"</string>
     <string name="message_debt_insert_master_transaction">"Vuoi aggiungere una transazione principale per questo debito?"</string>
     <string name="message_error_legacy_upgrade_failed">"E' avvenuto un errore durante l'upgrade interno del database. Per favore, sii paziente e notifica questo messaggio allo sviluppatore. Non disinstallare l'applicazione dal dispositivo o perderai tutti i tuoi dati. Sarai ora reindirizzato all'applicazione per verificare se qualcosa è stato danneggiato. Messaggio di errore: %s"</string>
-
+    <string name="message_data_import_running">"Importazione in corso…"</string>
+    <string name="message_data_export_running">"Esportazione in corso…"</string>
+    <string name="message_data_import_failed">"Errore durante l'importazione. Messaggio: %s"</string>
+    <string name="message_data_export_failed">"Errore durante l'esportazione. Messaggio: %s"</string>
+    <string name="message_data_import_success">"Dati importati correttamente."</string>
+    <string name="message_data_export_success">"Dati esportati correttamente. Vuoi aprire il file appena creato?"</string>
+    <string name="message_data_import_without_backup">"Questa è una funzionalità che potrebbe fallire e scomnussolare il database, assicurati di aver effettuato un backup prima di continuare. Vuoi procedere comunque?"</string>
+    
     <string name="message_async_init">"Inizializzazione …"</string>
 
     <string name="snackbar_message_model_transaction_added">"Transazione aggiunta"</string>
@@ -445,7 +472,7 @@
     <string name="setting_summary_exchange_rate_api_key_missing">"Api-key mancante"</string>
     <string name="setting_title_exchange_rate_update">"Aggiorna i tassi di cambio"</string>
     <string name="setting_summary_exchange_rate_update">"Ultimo aggiornamento: %s"</string>
-    <string name="setting_subtitle_user_interface">"Personalizza coome vuoi"</string>
+    <string name="setting_subtitle_user_interface">"Personalizza come vuoi"</string>
     <string name="setting_subtitle_utility">"Imposta gli strumenti disponibili"</string>
     <string name="setting_subtitle_database">"Gestisci i tuoi dati"</string>
     <string name="setting_subtitle_about">"Crediti e licenze"</string>
@@ -468,6 +495,11 @@
     <string name="setting_category_database_backup">"Backup"</string>
     <string name="setting_title_database_backup_services">"Servizio backup"</string>
     <string name="setting_summary_database_backup_services">"Crea e ripristina il database"</string>
+    <string name="setting_category_database_import_export">Importa/Esporta</string>
+    <string name="setting_title_import_data">Importa dati</string>
+    <string name="setting_title_export_data">Esporta dati</string>
+    <string name="setting_summary_import_data">Leggi i dati da un file esterno</string>
+    <string name="setting_summary_export_data">Scrivi i dati su un file esterno</string>
 
     <string name="notification_title_daily_reminder_title">"Qualche transazione oggi?"</string>
     <string name="notification_title_daily_reminder_text">"Tocca qui per aggiungerlo immediatamente"</string>
@@ -496,7 +528,7 @@
     <string name="about_hint_changelog">"Changelog"</string>
     <string name="about_hint_support">"Supporta lo sviluppo"</string>
     <string name="about_hint_rate_app">"Valuta questa app"</string>
-    <string name="about_hint_open_source_libraries">"Open source libraries"</string>
+    <string name="about_hint_open_source_libraries">"Librerie open source"</string>
     <string name="about_hint_report_bug">"Segnala un bug"</string>
     <string name="about_hint_author">"Autore"</string>
     <string name="about_hint_developer">"Sviluppatore"</string>

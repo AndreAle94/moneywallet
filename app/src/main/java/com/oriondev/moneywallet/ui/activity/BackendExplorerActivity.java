@@ -41,8 +41,11 @@ import android.view.ViewGroup;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.api.disk.DiskBackendService;
+import com.oriondev.moneywallet.api.disk.DiskBackendServiceAPI;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.model.LocalFile;
 import com.oriondev.moneywallet.service.BackendHandlerIntentService;
 import com.oriondev.moneywallet.ui.activity.base.SinglePanelActivity;
 import com.oriondev.moneywallet.ui.adapter.recycler.BackupFileAdapter;
@@ -158,8 +161,13 @@ public class BackendExplorerActivity extends SinglePanelActivity implements Swip
         switch (item.getItemId()) {
             case R.id.action_select_folder:
                 if (mActivityMode == MODE_FOLDER_PICKER) {
+                    IFile folder = getCurrentFolder();
+                    if (folder == null) {
+                        // return the root folder of the device instead of null
+                        folder = DiskBackendServiceAPI.getRootFolder();
+                    }
                     Intent intent = new Intent();
-                    intent.putExtra(RESULT_FILE, getCurrentFolder());
+                    intent.putExtra(RESULT_FILE, folder);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

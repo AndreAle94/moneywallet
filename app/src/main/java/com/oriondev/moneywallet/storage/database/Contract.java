@@ -19,8 +19,11 @@
 
 package com.oriondev.moneywallet.storage.database;
 
+import android.text.TextUtils;
+
 import com.oriondev.moneywallet.model.Identifiable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -564,6 +567,25 @@ public class Contract {
         public static final int SYSTEM_CATEGORY_NOT_MODIFIABLE = 4543;
         public static final int TRANSACTION_USED_IN_TRANSFER = 4544;
         public static final int INVALID_RECURRENCE_RULE = 4545;
+    }
+
+    public static List<Long> parseObjectIds(String encodedIds) {
+        if (!TextUtils.isEmpty(encodedIds)) {
+            List<Long> objectIds = new ArrayList<>();
+            String[] parts = encodedIds.split(",");
+            for (String part : parts) {
+                if (part.startsWith("<") && part.endsWith(">")) {
+                    String encodedId = part.substring(1, part.length() - 1);
+                    try {
+                        objectIds.add(Long.parseLong(encodedId));
+                    } catch (NumberFormatException ignore) {
+                        // do nothing
+                    }
+                }
+            }
+            return objectIds;
+        }
+        return null;
     }
 
     public static <T extends Identifiable> String getObjectIds(T[] objects) {

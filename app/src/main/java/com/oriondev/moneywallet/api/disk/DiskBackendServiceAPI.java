@@ -110,4 +110,8 @@ public class DiskBackendServiceAPI extends AbstractBackendServiceAPI<LocalFile> 
         }
         return folder.getFile();
     }
+
+    public static LocalFile getRootFolder() {
+        return new LocalFile(Environment.getExternalStorageDirectory());
+    }
 }

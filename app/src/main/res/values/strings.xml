@@ -149,7 +149,6 @@
     <string name="hint_data_format_csv">"CSV"</string>
     <string name="hint_data_format_xls">"XLS"</string>
     <string name="hint_data_format_pdf">"PDF"</string>
-    <string name="hint_data_format_qif">"QIF"</string>
 
     <string name="hint_show_currency_symbol">"Show currency symbol"</string>
     <string name="hint_group_digits">"Group digits"</string>
@@ -408,6 +407,9 @@
     <string name="message_delete_person">"Are you sure you want to delete this person?"</string>
     <string name="message_debt_insert_master_transaction">"Do you want to add a master transaction for this debt?"</string>
     <string name="message_error_legacy_upgrade_failed">"An error has occurred while upgrading the internal database. Please, be patient and notify this message to the developer. Do not uninstall the application or you will lose your data. You will be redirected to the application to check if something got corrupted. Error message: %s"</string>
+    <string name="message_data_import_without_backup">"This is a feature that could fail and mess up your data, make sure you've backed up your existing data before continuing. Do you want to proceed anyway?"</string>
+    <string name="message_data_import_running">"Importing…"</string>
+    <string name="message_data_export_running">"Exporting…"</string>
     <string name="message_data_import_failed">"Failure during the import procedure. Message: %s"</string>
     <string name="message_data_export_failed">"Failure during the export procedure. Message: %s"</string>
     <string name="message_data_import_success">"Data imported correctly."</string>
