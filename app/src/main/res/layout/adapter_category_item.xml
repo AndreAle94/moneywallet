@@ -34,7 +34,7 @@
         android:layout_marginLeft="@dimen/material_component_lists_one_line_avatar_start_margin"
         android:layout_marginStart="@dimen/material_component_lists_one_line_avatar_start_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@mipmap/ic_launcher" />
 
