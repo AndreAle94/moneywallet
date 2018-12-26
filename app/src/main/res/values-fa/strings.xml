@@ -1,0 +1,653 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">MoneyWallet</string>
+
+    <string name="menu_transaction">"معاملات"</string>
+    <string name="menu_category">"دسته بندی‌ها"</string>
+    <string name="menu_overview">"بررسی اجمالی"</string>
+    <string name="menu_debt">"بدهی ها"</string>
+    <string name="menu_budget">"بودجه‌ها"</string>
+    <string name="menu_saving">"پس اندازها"</string>
+    <string name="menu_event">"رخدادها"</string>
+    <string name="menu_recurrences">"باز رخدادها"</string>
+    <string name="menu_models">"مدل‌ها"</string>
+    <string name="menu_place">"مکان‌ها"</string>
+    <string name="menu_people">"افراد"</string>
+    <string name="menu_converter">"مبدل"</string>
+    <string name="menu_calculator">"ماشین حساب"</string>
+    <string name="menu_search_atm">"جستجوی خودپرداز"</string>
+    <string name="menu_search_bank">"جستجوی بانک"</string>
+    <string name="menu_setting">"تنظیمات"</string>
+    <string name="menu_support_developer">"پشتیبانی توسعه‌دهنده"</string>
+    <string name="menu_about">"درباره"</string>
+
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"معاملات"</string>
+    <string name="menu_transaction_tab_transfers">"نقل و انتقالات"</string>
+
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"درآمد‌ها"</string>
+    <string name="menu_category_tab_expense">"هزینه‌ها"</string>
+    <string name="menu_category_tab_system">"سیستم"</string>
+
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"بدهی"</string>
+    <string name="menu_debt_tab_credit">"اعتبار"</string>
+
+    <!-- Budgets -->
+    <string name="menu_budget_tab_running">"در حال اجرا"</string>
+    <string name="menu_budget_tab_expired">"منقضی شده"</string>
+
+    <!-- Savings -->
+    <string name="menu_saving_tab_running">"در حال اجرا"</string>
+    <string name="menu_saving_tab_completed">"کامل شده"</string>
+
+    <!-- Events -->
+    <string name="menu_event_tab_running">"در حال اجرا"</string>
+    <string name="menu_event_tab_completed">"کامل شده"</string>
+
+    <!-- Models -->
+    <string name="menu_model_tab_transactions">"معاملات"</string>
+    <string name="menu_model_tab_transfers">"نقل و انتقالات"</string>
+
+    <string name="action_new_wallet">"کیف پول جدید"</string>
+    <string name="action_manage_wallets">"مدیریت کیف پول"</string>
+    <string name="action_pay_debt">"پرداخت"</string>
+    <string name="action_receive_debt">"دريافت كردن"</string>
+    <string name="action_withdraw">"کنار کشیدن"</string>
+    <string name="action_deposit">"سپرده"</string>
+    <string name="action_withdraw_everything">"همه چیز را بردار"</string>
+    <string name="action_add">"افزودن"</string>
+    <string name="action_new">"جدید"</string>
+    <string name="action_edit">"ویرایش"</string>
+    <string name="action_search">"جستجو"</string>
+    <string name="action_filter">"فیلتر"</string>
+    <string name="action_remove">"حذف"</string>
+    <string name="action_open">"باز"</string>
+    <string name="action_undo">"لغو"</string>
+
+    <string name="msg_no_wallet_found">"هیچ کیف پولی یافت نشد"</string>
+    <string name="msg_add_one_wallet">"لطفا یک کیف پول را اضافه کنید"</string>
+
+    <string name="hint_total_sum">"جمع"</string>
+
+    <string name="hint_name">"نام"</string>
+    <string name="hint_description">"شرح"</string>
+    <string name="hint_currency">"واحد پول"</string>
+    <string name="hint_money">"پول"</string>
+    <string name="hint_start_money">"مقدار اولیه"</string>
+    <string name="hint_not_exclude_wallet">"این کیف پول را در شمارش کل نمایش بده"</string>
+    <string name="hint_category">"دسته‌بندی"</string>
+    <string name="hint_parent_category">"دسته‌ مادر"</string>
+    <string name="hint_show_category_report">"این دسته را در داخل گزارش نمایش دهید"</string>
+    <string name="hint_show_category_report_on">"این دسته در گزارش‌ها گنجانده شده است"</string>
+    <string name="hint_show_category_report_off">"این دسته در گزارش ها گنجانده نشده است"</string>
+    <string name="hint_confirmed">"تایید شده"</string>
+    <string name="hint_show_in_total">"نمایش در جمع کیف پول"</string>
+    <string name="hint_income">"درآمد"</string>
+    <string name="hint_expense">"هزینه"</string>
+    <string name="hint_date">"تاریخ"</string>
+    <string name="hint_start_date">"تاریخ شروع"</string>
+    <string name="hint_end_date">"تاریخ پایان"</string>
+    <string name="hint_expiration_date">"تاریخ انقضا"</string>
+    <string name="hint_time">"زمان"</string>
+    <string name="hint_wallet">"کیف پول"</string>
+    <string name="hint_wallets">"کیف پول‌ها"</string>
+    <string name="hint_wallet_from">"از"</string>
+    <string name="hint_wallet_to">"به"</string>
+    <string name="hint_recurrence">" بازگشت"</string>
+    <string name="hint_recurrence_invalid">"Invalid recurrence"</string>
+    <string name="hint_event">"رخداد"</string>
+    <string name="hint_people">"فرد"</string>
+    <string name="hint_place">"مکان"</string>
+    <string name="hint_note">"یادداشت"</string>
+    <string name="hint_tax">"مالیات"</string>
+    <string name="hint_type">"نوع"</string>
+    <string name="hint_incomes">"درآمدها"</string>
+    <string name="hint_expenses">"هزینه‌ها"</string>
+    <string name="hint_net_incomes">"درآمدهای خالص"</string>
+    <string name="hint_summary">"خلاصه"</string>
+    <string name="hint_address">"آدرس"</string>
+    <string name="hint_size_unknown">"اندازه نامشخص"</string>
+    <string name="hint_address_unknown">"آدرس نامشخص"</string>
+    <string name="hint_unknown">"نامشخص"</string>
+    <string name="hint_directory">"دایرکتوری"</string>
+    <string name="hint_navigate_up">"حرکت به بالا"</string>
+    <string name="hint_password">"گذرواژه"</string>
+    <string name="hint_atm_name">"خودپرداز نام"</string>
+    <string name="hint_bank_name">"نام بانک"</string>
+    <string name="hint_attachments">"پیوست‌ها"</string>
+    <string name="hint_operation_in_progress">"در جریان ..."</string>
+    <string name="hint_search_something">"چیزی را جستجو کنید"</string>
+    <string name="hint_exchange_rate">"قیمت ارز"</string>
+    <string name="hint_recurrence_finished">"پایان یافت"</string>
+    <string name="hint_new_folder">"پوشه جدید"</string>
+
+    <string name="hint_show_currency_symbol">"نمایش نماد ارز"</string>
+    <string name="hint_group_digits">"گروه ارقام"</string>
+    <string name="hint_round_decimals">"رند کردن اعشار"</string>
+    <string name="hint_auto_backup_enabled">"سرویس فعال شده است"</string>
+    <string name="hint_auto_backup_wifi_only">"فقط در شبکه WiFi"</string>
+    <string name="hint_auto_backup_only_if_data_changed">"فقط اگر داده تغییر کند"</string>
+    <string name="hint_auto_backup_every_n_hours">"هر %d ساعت"</string>
+    <string name="hint_auto_backup_folder">"پوشه"</string>
+    <string name="hint_auto_backup_root_folder">"ریشه"</string>
+
+    <string name="total_wallet_name">"جمع کل"</string>
+
+    <string name="title_activity_new_wallet">"کیف پول جدید"</string>
+    <string name="title_activity_edit_wallet">"ویرایش کیف پول"</string>
+    <string name="title_activity_new_transaction">"تراکنش جدید"</string>
+    <string name="title_activity_edit_transaction">"ویرایش تراکنش"</string>
+    <string name="title_activity_new_transfer">"انتقال جدید"</string>
+    <string name="title_activity_edit_transfer">"ویرایش انتقال"</string>
+    <string name="title_activity_new_category">"دسته بندی جدید"</string>
+    <string name="title_activity_edit_category">"ویرایش رده"</string>
+    <string name="title_activity_new_debt">"بدهی جدید"</string>
+    <string name="title_activity_edit_debt">"ویرایش بدهی"</string>
+    <string name="title_activity_new_budget">"بودجه جدید"</string>
+    <string name="title_activity_edit_budget">"ویرایش بودجه"</string>
+    <string name="title_activity_new_saving">"پس‌انداز جدید"</string>
+    <string name="title_activity_edit_saving">"ویرایش پس‌انداز"</string>
+    <string name="title_activity_new_event">"رخداد جدید"</string>
+    <string name="title_activity_edit_event">"ویرایش رخداد"</string>
+    <string name="title_activity_new_recurrence">"باز‌رخداد جدید"</string>
+    <string name="title_activity_edit_recurrence">"ویرایش باز‌رخداد"</string>
+    <string name="title_activity_new_model">"مدل جدید"</string>
+    <string name="title_activity_edit_model">"ویرایش مدل"</string>
+    <string name="title_activity_new_place">"مکان جدید"</string>
+    <string name="title_activity_edit_place">"ویرایش مکان"</string>
+    <string name="title_activity_new_person">"شخص جدید"</string>
+    <string name="title_activity_edit_person">"ویرایش شخص"</string>
+    <string name="title_activity_currency_list">"ارزها"</string>
+    <string name="title_activity_category_picker">"یک دسته را انتخاب کنید"</string>
+    <string name="title_activity_icon_list">"آیکون ها"</string>
+    <string name="title_activity_backup_services">"خدمات پشتیبان گیری"</string>
+    <string name="title_activity_about">"درباره"</string>
+    <string name="title_activity_calculator">"ماشین حساب"</string>
+    <string name="title_activity_currency_converter">"مبدل ارز"</string>
+    <string name="title_activity_search_transaction">"جستجو"</string>
+    <string name="title_activity_calendar">"تقویم"</string>
+    <string name="title_activity_map">"نقشه"</string>
+    <string name="title_activity_backend_explorer">"کاوش در backend"</string>
+    <string name="title_activity_backend_file_picker">"یک فایل انتخاب کنید"</string>
+    <string name="title_activity_backend_folder_picker">"یک پوشه را انتخاب کنید"</string>
+    <string name="title_activity_support_developer">"پشتیبانی از توسعه دهنده"</string>
+
+    <string name="title_fragment_item_wallet">"کیف پول"</string>
+    <string name="title_fragment_item_transaction">"تراکنش"</string>
+    <string name="title_fragment_item_transfer">"انتقال"</string>
+    <string name="title_fragment_item_category">"دسته‌بندی"</string>
+    <string name="title_fragment_item_debt">"بدهی"</string>
+    <string name="title_fragment_item_budget">"بودجه"</string>
+    <string name="title_fragment_item_saving">"پس‌انداز"</string>
+    <string name="title_fragment_item_event">"رخداد"</string>
+    <string name="title_fragment_item_recurrence">"باز‌رخداد"</string>
+    <string name="title_fragment_item_model">"مدل"</string>
+    <string name="title_fragment_item_place">"مکان"</string>
+    <string name="title_fragment_item_person">"شخص"</string>
+
+    <string name="menu_action_attach_file">"ضمیمه فایل"</string>
+    <string name="menu_action_save_changes">"ذخیره تغییرات"</string>
+    <string name="menu_refresh_currency_rate">"بروزرسانی نرخ ارز"</string>
+    <string name="menu_advanced_settings">"تنظیمات پیشرفته"</string>
+    <string name="menu_action_edit_item">"ویرایش"</string>
+    <string name="menu_action_delete_item">"حذف"</string>
+    <string name="menu_action_archive_item">"بایگانی"</string>
+    <string name="menu_action_unarchive_item">"بازخوانی"</string>
+    <string name="menu_action_search_item">"جستجو"</string>
+    <string name="menu_action_open_calendar">"تقویم"</string>
+    <string name="menu_action_open_map">"نقشه"</string>
+    <string name="menu_action_show_transaction_list">"نمایش معاملات"</string>
+    <string name="menu_action_service_disconnect">"قطع اتصال"</string>
+    <string name="menu_action_service_auto_backup">"پشتیبان گیری خودکار"</string>
+    <string name="menu_action_select_folder">"پوشه را انتخاب کنید"</string>
+
+    <string name="bottom_sheet_icon_picker_title">"آیکون را شخصی کنید"</string>
+    <string name="bottom_sheet_icon_picker_action_select_icon">"یک آیکون را انتخاب کنید"</string>
+    <string name="bottom_sheet_icon_picker_action_change_icon">"آیکون را تغییر دهید"</string>
+    <string name="bottom_sheet_icon_picker_action_remove_icon">"حذف آیکون"</string>
+    <string name="bottom_sheet_icon_picker_action_change_bg_color">"تغییر رنک پس‌زمینه"</string>
+
+    <string name="dialog_color_picker_title_icon_picker_background_color">"رنگ را برگزینید"</string>
+    <string name="dialog_color_picker_title">"یک رنگ انتخاب کنید"</string>
+    <string name="dialog_wallet_picker_title">"کیف پول‌ها"</string>
+    <string name="dialog_event_picker_title">"رخدادها"</string>
+    <string name="dialog_category_picker_title">"دسته‌بندی‌ها"</string>
+    <string name="dialog_budget_type_picker_title">"انواع بودجه"</string>
+    <string name="dialog_place_picker_title">"مکان‌ها"</string>
+    <string name="dialog_people_picker_title">"شخص"</string>
+    <string name="dialog_filter_search_title">"فیلتر"</string>
+    <string name="dialog_change_log_title">"گزارش تغییرات"</string>
+    <string name="dialog_overview_setting_title">"تنظیمات پیشرفته"</string>
+    <string name="dialog_recurrence_title">"تکرار"</string>
+    <string name="dialog_auto_backup_title">"پشتیبان گیری خودکار"</string>
+
+    <string name="error_input_name_not_valid">"یک نام معتبر نیست"</string>
+    <string name="error_input_currency_not_valid">"یک ارز معتبر نیست"</string>
+    <string name="error_input_date_range_not_valid">"محدوده تاریخ معتبر نیست"</string>
+    <string name="error_input_missing_budget_type">"نوع بودجه را انتخاب کنید"</string>
+    <string name="error_input_missing_wallet">"یک کیف پول انتخاب کنید"</string>
+    <string name="error_input_missing_multiple_wallets">"حداقل یک کیف پول را انتخاب کنید"</string>
+    <string name="error_input_invalid_multiple_wallets">"کیف پول باید یک ارز داشته باشند"</string>
+    <string name="error_input_missing_date">"یک تاریخ را انتخاب کنید"</string>
+    <string name="error_input_missing_start_date">"تاریخ شروع را انتخاب کنید"</string>
+    <string name="error_input_missing_end_date">"تاریخ پایان را انتخاب کنید"</string>
+    <string name="error_input_invalid_date_range">"محدوده تاریخ نامعتبر"</string>
+    <string name="error_input_missing_category">"یک دسته را انتخاب کنید"</string>
+    <string name="error_input_missing_description">"توضیح بدهید"</string>
+
+    <string name="system_category_transfer">انتقال</string>
+    <string name="system_category_transfer_tax">کارمزد انتقال</string>
+    <string name="system_category_debt">بدهی</string>
+    <string name="system_category_debt_paid">بدهی پرداخت شده</string>
+    <string name="system_category_credit">اعتبار</string>
+    <string name="system_category_credit_paid">اعتبار پرداخت شده</string>
+    <string name="system_category_generic_tax">مالیات</string>
+    <string name="system_category_saving_in">سپرده</string>
+    <string name="system_category_saving_out">کنار کشیدن</string>
+
+    <string name="default_category_tip">"نکته"</string>
+    <string name="default_category_prize">"جایزه"</string>
+    <string name="default_category_salary">"حقوق"</string>
+    <string name="default_category_interests">"منافع"</string>
+    <string name="default_category_sale">"فروش"</string>
+    <string name="default_category_car_expenses">"هزینه های خودرو"</string>
+    <string name="default_category_travel">"مسافرت"</string>
+    <string name="default_category_friends">"دوستان"</string>
+    <string name="default_category_technology">"فن آوری"</string>
+    <string name="default_category_food_drinks">"غذا و نوشیدنی"</string>
+    <string name="default_category_hobby">"سرگرمی"</string>
+
+    <string name="relative_string_ended_on">"پایان یافت در: %s"</string>
+    <string name="relative_string_will_end_on">"پایان می‌یابد در: %s"</string>
+    <string name="relative_string_money_to_settle_debt">"%s مانده به تسویه این بدهی"</string>
+    <string name="relative_string_debt_completed">"این بدهی تکمیل شده است"</string>
+    <string name="relative_string_expired_on">"منقضی شد در: %s"</string>
+    <string name="relative_string_will_expire_on">"منقضی میشود در: %s"</string>
+    <string name="relative_string_version_name">"نسخه %s"</string>
+
+    <string name="adapter_current_money">"جاری:"</string>
+    <string name="adapter_needed_money">"مورد نیاز:"</string>
+    <string name="adapter_used_money">"استفاده شده:"</string>
+    <string name="adapter_available_money">"در دسترس:"</string>
+    <string name="adapter_tax_money">"مالیات:"</string>
+
+    <string name="header_debts_to_pay">"برای پرداخت:"</string>
+    <string name="header_debts_to_receive">"برای دریافت:"</string>
+    <string name="header_debts_archived">"آرشیو شده"</string>
+
+    <string name="message_no_currency_found">"هیچ ارزی پیدا نشد"</string>
+    <string name="message_no_wallet_found">"کیف پولی یافت نشد"</string>
+    <string name="message_no_transaction_found">"تراکنشی یافت نشد"</string>
+    <string name="message_no_transfer_found">"انتقالی یافت نشد"</string>
+    <string name="message_no_category_found">"دسته‌بندی یافت نشد"</string>
+    <string name="message_no_debt_found">"بدهی یافت نشد"</string>
+    <string name="message_no_budget_found">"بودجه ای یافت نشد"</string>
+    <string name="message_no_saving_found">"پس‌اندازی یافت نشد"</string>
+    <string name="message_no_event_found">"رخدادی یافت نشد"</string>
+    <string name="message_no_recurrence_found">"بازرخدادی یافت نشد"</string>
+    <string name="message_no_model_found">"مدلی یافت نشد"</string>
+    <string name="message_no_place_found">"مکانی یافت نشد"</string>
+    <string name="message_no_person_found">"شخصی یافت نشد"</string>
+    <string name="message_no_icon_found">"آیکونی یافت نشد"</string>
+    <string name="message_no_file_found">"فایلی یافت نشد"</string>
+    <string name="message_error_backend_recoverable">"مشکل اتصال ،دوباره سعی کنید."</string>
+
+    <string name="cover_message_backup_external_memory_title">"این برنامه می تواند پشتیبان گیری را مستقیما از ذخیره خارجی دستگاه ایجاد و بازگرداند"</string>
+    <string name="cover_message_backup_dropbox_title">"این برنامه می تواند پشتیبان گیری از حساب شخصی Dropbox خود ایجاد و بازگرداند"</string>
+    <string name="cover_message_backup_google_drive_title">"این برنامه می تواند پشتیبان گیری را از حساب شخصی Google Drive شما ایجاد و بازگرداند"</string>
+    <string name="cover_message_backup_external_memory_button">"ادامه هید"</string>
+    <string name="cover_message_backup_dropbox_button">"ورود"</string>
+    <string name="cover_message_backup_google_drive_button">"ورود"</string>
+
+    <string name="empty_message_secondary_panel">"یکی از عناصر را از پانل سمت چپ انتخاب کنید تا جزئیات را مشاهده کنید"</string>
+    <string name="empty_message_backup_cover">"سرویس مورد نظر برای ذخیره و بازیابی پشتیبان شخصی خود را انتخاب کنید"</string>
+
+    <string name="title_warning">"هشدار"</string>
+    <string name="title_request_permission">"درخواست مجوز"</string>
+    <string name="title_backup_create">"ایجاد نسخه پشتیبان"</string>
+    <string name="title_backup_creation">"ایجاد پشتیبان"</string>
+    <string name="title_backup_restore">"بازگرداندن پشتیبان"</string>
+    <string name="title_backup_restoring">"بازگرداندن پشتیبان"</string>
+    <string name="title_backend_create_folder">"پوشه جدید"</string>
+    <string name="title_success">"موفقیت"</string>
+    <string name="title_failed">"ناموفق"</string>
+    <string name="title_error">"خطا"</string>
+    <string name="title_atm_search">"جستجو خودپرداز"</string>
+    <string name="title_bank_search">"جستجو بانک"</string>
+    <string name="title_changelog">"تغییرات"</string>
+    <string name="title_licenses">"مجوزها"</string>
+    <string name="title_debt_insert_master_transaction">"آفرین"</string>
+    <string name="title_currency_exchange_rate">"قیمت ارز"</string>
+    <string name="message_backend_create_folder">"نام پوشه ای که می خواهید ایجاد کنید را وارد کنید"</string>
+    <string name="message_permission_required_external_storage">"مجوز دسترسی به حافظه خارجی برای خواندن و نوشتن فایل ها لازم است. لطفا آن را فعال کنید."</string>
+    <string name="message_permission_required_not_granted">"مجوز انکار شد لطفا به تنظیمات برنامه بروید و آن را فعال کنید."</string>
+    <string name="message_backup_create">"Aآیا مطمئن هستید که میخواهید یک نسخه پشتیبان جدید ایجاد کنید؟ عملیات را نمی توان متوقف کرد. اگر بخواهید می توانید یک رمز عبور برای حفاظت از فایل پشتیبان تنظیم کنید"</string>
+    <string name="message_backup_restore_standard">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. ادامه دهید؟"</string>
+    <string name="message_backup_restore_protected">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. پشتیبان با رمز عبور محافظت می شود، لطفا آن را وارد کنید و ادامه دهید."</string>
+    <string name="message_backup_restore_legacy">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. هشدار !: این یک نسخه پشتیبان تهیه می شود و برنامه ممکن است آن را وارد کند. ادامه دهید؟"</string>
+    <string name="message_backup_status_creation">"ایجاد فایل پشتیبان در حال پیشرفت ..."</string>
+    <string name="message_backup_status_uploading">"آپلود فایل پشتیبان در حال انجام است ..."</string>
+    <string name="message_backup_status_downloading">"بارگیری فایل پشتیبان در حال انجام است ..."</string>
+    <string name="message_backup_status_restoring">"بازگرداندن فایل پشتیبان در حال انجام است ..."</string>
+    <string name="message_backup_creation_success">"پشتیبان گیری درست ایجاد شد."</string>
+    <string name="message_backup_restoring_success">"پشتیبان به درستی برگردانده شد."</string>
+    <string name="message_backup_creation_failed">"شکست در هنگام ایجاد پشتیبان. پیام: %s"</string>
+    <string name="message_backup_restoring_failed">"شکست در هنگام بازگرداندن پشتیبان. پیام: %s"</string>
+    <string name="message_backup_service_dropbox_disconnect">"آیا مطمئن هستید که می خواهید حساب Dropbox خود را قطع کنید؟"</string>
+    <string name="message_backup_service_google_drive_disconnect">"آیا مطمئن هستید که میخواهید حساب Google Drive خود را قطع کنید؟"</string>
+    <string name="message_action_archive_wallet">"آیا مطمئن هستید که میخواهید این کیف پول را بایگانی کنید؟ این دیگر در منو قابل مشاهده نخواهد بود."</string>
+    <string name="message_action_unarchive_wallet">"آیا مطمئن هستید که میخواهید این کیف پول را از بایگانی خارج کنید؟ این دوباره در منو قابل مشاهده خواهد بود."</string>
+    <string name="message_action_archive_debt">"آیا مطمئن هستید که می خواهید این بدهی را بایگانی کنید؟"</string>
+    <string name="message_action_unarchive_debt">"آیا مطمئن هستید که میخواهید این بدهی را از بایگانی خارج کنید؟"</string>
+    <string name="message_action_archive_saving">"آیا مطمئن هستید که میخواهید این پس‌انداز را بایگانی کنید؟"</string>
+    <string name="message_action_unarchive_saving">"آیا مطمئن هستید که میخواهید این پس انداز را از بایگانی خارج کنید؟"</string>
+    <string name="message_error_activity_not_found">"هیچ برنامه کاربردی موجود در این دستگاه برای رسیدگی به درخواست نیست."</string>
+    <string name="message_delete_wallet">"آیا مطمئن هستید که میخواهید این کیف پول را حذف کنید؟ تمام داده های مرتبط حذف خواهند شد."</string>
+    <string name="message_error_delete_wallet_of_transfer">"این کیف پول را نمی توان حذف کرد چرا که در یک یا چند انتقال استفاده می شود. لطفا نقل قول های مرتبط را حذف کنید تا این کیف پول را حذف کنید."</string>
+    <string name="message_delete_category">"آیا مطمئن هستید که می خواهید این رده را حذف کنید؟"</string>
+    <string name="message_error_insert_category_deep_hierarchy">"دسته بندی‌های تو در تو پشتیبانی نمیشود.دسته والد انتخاب شده در حال حاضر زیرمجموعه دسته ای دیگر است"</string>
+    <string name="message_error_insert_category_not_consistent">"دسته والد انتخاب شده با این دسته همنوع نیست."</string>
+    <string name="message_error_update_category_deep_hierarchy">"دسته بندی‌های تو در تو پشتیبانی نمیشود.دسته والد انتخاب شده یک یا دو زیر رده دارد و نمیتواند به عنوان زیر رده بروز شود."</string>
+    <string name="message_error_update_category_not_consistent">"دسته والد انتخاب شده با این دسته همنوع نیست."</string>
+    <string name="message_error_delete_category_with_children">"این دسته را نمی توان حذف کرد چرا که دارای یک یا چند فرزند است. لطفا اول آنها را حذف کنید."</string>
+    <string name="message_error_delete_category_in_use">"این دسته را نمی توان حذف کرد چرا که در حال استفاده است. لطفا هر گونه ارجاع به این دسته را حذف کنید و دوباره امتحان کنید"</string>
+    <string name="message_error_delete_system_category">"این دسته را نمی توان حذف کرد زیرا این یک طبقه بندی سیستم است."</string>
+    <string name="message_delete_transaction">"آیا مطمئن هستید که میخواهید این تراکنش را حذف کنید؟"</string>
+    <string name="message_delete_transfer">"آیا مطمئن هستید که می خواهید این انتقال را حذف کنید؟"</string>
+    <string name="message_error_delete_transaction_of_transfer">"این تراکنش نمی تواند حذف شود، زیرا بخشی از انتقال است. لطفا برای انتقال این تراکنش را حذف کنید."</string>
+    <string name="message_delete_debt">"آیا مطمئنید که میخواهید این بدهی را حذف کنید؟ تمام داده های مرتبط حذف خواهند شد."</string>
+    <string name="message_delete_budget">"آیا مطمئن هستید که می خواهید این بودجه را حذف کنید؟"</string>
+    <string name="message_delete_saving">"آیا مطمئن هستید که میخواهید این پس‌انداز را حذف کنید؟ تمام داده های مرتبط حذف خواهند شد."</string>
+    <string name="message_delete_event">"آیا شما مطمئن هستید که میخواهید این رویداد را حذف کنید؟"</string>
+    <string name="message_delete_transaction_model">"آیا مطمئن هستید که می خواهید این مدل تراکنش را حذف کنید؟?"</string>
+    <string name="message_delete_transfer_model">"آیا مطمئن هستید که می خواهید این مدل انتقال را حذف کنید؟"</string>
+    <string name="message_delete_recurrent_transaction">"آیا مطمئن هستید که می خواهید این تراکنش مجدد را حذف کنید؟ تمام تراکنش‌های قبلا ساخته شده حذف نخواهد شد."</string>
+    <string name="message_delete_recurrent_transfer">"آیا مطمئن هستید که می خواهید این انتقال مجدد را حذف کنید؟ تمام انتقال های قبلا تولید شده حذف نخواهد شد."</string>
+    <string name="message_delete_place">"آیا مطمئن هستید که میخواهید این مکان را حذف کنید؟"</string>
+    <string name="message_delete_person">"آیا شما مطمئن هستید که میخواهید این شخص را حذف کنید؟"</string>
+    <string name="message_debt_insert_master_transaction">"آیا میخواهید تراکنش اصلی را برای این بدهی اضافه کنید؟"</string>
+    <string name="message_error_legacy_upgrade_failed">"هنگام ارتقاء پایگاه داده داخلی یک خطا رخ داده است. لطفا صبور باشید و این پیام را به توسعه دهنده ارسال کنید. برنامه را حذف نکنید یا داده های خود را از دست بدهید. برای چک کردن اینکه آیا چیزی خراب شده، به برنامه بازگردانده می شوید. پیغام خطا: %s"</string>
+
+    <string name="message_async_init">"مقداردهی اولیه …"</string>
+
+    <string name="snackbar_message_model_transaction_added">"تراکنش اضافه شد"</string>
+    <string name="snackbar_message_model_transfer_added">"انتقال اضافه شد"</string>
+    <string name="snackbar_message_model_transaction_removed">"تراکنش حذف شد"</string>
+    <string name="snackbar_message_model_transfer_removed">"انتقال حذف شد"</string>
+
+    <string name="spinner_item_group_type_daily">"گروه روزانه"</string>
+    <string name="spinner_item_group_type_weekly">"گروه هفتگی"</string>
+    <string name="spinner_item_group_type_monthly">"گروه ماهانه"</string>
+    <string name="spinner_item_group_type_yearly">"گروه سالانه"</string>
+    <string name="spinner_item_type_cash_flow">"جریان نقدی"</string>
+    <string name="spinner_item_type_category">"دسته بندی"</string>
+    <string name="spinner_item_cash_flow_incomes">"فقط درآمد"</string>
+    <string name="spinner_item_cash_flow_expenses">"فقط هزینه ها"</string>
+    <string name="spinner_item_cash_flow_net_incomes">"درآمد خالص"</string>
+
+    <string name="spinner_item_start_date">"از:   %s"</string>
+    <string name="spinner_item_end_date">"تا:   %s"</string>
+
+    <string name="service_backup_drop_box">"DropBox"</string>
+    <string name="service_backup_google_drive">"Google Drive"</string>
+    <string name="service_backup_external_memory">"حافظه خارجی"</string>
+
+    <string name="setting_title_user_interface">"رابط کاربری"</string>
+    <string name="setting_title_utility">"ابزارها"</string>
+    <string name="setting_title_database">"پایگاه داده"</string>
+    <string name="setting_title_about">"درباره"</string>
+
+    <string name="setting_category_ui_appearance">"ظاهر"</string>
+    <string name="setting_category_ui_theme">"زمینه"</string>
+    <string name="setting_title_ui_income_color">"رنگ درآمد"</string>
+    <string name="setting_title_ui_expense_color">"رنگ هزینه"</string>
+    <string name="setting_title_ui_custom_digits">"نمایش سبک ارقام"</string>
+    <string name="setting_summary_ui_custom_digits">"سبک نمایش داده شده از رقم را شخصی سازی کنید"</string>
+    <string name="setting_title_ui_date_format">"فرمت تاریخ"</string>
+    <string name="setting_title_ui_first_day_week">"روز اول هفته"</string>
+    <string name="setting_title_ui_first_day_month">"روز اول ماه"</string>
+    <string name="setting_title_ui_group_type">"گروه بندی"</string>
+    <string name="setting_title_ui_theme_color_primary">"رنگ اصلی"</string>
+    <string name="setting_title_ui_theme_color_accent">" شدت رنگ"</string>
+    <string name="setting_title_ui_theme_type">"نوع"</string>
+
+    <string name="setting_category_utility_notification">"اطلاع"</string>
+    <string name="setting_category_utility_security">"امنیت"</string>
+    <string name="setting_category_utility_exchange_rates">"نرخ‌های تبدیل"</string>
+    <string name="setting_title_daily_reminder">"یادآوری روزانه"</string>
+    <string name="setting_summary_daily_reminder">"هر روز در: %02d:00"</string>
+    <string name="setting_title_security">"حفاظت از دسترسی"</string>
+    <string name="setting_title_security_change_pin">"تغییر کد پین"</string>
+    <string name="setting_title_security_change_sequence">"تغییر توالی باز کردن"</string>
+    <string name="setting_title_exchange_rate_source">"سرویس"</string>
+    <string name="setting_title_exchange_rate_api_key">"سفارشی api-key"</string>
+    <string name="setting_summary_exchange_rate_api_key">"Api-key: %s"</string>
+    <string name="setting_summary_exchange_rate_api_key_missing">"Api-key گم شده است"</string>
+    <string name="setting_title_exchange_rate_update">"به روز رسانی نرخ ارز"</string>
+    <string name="setting_summary_exchange_rate_update">"اخرین بروزرسانی: %s"</string>
+    <string name="setting_subtitle_user_interface">"شخصی سازی کنید همانطور که می خواهید"</string>
+    <string name="setting_subtitle_utility">"راه اندازی ابزارهای موجود"</string>
+    <string name="setting_subtitle_database">"داده های خود را مدیریت کنید"</string>
+    <string name="setting_subtitle_about">"اعتبارات و مجوزها"</string>
+    <string name="setting_item_daily_reminder_none">"غیرفعال شد"</string>
+    <string name="setting_item_security_none">"غیرفعال شد"</string>
+    <string name="setting_item_security_pin">"کد پین"</string>
+    <string name="setting_item_security_sequence">"توالی"</string>
+    <string name="setting_item_security_fingerprint">"اثر انگشت"</string>
+    <string name="setting_item_ui_group_type_daily">"روزانه"</string>
+    <string name="setting_item_ui_group_type_weekly">"هفتگی"</string>
+    <string name="setting_item_ui_group_type_monthly">"ماهانه"</string>
+    <string name="setting_item_ui_group_type_yearly">"سالانه"</string>
+    <string name="setting_item_ui_theme_type_light">"روشن"</string>
+    <string name="setting_item_ui_theme_type_dark">"تاریک"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"تیره کامل"</string>
+    <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"قرار دادن api-key"</string>
+    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
+    <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"این سرویس نیاز به کلید API معتبر دارد تا کار کند. این به این معنی است که انتشار این برنامه بدون کلید پیش فرض کامپایل شده است، احتمالا به دلیل مسائل مربوط به صدور مجوز. برای برقراری ارتباط با این ارائه دهنده خارجی، باید به https://openexchangerates.org بروید و ثبت نام کنید: یک کلید رایگان دریافت خواهید کرد."</string>
+
+    <string name="setting_category_database_backup">"پشتیبان گیری"</string>
+    <string name="setting_title_database_backup_services">"خدمات پشتیبان گیری"</string>
+    <string name="setting_summary_database_backup_services">"ایجاد و بازیابی پایگاه داده"</string>
+
+    <string name="notification_title_daily_reminder_title">"هر تراکنشی امروز؟"</string>
+    <string name="notification_title_daily_reminder_text">"برای اضافه کردن آن بلافاصله ضربه بزنید"</string>
+    <string name="notification_title_download_exchange_rates">"به روز رسانی نرخ ارز"</string>
+    <string name="notification_title_backup_creation">"ایجاد پشتیبان"</string>
+    <string name="notification_title_backup_restoring">"بازگرداندن پشتیبان"</string>
+    <string name="notification_title_backup_creation_failed">"ایجاد پشتیبان انجام نشد"</string>
+    <string name="notification_title_backup_restoring_failed">"بازیابی پشتیبان انجام نشد"</string>
+    <string name="notification_content_downloading_data">"بارگیری اطلاعات به روز ..."</string>
+    <string name="notification_content_caching_data">"ذخیره اطلاعات به روز شده ..."</string>
+    <string name="notification_content_error_message">"خطا: %s"</string>
+    <string name="notification_content_backup_file_creation">"نوشتن فایل پشتیبان محلی ..."</string>
+    <string name="notification_content_backup_file_uploading">"آپلود فایل پشتیبان ..."</string>
+    <string name="notification_content_backup_file_downloading">"بارگیری فایل پشتیبان ..."</string>
+    <string name="notification_content_backup_file_restoring">"خواندن فایل پشتیبان ..."</string>
+    <string name="notification_content_backup_error_wifi_network">"این عملیات برنامه ریزی شده است که باید انجام شود تنها زمانی که دستگاه به یک شبکه WiFi متصل شود. اتصال به شبکه WiFi و دوباره امتحان کنید."</string>
+    <string name="notification_content_backup_error_backend_recoverable">"هنگام برقراری ارتباط با سرویس Backend خطایی روی داد. اتصال اینترنت خود را بررسی کنید و دوباره امتحان کنید."</string>
+    <string name="notification_content_backup_error_backend">"یک خطا در backend وجود داشت و پشتیبان گیری خودکار غیرفعال شده است. بررسی کنید که آیا مشکلی وجود دارد."</string>
+    <string name="notification_content_backup_error_internal">"در طول عملیات یک خطای داخلی رخ داد که احتمالا یک اشکال است. لطفا این پیام را به توسعه دهنده گزارش کنید: %s"</string>
+    <string name="notification_action_retry">"دوباره امتحان کنید"</string>
+    <string name="message_error_network_connection">"اتصال شبکه"</string>
+    <string name="message_error_invalid_response">"پاسخ نامعتبر"</string>
+    <string name="message_error_missing_api_key">"کلیدی API از دست رفته یا نامعتبر است، لطفا کلید API را در تنظیمات به منظور استفاده از این سرویس به روز کنید"</string>
+
+    <string name="about_hint_version">"نسخه ساخت"</string>
+    <string name="about_hint_changelog">"تغییرات"</string>
+    <string name="about_hint_support">"پشتیبانی از توسعه"</string>
+    <string name="about_hint_rate_app">"امتیاز دهی به این برنامه"</string>
+    <string name="about_hint_open_source_libraries">"کتابخانه های منبع باز"</string>
+    <string name="about_hint_report_bug">"گزارش یک اشکال"</string>
+    <string name="about_hint_author">"نویسنده"</string>
+    <string name="about_hint_developer">"توسعه‌دهنده"</string>
+    <string name="about_hint_fork">"Fork on GitHub"</string>
+    <string name="about_hint_logo_designer">"طراح لوگو"</string>
+    <string name="about_hint_google_plus">"Google Plus"</string>
+    <string name="about_hint_website">"وبسایت"</string>
+    <string name="about_hint_icon_licenses">"تصاویر و آیکون ها"</string>
+    <string name="about_hint_icon_image_intro">"تصاویر معرفی"</string>
+    <string name="about_hint_md_icons">"Material design icons"</string>
+    <string name="about_hint_icon_pack">"آیکون پک"</string>
+    <string name="about_hint_translators">"مترجمان"</string>
+
+    <string name="activity_launcher_legacy_edition_upgrade_title">"ارتقاء ..."</string>
+    <string name="activity_launcher_first_start_title">"به MoneyWallet خوش آمدید"</string>
+    <string name="activity_launcher_first_start_content">"آیا اولین بار است که شما از این برنامه استفاده می کنید یا میخواهید پشتیبان قبلی را بازگردانید؟"</string>
+    <string name="activity_launcher_first_start_button_first_time">"بار اول"</string>
+    <string name="activity_launcher_first_start_button_restore_backup">"بازگرداندن پشتیبان"</string>
+
+    <string name="activity_intro_title_slide_1">"دیگر غافلگیری کافیست"</string>
+    <string name="activity_intro_title_slide_2">"کشف و برنامه ریزی کنید"</string>
+    <string name="activity_intro_title_slide_3">"متن باز"</string>
+    <string name="activity_intro_title_slide_4">"پشتیبان گیری ابر"</string>
+    <string name="activity_intro_title_slide_5">"آفرین"</string>
+    <string name="activity_intro_description_slide_1">"این کمک خواهد کرد که تمام هزینه های خود را ردیابی کنید"</string>
+    <string name="activity_intro_description_slide_2">"شما می توانید تجزیه و تحلیل کنید بجای اینکه شما زمان زیادی صرف و تنظیم بودجه کنید"</string>
+    <string name="activity_intro_description_slide_3">"این پروژه در حال حاضر منبع باز است و هر کس می تواند کمک کند"</string>
+    <string name="activity_intro_description_slide_4">"  از بیشتر سرویس‌های معمول ابری پشتیبانی می کند تا به شما کمک کند هرگز اطلاعات خود را از دست ندهید"</string>
+    <string name="activity_intro_description_slide_5">"شما اکنون برای ایجاد اولین کیف پول خود هدایت می شوید"</string>
+
+    <string name="help_create_new_pin_code">"یک کد پین جدید ایجاد کنید"</string>
+    <string name="help_verify_created_pin_code">"کد پین را دوباره وارد کنید"</string>
+    <string name="help_verify_created_pin_code_failed">"عدم تطابق کد، یک کد پین جدید ایجاد کنید"</string>
+    <string name="help_insert_pin_code">"کد پین را وارد کنید"</string>
+    <string name="help_insert_pin_code_failed">"کد پین اشتباه است، دوباره امتحان کنید"</string>
+    <string name="help_insert_old_pin_code">"کد پین قدیمی را وارد کنید"</string>
+    <string name="help_create_new_sequence">"یک الگو جدید ایجاد کنید"</string>
+    <string name="help_verify_created_sequence">"الگو را دوباره وارد کنید"</string>
+    <string name="help_verify_created_sequence_failed">"عدم تطابق الگو، ایجاد الگو جدید"</string>
+    <string name="help_insert_sequence">"الگو را وارد کنید"</string>
+    <string name="help_insert_sequence_failed">"الگو اشتباه است، دوباره امتحان کنید"</string>
+    <string name="help_insert_old_sequence">"الگو قدیمی را وارد کنید"</string>
+    <string name="help_create_fingerprint">"برای تأیید، از اثر انگشت استفاده کنید"</string>
+    <string name="help_insert_fingerprint">"برای باز کردن از اثر انگشت استفاده کنید"</string>
+    <string name="help_insert_fingerprint_failed">"تأییدیه شکست خورد، دوباره امتحان کنید"</string>
+    <string name="help_fingerprint_not_initialized">"هیچ اثر انگشتی در این دستگاه ثبت نشده است"</string>
+
+    <string name="icon_category_clothes">"لباس ها"</string>
+    <string name="icon_category_people">"شخص"</string>
+    <string name="icon_category_toys">"اسباب بازی ها"</string>
+    <string name="icon_category_travel_and_transportation">"سفر و حمل و نقل"</string>
+    <string name="icon_category_home">"خانه"</string>
+    <string name="icon_category_animals">"حیوانات"</string>
+    <string name="icon_category_shopping">"خرید"</string>
+    <string name="icon_category_sport_and_free_time">"ورزش و زمان آزاد"</string>
+    <string name="icon_category_payments">"پرداخت‌ها"</string>
+    <string name="icon_category_party">"مهمانی"</string>
+    <string name="icon_category_food_and_drinks">"غذا و نوشیدنی"</string>
+    <string name="icon_category_baby">"کودک"</string>
+    <string name="icon_category_beauty_and_wellness">"زیبایی و سلامتی"</string>
+    <string name="icon_category_technology">"فن آوری"</string>
+    <string name="icon_category_finance">"سرمایه گذاری"</string>
+
+    <string name="keyboard_9">9</string>
+    <string name="keyboard_8">8</string>
+    <string name="keyboard_7">7</string>
+    <string name="keyboard_6">6</string>
+    <string name="keyboard_5">5</string>
+    <string name="keyboard_4">4</string>
+    <string name="keyboard_3">3</string>
+    <string name="keyboard_2">2</string>
+    <string name="keyboard_1">1</string>
+    <string name="keyboard_0">0</string>
+    <string name="keyboard_000">000</string>
+    <string name="keyboard_point">.</string>
+    <string name="keyboard_clear">"C"</string>
+    <string name="keyboard_multiplication">"×"</string>
+    <string name="keyboard_division">"÷"</string>
+    <string name="keyboard_addition">"+"</string>
+    <string name="keyboard_subtraction">"−"</string>
+    <string name="keyboard_equal">"="</string>
+    <string name="keyboard_commit">">"</string>
+
+    <string name="recurrence_type_daily">"روزانه"</string>
+    <string name="recurrence_type_weekly">"هفتگی"</string>
+    <string name="recurrence_type_monthly">"ماهانه"</string>
+    <string name="recurrence_type_yearly">"سالانه"</string>
+
+    <string name="recurrence_hint_from">"از"</string>
+    <string name="recurrence_hint_every">"هر"</string>
+    <string name="recurrence_hint_days">"روز"</string>
+    <string name="recurrence_hint_weeks">"هفته"</string>
+    <string name="recurrence_hint_months">"ماه"</string>
+    <string name="recurrence_hint_years">"سال"</string>
+    <string name="recurrence_hint_times">"بار"</string>
+
+    <string name="recurrence_type_weekly_sunday">"در یکشنبه"</string>
+    <string name="recurrence_type_weekly_monday">"در دوشنبه"</string>
+    <string name="recurrence_type_weekly_tuesday">"در سه‌شنبه"</string>
+    <string name="recurrence_type_weekly_wednesday">"در چهارشنبه"</string>
+    <string name="recurrence_type_weekly_thursday">"در پنجشنبه"</string>
+    <string name="recurrence_type_weekly_friday">"در جمعه"</string>
+    <string name="recurrence_type_weekly_saturday">"در شنبه"</string>
+    <string name="recurrence_type_monthly_repeat_same_day">"در همان روز هر ماه"</string>
+
+    <string name="recurrence_end_type_forever">"برای همیشه"</string>
+    <string name="recurrence_end_type_until">"تا زمان"</string>
+    <string name="recurrence_end_type_for">"برای"</string>
+
+    <string name="recurrence_hint_repeat_every_day">"هر روز تکرار کنید، "</string>
+    <string name="recurrence_hint_repeat_every_n_days">"هر  %d روز تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_week">"هر هفته تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_n_weeks">"هر %d هفته تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_month">"هر ماه تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_n_months">"هر %d ماه تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_year">"هر سال تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_every_n_years">"هر %d سال تکرار کنید, "</string>
+    <string name="recurrence_hint_repeat_weekly_sunday">"در یکشنبه, "</string>
+    <string name="recurrence_hint_repeat_weekly_monday">"در دوشنبه, "</string>
+    <string name="recurrence_hint_repeat_weekly_tuesday">"در سه‌شنبه, "</string>
+    <string name="recurrence_hint_repeat_weekly_wednesday">"در چهارشنبه, "</string>
+    <string name="recurrence_hint_repeat_weekly_thursday">"در پنجشنبه, "</string>
+    <string name="recurrence_hint_repeat_weekly_friday">"در جمعه, "</string>
+    <string name="recurrence_hint_repeat_weekly_saturday">"در شنبه, "</string>
+    <string name="recurrence_hint_repeat_starting_from">"شروع از %s, "</string>
+    <string name="recurrence_hint_repeat_forever">"برای همیشه"</string>
+    <string name="recurrence_hint_repeat_until">"تا %s"</string>
+    <string name="recurrence_hint_repeat_for_one_occurrence">"برای ۱ رخداد"</string>
+    <string name="recurrence_hint_repeat_for_n_occurrence">"برای %d رخداد"</string>
+
+    <string name="notification_channel_name_backup">"پشتیبان"</string>
+    <string name="notification_channel_name_reminder">"یادآور"</string>
+    <string name="notification_channel_name_exchange_rate">"نرخ تبدیل"</string>
+    <string name="notification_channel_name_error">"خطا"</string>
+
+    <string name="activity_donation_first_title">"متشکرم!"</string>
+    <string name="activity_donation_first_content">"اگر شما این نرم افزار را دوست دارید و آن را مفید می دانید، یک آبجو خریداری کنید. این پروژه را پشتیبانی می کند و من را تشویق می کند تا آن را در حال توسعه نگه دارد."</string>
+    <string name="activity_donation_second_title">"چرا من؟"</string>
+    <string name="activity_donation_second_content">"کسی ممکن است بگوید بهترین چیزها در زندگی آزاد هستند و من با آن موافق هستم. شما نمی توانید دوستی، عشق و یا خاطره ای از یک طلوع خورشید زیبا را خریداری کنید. به همین دلیل تصمیم گرفتم که کد منبع این برنامه را به صورت رایگان به اشتراک بگذارم. اما متأسفانه زندگی رایگان نیست. شما فقط 24 ساعت در هر روز از زمان کمیاب دارید و باید تصمیمی بگیرید که چگونه آنها را صرف حمایت از خود کنید. اگر این پروژه را دوست دارید و می خواهید آن را در آینده در حال پیشرفت ببینید، فکر می کنم در حمایت از کار من به من اجازه می دهد زمان بیشتری را به آن اختصاص دهم. هر مشارکت یک تفاوت بزرگ ایجاد می کند."</string>
+    <string name="activity_donation_third_title">"نمیتوانید نقدی کمک کنید? هیچ مشکلی وجود ندارد، شما هنوز هم می توانید کمک زیادی کنید!"</string>
+    <string name="activity_donation_crypto_address_copied">"آدرس کپی شده است"</string>
+    <string name="activity_donation_action_share_title">"اشتراک گذاری"</string>
+    <string name="activity_donation_action_share_content">"کلمه را در میان دوستانتان پخش کنید"</string>
+    <string name="activity_donation_action_share_message">"سلام این رو ببین: %s"</string>
+    <string name="activity_donation_action_share_using">"اشتراک به وسیله"</string>
+    <string name="activity_donation_action_rate_title">"رتبه دهی"</string>
+    <string name="activity_donation_action_rate_content">" یک ۵ ستاره در بررسی آغازین بنویسید و به ما بگویید که چه چیزی در مورد آن فکر می کنید"</string>
+    <string name="activity_donation_action_translate_title">"ترجمه"</string>
+    <string name="activity_donation_action_translate_content">"رشته ها را به زبان خود ترجمه کنید"</string>
+    <string name="activity_donation_action_contribute_title">"مشارکت"</string>
+    <string name="activity_donation_action_contribute_content">"کد منبع عمومی است و همه می توانند همکاری کنند"</string>
+    <string name="activity_donation_final_content">"هر مشارکت ، پولی یا غیر پولی، برابر است و برای من بسیار با ارزش است.امیدوارم از آن لذت ببرید و دوباره با تشکر از انتخاب این نرم افزار"</string>
+
+</resources>
