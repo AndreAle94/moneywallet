@@ -135,7 +135,7 @@
     <string name="hint_atm_name">"خودپرداز نام"</string>
     <string name="hint_bank_name">"نام بانک"</string>
     <string name="hint_attachments">"پیوست‌ها"</string>
-    <string name="hint_operation_in_progress">"در جریان ..."</string>
+    <string name="hint_operation_in_progress">"در جریان …"</string>
     <string name="hint_search_something">"چیزی را جستجو کنید"</string>
     <string name="hint_exchange_rate">"قیمت ارز"</string>
     <string name="hint_recurrence_finished">"پایان یافت"</string>
@@ -345,10 +345,10 @@
     <string name="message_backup_restore_standard">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. ادامه دهید؟"</string>
     <string name="message_backup_restore_protected">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. پشتیبان با رمز عبور محافظت می شود، لطفا آن را وارد کنید و ادامه دهید."</string>
     <string name="message_backup_restore_legacy">"آیا مطمئن هستید که می خواهید این نسخه پشتیبان تهیه کنید؟ تمام داده های فعلی از بین می روند و عملیات نمی تواند متوقف شود. هشدار !: این یک نسخه پشتیبان تهیه می شود و برنامه ممکن است آن را وارد کند. ادامه دهید؟"</string>
-    <string name="message_backup_status_creation">"ایجاد فایل پشتیبان در حال پیشرفت ..."</string>
-    <string name="message_backup_status_uploading">"آپلود فایل پشتیبان در حال انجام است ..."</string>
-    <string name="message_backup_status_downloading">"بارگیری فایل پشتیبان در حال انجام است ..."</string>
-    <string name="message_backup_status_restoring">"بازگرداندن فایل پشتیبان در حال انجام است ..."</string>
+    <string name="message_backup_status_creation">"ایجاد فایل پشتیبان در حال پیشرفت …"</string>
+    <string name="message_backup_status_uploading">"آپلود فایل پشتیبان در حال انجام است …"</string>
+    <string name="message_backup_status_downloading">"بارگیری فایل پشتیبان در حال انجام است …"</string>
+    <string name="message_backup_status_restoring">"بازگرداندن فایل پشتیبان در حال انجام است …"</string>
     <string name="message_backup_creation_success">"پشتیبان گیری درست ایجاد شد."</string>
     <string name="message_backup_restoring_success">"پشتیبان به درستی برگردانده شد."</string>
     <string name="message_backup_creation_failed">"شکست در هنگام ایجاد پشتیبان. پیام: %s"</string>
@@ -476,13 +476,13 @@
     <string name="notification_title_backup_restoring">"بازگرداندن پشتیبان"</string>
     <string name="notification_title_backup_creation_failed">"ایجاد پشتیبان انجام نشد"</string>
     <string name="notification_title_backup_restoring_failed">"بازیابی پشتیبان انجام نشد"</string>
-    <string name="notification_content_downloading_data">"بارگیری اطلاعات به روز ..."</string>
-    <string name="notification_content_caching_data">"ذخیره اطلاعات به روز شده ..."</string>
+    <string name="notification_content_downloading_data">"بارگیری اطلاعات به روز …"</string>
+    <string name="notification_content_caching_data">"ذخیره اطلاعات به روز شده …"</string>
     <string name="notification_content_error_message">"خطا: %s"</string>
-    <string name="notification_content_backup_file_creation">"نوشتن فایل پشتیبان محلی ..."</string>
-    <string name="notification_content_backup_file_uploading">"آپلود فایل پشتیبان ..."</string>
-    <string name="notification_content_backup_file_downloading">"بارگیری فایل پشتیبان ..."</string>
-    <string name="notification_content_backup_file_restoring">"خواندن فایل پشتیبان ..."</string>
+    <string name="notification_content_backup_file_creation">"نوشتن فایل پشتیبان محلی …"</string>
+    <string name="notification_content_backup_file_uploading">"آپلود فایل پشتیبان …"</string>
+    <string name="notification_content_backup_file_downloading">"بارگیری فایل پشتیبان …"</string>
+    <string name="notification_content_backup_file_restoring">"خواندن فایل پشتیبان …"</string>
     <string name="notification_content_backup_error_wifi_network">"این عملیات برنامه ریزی شده است که باید انجام شود تنها زمانی که دستگاه به یک شبکه WiFi متصل شود. اتصال به شبکه WiFi و دوباره امتحان کنید."</string>
     <string name="notification_content_backup_error_backend_recoverable">"هنگام برقراری ارتباط با سرویس Backend خطایی روی داد. اتصال اینترنت خود را بررسی کنید و دوباره امتحان کنید."</string>
     <string name="notification_content_backup_error_backend">"یک خطا در backend وجود داشت و پشتیبان گیری خودکار غیرفعال شده است. بررسی کنید که آیا مشکلی وجود دارد."</string>
@@ -510,7 +510,7 @@
     <string name="about_hint_icon_pack">"آیکون پک"</string>
     <string name="about_hint_translators">"مترجمان"</string>
 
-    <string name="activity_launcher_legacy_edition_upgrade_title">"ارتقاء ..."</string>
+    <string name="activity_launcher_legacy_edition_upgrade_title">"ارتقاء …"</string>
     <string name="activity_launcher_first_start_title">"به MoneyWallet خوش آمدید"</string>
     <string name="activity_launcher_first_start_content">"آیا اولین بار است که شما از این برنامه استفاده می کنید یا میخواهید پشتیبان قبلی را بازگردانید؟"</string>
     <string name="activity_launcher_first_start_button_first_time">"بار اول"</string>
