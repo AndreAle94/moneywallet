@@ -166,7 +166,7 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
                         break;
                     case LocalAction.ACTION_BACKUP_SERVICE_FINISHED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         int titleRes = R.string.title_success;
@@ -207,7 +207,7 @@ public class BackupListActivity extends BaseActivity implements ToolbarControlle
                         break;
                     case LocalAction.ACTION_BACKUP_SERVICE_FAILED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         Exception exception = (Exception) intent.getSerializableExtra(BackupHandlerIntentService.EXCEPTION);

@@ -588,7 +588,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                         break;
                     case LocalAction.ACTION_IMPORT_SERVICE_FINISHED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         ThemedDialog.buildMaterialDialog(ImportExportActivity.this)
@@ -599,7 +599,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                         break;
                     case LocalAction.ACTION_IMPORT_SERVICE_FAILED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         Exception exception = (Exception) intent.getSerializableExtra(ImportExportIntentService.EXCEPTION);
@@ -617,7 +617,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                         break;
                     case LocalAction.ACTION_EXPORT_SERVICE_FINISHED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         ThemedDialog.buildMaterialDialog(ImportExportActivity.this)
@@ -649,7 +649,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                         break;
                     case LocalAction.ACTION_EXPORT_SERVICE_FAILED:
                         if (mProgressDialog != null) {
-                            mProgressDialog.dismiss();
+                            mProgressDialog.dismissAllowingStateLoss();
                             mProgressDialog = null;
                         }
                         exception = (Exception) intent.getSerializableExtra(ImportExportIntentService.EXCEPTION);
