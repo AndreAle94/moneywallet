@@ -635,6 +635,7 @@ public class ImportExportActivity extends SinglePanelActivity implements ImportE
                                             Intent target = new Intent(Intent.ACTION_VIEW);
                                             target.setDataAndType(uri, type);
                                             target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                            target.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                             Intent intent = Intent.createChooser(target, getString(R.string.action_open));
                                             try {
                                                 startActivity(intent);
