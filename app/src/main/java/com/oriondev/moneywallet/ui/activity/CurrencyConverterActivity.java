@@ -79,6 +79,7 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
         IntentFilter intentFilter = new IntentFilter(LocalAction.ACTION_EXCHANGE_RATES_UPDATED);
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, intentFilter);
         mMoneyFormatter = MoneyFormatter.getInstance();
+        mMoneyFormatter.setShowSymbolEnabled(false);
     }
 
     @MenuRes

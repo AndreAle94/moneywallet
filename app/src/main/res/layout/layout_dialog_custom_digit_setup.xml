@@ -67,4 +67,12 @@
         android:text="@string/hint_round_decimals"
         android:textSize="14sp" />
 
+    <com.oriondev.moneywallet.ui.view.theme.ThemedSwitchCompat
+        android:id="@+id/show_always_plus_minus_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/hint_show_always_plus_minus"
+        android:textSize="14sp" />
+
 </LinearLayout>

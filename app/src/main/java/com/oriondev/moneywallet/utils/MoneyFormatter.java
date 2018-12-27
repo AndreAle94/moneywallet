@@ -55,6 +55,7 @@ public class MoneyFormatter {
     private boolean mCurrencyEnabled;
     private boolean mGroupDigitEnabled;
     private boolean mRoundDecimalsEnabled;
+    private boolean mShowSymbolEnabled;
     private NumberFormat mFormatter;
 
     public enum CurrencyMode {
@@ -67,6 +68,12 @@ public class MoneyFormatter {
         AUTO_DETECT,
         INCOME,
         EXPENSE
+    }
+
+    public enum FlowMode {
+        FORCE_POSITIVE,
+        FORCE_NEGATIVE,
+        AUTO_DETECT
     }
 
     public static MoneyFormatter getInstance() {
@@ -90,6 +97,7 @@ public class MoneyFormatter {
         mCurrencyEnabled = PreferenceManager.isCurrencyEnabled();
         mGroupDigitEnabled = PreferenceManager.isGroupDigitEnabled();
         mRoundDecimalsEnabled = PreferenceManager.isRoundDecimalsEnabled();
+        mShowSymbolEnabled = PreferenceManager.isShowPlusMinusSymbolEnabled();
         mFormatter = DecimalFormat.getInstance();
         mFormatter.setMinimumIntegerDigits(DEFAULT_MIN_INTEGER_DIGITS);
     }
@@ -106,6 +114,10 @@ public class MoneyFormatter {
         mRoundDecimalsEnabled = enabled;
     }
 
+    public void setShowSymbolEnabled(boolean enabled) {
+        mShowSymbolEnabled = enabled;
+    }
+
     public boolean isCurrencyEnabled() {
         return mCurrencyEnabled;
     }
@@ -116,6 +128,10 @@ public class MoneyFormatter {
 
     public boolean isRoundDecimalsEnabled() {
         return mRoundDecimalsEnabled;
+    }
+
+    public boolean isShowSymbolEnabled() {
+        return mShowSymbolEnabled;
     }
 
     public String getNotTintedString(Money money) {
@@ -131,21 +147,21 @@ public class MoneyFormatter {
                 }
                 CurrencyUnit currencyUnit = CurrencyManager.getCurrency(entry.getKey());
                 long currencyMoney = entry.getValue();
-                builder.append(getNotTintedString(currencyUnit, currencyMoney, currencyMode, true));
+                builder.append(getNotTintedString(currencyUnit, currencyMoney, currencyMode, FlowMode.AUTO_DETECT));
             }
         }
         return builder.toString();
     }
 
     public String getNotTintedString(CurrencyUnit currencyUnit, long money) {
-        return getNotTintedString(currencyUnit, money, CurrencyMode.USER_PREFERENCE, true);
+        return getNotTintedString(currencyUnit, money, CurrencyMode.USER_PREFERENCE, FlowMode.AUTO_DETECT);
     }
 
     public String getNotTintedString(CurrencyUnit currencyUnit, long money, CurrencyMode currencyMode) {
-        return getNotTintedString(currencyUnit, money, currencyMode, true);
+        return getNotTintedString(currencyUnit, money, currencyMode, FlowMode.AUTO_DETECT);
     }
 
-    private String getNotTintedString(CurrencyUnit currencyUnit, long money, CurrencyMode currencyMode, boolean showNegativeSign) {
+    private String getNotTintedString(CurrencyUnit currencyUnit, long money, CurrencyMode currencyMode, FlowMode flowMode) {
         StringBuilder builder = new StringBuilder();
         double divider;
         if (currencyUnit != null) {
@@ -167,8 +183,10 @@ public class MoneyFormatter {
             mFormatter.setMaximumFractionDigits(DEFAULT_MAX_FRACTION_DIGITS_ROUNDING);
             mFormatter.setRoundingMode(RoundingMode.HALF_UP);
         }
-        if (money < 0L && showNegativeSign) {
+        if (flowMode == FlowMode.FORCE_NEGATIVE || (flowMode == FlowMode.AUTO_DETECT && money < 0L)) {
             builder.append("-");
+        } else if (mShowSymbolEnabled) {
+            builder.append("+");
         }
         builder.append(mFormatter.format((double) Math.abs(money) / divider));
         return builder.toString();
@@ -210,7 +228,8 @@ public class MoneyFormatter {
     }
 
     private SpannableString getTintedString(CurrencyUnit currencyUnit, long money, CurrencyMode currencyMode, TintMode tintMode) {
-        String notTinted = getNotTintedString(currencyUnit, money, currencyMode, false);
+        FlowMode flowMode = mShowSymbolEnabled ? getFlowModeFromTintMode(tintMode) : FlowMode.FORCE_POSITIVE;
+        String notTinted = getNotTintedString(currencyUnit, money, currencyMode, flowMode);
         SpannableString spannableString = new SpannableString(notTinted);
         if (tintMode == TintMode.AUTO_DETECT) {
             spannableString.setSpan(new ForegroundColorSpan(money < 0L ? mColorOut : mColorIn), 0, notTinted.length(), 0);
@@ -222,12 +241,22 @@ public class MoneyFormatter {
         return spannableString;
     }
 
+    private FlowMode getFlowModeFromTintMode(TintMode tintMode) {
+        switch (tintMode) {
+            case INCOME:
+                return FlowMode.FORCE_POSITIVE;
+            case EXPENSE:
+                return FlowMode.FORCE_NEGATIVE;
+        }
+        return FlowMode.AUTO_DETECT;
+    }
+
     public void applyNotTinted(TextView textView, Money money) {
         textView.setText(getNotTintedString(money));
     }
 
     public void applyNotTinted(TextView textView, CurrencyUnit currencyUnit, long money) {
-        textView.setText(getNotTintedString(currencyUnit, money, CurrencyMode.USER_PREFERENCE, true));
+        textView.setText(getNotTintedString(currencyUnit, money, CurrencyMode.USER_PREFERENCE, FlowMode.AUTO_DETECT));
     }
 
     public void applyTinted(TextView textView, Money money) {

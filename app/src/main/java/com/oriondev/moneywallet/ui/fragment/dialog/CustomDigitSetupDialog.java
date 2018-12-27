@@ -46,6 +46,7 @@ public class CustomDigitSetupDialog extends DialogFragment {
     private static final String SS_CURRENCY_ENABLED = "CustomDigitSetupDialog::SavedState::CurrencyEnabled";
     private static final String SS_GROUPING_ENABLED = "CustomDigitSetupDialog::SavedState::GroupingEnabled";
     private static final String SS_ROUNDING_ENABLED = "CustomDigitSetupDialog::SavedState::RoundingEnabled";
+    private static final String SS_SYMBOL_ENABLED = "CustomDigitSetupDialog::SavedState::SymbolEnabled";
 
     private static final CurrencyUnit DEFAULT_CURRENCY = CurrencyManager.getDefaultCurrency();
     private static final long DEFAULT_MONEY = 1258972L;
@@ -86,16 +87,19 @@ public class CustomDigitSetupDialog extends DialogFragment {
         SwitchCompat currencyEnabledSwitch = view.findViewById(R.id.show_currency_switch);
         SwitchCompat groupingEnabledSwitch = view.findViewById(R.id.group_digits_switch);
         SwitchCompat roundingEnabledSwitch = view.findViewById(R.id.round_decimals_switch);
+        SwitchCompat symbolEnabledSwitch = view.findViewById(R.id.show_always_plus_minus_switch);
         // setup formatter and load default or saved settings
         mFormatter = MoneyFormatter.getInstance();
         if (savedInstanceState != null) {
             mFormatter.setCurrencyEnabled(savedInstanceState.getBoolean(SS_CURRENCY_ENABLED));
             mFormatter.setGroupDigitEnabled(savedInstanceState.getBoolean(SS_GROUPING_ENABLED));
             mFormatter.setRoundDecimalsEnabled(savedInstanceState.getBoolean(SS_ROUNDING_ENABLED));
+            mFormatter.setShowSymbolEnabled(savedInstanceState.getBoolean(SS_SYMBOL_ENABLED));
         }
         currencyEnabledSwitch.setChecked(mFormatter.isCurrencyEnabled());
         groupingEnabledSwitch.setChecked(mFormatter.isGroupDigitEnabled());
         roundingEnabledSwitch.setChecked(mFormatter.isRoundDecimalsEnabled());
+        symbolEnabledSwitch.setChecked(mFormatter.isShowSymbolEnabled());
         // attach listeners
         currencyEnabledSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -124,6 +128,15 @@ public class CustomDigitSetupDialog extends DialogFragment {
             }
 
         });
+        symbolEnabledSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mFormatter.setShowSymbolEnabled(isChecked);
+                refreshDisplay();
+            }
+
+        });
         // refresh the current display
         refreshDisplay();
         return dialog;
@@ -135,6 +148,7 @@ public class CustomDigitSetupDialog extends DialogFragment {
         outState.putBoolean(SS_CURRENCY_ENABLED, mFormatter.isCurrencyEnabled());
         outState.putBoolean(SS_GROUPING_ENABLED, mFormatter.isGroupDigitEnabled());
         outState.putBoolean(SS_ROUNDING_ENABLED, mFormatter.isRoundDecimalsEnabled());
+        outState.putBoolean(SS_SYMBOL_ENABLED, mFormatter.isShowSymbolEnabled());
     }
 
     private void refreshDisplay() {
@@ -145,5 +159,6 @@ public class CustomDigitSetupDialog extends DialogFragment {
         PreferenceManager.setCurrencyEnabled(mFormatter.isCurrencyEnabled());
         PreferenceManager.setGroupDigitsEnabled(mFormatter.isGroupDigitEnabled());
         PreferenceManager.setRoundDecimalsEnabled(mFormatter.isRoundDecimalsEnabled());
+        PreferenceManager.setShowPlusMinusSymbolEnabled(mFormatter.isShowSymbolEnabled());
     }
 }

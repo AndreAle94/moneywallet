@@ -153,6 +153,7 @@
     <string name="hint_show_currency_symbol">"Show currency symbol"</string>
     <string name="hint_group_digits">"Group digits"</string>
     <string name="hint_round_decimals">"Round decimals"</string>
+    <string name="hint_show_always_plus_minus">"Always show +/- symbols"</string>
     <string name="hint_auto_backup_enabled">"Service enabled"</string>
     <string name="hint_auto_backup_wifi_only">"Only on WiFi network"</string>
     <string name="hint_auto_backup_only_if_data_changed">"Only if data is changed"</string>
