@@ -150,9 +150,10 @@
     <string name="hint_data_format_xls">"XLS"</string>
     <string name="hint_data_format_pdf">"PDF"</string>
 
-    <string name="hint_show_currency_symbol">"Mostra simbolo corrente"</string>
-    <string name="hint_group_digits">"Group digits"</string>
-    <string name="hint_round_decimals">"Round decimals"</string>
+    <string name="hint_show_currency_symbol">"Mostra il simbolo della valuta"</string>
+    <string name="hint_group_digits">"Raggruppa le cifre"</string>
+    <string name="hint_round_decimals">"Arrotonda i decimali"</string>
+    <string name="hint_show_always_plus_minus">"Mostra sempre i simboli +/-"</string>
     <string name="hint_auto_backup_enabled">"Servizio abilitato"</string>
     <string name="hint_auto_backup_wifi_only">"Solo quando connesso a reti WiFi"</string>
     <string name="hint_auto_backup_only_if_data_changed">"Solo quando i dati sono cambiati"</string>
