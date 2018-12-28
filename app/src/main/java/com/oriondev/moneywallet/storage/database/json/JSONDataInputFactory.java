@@ -124,6 +124,7 @@ import java.util.Map;
         category.mParent = mCacheCategories.get(object.optString(JSONDatabase.Category.PARENT, null));
         category.mTag = object.optString(JSONDatabase.Category.TAG, null);
         category.mShowReport = object.optBoolean(JSONDatabase.Category.SHOW_REPORT, true);
+        category.mIndex = object.optInt(JSONDatabase.Category.INDEX, 0);
         category.mUUID = object.optString(JSONDatabase.Category.ID, null);
         category.mLastEdit = object.optLong(JSONDatabase.Category.LAST_EDIT, 0L);
         category.mDeleted = object.optBoolean(JSONDatabase.Category.DELETED, false);

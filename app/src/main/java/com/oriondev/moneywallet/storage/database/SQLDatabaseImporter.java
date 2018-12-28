@@ -58,6 +58,7 @@ public class SQLDatabaseImporter {
         contentValues.put(Schema.Category.TYPE, category.mType);
         contentValues.put(Schema.Category.PARENT, category.mParent);
         contentValues.put(Schema.Category.SHOW_REPORT, category.mShowReport);
+        contentValues.put(Schema.Category.INDEX, category.mIndex);
         contentValues.put(Schema.Category.TAG, category.mTag);
         contentValues.put(Schema.Category.UUID, category.mUUID);
         contentValues.put(Schema.Category.LAST_EDIT, category.mLastEdit);

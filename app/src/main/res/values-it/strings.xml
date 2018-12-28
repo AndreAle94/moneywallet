@@ -189,6 +189,7 @@
     <string name="title_activity_edit_person">"Modifica persona"</string>
     <string name="title_activity_currency_list">"Valute"</string>
     <string name="title_activity_category_picker">"Scegli una categoria"</string>
+    <string name="title_activity_category_sort">"Ordina categorie"</string>
     <string name="title_activity_icon_list">"Icone"</string>
     <string name="title_activity_backup_services">"Backup servizi"</string>
     <string name="title_activity_about">"Informazioni"</string>
@@ -228,6 +229,7 @@
     <string name="menu_action_search_item">"Cerca"</string>
     <string name="menu_action_open_calendar">"Calendario"</string>
     <string name="menu_action_open_map">"Mappa"</string>
+    <string name="menu_action_sort_items">"Ordina"</string>
     <string name="menu_action_show_transaction_list">"Mostra transazione"</string>
     <string name="menu_action_service_disconnect">"Disconnetti"</string>
     <string name="menu_action_service_auto_backup">"Backup automatico"</string>

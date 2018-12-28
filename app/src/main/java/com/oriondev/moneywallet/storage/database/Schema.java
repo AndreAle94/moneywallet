@@ -42,6 +42,7 @@ package com.oriondev.moneywallet.storage.database;
         /*package-local*/ static final String PROGRESS = "progress";
         /*package-local*/ static final String CATEGORY_GROUP_ID = "category_group_id";
         /*package-local*/ static final String CATEGORY_GROUP_NAME = "category_group_name";
+        /*package-local*/ static final String CATEGORY_GROUP_INDEX = "category_group_index";
     }
 
     /*package-local*/ static class Currency extends BaseTable {
@@ -75,6 +76,7 @@ package com.oriondev.moneywallet.storage.database;
         /*package-local*/ static final String PARENT = "category_parent";
         /*package-local*/ static final String TAG = "category_tag";
         /*package-local*/ static final String SHOW_REPORT = "category_show_report";
+        /*package-local*/ static final String INDEX = "category_index";
     }
 
     /*package-local*/ static final class Event extends BaseTable {
@@ -376,6 +378,7 @@ package com.oriondev.moneywallet.storage.database;
             Category.TYPE + " INTEGER NOT NULL, " +
             Category.PARENT + " INTEGER, " +
             Category.SHOW_REPORT + " INTEGER NOT NULL DEFAULT 1, " +
+            Category.INDEX + " INTEGER NOT NULL DEFAULT 0, " +
             Category.TAG + " TEXT, " +
             Category.UUID + " TEXT NOT NULL UNIQUE, " +
             Category.LAST_EDIT + " INTEGER NOT NULL, " +
@@ -761,4 +764,7 @@ package com.oriondev.moneywallet.storage.database;
             "FOREIGN KEY (" + TransactionAttachment.ATTACHMENT + ") REFERENCES " + Attachment.TABLE +
             "(" + Attachment.ID + ") ON UPDATE NO ACTION ON DELETE CASCADE " +
             ")";
+
+    /*package-local*/ static final String CREATE_CATEGORY_INDEX_COLUMN = "ALTER TABLE " +
+            Category.TABLE + " ADD COLUMN " + Category.INDEX + " INTEGER NOT NULL DEFAULT 0";
 }

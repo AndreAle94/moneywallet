@@ -93,7 +93,7 @@ public abstract class AbstractCursorAdapter<VH extends RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
+    public void onBindViewHolder(@NonNull VH holder, int position) {
         if (!mDataValid) {
             throw new IllegalStateException("this should only be called when cursor data is valid");
         }

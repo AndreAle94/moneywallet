@@ -19,10 +19,11 @@
 
 package com.oriondev.moneywallet.ui.activity.base;
 
-import android.app.LoaderManager;
-import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,15 +56,19 @@ public abstract class SinglePanelSimpleListActivity extends SinglePanelActivity 
 
     @Override
     protected void onViewCreated(Bundle savedInstanceState) {
-        getLoaderManager().restartLoader(DEFAULT_LOADER_ID, null, this);
+        getSupportLoaderManager().restartLoader(DEFAULT_LOADER_ID, null, this);
     }
 
     protected abstract void onPrepareRecyclerView(AdvancedRecyclerView recyclerView);
 
     protected abstract AbstractCursorAdapter onCreateAdapter();
 
+    protected AdvancedRecyclerView getAdvancedRecyclerView() {
+        return mAdvancedRecyclerView;
+    }
+
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         mAbstractCursorAdapter.changeCursor(cursor);
         if (cursor != null && cursor.getCount() > 0) {
             mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.READY);
@@ -73,13 +78,13 @@ public abstract class SinglePanelSimpleListActivity extends SinglePanelActivity 
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mAbstractCursorAdapter.changeCursor(null);
     }
 
     @Override
     public void onRefresh() {
-        getLoaderManager().restartLoader(DEFAULT_LOADER_ID, null, this);
+        getSupportLoaderManager().restartLoader(DEFAULT_LOADER_ID, null, this);
         mAdvancedRecyclerView.setState(AdvancedRecyclerView.State.REFRESHING);
     }
 }

@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
@@ -70,6 +71,7 @@ public class CategoryListFragment extends CursorListFragment implements Category
         return new CategoryCursorAdapter(this);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Activity activity = getActivity();
@@ -94,9 +96,9 @@ public class CategoryListFragment extends CursorListFragment implements Category
                 selection += " AND " + Contract.Category.PARENT + " IS NULL";
             }
             String[] selectionArgs = new String[] {String.valueOf(type.getValue())};
-            String sortOrder = Contract.Category.GROUP_NAME + " ASC, " + Contract.Category.GROUP_ID +
-                    " ASC, " + Contract.Category.PARENT + " IS NULL DESC, " + Contract.Category.NAME +
-                    " ASC";
+            String sortOrder = Contract.Category.GROUP_INDEX + " ASC, " + Contract.Category.GROUP_NAME +
+                    " ASC, " + Contract.Category.GROUP_ID + " ASC, " + Contract.Category.PARENT +
+                    " IS NULL DESC, " + Contract.Category.NAME + " ASC";
             return new CursorLoader(activity, uri, projection, selection, selectionArgs, sortOrder);
         }
         return null;

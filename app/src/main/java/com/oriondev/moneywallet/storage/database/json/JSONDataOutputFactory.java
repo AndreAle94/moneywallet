@@ -91,6 +91,7 @@ import java.util.HashMap;
         object.put(JSONDatabase.Category.PARENT, mCacheCategories.get(category.mParent));
         object.put(JSONDatabase.Category.TAG, category.mTag);
         object.put(JSONDatabase.Category.SHOW_REPORT, category.mShowReport);
+        object.put(JSONDatabase.Category.INDEX, category.mIndex);
         object.put(JSONDatabase.Category.ID, category.mUUID);
         object.put(JSONDatabase.Category.LAST_EDIT, category.mLastEdit);
         object.put(JSONDatabase.Category.DELETED, category.mDeleted);

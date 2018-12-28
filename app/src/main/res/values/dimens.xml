@@ -58,6 +58,7 @@
     <dimen name="material_component_lists_one_line_avatar_start_margin">16dp</dimen>
     <dimen name="material_component_lists_one_line_primary_text_start_margin">16dp</dimen>
     <dimen name="material_component_lists_one_line_primary_text_end_margin">16dp</dimen>
+    <dimen name="material_component_lists_one_line_action_icon_end_margin">16dp</dimen>
     <dimen name="material_component_lists_one_line_with_avatar_primary_text_size">16sp</dimen>
     <dimen name="material_component_lists_two_line_avatar_width">40dp</dimen>
     <dimen name="material_component_lists_two_line_avatar_height">40dp</dimen>

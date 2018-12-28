@@ -61,7 +61,7 @@ import java.util.UUID;
 /*package-local*/ class SQLDatabase extends SQLiteOpenHelper {
 
     /*package-local*/ static final String DATABASE_NAME = "database.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String ENABLE_FOREIGN_KEYS = "PRAGMA foreign_keys=ON";
 
@@ -134,8 +134,12 @@ import java.util.UUID;
             // has a number of decimals different from 2 (we have made a mistake
             // during the upgrade from the legacy database: we forgot to normalize
             // where the decimals count is different from 2).
-            System.out.println("[onUpgrade] normalization of the database");
             normalizeDatabase(db);
+        }
+        if (oldVersion < 3) {
+            // we need to add a new column to the category table in order to let
+            // the user sort the categories inside the database.
+            db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
         }
     }
 
@@ -184,6 +188,7 @@ import java.util.UUID;
             contentValues.put(Schema.Category.ICON, category.getIcon(mContext));
             contentValues.put(Schema.Category.TYPE, Contract.CategoryType.SYSTEM.getValue());
             contentValues.put(Schema.Category.SHOW_REPORT, true);
+            contentValues.put(Schema.Category.INDEX, 0);
             contentValues.put(Schema.Category.TAG, category.getTag());
             contentValues.put(Schema.Category.UUID, category.getUUID());
             contentValues.put(Schema.Category.LAST_EDIT, System.currentTimeMillis());
@@ -1555,8 +1560,10 @@ import java.util.UUID;
                 "p." + Schema.Category.TAG + " AS " + Contract.Category.PARENT_TAG + ", " +
                 "c." + Schema.Category.TAG + " AS " + Contract.Category.TAG + ", " +
                 "c." + Schema.Category.SHOW_REPORT + " AS " + Contract.Category.SHOW_REPORT + ", " +
+                "c." + Schema.Category.INDEX + " AS " + Contract.Category.INDEX + ", " +
                 "IFNULL(p." + Schema.Category.ID + ", c." + Schema.Category.ID + ") AS " + Contract.Category.GROUP_ID + ", " +
-                "IFNULL(p." + Schema.Category.NAME + ", c." + Schema.Category.NAME + ") AS " + Contract.Category.GROUP_NAME + " " +
+                "IFNULL(p." + Schema.Category.NAME + ", c." + Schema.Category.NAME + ") AS " + Contract.Category.GROUP_NAME + ", " +
+                "IFNULL(p." + Schema.Category.INDEX + ", c." + Schema.Category.INDEX + ") AS " + Contract.Category.GROUP_INDEX + " " +
                 "FROM " + Schema.Category.TABLE + " AS c LEFT JOIN " + Schema.Category.TABLE +
                 " AS p ON c." + Schema.Category.PARENT + " = p." + Schema.Category.ID + " AND p." +
                 Schema.Category.DELETED + " = 0 WHERE c." + Schema.Category.DELETED + " = 0";
@@ -1634,6 +1641,8 @@ import java.util.UUID;
         cv.put(Schema.Category.PARENT, contentValues.getAsLong(Contract.Category.PARENT));
         cv.put(Schema.Category.TAG, contentValues.getAsString(Contract.Category.TAG));
         cv.put(Schema.Category.SHOW_REPORT, contentValues.getAsBoolean(Contract.Category.SHOW_REPORT));
+        Integer index = contentValues.getAsInteger(Contract.Category.INDEX);
+        cv.put(Schema.Category.INDEX, index != null ? index : 0);
         cv.put(Schema.Category.UUID, UUID.randomUUID().toString());
         cv.put(Schema.Category.LAST_EDIT, System.currentTimeMillis());
         cv.put(Schema.Category.DELETED, false);
@@ -1653,20 +1662,27 @@ import java.util.UUID;
     /*package-local*/ int updateCategory(long categoryId, ContentValues contentValues) {
         // check if category is a system category: only the flag SHOW_REPORT can be changed
         boolean isSystemCategory = false;
-        String[] projection = new String[] {Schema.Category.TYPE};
+        boolean isChildCategory = false;
+        String[] projection = new String[] {Schema.Category.TYPE, Schema.Category.PARENT};
         String where = Schema.Category.ID + " = ?";
         String[] whereArgs = new String[]{String.valueOf(categoryId)};
         Cursor cursor = getReadableDatabase().query(Schema.Category.TABLE, projection, where, whereArgs, null, null, null);
         if (cursor != null) {
             try {
-                if (cursor.moveToFirst() && cursor.getInt(cursor.getColumnIndex(Schema.Category.TYPE)) == Contract.CategoryType.SYSTEM.getValue()) {
-                    isSystemCategory = true;
+                if (cursor.moveToFirst()) {
+                    if (cursor.getInt(cursor.getColumnIndex(Schema.Category.TYPE)) == Contract.CategoryType.SYSTEM.getValue()) {
+                        isSystemCategory = true;
+                    }
+                    if (!cursor.isNull(cursor.getColumnIndex(Schema.Category.PARENT))) {
+                        isChildCategory = true;
+                    }
                 }
             } finally {
                 cursor.close();
             }
         }
-        if (contentValues.containsKey(Contract.Category.PARENT) && contentValues.getAsLong(Contract.Category.PARENT) != null) {
+        boolean isValidParentSet = contentValues.containsKey(Contract.Category.PARENT) && contentValues.getAsLong(Contract.Category.PARENT) != null;
+        if (isValidParentSet) {
             // check if category that has a parent id set has already some children
             projection = new String[] {Schema.Category.ID};
             where = Schema.Category.PARENT + " = ?";
@@ -1707,18 +1723,20 @@ import java.util.UUID;
             }
         } else {
             // check if category has some children and if the type is consistent
-            projection = new String[] {Schema.Category.ID};
-            where = Schema.Category.PARENT + " = ? AND " + Schema.Category.TYPE + " != ?";
-            whereArgs = new String[]{String.valueOf(categoryId), String.valueOf(contentValues.getAsInteger(Contract.Category.TYPE))};
-            cursor = getReadableDatabase().query(Schema.Category.TABLE, projection, where, whereArgs, null, null, null);
-            if (cursor != null) {
-                try {
-                    if (cursor.moveToFirst()) {
-                        throw new SQLiteDataException(Contract.ErrorCode.CATEGORY_NOT_CONSISTENT,
-                                String.format(Locale.ENGLISH, "The category (id: %d) cannot be updated because is not consistent with the children categories", categoryId));
+            if (contentValues.containsKey(Contract.Category.TYPE)) {
+                projection = new String[] {Schema.Category.ID};
+                where = Schema.Category.PARENT + " = ? AND " + Schema.Category.TYPE + " != ?";
+                whereArgs = new String[]{String.valueOf(categoryId), String.valueOf(contentValues.getAsInteger(Contract.Category.TYPE))};
+                cursor = getReadableDatabase().query(Schema.Category.TABLE, projection, where, whereArgs, null, null, null);
+                if (cursor != null) {
+                    try {
+                        if (cursor.moveToFirst()) {
+                            throw new SQLiteDataException(Contract.ErrorCode.CATEGORY_NOT_CONSISTENT,
+                                    String.format(Locale.ENGLISH, "The category (id: %d) cannot be updated because is not consistent with the children categories", categoryId));
+                        }
+                    } finally {
+                        cursor.close();
                     }
-                } finally {
-                    cursor.close();
                 }
             }
         }
@@ -1746,6 +1764,21 @@ import java.util.UUID;
         }
         if (contentValues.containsKey(Contract.Category.SHOW_REPORT)) {
             cv.put(Schema.Category.SHOW_REPORT, contentValues.getAsBoolean(Contract.Category.SHOW_REPORT));
+        }
+        if (contentValues.containsKey(Contract.Category.INDEX)) {
+            int index = contentValues.getAsInteger(Contract.Category.INDEX);
+            if (isChildCategory || isValidParentSet) {
+                // child categories should have index set always to 0 to prevent undesired
+                // order between subcategories of the same group.
+                index = 0;
+            }
+            cv.put(Schema.Category.INDEX, index);
+        } else {
+            if (isChildCategory || isValidParentSet) {
+                // for the same reason, if the category is a child category or it is going to
+                // be updated as child category, force the index field to 0.
+                cv.put(Schema.Category.INDEX, 0);
+            }
         }
         cv.put(Schema.Category.LAST_EDIT, System.currentTimeMillis());
         where = Schema.Category.ID + " = ?";

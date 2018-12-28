@@ -90,8 +90,9 @@ public class CategoryCursorAdapter extends AbstractCursorAdapter<CategoryCursorA
         return cursor.isNull(mIndexCategoryParentId) ? TYPE_PARENT : TYPE_CHILD;
     }
 
+    @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (viewType == TYPE_PARENT) {
             View itemView = inflater.inflate(R.layout.adapter_category_item, parent, false);

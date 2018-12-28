@@ -189,6 +189,7 @@
     <string name="title_activity_edit_person">"Edit person"</string>
     <string name="title_activity_currency_list">"Currencies"</string>
     <string name="title_activity_category_picker">"Pick a category"</string>
+    <string name="title_activity_category_sort">"Sort categories"</string>
     <string name="title_activity_icon_list">"Icons"</string>
     <string name="title_activity_backup_services">"Backup services"</string>
     <string name="title_activity_about">"About"</string>
@@ -228,6 +229,7 @@
     <string name="menu_action_search_item">"Search"</string>
     <string name="menu_action_open_calendar">"Calendar"</string>
     <string name="menu_action_open_map">"Map"</string>
+    <string name="menu_action_sort_items">"Sort"</string>
     <string name="menu_action_show_transaction_list">"Show transactions"</string>
     <string name="menu_action_service_disconnect">"Disconnect"</string>
     <string name="menu_action_service_auto_backup">"Auto backup"</string>

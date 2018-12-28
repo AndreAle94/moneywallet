@@ -20,13 +20,14 @@
 package com.oriondev.moneywallet.ui.activity;
 
 import android.app.Activity;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.oriondev.moneywallet.R;
@@ -68,6 +69,7 @@ public class CurrencyListActivity extends SinglePanelSimpleListActivity implemen
         return false;
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Uri uri = DataContentProvider.CONTENT_CURRENCIES;

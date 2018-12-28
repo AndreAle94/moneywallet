@@ -75,6 +75,7 @@ public class SQLDatabaseExporter {
         object.mType = cursor.getInt(cursor.getColumnIndex(Schema.Category.TYPE));
         object.mParent = cursor.isNull(cursor.getColumnIndex(Schema.Category.PARENT)) ? null : cursor.getLong(cursor.getColumnIndex(Schema.Category.PARENT));
         object.mShowReport = cursor.getInt(cursor.getColumnIndex(Schema.Category.SHOW_REPORT)) == 1;
+        object.mIndex = cursor.getInt(cursor.getColumnIndex(Schema.Category.INDEX));
         object.mTag = cursor.getString(cursor.getColumnIndex(Schema.Category.TAG));
         object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Category.UUID));
         object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Category.LAST_EDIT));

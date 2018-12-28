@@ -31,4 +31,5 @@ public class Category extends BaseItem {
     public Long mParent;
     public String mTag;
     public boolean mShowReport;
+    public int mIndex;
 }

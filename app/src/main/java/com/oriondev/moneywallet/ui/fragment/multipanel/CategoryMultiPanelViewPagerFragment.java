@@ -24,15 +24,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
+import android.view.MenuItem;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.broadcast.Message;
 import com.oriondev.moneywallet.storage.database.Contract;
+import com.oriondev.moneywallet.ui.activity.CategorySortActivity;
 import com.oriondev.moneywallet.ui.activity.NewEditCategoryActivity;
 import com.oriondev.moneywallet.ui.activity.NewEditItemActivity;
 import com.oriondev.moneywallet.ui.adapter.pager.CategoryViewPagerAdapter;
@@ -56,6 +59,34 @@ public class CategoryMultiPanelViewPagerFragment extends MultiPanelViewPagerItem
     @Override
     protected int getTitleRes() {
         return R.string.menu_category;
+    }
+
+    @MenuRes
+    @Override
+    protected int onInflateMenu() {
+        return R.menu.menu_category_multipanel_fragment;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sort_items:
+                Intent intent = new Intent(getActivity(), CategorySortActivity.class);
+                switch (getViewPagerPosition()) {
+                    case 0:
+                        intent.putExtra(CategorySortActivity.TYPE, Contract.CategoryType.INCOME);
+                        break;
+                    case 1:
+                        intent.putExtra(CategorySortActivity.TYPE, Contract.CategoryType.EXPENSE);
+                        break;
+                    case 2:
+                        intent.putExtra(CategorySortActivity.TYPE, Contract.CategoryType.SYSTEM);
+                        break;
+                }
+                startActivity(intent);
+                break;
+        }
+        return false;
     }
 
     @Override

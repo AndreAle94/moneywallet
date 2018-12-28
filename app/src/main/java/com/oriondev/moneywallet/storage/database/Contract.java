@@ -170,8 +170,10 @@ public class Contract {
         public static final String PARENT_SHOW_REPORT = "category_parent_show_report";
         public static final String PARENT_TAG = "category_parent_tag";
         public static final String SHOW_REPORT = Schema.Category.SHOW_REPORT;
+        public static final String INDEX = Schema.Category.INDEX;
         public static final String GROUP_ID = Schema.Alias.CATEGORY_GROUP_ID;
         public static final String GROUP_NAME = Schema.Alias.CATEGORY_GROUP_NAME;
+        public static final String GROUP_INDEX = Schema.Alias.CATEGORY_GROUP_INDEX;
         public static final String TAG = Schema.Category.TAG;
     }
 
