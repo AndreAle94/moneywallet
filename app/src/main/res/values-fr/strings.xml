@@ -140,6 +140,15 @@
     <string name="hint_exchange_rate">"Taux de change"</string>
     <string name="hint_recurrence_finished">"Terminé"</string>
     <string name="hint_new_folder">"Nouveau dossier"</string>
+   <string name="hint_import_format">"Format d'importation"</string>
+    <string name="hint_export_format">"Format d'exportation"</string>
+    <string name="hint_import_file">"Fichier à importer"</string>
+    <string name="hint_export_folder">"Dossier d'exportation"</string>
+    <string name="hint_export_optional_columns">"Colonnes optionnelles"</string>
+    <string name="hint_export_unique_wallet">"Joindre des transactions de différents portefeuilles"</string>
+    <string name="hint_data_format_csv">"CSV"</string>
+    <string name="hint_data_format_xls">"XLS"</string>
+    <string name="hint_data_format_pdf">"PDF"</string>
 
     <string name="hint_show_currency_symbol">"Afficher le symbole monétaire"</string>
     <string name="hint_group_digits">"Grouper les chiffres"</string>
@@ -191,6 +200,8 @@
     <string name="title_activity_backend_file_picker">"Choisissez un fichier"</string>
     <string name="title_activity_backend_folder_picker">"Choisissez un dossier"</string>
     <string name="title_activity_support_developer">Aider le développeur</string>
+    <string name="title_activity_import_data">"Importer des données"</string>
+    <string name="title_activity_export_data">"Exporter des données"</string>
 
     <string name="title_fragment_item_wallet">Portefeuille</string>
     <string name="title_fragment_item_transaction">"Transaction"</string>
@@ -220,6 +231,8 @@
     <string name="menu_action_service_disconnect">"Déconnecter"</string>
     <string name="menu_action_service_auto_backup">"Sauvegarde automatique"</string>
     <string name="menu_action_select_folder">"Sélectionner le dossier"</string>
+    <string name="menu_action_import_data">"Importer des données"</string>
+    <string name="menu_action_export_data">"Exporter des données"</string>
 
     <string name="bottom_sheet_icon_picker_title">Personnaliser l\'îcone</string>
     <string name="bottom_sheet_icon_picker_action_select_icon">Sélectionner une icône</string>
@@ -240,6 +253,8 @@
     <string name="dialog_overview_setting_title">"Paramètres avancés"</string>
     <string name="dialog_recurrence_title">"Répéter"</string>
     <string name="dialog_auto_backup_title">"Sauvegarde automatique"</string>
+    <string name="dialog_data_format_picker_title">"Format de données"</string>
+    <string name="dialog_export_optional_columns_title">"Colonnes optionnelles"</string>
 
     <string name="error_input_name_not_valid">"Nom invalide"</string>
     <string name="error_input_currency_not_valid">"Monnaie invalide"</string>
@@ -254,6 +269,9 @@
     <string name="error_input_invalid_date_range">"Plage de dates invalide"</string>
     <string name="error_input_missing_category">Sélectionnez une catégorie</string>
     <string name="error_input_missing_description">"Veuillez fournir une description"</string>
+    <string name="error_input_missing_format">"Sélectionnez un format de fichier"</string>
+    <string name="error_input_missing_input_file">"Sélectionnez un fichier d'entrée"</string>
+    <string name="error_input_missing_output_folder">"Sélectionnez un dossier de sortie"</string>
 
     <string name="system_category_transfer">Transfert</string>
     <string name="system_category_transfer_tax">Taxe de transfert</string>
@@ -338,6 +356,8 @@
     <string name="title_licenses">"Licenses"</string>
     <string name="title_debt_insert_master_transaction">"Bien joué"</string>
     <string name="title_currency_exchange_rate">"Taux de change"</string>
+    <string name="title_data_importing">"Importer des données"</string>
+    <string name="title_data_exporting">"Exporter des données"</string>
     <string name="message_backend_create_folder">"Nom du dossier que vous voulez créer"</string>
     <string name="message_permission_required_external_storage">"La permission d'accéder au stockage externe est requise pour pouvoir lire et écrire sur l'appareil. Veuillez l'activer."</string>
     <string name="message_permission_required_not_granted">"Permission refusée. Veuillez modifier les permissions de l'application via les réglages."</string>
@@ -387,6 +407,13 @@
     <string name="message_delete_person">"Êtes-vous sûr de vouloir supprimer cette personne?"</string>
     <string name="message_debt_insert_master_transaction">"Voulez-vous ajouter une transaction principale pour cette dette?"</string>
     <string name="message_error_legacy_upgrade_failed">"Une erreur est survenue lors de la mise à niveau de la base de données interne. Veuillez patienter et  avertir le  développeur en y spécifiant le message. Ne désinstallez pas l’application, vous perdrez vos données. Vous serez redirigé vers l’application pour vérifier si quelque chose a été corrompu. messages d'erreur : %s"</string>
+    <string name="message_data_import_without_backup">"Cette fonctionnalité peut échouer et perturber vos données. Assurez-vous d'avoir sauvegardé vos données existantes avant de continuer. Voulez-vous quand même continuer?"</string>
+    <string name="message_data_import_running">"Importation…"</string>
+    <string name="message_data_export_running">"Exportation…"</string>
+    <string name="message_data_import_failed">"Echec lors de la procédure d'importation. Message: %s"</string>
+    <string name="message_data_export_failed">"Échec lors de la procédure d'exportation. Message: %s"</string>
+    <string name="message_data_import_success">"Données exportées correctement."</string>
+    <string name="message_data_export_success">"Données exportées correctement. Voulez-vous ouvrir le fichier créé?"</string>
 
     <string name="message_async_init">"Initialisation …"</string>
 
@@ -464,10 +491,15 @@
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Insérer votre clée d'api ici"</string>
     <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"Ce service nécessite une clé api valide pour fonctionner. Cela signifie que cette version de l'application a été compilée sans clé par défaut, probablement en raison de problèmes de licence. Pour pouvoir communiquer avec ce fournisseur externe, vous devez vous rendre sur https://openexchangerates.org et vous enregistrer: vous recevrez une clé gratuite."</string>
-
+    
     <string name="setting_category_database_backup">"Sauvegarde"</string>
     <string name="setting_title_database_backup_services">"Services de sauvegarde"</string>
     <string name="setting_summary_database_backup_services">"Créer et restaurer la base de données"</string>
+    <string name="setting_category_database_import_export">"Importer/Exporter"</string>
+    <string name="setting_title_import_data">"Importer données"</string>
+    <string name="setting_summary_import_data">"Lire les données depuis un fichier externe"</string>
+    <string name="setting_title_export_data">"Exporter données"</string>
+    <string name="setting_summary_export_data">"Écrire les données sur un fichier externe"</string>
 
     <string name="notification_title_daily_reminder_title">"Une transaction aujourd'hui?"</string>
     <string name="notification_title_daily_reminder_text">"Appuyez ici pour l'ajouter immédiatement"</string>
