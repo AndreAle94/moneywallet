@@ -24,6 +24,7 @@ import android.os.Bundle;
 import com.oriondev.moneywallet.model.CurrencyUnit;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 
 /**
@@ -181,11 +182,14 @@ public class EquationSolver {
             // Error occurred during calculation
             return 0L;
         }
-        double number = parseNumber(mFirstNumber);
+        double parsedNumber = parseNumber(mFirstNumber);
+        BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL32);
         if (mCurrency != null) {
-            return (long) (number * Math.pow(10, mCurrency.getDecimals()));
+            BigDecimal multiplier = new BigDecimal(Math.pow(10, mCurrency.getDecimals()));
+            BigDecimal result = number.multiply(multiplier);
+            return result.longValue();
         }
-        return (long) number;
+        return number.longValue();
     }
 
     private double parseNumber(String number) {
