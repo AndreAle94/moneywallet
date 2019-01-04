@@ -331,9 +331,16 @@
     "decimals": 0
   },
   {
+    "name": "Iranian Toman",
+    "symbol": "تومان",
+    "code": "TMN"
+    "decimals": 0
+  }, 
+  {
     "name": "Iranian Rial",
     "symbol": "﷼",
     "code": "IRR"
+    "decimals": 0
   },
   {
     "name": "Iceland Krona",
