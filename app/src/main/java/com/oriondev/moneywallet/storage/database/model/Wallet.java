@@ -34,4 +34,5 @@ public class Wallet extends BaseItem {
     public boolean mArchived;
     public String mNote;
     public String mTag;
+    public int mIndex;
 }

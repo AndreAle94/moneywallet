@@ -65,6 +65,7 @@ package com.oriondev.moneywallet.storage.database;
         /*package-local*/ static final String COUNT_IN_TOTAL = "wallet_count_in_total";
         /*package-local*/ static final String ARCHIVED = "wallet_archived";
         /*package-local*/ static final String TAG = "wallet_tag";
+        /*package-local*/ static final String INDEX = "wallet_index";
     }
 
     /*package-local*/ static final class Category extends BaseTable {
@@ -365,6 +366,7 @@ package com.oriondev.moneywallet.storage.database;
             Wallet.COUNT_IN_TOTAL + " INTEGER NOT NULL DEFAULT 1, " +
             Wallet.NOTE + " TEXT, " +
             Wallet.ARCHIVED + " INTEGER NOT NULL DEFAULT 0, " +
+            Wallet.INDEX + " INTEGER NOT NULL DEFAULT 0, " +
             Wallet.TAG + " TEXT, " +
             Wallet.UUID + " TEXT NOT NULL UNIQUE, " +
             Wallet.LAST_EDIT + " INTEGER NOT NULL, " +
@@ -767,4 +769,7 @@ package com.oriondev.moneywallet.storage.database;
 
     /*package-local*/ static final String CREATE_CATEGORY_INDEX_COLUMN = "ALTER TABLE " +
             Category.TABLE + " ADD COLUMN " + Category.INDEX + " INTEGER NOT NULL DEFAULT 0";
+
+    /*package-local*/ static final String CREATE_WALLET_INDEX_COLUMN = "ALTER TABLE " +
+            Wallet.TABLE + " ADD COLUMN " + Wallet.INDEX + " INTEGER NOT NULL DEFAULT 0";
 }

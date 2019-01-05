@@ -77,6 +77,7 @@ import java.util.HashMap;
         object.put(JSONDatabase.Wallet.NOTE, wallet.mNote);
         object.put(JSONDatabase.Wallet.TAG, wallet.mTag);
         object.put(JSONDatabase.Wallet.ID, wallet.mUUID);
+        object.put(JSONDatabase.Wallet.INDEX, wallet.mIndex);
         object.put(JSONDatabase.Wallet.LAST_EDIT, wallet.mLastEdit);
         object.put(JSONDatabase.Wallet.DELETED, wallet.mDeleted);
         mCacheWallets.put(wallet.mId, wallet.mUUID);

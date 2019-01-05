@@ -139,7 +139,8 @@ import java.util.UUID;
         if (oldVersion < 3) {
             // we need to add a new column to the category table in order to let
             // the user sort the categories inside the database.
-            db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
+            db.execSQL(Schema.CREATE_WALLET_INDEX_COLUMN);
+            //db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
         }
     }
 
@@ -266,6 +267,7 @@ import java.util.UUID;
                 Schema.Wallet.START_MONEY + " AS " + Contract.Wallet.START_MONEY + ", " +
                 Schema.Wallet.NOTE + " AS " + Contract.Wallet.NOTE + ", " +
                 Schema.Wallet.ARCHIVED + " AS " + Contract.Wallet.ARCHIVED + ", " +
+                Schema.Wallet.INDEX + " AS " + Contract.Wallet.INDEX + ", " +
                 Schema.Wallet.TAG + " AS " + Contract.Wallet.TAG + ", " +
                 "total_money AS " + Contract.Wallet.TOTAL_MONEY + " FROM " + Schema.Wallet.TABLE +
                 " LEFT JOIN (SELECT " + Schema.Transaction.WALLET + " AS _wallet," +
@@ -296,6 +298,8 @@ import java.util.UUID;
         if (contentValues.containsKey(Contract.Wallet.ARCHIVED)) {
             cv.put(Schema.Wallet.ARCHIVED, contentValues.getAsBoolean(Contract.Wallet.ARCHIVED));
         }
+        Integer index = contentValues.getAsInteger(Contract.Wallet.INDEX);
+        cv.put(Schema.Wallet.INDEX, index != null ? index : 0);
         cv.put(Schema.Wallet.TAG, contentValues.getAsString(Contract.Wallet.TAG));
         cv.put(Schema.Wallet.UUID, UUID.randomUUID().toString());
         cv.put(Schema.Wallet.LAST_EDIT, System.currentTimeMillis());
@@ -334,6 +338,10 @@ import java.util.UUID;
         }
         if (contentValues.containsKey(Contract.Wallet.ARCHIVED)) {
             cv.put(Schema.Wallet.ARCHIVED, contentValues.getAsBoolean(Contract.Wallet.ARCHIVED));
+        }
+        if (contentValues.containsKey(Contract.Wallet.INDEX)) {
+            Integer index = contentValues.getAsInteger(Contract.Wallet.INDEX);
+            cv.put(Schema.Wallet.INDEX, index != null ? index : 0);
         }
         if (contentValues.containsKey(Contract.Wallet.TAG)) {
             cv.put(Schema.Wallet.TAG, contentValues.getAsString(Contract.Wallet.TAG));

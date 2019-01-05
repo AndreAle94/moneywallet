@@ -42,6 +42,7 @@ public class SQLDatabaseImporter {
         contentValues.put(Schema.Wallet.COUNT_IN_TOTAL, wallet.mCountInTotal);
         contentValues.put(Schema.Wallet.ARCHIVED, wallet.mArchived);
         contentValues.put(Schema.Wallet.NOTE, wallet.mNote);
+        contentValues.put(Schema.Wallet.INDEX, wallet.mIndex);
         contentValues.put(Schema.Wallet.TAG, wallet.mTag);
         contentValues.put(Schema.Wallet.UUID, wallet.mUUID);
         contentValues.put(Schema.Wallet.LAST_EDIT, wallet.mLastEdit);

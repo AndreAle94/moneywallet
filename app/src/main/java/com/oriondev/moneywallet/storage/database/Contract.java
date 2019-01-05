@@ -54,6 +54,7 @@ public class Contract {
         public static final String TOTAL_MONEY = "wallet_" + Schema.Alias.TOTAL_MONEY;
         public static final String ARCHIVED = Schema.Wallet.ARCHIVED;
         public static final String TAG = Schema.Wallet.TAG;
+        public static final String INDEX = Schema.Wallet.INDEX;
     }
 
     public static final class Transaction {
