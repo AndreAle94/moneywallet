@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -33,6 +34,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -42,6 +44,7 @@ import com.oriondev.moneywallet.model.Money;
 import com.oriondev.moneywallet.storage.database.Contract;
 import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.ui.activity.NewEditWalletActivity;
+import com.oriondev.moneywallet.ui.activity.WalletSortActivity;
 import com.oriondev.moneywallet.ui.adapter.recycler.WalletCursorAdapter;
 import com.oriondev.moneywallet.ui.fragment.base.MultiPanelAppBarItemFragment;
 import com.oriondev.moneywallet.ui.fragment.base.SecondaryPanelFragment;
@@ -103,6 +106,23 @@ public class WalletMultiPanelFragment extends MultiPanelAppBarItemFragment imple
         return R.string.action_manage_wallets;
     }
 
+    @MenuRes
+    @Override
+    protected int onInflateMenu() {
+        return R.menu.menu_wallet_multipanel_fragment;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sort_items:
+                Intent intent = new Intent(getActivity(), WalletSortActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return false;
+    }
+
     @Override
     protected void onFloatingActionButtonClick() {
         Intent intent = new Intent(getActivity(), NewEditWalletActivity.class);
@@ -124,7 +144,7 @@ public class WalletMultiPanelFragment extends MultiPanelAppBarItemFragment imple
                     Contract.Wallet.COUNT_IN_TOTAL,
                     Contract.Wallet.TOTAL_MONEY
             };
-            String sortOrder = Contract.Wallet.NAME;
+            String sortOrder = Contract.Wallet.INDEX + " ASC, " + Contract.Wallet.NAME + " ASC";
             return new CursorLoader(context, uri, projection, null, null, sortOrder);
         } else {
             return null;

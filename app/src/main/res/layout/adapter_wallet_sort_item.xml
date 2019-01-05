@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<com.oriondev.moneywallet.ui.view.theme.ThemedConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/material_component_lists_one_line_with_avatar_height"
+    app:theme_backgroundColor="colorWindowForeground">
+
+    <ImageView
+        android:id="@+id/icon_image_view"
+        android:layout_width="@dimen/material_component_lists_one_line_avatar_width"
+        android:layout_height="@dimen/material_component_lists_one_line_avatar_height"
+        android:contentDescription="@string/description_wallet_icon"
+        android:layout_marginLeft="@dimen/material_component_lists_one_line_avatar_start_margin"
+        android:layout_marginStart="@dimen/material_component_lists_one_line_avatar_start_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+        android:id="@+id/name_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/material_component_lists_one_line_primary_text_start_margin"
+        android:layout_marginStart="@dimen/material_component_lists_one_line_primary_text_start_margin"
+        android:layout_marginRight="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:layout_marginEnd="@dimen/material_component_lists_one_line_primary_text_end_margin"
+        android:textSize="@dimen/material_component_lists_one_line_with_avatar_primary_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintEnd_toStartOf="@+id/action_image_view"
+        app:theme_textColor="textColorPrimary"
+        tools:text="Wallet name" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
+        android:id="@+id/action_image_view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="@dimen/material_component_lists_one_line_action_icon_end_margin"
+        android:layout_marginEnd="@dimen/material_component_lists_one_line_action_icon_end_margin"
+        android:src="@drawable/ic_drag_handle_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:theme_backgroundColor="colorWindowForeground" />
+
+</com.oriondev.moneywallet.ui.view.theme.ThemedConstraintLayout>

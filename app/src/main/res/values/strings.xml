@@ -187,6 +187,7 @@
     <string name="title_activity_edit_place">"Edit place"</string>
     <string name="title_activity_new_person">"New person"</string>
     <string name="title_activity_edit_person">"Edit person"</string>
+    <string name="title_activity_wallet_sort">"Sort wallets"</string>
     <string name="title_activity_currency_list">"Currencies"</string>
     <string name="title_activity_category_picker">"Pick a category"</string>
     <string name="title_activity_category_sort">"Sort categories"</string>

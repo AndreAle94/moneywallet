@@ -180,6 +180,7 @@ public class WalletPickerDialog extends DialogFragment implements LoaderManager.
         show(fragmentManager, tag);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Activity activity = getActivity();
@@ -195,13 +196,14 @@ public class WalletPickerDialog extends DialogFragment implements LoaderManager.
                     Contract.Wallet.TOTAL_MONEY
             };
             String selection = Contract.Wallet.ARCHIVED + " = 0";
-            return new CursorLoader(activity, uri, projection, selection, null, null);
+            String sortOrder = Contract.Wallet.INDEX + " ASC, " + Contract.Wallet.NAME + " ASC";
+            return new CursorLoader(activity, uri, projection, selection, null, sortOrder);
         }
-        return null;
+        throw new RuntimeException("Activity is null");
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         mCursorAdapter.swapCursor(cursor);
         if (cursor != null && cursor.getCount() > 0) {
             mRecyclerView.setVisibility(View.VISIBLE);
@@ -213,7 +215,7 @@ public class WalletPickerDialog extends DialogFragment implements LoaderManager.
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mCursorAdapter.swapCursor(null);
     }
 

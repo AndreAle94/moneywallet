@@ -445,6 +445,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
      * @param args bundle of arguments.
      * @return the cursor loader that will retrieve the content from the database.
      */
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = new String[] {
@@ -458,12 +459,12 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
                 Contract.Wallet.ARCHIVED
         };
         Uri uri = DataContentProvider.CONTENT_WALLETS;
-        String sortOrder = Contract.Wallet.NAME;
+        String sortOrder = Contract.Wallet.INDEX + " ASC, " + Contract.Wallet.NAME + " ASC";
         return new CursorLoader(this, uri, projection, null, null, sortOrder);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         mCursor = cursor;
         mAccountHeader.clear();
         ITheme theme = ThemeEngine.getTheme();
@@ -576,7 +577,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mAccountHeader.clear();
         if (mCursor != null) {
             if (!mCursor.isClosed()) {

@@ -61,6 +61,7 @@
         <activity android:name=".ui.activity.NewEditTransferModelActivity" />
         <activity android:name=".ui.activity.NewEditPlaceActivity" />
         <activity android:name=".ui.activity.NewEditPersonActivity" />
+        <activity android:name=".ui.activity.WalletSortActivity" />
         <activity android:name=".ui.activity.CurrencyListActivity" />
         <activity android:name=".ui.activity.CategoryPickerActivity" />
         <activity android:name=".ui.activity.CategorySortActivity" />
