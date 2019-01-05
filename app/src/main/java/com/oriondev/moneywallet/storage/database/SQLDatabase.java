@@ -140,7 +140,7 @@ import java.util.UUID;
             // we need to add a new column to the category table in order to let
             // the user sort the categories inside the database.
             db.execSQL(Schema.CREATE_WALLET_INDEX_COLUMN);
-            //db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
+            db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
         }
     }
 
