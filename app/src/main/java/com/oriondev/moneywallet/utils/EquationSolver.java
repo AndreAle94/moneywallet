@@ -156,7 +156,7 @@ public class EquationSolver {
                     result = 0D;
                     break;
             }
-            if (mCurrency != null) {
+            if (mCurrency != null && !Double.isInfinite(result) && !Double.isNaN(result)) {
                 BigDecimal bigDecimal = new BigDecimal(result);
                 bigDecimal = bigDecimal.setScale(mCurrency.getDecimals(), RoundingMode.HALF_UP);
                 result = bigDecimal.doubleValue();
@@ -183,13 +183,16 @@ public class EquationSolver {
             return 0L;
         }
         double parsedNumber = parseNumber(mFirstNumber);
-        BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL32);
-        if (mCurrency != null) {
-            BigDecimal multiplier = new BigDecimal(Math.pow(10, mCurrency.getDecimals()));
-            BigDecimal result = number.multiply(multiplier);
-            return result.longValue();
+        if (!Double.isInfinite(parsedNumber) && !Double.isNaN(parsedNumber)) {
+            BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL32);
+            if (mCurrency != null) {
+                BigDecimal multiplier = new BigDecimal(Math.pow(10, mCurrency.getDecimals()));
+                BigDecimal result = number.multiply(multiplier);
+                return result.longValue();
+            }
+            return number.longValue();
         }
-        return number.longValue();
+        return 0L;
     }
 
     private double parseNumber(String number) {
