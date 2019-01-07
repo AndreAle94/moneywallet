@@ -137,8 +137,8 @@ import java.util.UUID;
             normalizeDatabase(db);
         }
         if (oldVersion < 3) {
-            // we need to add a new column to the category table in order to let
-            // the user sort the categories inside the database.
+            // we need to add a new column to the wallet and the category table in order
+            // to let the user sort the items inside these tables of the database.
             db.execSQL(Schema.CREATE_WALLET_INDEX_COLUMN);
             db.execSQL(Schema.CREATE_CATEGORY_INDEX_COLUMN);
         }
@@ -221,6 +221,20 @@ import java.util.UUID;
     }
 
     /**
+     * This method is called by the content provider when the user is querying a specific currency
+     * from the database.
+     *
+     * @param iso of the requested currency.
+     * @param projection of the currency table.
+     * @return the cursor that contains the requested data.
+     */
+    /*package-local*/ Cursor getCurrency(String iso, String[] projection) {
+        String selection = Schema.Currency.ISO + " = ?";
+        String[] selectionArgs = new String[]{iso};
+        return getCurrencies(projection, selection, selectionArgs, null);
+    }
+
+    /**
      * Query for currencies stored inside the database.
      *
      * @param projection    of the currency table.
@@ -230,7 +244,138 @@ import java.util.UUID;
      * @return the cursor that contains the requested data.
      */
     /*package-local*/ Cursor getCurrencies(String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return getReadableDatabase().query(Schema.Currency.TABLE, projection, selection, selectionArgs, null, null, sortOrder);
+        String subQuery = "SELECT " +
+                Schema.Currency.ISO + " AS " + Contract.Currency.ISO + ", " +
+                Schema.Currency.NAME + " AS " + Contract.Currency.NAME + ", " +
+                Schema.Currency.SYMBOL + " AS " + Contract.Currency.SYMBOL + ", " +
+                Schema.Currency.DECIMALS + " AS " + Contract.Currency.DECIMALS + ", " +
+                Schema.Currency.FAVOURITE + " AS " + Contract.Currency.FAVOURITE +
+                " FROM " + Schema.Currency.TABLE +
+                " WHERE " + Schema.Currency.DELETED + " = 0";
+        return queryFrom(subQuery, projection, selection, selectionArgs, sortOrder);
+    }
+
+    /**
+     * This method is called by the content provider when the user is inserting a new currency
+     * into the database.
+     *
+     * @param contentValues bundle that contains the data from the content provider.
+     * @return the id of the new item if inserted, -1 if an error occurs.
+     */
+    /*package-local*/ String insertCurrency(ContentValues contentValues) {
+        ContentValues cv = new ContentValues();
+        cv.put(Schema.Currency.ISO, contentValues.getAsString(Contract.Currency.ISO));
+        cv.put(Schema.Currency.NAME, contentValues.getAsString(Contract.Currency.NAME));
+        cv.put(Schema.Currency.SYMBOL, contentValues.getAsString(Contract.Currency.SYMBOL));
+        if (contentValues.containsKey(Schema.Currency.DECIMALS)) {
+            int decimals = contentValues.getAsInteger(Contract.Currency.DECIMALS);
+            if (decimals < 0) {
+                decimals = 0;
+            } else if (decimals > 8) {
+                decimals = 8;
+            }
+            cv.put(Schema.Currency.DECIMALS, decimals);
+        }
+        if (contentValues.containsKey(Schema.Currency.FAVOURITE)) {
+            cv.put(Schema.Currency.FAVOURITE, contentValues.getAsBoolean(Contract.Currency.FAVOURITE));
+        }
+        cv.put(Schema.Currency.UUID, "currency_" + contentValues.getAsString(Contract.Currency.ISO));
+        cv.put(Schema.Currency.LAST_EDIT, System.currentTimeMillis());
+        cv.put(Schema.Currency.DELETED, false);
+        if (getWritableDatabase().insert(Schema.Currency.TABLE, null, cv) > 0) {
+            return contentValues.getAsString(Contract.Currency.ISO);
+        }
+        return null;
+    }
+
+    /**
+     * This method is called by the content provider when the user is updating an existing
+     * currency in the database.
+     *
+     * @param iso id of the currency to update.
+     * @param contentValues bundle that contains the data from the content provider.
+     * @return the number of row updated inside the database.
+     */
+    /*package-local*/ int updateCurrency(String iso, ContentValues contentValues) {
+        int oldDecimals = 0;
+        String[] projection = new String[] {
+                Schema.Currency.DECIMALS
+        };
+        String selection = Schema.Currency.ISO + " = ?";
+        String[] selectionArgs = new String[] {iso};
+        Cursor cursor = getReadableDatabase().query(Schema.Currency.TABLE, projection, selection, selectionArgs, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                oldDecimals = cursor.getInt(cursor.getColumnIndex(Schema.Currency.DECIMALS));
+            }
+            cursor.close();
+        }
+        ContentValues cv = new ContentValues();
+        if (contentValues.containsKey(Schema.Currency.NAME)) {
+            cv.put(Schema.Currency.NAME, contentValues.getAsString(Contract.Currency.NAME));
+        }
+        if (contentValues.containsKey(Schema.Currency.SYMBOL)) {
+            cv.put(Schema.Currency.SYMBOL, contentValues.getAsString(Contract.Currency.SYMBOL));
+        }
+        int newDecimals = oldDecimals;
+        if (contentValues.containsKey(Schema.Currency.DECIMALS)) {
+            newDecimals = contentValues.getAsInteger(Contract.Currency.DECIMALS);
+            if (newDecimals < 0) {
+                newDecimals = 0;
+            } else if (newDecimals > 8) {
+                newDecimals = 8;
+            }
+            cv.put(Schema.Currency.DECIMALS, newDecimals);
+        }
+        if (contentValues.containsKey(Schema.Currency.FAVOURITE)) {
+            cv.put(Schema.Currency.FAVOURITE, contentValues.getAsBoolean(Contract.Currency.FAVOURITE));
+        }
+        cv.put(Schema.Currency.LAST_EDIT, System.currentTimeMillis());
+        String where = Schema.Currency.ISO + " = ?";
+        String[] whereArgs = new String[]{iso};
+        int rows = getWritableDatabase().update(Schema.Currency.TABLE, cv, where, whereArgs);
+        if (oldDecimals != newDecimals && contentValues.containsKey(Contract.Currency.FIX_MONEY_DECIMALS) && contentValues.getAsBoolean(Contract.Currency.FIX_MONEY_DECIMALS)) {
+            double multiplicand = Math.pow(10, newDecimals - oldDecimals);
+            // TODO: fix moneys using the exponent
+        }
+        return rows;
+    }
+
+    /**
+     * This method is called by the content provider when the user is deleting a currency from the
+     * database. The currency cannot be deleted if it is in use.
+     *
+     * @param iso of the currency to delete.
+     * @return the number of rows affected by the deletion.
+     * @throws SQLiteDataException if the currency is in use.
+     */
+    /*package-local*/ int deleteCurrency(String iso) {
+        String[] projection = new String[] {
+                Schema.Wallet.ID
+        };
+        String where = Schema.Wallet.CURRENCY + " = ?";
+        String[] whereArgs = new String[]{iso};
+        Cursor cursor = getReadableDatabase().query(Schema.Wallet.TABLE, projection, where, whereArgs, null, null, null);
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    long walletId = cursor.getLong(cursor.getColumnIndex(Schema.Wallet.ID));
+                    throw new SQLiteDataException(Contract.ErrorCode.CURRENCY_IN_USE,
+                            String.format(Locale.ENGLISH, "The currency (iso: %s) cannot be deleted because is in use in wallet (id: %d)", iso, walletId));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        where = Schema.Currency.ISO + " = ?";
+        if (mCacheDeletedObjects) {
+            ContentValues cv = new ContentValues();
+            cv.put(Schema.Currency.DELETED, true);
+            cv.put(Schema.Currency.LAST_EDIT, System.currentTimeMillis());
+            return getWritableDatabase().update(Schema.Currency.TABLE, cv, where, whereArgs);
+        } else {
+            return getWritableDatabase().delete(Schema.Currency.TABLE, where, whereArgs);
+        }
     }
 
     /**

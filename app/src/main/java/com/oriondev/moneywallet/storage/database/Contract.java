@@ -41,6 +41,7 @@ public class Contract {
         public static final String SYMBOL = Schema.Currency.SYMBOL;
         public static final String DECIMALS = Schema.Currency.DECIMALS;
         public static final String FAVOURITE = Schema.Currency.FAVOURITE;
+        public static final String FIX_MONEY_DECIMALS = "action_fix_money_decimals";
     }
 
     public static final class Wallet {
@@ -560,6 +561,7 @@ public class Contract {
     }
 
     public static class ErrorCode {
+        public static final int CURRENCY_IN_USE = 4535;
         public static final int WALLET_USED_IN_TRANSFER = 4536;
         public static final int CATEGORY_HAS_CHILDREN = 4537;
         public static final int CATEGORY_IN_USE = 4538;
