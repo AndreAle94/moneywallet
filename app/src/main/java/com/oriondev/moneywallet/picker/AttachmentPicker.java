@@ -57,7 +57,7 @@ public class AttachmentPicker extends Fragment {
     private static final String ARG_EDIT_MODE = "AttachmentPicker::Arguments::EditMode";
     private static final String ARG_OLD_ATTACHMENT_LIST = "AttachmentPicker::Arguments::OldAttachmentList";
 
-    private static final String ALL_FILES = "file/*";
+    private static final String ALL_FILES = "*/*";
     private static final int REQUEST_CODE_FILE_PICKER = 36347;
 
     public static AttachmentPicker createPicker(FragmentManager fragmentManager, String tag, ArrayList<Attachment> attachments) {
