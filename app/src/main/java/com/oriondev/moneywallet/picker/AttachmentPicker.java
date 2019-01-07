@@ -19,6 +19,7 @@
 
 package com.oriondev.moneywallet.picker;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
@@ -26,6 +27,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -36,13 +38,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.webkit.MimeTypeMap;
 
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.Attachment;
 import com.oriondev.moneywallet.service.AttachmentHandlerIntentService;
 
+import java.io.File;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by andrea on 27/03/18.
@@ -84,6 +90,8 @@ public class AttachmentPicker extends Fragment {
     private ArrayList<Attachment> mNewAttachments;
     private ArrayList<Attachment> mDeletedAttachments;
 
+    private Queue<Uri> mQueuedUris = new ArrayDeque<>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +121,15 @@ public class AttachmentPicker extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        fireCallbackSafely();
+        if (!mQueuedUris.isEmpty()) {
+            // check if there is some uri queued that should be processed
+            while (!mQueuedUris.isEmpty()) {
+                Uri queuedUri = mQueuedUris.poll();
+                onFileSelected(queuedUri);
+            }
+        } else {
+            fireCallbackSafely();
+        }
     }
 
     @Override
@@ -208,24 +224,58 @@ public class AttachmentPicker extends Fragment {
         }
     }
 
+    public void addFileFromUri(@NonNull Uri uri) {
+        mQueuedUris.add(uri);
+    }
+
     private void onFileSelected(@NonNull Uri uri) {
         Activity activity = getActivity();
         if (activity != null) {
             // retrieve information from the given uri
             Attachment attachment = null;
-            ContentResolver contentResolver = activity.getContentResolver();
-            Cursor cursor = contentResolver.query(uri, null, null, null, null);
-            if (cursor != null) {
-                if (cursor.moveToFirst()) {
-                    attachment = new Attachment(
-                            0L, Attachment.generateFileUID(),
-                            cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)),
-                            contentResolver.getType(uri),
-                            cursor.getLong(cursor.getColumnIndex(OpenableColumns.SIZE)),
-                            Attachment.Status.PENDING
-                    );
+            if (uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
+                ContentResolver contentResolver = activity.getContentResolver();
+                Cursor cursor = contentResolver.query(uri, null, null, null, null);
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        attachment = new Attachment(
+                                0L, Attachment.generateFileUID(),
+                                cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)),
+                                contentResolver.getType(uri),
+                                cursor.getLong(cursor.getColumnIndex(OpenableColumns.SIZE)),
+                                Attachment.Status.PENDING
+                        );
+                    }
+                    cursor.close();
                 }
-                cursor.close();
+            } else {
+                // this may be caused by an app that has returned an uri that points to a file
+                // on the filesystem (e.g. 'file:///storage/emulated/0/...'). in this case, no
+                // valid cursor is returned and the attachment is not loaded. we can try to
+                // check if the user has already granted the read permission on the external
+                // memory and load it as a generic file
+                String permission = Manifest.permission.READ_EXTERNAL_STORAGE;
+                int status = activity.checkCallingOrSelfPermission(permission);
+                if (status == PackageManager.PERMISSION_GRANTED) {
+                    File file = new File(uri.getPath());
+                    if (file.exists()) {
+                        String extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString());
+                        String contentType = "application/octet-stream";
+                        if (extension != null) {
+                            String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
+                            if (mimeType != null) {
+                                contentType = mimeType;
+                            }
+                        }
+                        attachment = new Attachment(0L,
+                                Attachment.generateFileUID(),
+                                file.getName(),
+                                contentType,
+                                file.length(),
+                                Attachment.Status.PENDING
+                        );
+                    }
+                }
             }
             if (attachment != null) {
                 mNewAttachments.add(attachment);

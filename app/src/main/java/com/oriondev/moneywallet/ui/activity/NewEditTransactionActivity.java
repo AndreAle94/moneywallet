@@ -814,6 +814,31 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         mPersonPicker = PersonPicker.createPicker(fragmentManager, TAG_PERSON_PICKER, people);
         mPlacePicker = PlacePicker.createPicker(fragmentManager, TAG_PLACE_PICKER, place);
         mAttachmentPicker = AttachmentPicker.createPicker(fragmentManager, TAG_ATTACHMENT_PICKER, attachments);
+        // check if the intent contains some predefined value for fields
+        if (savedInstanceState == null) {
+            fillFieldsFromIntent(getIntent());
+        }
+    }
+
+    private void fillFieldsFromIntent(Intent intent) {
+        // check if the activity has been started from outside the application and some
+        // other app has provided an extra stream of uris to set as attachments
+        if (Intent.ACTION_SEND.equals(intent.getAction())) {
+            Uri fileUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+            if (fileUri != null) {
+                mAttachmentPicker.addFileFromUri(fileUri);
+            }
+        }
+        if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction())) {
+            ArrayList<Uri> fileUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+            if (fileUris != null) {
+                for (Uri uri : fileUris) {
+                    if (uri != null) {
+                        mAttachmentPicker.addFileFromUri(uri);
+                    }
+                }
+            }
+        }
     }
 
     @Override
