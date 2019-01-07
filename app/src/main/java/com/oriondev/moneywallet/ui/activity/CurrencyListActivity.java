@@ -45,10 +45,22 @@ import com.oriondev.moneywallet.utils.CurrencyManager;
  */
 public class CurrencyListActivity extends SinglePanelSimpleListActivity implements CurrencyCursorAdapter.CurrencyActionListener {
 
+    public static final String ACTIVITY_MODE = "CurrencyListActivity::ActivityMode";
     public static final String RESULT_CURRENCY = "CurrencyListActivity::Result::SelectedCurrency";
+
+    public static final int CURRENCY_MANAGER = 0;
+    public static final int CURRENCY_PICKER = 1;
+
+    private int mActivityMode;
 
     @Override
     protected void onPrepareRecyclerView(AdvancedRecyclerView recyclerView) {
+        Intent intent = getIntent();
+        if (intent != null) {
+            mActivityMode = intent.getIntExtra(ACTIVITY_MODE, CURRENCY_MANAGER);
+        } else {
+            mActivityMode = CURRENCY_MANAGER;
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setEmptyText(R.string.message_no_currency_found);
     }
@@ -66,7 +78,14 @@ public class CurrencyListActivity extends SinglePanelSimpleListActivity implemen
 
     @Override
     protected boolean isFloatingActionButtonEnabled() {
-        return false;
+        return mActivityMode == CURRENCY_MANAGER;
+    }
+
+    @Override
+    protected void onFloatingActionButtonClick() {
+        Intent intent = new Intent(this, NewEditCurrencyActivity.class);
+        intent.putExtra(NewEditCurrencyActivity.MODE, NewEditCurrencyActivity.Mode.NEW_ITEM);
+        startActivity(intent);
     }
 
     @NonNull
@@ -86,11 +105,18 @@ public class CurrencyListActivity extends SinglePanelSimpleListActivity implemen
 
     @Override
     public void onCurrencyClick(String iso) {
-        CurrencyUnit currency = CurrencyManager.getCurrency(iso);
-        Intent intent = new Intent();
-        intent.putExtra(RESULT_CURRENCY, currency);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
+        if (mActivityMode == CURRENCY_MANAGER) {
+            Intent intent = new Intent(this, NewEditCurrencyActivity.class);
+            intent.putExtra(NewEditCurrencyActivity.MODE, NewEditCurrencyActivity.Mode.EDIT_ITEM);
+            intent.putExtra(NewEditCurrencyActivity.ISO, iso);
+            startActivity(intent);
+        } else if (mActivityMode == CURRENCY_PICKER) {
+            CurrencyUnit currency = CurrencyManager.getCurrency(iso);
+            Intent intent = new Intent();
+            intent.putExtra(RESULT_CURRENCY, currency);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
+        }
     }
 
     @Override

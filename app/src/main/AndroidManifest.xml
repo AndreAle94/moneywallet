@@ -47,6 +47,7 @@
         <activity android:name=".ui.activity.TutorialActivity" />
         <activity android:name=".ui.activity.WalletListActivity" />
         <activity android:name=".ui.activity.BackupListActivity" />
+        <activity android:name=".ui.activity.NewEditCurrencyActivity" />
         <activity android:name=".ui.activity.NewEditWalletActivity" />
         <activity android:name=".ui.activity.NewEditTransactionActivity" />
         <activity android:name=".ui.activity.NewEditTransferActivity" />
