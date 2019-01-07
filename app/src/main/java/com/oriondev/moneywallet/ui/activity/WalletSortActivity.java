@@ -38,7 +38,7 @@ public class WalletSortActivity extends SinglePanelSimpleListActivity implements
 
     @Override
     protected int getActivityTitleRes() {
-        return R.string.title_activity_category_sort;
+        return R.string.title_activity_wallet_sort;
     }
 
     @MenuRes
