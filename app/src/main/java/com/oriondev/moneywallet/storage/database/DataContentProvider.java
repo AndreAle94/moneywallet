@@ -193,11 +193,13 @@ public class DataContentProvider extends ContentProvider {
                 cursor = new MultiUriCursorWrapper(mDatabase.getWallets(projection, selection, selectionArgs, sortOrder));
                 cursor.setNotificationUri(getContentResolver(), CONTENT_WALLETS);
                 cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSACTIONS);
+                cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSFERS);
                 break;
             case WALLET_ITEM:
                 cursor = new MultiUriCursorWrapper(mDatabase.getWallet(ContentUris.parseId(uri), projection));
                 cursor.setNotificationUri(getContentResolver(), uri);
                 cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSACTIONS);
+                cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSFERS);
                 break;
             case TRANSACTION_LIST:
                 cursor = new MultiUriCursorWrapper(mDatabase.getTransactions(projection, selection, selectionArgs, sortOrder));
@@ -710,7 +712,7 @@ public class DataContentProvider extends ContentProvider {
                 break;
         }
         ContentResolver contentResolver = getContentResolver();
-        if (contentResolver != null && result > 0) {
+        if (contentResolver != null && notifyUri != null) {
             PreferenceManager.setLastTimeDataIsChanged(System.currentTimeMillis());
             contentResolver.notifyChange(notifyUri, null);
         }
