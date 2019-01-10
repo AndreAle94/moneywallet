@@ -27,6 +27,7 @@ import com.oriondev.moneywallet.storage.database.model.Attachment;
 import com.oriondev.moneywallet.storage.database.model.Budget;
 import com.oriondev.moneywallet.storage.database.model.BudgetWallet;
 import com.oriondev.moneywallet.storage.database.model.Category;
+import com.oriondev.moneywallet.storage.database.model.Currency;
 import com.oriondev.moneywallet.storage.database.model.Debt;
 import com.oriondev.moneywallet.storage.database.model.DebtPerson;
 import com.oriondev.moneywallet.storage.database.model.Event;
@@ -50,6 +51,19 @@ import com.oriondev.moneywallet.storage.database.model.Wallet;
  * Created by andrea on 28/10/18.
  */
 public class SQLDatabaseExporter {
+
+    public static Currency getCurrency(Cursor cursor) {
+        Currency object = new Currency();
+        object.mIso = cursor.getString(cursor.getColumnIndex(Schema.Currency.ISO));
+        object.mName = cursor.getString(cursor.getColumnIndex(Schema.Currency.NAME));
+        object.mSymbol = cursor.getString(cursor.getColumnIndex(Schema.Currency.SYMBOL));
+        object.mDecimals = cursor.getInt(cursor.getColumnIndex(Schema.Currency.DECIMALS));
+        object.mFavourite = cursor.getInt(cursor.getColumnIndex(Schema.Currency.FAVOURITE)) == 1;
+        object.mUUID = cursor.getString(cursor.getColumnIndex(Schema.Currency.UUID));
+        object.mLastEdit = cursor.getLong(cursor.getColumnIndex(Schema.Currency.LAST_EDIT));
+        object.mDeleted = cursor.getInt(cursor.getColumnIndex(Schema.Currency.DELETED)) == 1;
+        return object;
+    }
 
     public static Wallet getWallet(Cursor cursor) {
         Wallet object = new Wallet();
@@ -406,12 +420,17 @@ public class SQLDatabaseExporter {
         return object;
     }
 
+    public static Cursor getAllCurrencies(ContentResolver contentResolver) {
+        Uri uri = SyncContentProvider.CONTENT_CURRENCIES;
+        String selection = Schema.Currency.DELETED + " = 0";
+        return contentResolver.query(uri, null, selection, null, null);
+    }
+
     public static Cursor getAllWallets(ContentResolver contentResolver) {
         Uri uri = SyncContentProvider.CONTENT_WALLETS;
         String selection = Schema.Wallet.DELETED + " = 0";
         return contentResolver.query(uri, null, selection, null, null);
     }
-
 
     public static Cursor getAllCategories(ContentResolver contentResolver) {
         Uri uri = SyncContentProvider.CONTENT_CATEGORIES;
@@ -425,7 +444,6 @@ public class SQLDatabaseExporter {
         String selection = Schema.Event.DELETED + " = 0";
         return contentResolver.query(uri, null, selection, null, null);
     }
-
 
     public static Cursor getAllPlaces(ContentResolver contentResolver) {
         Uri uri = SyncContentProvider.CONTENT_PLACES;

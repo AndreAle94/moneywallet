@@ -100,6 +100,19 @@ import java.util.Map;
         mCacheAttachments.put(uuid, id);
     }
 
+    /*package-local*/ Currency getCurrency(JSONObject object) {
+        Currency currency = new Currency();
+        currency.mIso = object.optString(JSONDatabase.Currency.ISO, null);
+        currency.mName = object.optString(JSONDatabase.Currency.NAME, null);
+        currency.mSymbol = object.optString(JSONDatabase.Currency.SYMBOL, null);
+        currency.mDecimals = object.optInt(JSONDatabase.Currency.DECIMALS, 2);
+        currency.mFavourite = object.optBoolean(JSONDatabase.Currency.FAVOURITE, false);
+        currency.mUUID = "currency_" + object.optString(JSONDatabase.Currency.ISO, null);
+        currency.mLastEdit = object.optLong(JSONDatabase.Currency.LAST_EDIT, 0L);
+        currency.mDeleted = object.optBoolean(JSONDatabase.Currency.DELETED, false);
+        return currency;
+    }
+
     /*package-local*/ Wallet getWallet(JSONObject object) {
         Wallet wallet = new Wallet();
         wallet.mName = object.optString(JSONDatabase.Wallet.NAME, null);

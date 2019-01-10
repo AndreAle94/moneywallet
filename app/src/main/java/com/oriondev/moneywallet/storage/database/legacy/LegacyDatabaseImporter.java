@@ -109,6 +109,11 @@ public class LegacyDatabaseImporter implements DatabaseImporter {
     }
 
     @Override
+    public void importCurrencies(ContentResolver contentResolver) throws ImportException {
+        // not supported in legacy database
+    }
+
+    @Override
     public void importWallets(ContentResolver contentResolver) throws ImportException {
         String selection = LegacyDatabaseSchema.Wallet.DELETED + " = 0";
         Cursor cursor = mDatabase.query(LegacyDatabaseSchema.Wallet.TABLE, null, selection, null, null, null, null);
