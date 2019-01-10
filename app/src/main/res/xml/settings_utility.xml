@@ -60,6 +60,11 @@
             android:key="exchange_rate_update"
             android:title="@string/setting_title_exchange_rate_update"/>
 
+        <com.oriondev.moneywallet.ui.preference.ThemedPreference
+            android:key="currency_management"
+            android:title="@string/setting_title_currency_management"
+            android:summary="@string/setting_summary_currency_management"/>
+
     </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
 
 </android.support.v7.preference.PreferenceScreen>

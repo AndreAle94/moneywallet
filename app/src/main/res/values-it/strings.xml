@@ -476,6 +476,8 @@
     <string name="setting_summary_exchange_rate_api_key_missing">"Api-key mancante"</string>
     <string name="setting_title_exchange_rate_update">"Aggiorna i tassi di cambio"</string>
     <string name="setting_summary_exchange_rate_update">"Ultimo aggiornamento: %s"</string>
+    <string name="setting_title_currency_management">"Gestisci valute"</string>
+    <string name="setting_summary_currency_management">"Aggiungi valute personalizzate"</string>
     <string name="setting_subtitle_user_interface">"Personalizza come vuoi"</string>
     <string name="setting_subtitle_utility">"Imposta gli strumenti disponibili"</string>
     <string name="setting_subtitle_database">"Gestisci i tuoi dati"</string>

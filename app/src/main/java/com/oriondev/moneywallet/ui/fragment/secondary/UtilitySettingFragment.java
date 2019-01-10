@@ -43,6 +43,7 @@ import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.LockMode;
 import com.oriondev.moneywallet.service.AbstractCurrencyRateDownloadIntentService;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+import com.oriondev.moneywallet.ui.activity.CurrencyListActivity;
 import com.oriondev.moneywallet.ui.activity.LockActivity;
 import com.oriondev.moneywallet.ui.preference.ThemedInputPreference;
 import com.oriondev.moneywallet.ui.preference.ThemedListPreference;
@@ -63,6 +64,7 @@ public class UtilitySettingFragment extends PreferenceFragmentCompat {
     private ThemedListPreference mExchangeRateServiceListPreference;
     private ThemedInputPreference mExchangeRateCustomApiKey;
     private Preference mExchangeRateUpdatePreference;
+    private Preference mCurrencyManagementPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,7 @@ public class UtilitySettingFragment extends PreferenceFragmentCompat {
         mExchangeRateServiceListPreference = (ThemedListPreference) findPreference("exchange_rate_source");
         mExchangeRateCustomApiKey = (ThemedInputPreference) findPreference("exchange_rate_api_key");
         mExchangeRateUpdatePreference = findPreference("exchange_rate_update");
+        mCurrencyManagementPreference = findPreference("currency_management");
     }
 
     @Override
@@ -234,6 +237,20 @@ public class UtilitySettingFragment extends PreferenceFragmentCompat {
                 if (activity != null) {
                     Intent intent = AbstractCurrencyRateDownloadIntentService.buildIntent(activity);
                     activity.startService(intent);
+                }
+                return false;
+            }
+
+        });
+        mCurrencyManagementPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Activity activity = getActivity();
+                if (activity != null) {
+                    Intent intent = new Intent(activity, CurrencyListActivity.class);
+                    intent.putExtra(CurrencyListActivity.ACTIVITY_MODE, CurrencyListActivity.CURRENCY_MANAGER);
+                    startActivity(intent);
                 }
                 return false;
             }
