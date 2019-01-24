@@ -46,11 +46,7 @@ public class LocalAction {
     public static final String ACTION_EXPORT_SERVICE_FINISHED = "LocalBroadCast::ExportServiceFinished";
     public static final String ACTION_EXPORT_SERVICE_FAILED = "LocalBroadCast::ExportServiceFailed";
 
-    public static final String ACTION_DATABASE_CHANGED = "LocalBroadCast::DatabaseChanged";
-
     public static final String ACTION_ITEM_CLICK = "LocalBroadCast::ItemClicked";
-
-    public static final String ARGUMENT_ITEM_ID = "LocalBroadCast::ItemId";
 
     public static final String ACTION_CURRENT_WALLET_CHANGED = "LocalBroadCast::CurrentWalletChanged";
     public static final String ARGUMENT_WALLET_ID = "LocalBroadCast::WalletId";

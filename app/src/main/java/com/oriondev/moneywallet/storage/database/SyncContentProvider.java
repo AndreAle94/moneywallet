@@ -19,7 +19,10 @@
 
 package com.oriondev.moneywallet.storage.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentProvider;
+import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -30,6 +33,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+
 /**
  * This content provider exposes the full SQLiteDatabase structure.
  * The goal is to make the full tables available to backup and sync components.
@@ -37,8 +42,6 @@ import android.support.annotation.Nullable;
 public class SyncContentProvider extends ContentProvider {
 
     private static final String AUTHORITY = "com.oriondev.moneywallet.storage.sync";
-
-    public static final Uri ACTION_RECREATE_DATABASE = Uri.parse("content://" + AUTHORITY + "/database/recreate");
 
     public static final Uri CONTENT_CURRENCIES = Uri.parse("content://" + AUTHORITY + "/currencies");
     public static final Uri CONTENT_WALLETS = Uri.parse("content://" + AUTHORITY + "/wallets");
@@ -183,17 +186,9 @@ public class SyncContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        if (uri.equals(ACTION_RECREATE_DATABASE)) {
-            // This is necessary when the database is restored because the old reference to the
-            // SQLDatabase object is pointing internally to the old file, so an attempt to write
-            // to it will irremediably fail. This uri exposes to the application a way to relink
-            // the object to the new database (to create).
-            mDatabase = new SQLDatabase(getContext());
-        } else {
-            String table = getTable(uri);
-            if (table != null) {
-                return mDatabase.getReadableDatabase().query(table, projection, selection, selectionArgs, null, null, sortOrder);
-            }
+        String table = getTable(uri);
+        if (table != null) {
+            return mDatabase.getReadableDatabase().query(table, projection, selection, selectionArgs, null, null, sortOrder);
         }
         return null;
     }
@@ -231,5 +226,21 @@ public class SyncContentProvider extends ContentProvider {
             return mDatabase.getWritableDatabase().update(table, values, selection, selectionArgs);
         }
         return 0;
+    }
+
+    @SuppressLint("Recycle")
+    public static void notifyDatabaseIsChanged(Context context) {
+        ContentResolver contentResolver = context.getContentResolver();
+        ContentProviderClient client = contentResolver.acquireContentProviderClient(AUTHORITY);
+        if (client != null) {
+            ContentProvider contentProvider = client.getLocalContentProvider();
+            if (contentProvider instanceof SyncContentProvider) {
+                if (((SyncContentProvider) contentProvider).mDatabase != null) {
+                    ((SyncContentProvider) contentProvider).mDatabase.close();
+                }
+                ((SyncContentProvider) contentProvider).mDatabase = new SQLDatabase(context);
+            }
+            client.close();
+        }
     }
 }

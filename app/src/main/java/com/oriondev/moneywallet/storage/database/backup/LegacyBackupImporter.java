@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.oriondev.moneywallet.storage.database.ImportException;
@@ -77,8 +78,8 @@ public class LegacyBackupImporter extends AbstractBackupImporter {
 
     private LegacyDatabaseImporter mDatabaseImporter;
 
-    public LegacyBackupImporter(ContentResolver contentResolver, File backupFile) {
-        super(contentResolver, backupFile);
+    public LegacyBackupImporter(Context context, File backupFile) {
+        super(context, backupFile);
     }
 
     @Override

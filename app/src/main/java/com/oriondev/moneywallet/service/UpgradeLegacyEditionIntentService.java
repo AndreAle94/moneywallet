@@ -27,7 +27,10 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
+import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.storage.database.LegacyEditionImporter;
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
+import com.oriondev.moneywallet.utils.CurrencyManager;
 
 /**
  * This service is used by the LauncherActivity when a legacy database is detected at startup.
@@ -65,6 +68,9 @@ public class UpgradeLegacyEditionIntentService extends IntentService {
         if (exception != null) {
             notifyServiceFailed(exception.getMessage());
         } else {
+            DataContentProvider.notifyDatabaseIsChanged(this);
+            CurrencyManager.invalidateCache(this);
+            PreferenceManager.setLastTimeDataIsChanged(0L);
             RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
             notifyServiceFinished();
         }

@@ -45,6 +45,7 @@ import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.broadcast.NotificationBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.RecurrenceBroadcastReceiver;
 import com.oriondev.moneywallet.model.IFile;
+import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.storage.database.ExportException;
 import com.oriondev.moneywallet.storage.database.ImportException;
 import com.oriondev.moneywallet.storage.database.SQLDatabaseImporter;
@@ -286,6 +287,7 @@ public class BackupHandlerIntentService extends IntentService {
                 String password = intent.getStringExtra(PASSWORD);
                 restoreLocalBackupFile(backup, password);
                 notifyTaskProgress(ACTION_RESTORE, STATUS_BACKUP_RESTORING, 100);
+                DataContentProvider.notifyDatabaseIsChanged(this);
                 PreferenceManager.setLastTimeDataIsChanged(0L);
                 CurrencyManager.invalidateCache(this);
                 RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
@@ -303,9 +305,9 @@ public class BackupHandlerIntentService extends IntentService {
         AbstractBackupImporter importer;
         String fileName = backup.getName();
         if (fileName.endsWith(BackupManager.BACKUP_EXTENSION_LEGACY)) {
-            importer = new LegacyBackupImporter(getContentResolver(), backup);
+            importer = new LegacyBackupImporter(this, backup);
         } else {
-            importer = new DefaultBackupImporter(getContentResolver(), backup, password);
+            importer = new DefaultBackupImporter(this, backup, password);
         }
         File temporaryFolder = new File(getExternalFilesDir(null), TEMP_FOLDER);
         FileUtils.forceMkdir(temporaryFolder);

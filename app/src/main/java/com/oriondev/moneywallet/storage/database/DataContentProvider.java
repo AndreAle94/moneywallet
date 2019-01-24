@@ -19,8 +19,10 @@
 
 package com.oriondev.moneywallet.storage.database;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
+import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -171,15 +173,8 @@ public class DataContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        Context context = getContext();
-        initializeDatabase(context);
-        setupReceiver(context);
+        initializeDatabase(getContext());
         return true;
-    }
-
-    private void setupReceiver(Context context) {
-        IntentFilter filter = new IntentFilter(LocalAction.ACTION_BACKUP_SERVICE_FINISHED);
-        LocalBroadcastManager.getInstance(context).registerReceiver(mBroadcastReceiver, filter);
     }
 
     @Nullable
@@ -826,18 +821,17 @@ public class DataContentProvider extends ContentProvider {
         mDatabase.setDeletedObjectCacheEnabled(IS_REMOTE_SYNC_ENABLED);
     }
 
-    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent != null) {
-                int action = intent.getIntExtra(BackupHandlerIntentService.ACTION, 0);
-                if (action == BackupHandlerIntentService.ACTION_RESTORE) {
-                    initializeDatabase(context);
-                    PreferenceManager.setCurrentWallet(context, PreferenceManager.NO_CURRENT_WALLET);
-                }
+    @SuppressLint("Recycle")
+    public static void notifyDatabaseIsChanged(Context context) {
+        ContentResolver contentResolver = context.getContentResolver();
+        ContentProviderClient client = contentResolver.acquireContentProviderClient(AUTHORITY);
+        if (client != null) {
+            ContentProvider contentProvider = client.getLocalContentProvider();
+            if (contentProvider instanceof DataContentProvider) {
+                ((DataContentProvider) contentProvider).initializeDatabase(context);
+                PreferenceManager.setCurrentWallet(context, PreferenceManager.NO_CURRENT_WALLET);
             }
+            client.close();
         }
-
-    };
+    }
 }

@@ -73,12 +73,14 @@ public class CurrencyManager {
     private void loadCurrencies(Context context) {
         loadUserCurrencies(context);
         if (mCurrencyCache.isEmpty()) {
+            System.out.println("[CurrencyManager] No currency found. Loading default currencies from the assets...");
             loadDefaultCurrencies(context);
         }
     }
 
     public static void invalidateCache(Context context) {
         synchronized (CACHE_MUTEX) {
+            System.out.println("[CurrencyManager] Invalidating cache...");
             mInstance.mCurrencyCache.clear();
             mInstance.loadCurrencies(context);
         }

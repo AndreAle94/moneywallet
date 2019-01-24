@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.oriondev.moneywallet.storage.database.ImportException;
@@ -38,11 +39,11 @@ public abstract class AbstractBackupImporter {
 
     private static final String TEMP_BACKUP_FILE = "database.bk";
 
-    private final ContentResolver mContentResolver;
+    private final Context mContext;
     private final File mBackupFile;
 
-    /*package-local*/ AbstractBackupImporter(ContentResolver contentResolver, File backupFile) {
-        mContentResolver = contentResolver;
+    /*package-local*/ AbstractBackupImporter(Context context, File backupFile) {
+        mContext = context;
         mBackupFile = backupFile;
     }
 
@@ -88,14 +89,14 @@ public abstract class AbstractBackupImporter {
     }
 
     protected ContentResolver getContentResolver() {
-        return mContentResolver;
+        return mContext.getContentResolver();
     }
 
     /*package-local*/ void notifyImportStarted() {
         // Before starting to write the database file, it is necessary to notify the
         // SyncContentProvider that we are going to write a new file, so the internal
         // reference to the old SQLDatabase must be replaced by a new one.
-        mContentResolver.query(SyncContentProvider.ACTION_RECREATE_DATABASE, null, null, null, null);
+        SyncContentProvider.notifyDatabaseIsChanged(mContext);
     }
 
     private File createBackupCopyOfCurrentDatabase(@NonNull File databaseFolder) throws ImportException {

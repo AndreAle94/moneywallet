@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.oriondev.moneywallet.storage.database.DatabaseImporter;
@@ -41,8 +42,8 @@ public class DefaultBackupImporter extends AbstractBackupImporter {
 
     private final String mPassword;
 
-    public DefaultBackupImporter(ContentResolver contentResolver, File backupFile, String password) {
-        super(contentResolver, backupFile);
+    public DefaultBackupImporter(Context context, File backupFile, String password) {
+        super(context, backupFile);
         mPassword = password;
     }
     
