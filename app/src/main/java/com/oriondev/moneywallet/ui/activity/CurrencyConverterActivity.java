@@ -257,20 +257,28 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
     public void onCurrencyChanged(String tag, CurrencyUnit currency) {
         switch (tag) {
             case TAG_CURRENCY_FROM_PICKER:
-                Glide.with(this)
-                        .load(CurrencyUnit.getCurrencyFlag(this, currency.getIso()))
-                        .into(mImageCurrencyFrom);
+                loadCurrencyFlag(mImageCurrencyFrom, currency.getIso());
                 mTextCurrencyFrom.setText(currency.getIso());
                 break;
             case TAG_CURRENCY_TO_PICKER:
-                Glide.with(this)
-                        .load(CurrencyUnit.getCurrencyFlag(this, currency.getIso()))
-                        .into(mImageCurrencyTo);
+                loadCurrencyFlag(mImageCurrencyTo, currency.getIso());
                 mTextCurrencyTo.setText(currency.getIso());
                 break;
         }
         if (mCurrencyFromPicker.isSelected() && mCurrencyToPicker.isSelected()) {
             makeConversion(mTextMoneyFrom.getText().toString());
+        }
+    }
+
+    private void loadCurrencyFlag(ImageView imageView, String iso) {
+        int flag = CurrencyUnit.getCurrencyFlag(this, iso);
+        if (flag > 0) {
+            imageView.setImageDrawable(null);
+            Glide.with(this)
+                    .load(flag)
+                    .into(imageView);
+        } else {
+            imageView.setImageDrawable(CurrencyUnit.getCurrencyDrawable(iso));
         }
     }
 

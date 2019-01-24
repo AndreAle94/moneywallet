@@ -45,7 +45,6 @@ public class CurrencyCursorAdapter extends AbstractCursorAdapter<CurrencyCursorA
     private int mIndexIso;
     private int mIndexName;
     private int mIndexSymbol;
-    private int mIndexDecimals;
     private int mIndexFavourite;
 
     private final CurrencyActionListener mListener;
@@ -60,7 +59,6 @@ public class CurrencyCursorAdapter extends AbstractCursorAdapter<CurrencyCursorA
         mIndexIso = cursor.getColumnIndex(Contract.Currency.ISO);
         mIndexName = cursor.getColumnIndex(Contract.Currency.NAME);
         mIndexSymbol = cursor.getColumnIndex(Contract.Currency.SYMBOL);
-        mIndexDecimals = cursor.getColumnIndex(Contract.Currency.DECIMALS);
         mIndexFavourite = cursor.getColumnIndex(Contract.Currency.FAVOURITE);
     }
 
@@ -70,13 +68,18 @@ public class CurrencyCursorAdapter extends AbstractCursorAdapter<CurrencyCursorA
         String name = cursor.getString(mIndexName);
         String symbol = cursor.getString(mIndexSymbol);
         Context context = holder.mIconView.getContext();
-        Glide.with(holder.mIconView)
-                .load(CurrencyUnit.getCurrencyFlag(context, iso))
-                .into(holder.mIconView);
-        holder.mNameView.setText(cursor.getString(mIndexName));
+        int currencyFlag = CurrencyUnit.getCurrencyFlag(context, iso);
+        if (currencyFlag > 0) {
+            holder.mIconView.setImageDrawable(null);
+            Glide.with(holder.mIconView)
+                    .load(currencyFlag)
+                    .into(holder.mIconView);
+        } else {
+            holder.mIconView.setImageDrawable(CurrencyUnit.getCurrencyDrawable(iso));
+        }
+        holder.mNameView.setText(name);
         if (!TextUtils.isEmpty(symbol)) {
-            holder.mSymbolView.setText(String.format(Locale.ENGLISH, "%s (%s)",
-                    cursor.getString(mIndexIso), cursor.getString(mIndexSymbol)));
+            holder.mSymbolView.setText(String.format(Locale.ENGLISH, "%s (%s)", iso, symbol));
         } else {
             holder.mSymbolView.setText(iso);
         }

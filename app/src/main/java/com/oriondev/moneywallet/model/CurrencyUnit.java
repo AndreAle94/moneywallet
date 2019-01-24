@@ -20,9 +20,14 @@
 package com.oriondev.moneywallet.model;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.DrawableRes;
+import android.text.TextUtils;
+
+import com.oriondev.moneywallet.ui.drawable.TextDrawable;
+import com.oriondev.moneywallet.utils.Utils;
 
 import java.util.Locale;
 
@@ -107,6 +112,18 @@ public class CurrencyUnit implements Parcelable {
     public static int getCurrencyFlag(Context context, String iso) {
         String resourceName = "ic_flag_" + iso.toLowerCase(Locale.ENGLISH);
         return getIconResourceId(context, resourceName);
+    }
+
+    public static Drawable getCurrencyDrawable(String iso) {
+        String text = TextUtils.isEmpty(iso) ? "?" : iso.substring(0, 1);
+        int color = Utils.getRandomMDColor(iso.hashCode());
+        return TextDrawable.builder()
+                .beginConfig()
+                    .width(60)
+                    .height(60)
+                    .textColor(Utils.getBestColor(color))
+                .endConfig()
+                .buildRect(text, color);
     }
 
     private static int getIconResourceId(Context context, String resource) {

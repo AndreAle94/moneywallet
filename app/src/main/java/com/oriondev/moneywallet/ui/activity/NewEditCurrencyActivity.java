@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -76,6 +77,7 @@ public class NewEditCurrencyActivity extends SinglePanelScrollActivity {
         mSymbolEditText = view.findViewById(R.id.symbol_edit_text);
         mDecimalsEditText = view.findViewById(R.id.decimal_number_edit_text);
         // add validators
+        mISOEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         mISOEditText.addValidator(new Validator() {
 
             @NonNull
