@@ -25,8 +25,8 @@ android {
         applicationId "com.oriondev.moneywallet"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 64
-        versionName "4.0.4.1"
+        versionCode 65
+        versionName "4.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [
