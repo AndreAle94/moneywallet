@@ -83,6 +83,7 @@
     <string name="action_remove">"Remove"</string>
     <string name="action_open">"Open"</string>
     <string name="action_undo">"Undo"</string>
+    <string name="action_skip">"Skip"</string>
 
     <string name="msg_no_wallet_found">"No wallet found"</string>
     <string name="msg_add_one_wallet">"Please add one wallet"</string>
@@ -149,6 +150,9 @@
     <string name="hint_data_format_csv">"CSV"</string>
     <string name="hint_data_format_xls">"XLS"</string>
     <string name="hint_data_format_pdf">"PDF"</string>
+    <string name="hint_iso_code">"ISO code"</string>
+    <string name="hint_symbol">"Symbol"</string>
+    <string name="hint_decimals">"Number of decimals"</string>
 
     <string name="hint_show_currency_symbol">"Show currency symbol"</string>
     <string name="hint_group_digits">"Group digits"</string>
@@ -163,6 +167,8 @@
 
     <string name="total_wallet_name">"Total"</string>
 
+    <string name="title_activity_new_currency">"New currency"</string>
+    <string name="title_activity_edit_currency">"Edit currency"</string>
     <string name="title_activity_new_wallet">"New wallet"</string>
     <string name="title_activity_edit_wallet">"Edit wallet"</string>
     <string name="title_activity_new_transaction">"New transaction"</string>
@@ -261,6 +267,8 @@
     <string name="dialog_export_optional_columns_title">"Optional columns"</string>
 
     <string name="error_input_name_not_valid">"Not a valid name"</string>
+    <string name="error_input_iso_not_valid">"Not a valid ISO code"</string>
+    <string name="error_input_decimals_not_valid">"It must be a value from 0 to 8"</string>
     <string name="error_input_currency_not_valid">"Not a valid currency"</string>
     <string name="error_input_date_range_not_valid">"Not a valid date range"</string>
     <string name="error_input_missing_budget_type">"Select a budget type"</string>
@@ -362,6 +370,8 @@
     <string name="title_currency_exchange_rate">"Exchange rate"</string>
     <string name="title_data_importing">"Importing data"</string>
     <string name="title_data_exporting">"Exporting data"</string>
+    <string name="message_multiply_currency_decimals">"The amounts in the database must be updated in order to match the new number of decimal digits. The operation may take some time. If you want you can skip the update but the amounts will be displayed as divided by %d after the change."</string>
+    <string name="message_divide_currency_decimals">"The amounts in the database must be updated in order to match the new number of decimal digits. The operation may take some time. If you want you can skip the update but the amounts will be displayed as multiplied by %d after the change. If the amounts are updated, some information about their current fractional part will be lost."</string>
     <string name="message_backend_create_folder">"Insert the name of the folder that you want to create"</string>
     <string name="message_permission_required_external_storage">"The permission to access the external storage is required in order to read and write files. Please enable it."</string>
     <string name="message_permission_required_not_granted">"Permission denied. Please go to application setting and enable it."</string>
@@ -386,6 +396,8 @@
     <string name="message_action_archive_saving">"Are you sure you want to archive this saving?"</string>
     <string name="message_action_unarchive_saving">"Are you sure you want to unarchive this saving?"</string>
     <string name="message_error_activity_not_found">"No application found on this device to handle the request."</string>
+    <string name="message_delete_currency">"Are you sure you want to delete this currency?"</string>
+    <string name="message_error_delete_currency">"This currency cannot be deleted because it is in use."</string>
     <string name="message_delete_wallet">"Are you sure you want to delete this wallet? All the related data will be removed."</string>
     <string name="message_error_delete_wallet_of_transfer">"This wallet cannot be deleted because is used in one or more transfers. Please remove the related transfers to delete this wallet."</string>
     <string name="message_delete_category">"Are you sure you want to delete this category?"</string>

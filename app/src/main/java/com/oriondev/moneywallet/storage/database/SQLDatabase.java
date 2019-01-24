@@ -113,7 +113,6 @@ import java.util.UUID;
         // create all triggers to ensure data consistency
         // TODO [low] create triggers
         // insert default items
-        addDefaultCurrencies(db);
         addSystemCategories(db);
     }
 
@@ -147,32 +146,6 @@ import java.util.UUID;
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    private void addDefaultCurrencies(SQLiteDatabase db) {
-        StringBuilder jsonBuilder = new StringBuilder();
-        try {
-            InputStream inputStream = mContext.getAssets().open("resources/currencies.json");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                jsonBuilder.append(line);
-            }
-            JSONArray array = new JSONArray(jsonBuilder.toString());
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject currency = array.getJSONObject(i);
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(Schema.Currency.ISO, currency.getString("code"));
-                contentValues.put(Schema.Currency.NAME, currency.getString("name"));
-                contentValues.put(Schema.Currency.SYMBOL, currency.optString("symbol", null));
-                contentValues.put(Schema.Currency.DECIMALS, currency.optInt("decimals", 2));
-                contentValues.put(Schema.Currency.UUID, "currency_" + currency.getString("code"));
-                contentValues.put(Schema.Currency.LAST_EDIT, System.currentTimeMillis());
-                db.insertWithOnConflict(Schema.Currency.TABLE, null, contentValues, SQLiteDatabase.CONFLICT_ABORT);
-            }
-        } catch (IOException | JSONException e) {
-            throw new SQLiteException("Exception while reading currencies file from assets: " + e.getMessage());
-        }
     }
 
     /**
