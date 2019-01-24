@@ -82,7 +82,8 @@
     <string name="action_filter">"Filtra"</string>
     <string name="action_remove">"Rimuovi"</string>
     <string name="action_open">"Apri"</string>
-    <string name="action_undo">"Disfa"</string>
+    <string name="action_undo">"Annulla"</string>
+    <string name="action_skip">"Salta"</string>
 
     <string name="msg_no_wallet_found">"Nessun portafoglio trovato"</string>
     <string name="msg_add_one_wallet">"per favore aggiungi un portafoglio"</string>
@@ -149,6 +150,9 @@
     <string name="hint_data_format_csv">"CSV"</string>
     <string name="hint_data_format_xls">"XLS"</string>
     <string name="hint_data_format_pdf">"PDF"</string>
+    <string name="hint_iso_code">"Codice ISO"</string>
+    <string name="hint_symbol">"Simbolo"</string>
+    <string name="hint_decimals">"Numero di decimali"</string>
 
     <string name="hint_show_currency_symbol">"Mostra il simbolo della valuta"</string>
     <string name="hint_group_digits">"Raggruppa le cifre"</string>
@@ -163,6 +167,8 @@
 
     <string name="total_wallet_name">"Totale"</string>
 
+    <string name="title_activity_new_currency">"Nuova valuta"</string>
+    <string name="title_activity_edit_currency">"Modifica valuta"</string>
     <string name="title_activity_new_wallet">"Nuovo portafoglio"</string>
     <string name="title_activity_edit_wallet">"Modifica portafoglio"</string>
     <string name="title_activity_new_transaction">"Nuova transazione"</string>
@@ -261,6 +267,8 @@
     <string name="dialog_export_optional_columns_title">"Colonne facoltative"</string>
 
     <string name="error_input_name_not_valid">"Nome non valido"</string>
+    <string name="error_input_iso_not_valid">"Codice ISO non valido"</string>
+    <string name="error_input_decimals_not_valid">"Deve essere un numero compreso tra 0 e 8"</string>
     <string name="error_input_currency_not_valid">"Valuta non valida"</string>
     <string name="error_input_date_range_not_valid">"Intervallo di date non valido"</string>
     <string name="error_input_missing_budget_type">"Seleziona un tipo budget"</string>
@@ -362,6 +370,8 @@
     <string name="title_currency_exchange_rate">"Tasso di cambio"</string>
     <string name="title_data_importing">"Importazione dati"</string>
     <string name="title_data_exporting">"Esportazione dati"</string>
+    <string name="message_multiply_currency_decimals">"Gli importi nel database devono essere aggiornati al fine di corrispondere al nuovo numero di cifre decimali. L'operazione puo richiedere del tempo. Se vuoi puoi saltare l'aggiornamento ma visualizzerai gli importi come divisi per %d dopo la modifica."</string>
+    <string name="message_divide_currency_decimals">"Gli importi nel database devono essere aggiornati al fine di corrispondere al nuovo numero di cifre decimali. L'operazione puo richiedere del tempo. Se vuoi puoi saltare l'aggiornamento ma visualizzerai gli importi come moltiplicati per %d dopo la modifica. Se gli importi verranno aggiornati, alcune informazioni sulla attuale parte decimale verranno perse."</string>
     <string name="message_backend_create_folder">"Inserisci il nome della cartella che vuoi creare"</string>
     <string name="message_permission_required_external_storage">"Il permesso per accedere alla memoria esterna è necessario per leggere e scrivere i file. Si prega di abilitarlo."</string>
     <string name="message_permission_required_not_granted">"Permesso negato. Vai alle impostazioni dell'applicazione e abilitalo."</string>
@@ -386,6 +396,8 @@
     <string name="message_action_archive_saving">"Sei sicuro di voler archiviare questo risparmio?"</string>
     <string name="message_action_unarchive_saving">"Sei sicuro di voler disarchiviare questo risparmio?"</string>
     <string name="message_error_activity_not_found">"Nessuna applicazione trovata su questo dispositivo per gestire la richiesta"."</string>
+    <string name="message_delete_currency">"Sei sicuro di voler eliminare questa valuta?"</string>
+    <string name="message_error_delete_currency">"Questa valuta non può essere eliminata perché è in uso."</string>
     <string name="message_delete_wallet">"Sei sicuro di voler eliminare questo portafoglio? Tutti i dati relativi saranno rimossi."</string>
     <string name="message_error_delete_wallet_of_transfer">"Questo potafoglio non può essere eliminato perché è utilizzato in uno o più trasferimenti. per favore rimuovere i relativi trasferimenti per eliminare questo portafoglio."</string>
     <string name="message_delete_category">"Sei sicuro di voler eliminare questa categoria?"</string>
@@ -476,6 +488,8 @@
     <string name="setting_summary_exchange_rate_api_key_missing">"Api-key mancante"</string>
     <string name="setting_title_exchange_rate_update">"Aggiorna i tassi di cambio"</string>
     <string name="setting_summary_exchange_rate_update">"Ultimo aggiornamento: %s"</string>
+    <string name="setting_title_currency_management">"Gestisci valute"</string>
+    <string name="setting_summary_currency_management">"Aggiungi valute personalizzate"</string>
     <string name="setting_subtitle_user_interface">"Personalizza come vuoi"</string>
     <string name="setting_subtitle_utility">"Imposta gli strumenti disponibili"</string>
     <string name="setting_subtitle_database">"Gestisci i tuoi dati"</string>

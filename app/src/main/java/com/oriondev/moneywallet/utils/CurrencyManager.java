@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.utils;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -29,6 +30,14 @@ import com.oriondev.moneywallet.storage.cache.ExchangeRateCache;
 import com.oriondev.moneywallet.storage.database.Contract;
 import com.oriondev.moneywallet.storage.database.DataContentProvider;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Currency;
 import java.util.HashMap;
@@ -42,6 +51,8 @@ import java.util.Map;
  */
 public class CurrencyManager {
 
+    private static final Object CACHE_MUTEX = new Object();
+
     private static CurrencyManager mInstance;
 
     public static void initialize(Context context) {
@@ -50,12 +61,27 @@ public class CurrencyManager {
         }
     }
 
-    private final Map<String, CurrencyUnit> mCurrencyCache;
     private final ExchangeRateCache mExchangeRateCache;
+    private final Map<String, CurrencyUnit> mCurrencyCache;
 
     private CurrencyManager(Context context) {
-        mCurrencyCache = loadCurrencies(context);
         mExchangeRateCache = new ExchangeRateCache(context);
+        mCurrencyCache = new HashMap<>();
+        loadCurrencies(context);
+    }
+
+    private void loadCurrencies(Context context) {
+        loadUserCurrencies(context);
+        if (mCurrencyCache.isEmpty()) {
+            loadDefaultCurrencies(context);
+        }
+    }
+
+    public static void invalidateCache(Context context) {
+        synchronized (CACHE_MUTEX) {
+            mInstance.mCurrencyCache.clear();
+            mInstance.loadCurrencies(context);
+        }
     }
 
     /**
@@ -63,8 +89,7 @@ public class CurrencyManager {
      * A call to this method is very expensive because it is an I/O operation on the main thread.
      * @param context of the application.
      */
-    private Map<String, CurrencyUnit> loadCurrencies(Context context) {
-        Map<String, CurrencyUnit> currencies = new HashMap<>();
+    private void loadUserCurrencies(Context context) {
         ContentResolver contentResolver = context.getContentResolver();
         String[] projections = new String[] {
                 Contract.Currency.ISO,
@@ -72,7 +97,7 @@ public class CurrencyManager {
                 Contract.Currency.SYMBOL,
                 Contract.Currency.DECIMALS
         };
-        Cursor cursor = contentResolver.query(DataContentProvider.CONTENT_CURRENCIES, null, null, null, null);
+        Cursor cursor = contentResolver.query(DataContentProvider.CONTENT_CURRENCIES, projections, null, null, null);
         if (cursor != null) {
             int indexIso = cursor.getColumnIndex(Contract.Currency.ISO);
             int indexName = cursor.getColumnIndex(Contract.Currency.NAME);
@@ -84,11 +109,45 @@ public class CurrencyManager {
                         cursor.getString(indexName),
                         cursor.getString(indexSymbol),
                         cursor.getInt(indexDecimals));
-                currencies.put(currencyUnit.getIso(), currencyUnit);
+                mCurrencyCache.put(currencyUnit.getIso(), currencyUnit);
             }
             cursor.close();
         }
-        return currencies;
+    }
+
+    private void loadDefaultCurrencies(Context context) {
+        try {
+            // open assets file and load all the default currencies into a JSONArray
+            StringBuilder jsonBuilder = new StringBuilder();
+            InputStream inputStream = context.getAssets().open("resources/currencies.json");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                jsonBuilder.append(line);
+            }
+            JSONArray array = new JSONArray(jsonBuilder.toString());
+            // for each currency, load it into cache and store a copy inside the database
+            ContentResolver contentResolver = context.getContentResolver();
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject currency = array.getJSONObject(i);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(Contract.Currency.ISO, currency.getString("code"));
+                contentValues.put(Contract.Currency.NAME, currency.getString("name"));
+                contentValues.put(Contract.Currency.SYMBOL, currency.optString("symbol", null));
+                contentValues.put(Contract.Currency.DECIMALS, currency.optInt("decimals", 2));
+                contentResolver.insert(DataContentProvider.CONTENT_CURRENCIES, contentValues);
+                // directly store the currency inside the local cache
+                CurrencyUnit currencyUnit = new CurrencyUnit(
+                        contentValues.getAsString(Contract.Currency.ISO),
+                        contentValues.getAsString(Contract.Currency.NAME),
+                        contentValues.getAsString(Contract.Currency.SYMBOL),
+                        contentValues.getAsInteger(Contract.Currency.DECIMALS)
+                );
+                mCurrencyCache.put(currencyUnit.getIso(), currencyUnit);
+            }
+        } catch (IOException | JSONException e) {
+            throw new RuntimeException("Exception while reading currencies file from assets: " + e.getMessage());
+        }
     }
 
     /**
@@ -97,11 +156,15 @@ public class CurrencyManager {
      * @return the currency object if the iso code is found.
      */
     public static CurrencyUnit getCurrency(String iso) {
-        return mInstance.mCurrencyCache.get(iso);
+        synchronized (CACHE_MUTEX) {
+            return mInstance.mCurrencyCache.get(iso);
+        }
     }
 
     public static Collection<CurrencyUnit> getCurrencies() {
-        return mInstance.mCurrencyCache.values();
+        synchronized (CACHE_MUTEX) {
+            return mInstance.mCurrencyCache.values();
+        }
     }
 
     public static ExchangeRate getExchangeRate(CurrencyUnit currency1, CurrencyUnit currency2) {
@@ -114,9 +177,11 @@ public class CurrencyManager {
      * @return the current currency.
      */
     public static CurrencyUnit getDefaultCurrency() {
-        Locale locale = Locale.getDefault();
-        Currency currency = Currency.getInstance(locale);
-        return getCurrency(currency.getCurrencyCode());
+        synchronized (CACHE_MUTEX) {
+            Locale locale = Locale.getDefault();
+            Currency currency = Currency.getInstance(locale);
+            return getCurrency(currency.getCurrencyCode());
+        }
     }
 
     public static ExchangeRateCache getExchangeRateCache() {

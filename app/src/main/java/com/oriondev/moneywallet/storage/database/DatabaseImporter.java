@@ -29,6 +29,8 @@ public interface DatabaseImporter {
 
     void importHeader() throws ImportException;
 
+    void importCurrencies(ContentResolver contentResolver) throws ImportException;
+
     void importWallets(ContentResolver contentResolver) throws ImportException;
 
     void importCategories(ContentResolver contentResolver) throws ImportException;

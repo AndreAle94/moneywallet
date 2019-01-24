@@ -25,13 +25,24 @@ package com.oriondev.moneywallet.storage.database.json;
 /*package-local*/ class JSONDatabase {
 
     /*package-local*/ static final int MIN_SUPPORTED_VERSION = 1;
-    /*package-local*/ static final int MAX_SUPPORTED_VERSION = 1;
+    /*package-local*/ static final int MAX_SUPPORTED_VERSION = 2;
 
-    /*package-local*/ static final int VERSION = 1;
+    /*package-local*/ static final int VERSION = 2;
 
     /*package-local*/ static class Header {
         /*package-local*/ static final String OBJECT = "header";
         /*package-local*/ static final String VERSION_CODE = "version_code";
+    }
+
+    /*package-local*/ static class Currency {
+        /*package-local*/ static final String ARRAY = "currencies";
+        /*package-local*/ static final String ISO = "iso";
+        /*package-local*/ static final String NAME = "name";
+        /*package-local*/ static final String SYMBOL = "symbol";
+        /*package-local*/ static final String DECIMALS = "decimals";
+        /*package-local*/ static final String FAVOURITE = "favourite";
+        /*package-local*/ static final String LAST_EDIT = "last_edit";
+        /*package-local*/ static final String DELETED = "deleted";
     }
 
     /*package-local*/ static class Wallet {

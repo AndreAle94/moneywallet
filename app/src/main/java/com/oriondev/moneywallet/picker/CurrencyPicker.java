@@ -118,6 +118,7 @@ public class CurrencyPicker extends Fragment {
 
     public void showPicker() {
         Intent intent = new Intent(getActivity(), CurrencyListActivity.class);
+        intent.putExtra(CurrencyListActivity.ACTIVITY_MODE, CurrencyListActivity.CURRENCY_PICKER);
         startActivityForResult(intent, REQUEST_CURRENCY_PICKER);
     }
 

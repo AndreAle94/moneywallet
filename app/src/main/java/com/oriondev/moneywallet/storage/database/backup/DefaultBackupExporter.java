@@ -65,6 +65,7 @@ public class DefaultBackupExporter extends AbstractBackupExporter {
             exporter = new JSONDatabaseExporter(new FileOutputStream(tempFile));
             ContentResolver contentResolver = getContentResolver();
             exporter.exportHeader();
+            exporter.exportCurrencies(SQLDatabaseExporter.getAllCurrencies(contentResolver));
             exporter.exportWallets(SQLDatabaseExporter.getAllWallets(contentResolver));
             exporter.exportCategories(SQLDatabaseExporter.getAllCategories(contentResolver));
             exporter.exportEvents(SQLDatabaseExporter.getAllEvents(contentResolver));

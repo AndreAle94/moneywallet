@@ -29,6 +29,8 @@ public interface DatabaseExporter {
 
     void exportHeader() throws ExportException;
 
+    void exportCurrencies(Cursor cursor) throws ExportException;
+
     void exportWallets(Cursor cursor) throws ExportException;
 
     void exportCategories(Cursor cursor) throws ExportException;

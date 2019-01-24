@@ -33,6 +33,21 @@ public class SQLDatabaseImporter {
 
     public static final String DATABASE_NAME = SQLDatabase.DATABASE_NAME;
 
+    public static long insert(ContentResolver contentResolver, Currency currency) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Schema.Currency.ISO, currency.mIso);
+        contentValues.put(Schema.Currency.NAME, currency.mName);
+        contentValues.put(Schema.Currency.SYMBOL, currency.mSymbol);
+        contentValues.put(Schema.Currency.DECIMALS, currency.mDecimals);
+        contentValues.put(Schema.Currency.FAVOURITE, currency.mFavourite);
+        contentValues.put(Schema.Currency.UUID, currency.mUUID);
+        contentValues.put(Schema.Currency.LAST_EDIT, currency.mLastEdit);
+        contentValues.put(Schema.Currency.DELETED, currency.mDeleted);
+        Uri uri = SyncContentProvider.CONTENT_CURRENCIES;
+        uri = contentResolver.insert(uri, contentValues);
+        return ContentUris.parseId(uri);
+    }
+
     public static long insert(ContentResolver contentResolver, Wallet wallet) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Schema.Wallet.NAME, wallet.mName);

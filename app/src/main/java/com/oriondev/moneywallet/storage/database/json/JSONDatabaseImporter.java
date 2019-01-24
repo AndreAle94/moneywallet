@@ -28,6 +28,7 @@ import com.oriondev.moneywallet.storage.database.model.Attachment;
 import com.oriondev.moneywallet.storage.database.model.Budget;
 import com.oriondev.moneywallet.storage.database.model.BudgetWallet;
 import com.oriondev.moneywallet.storage.database.model.Category;
+import com.oriondev.moneywallet.storage.database.model.Currency;
 import com.oriondev.moneywallet.storage.database.model.Debt;
 import com.oriondev.moneywallet.storage.database.model.DebtPerson;
 import com.oriondev.moneywallet.storage.database.model.Event;
@@ -63,6 +64,8 @@ public class JSONDatabaseImporter implements DatabaseImporter {
     private final JSONDataStreamReader mReader;
     private final JSONDataInputFactory mFactory;
 
+    private int mVersion;
+
     public JSONDatabaseImporter(InputStream inputStream) throws ImportException {
         try {
             mReader = new JSONDataStreamReader(inputStream);
@@ -77,18 +80,40 @@ public class JSONDatabaseImporter implements DatabaseImporter {
         try {
             if (JSONDatabase.Header.OBJECT.equals(mReader.readName())) {
                 JSONObject object = mReader.readObject();
-                int version = object.getInt(JSONDatabase.Header.VERSION_CODE);
-                if (version > JSONDatabase.MAX_SUPPORTED_VERSION) {
+                mVersion = object.getInt(JSONDatabase.Header.VERSION_CODE);
+                if (mVersion > JSONDatabase.MAX_SUPPORTED_VERSION) {
                     throw new ImportException("This backup belongs to a newer version of the " +
                             "application and cannot be imported. Please update the application " +
                             "to restore it.");
-                } else if (version < JSONDatabase.MIN_SUPPORTED_VERSION) {
+                } else if (mVersion < JSONDatabase.MIN_SUPPORTED_VERSION) {
                     throw new ImportException("This backup is too old and no more supported by this " +
                             "version of the application. It cannot be restored.");
                 }
             }
         } catch (IOException | JSONException e) {
             throw new ImportException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void importCurrencies(ContentResolver contentResolver) throws ImportException {
+        // currencies are stored starting from backup version >= 2
+        if (mVersion >= 2) {
+            try {
+                if (JSONDatabase.Currency.ARRAY.equals(mReader.readName())) {
+                    mReader.beginArray();
+                    while (mReader.hasArrayAnotherObject()) {
+                        JSONObject object = mReader.readObject();
+                        Currency currency = mFactory.getCurrency(object);
+                        SQLDatabaseImporter.insert(contentResolver, currency);
+                    }
+                    mReader.endArray();
+                } else {
+                    throw new ImportException("Wrong array name (expected = 'currencies')");
+                }
+            } catch (IOException | JSONException e) {
+                throw new ImportException(e.getMessage());
+            }
         }
     }
 

@@ -57,6 +57,7 @@ import com.oriondev.moneywallet.storage.database.backup.LegacyBackupImporter;
 import com.oriondev.moneywallet.storage.preference.BackendManager;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.notification.NotificationContract;
+import com.oriondev.moneywallet.utils.CurrencyManager;
 import com.oriondev.moneywallet.utils.DateUtils;
 import com.oriondev.moneywallet.utils.ProgressInputStream;
 import com.oriondev.moneywallet.utils.ProgressOutputStream;
@@ -285,10 +286,11 @@ public class BackupHandlerIntentService extends IntentService {
                 String password = intent.getStringExtra(PASSWORD);
                 restoreLocalBackupFile(backup, password);
                 notifyTaskProgress(ACTION_RESTORE, STATUS_BACKUP_RESTORING, 100);
-                notifyTaskFinished(ACTION_RESTORE);
                 PreferenceManager.setLastTimeDataIsChanged(0L);
+                CurrencyManager.invalidateCache(this);
                 RecurrenceBroadcastReceiver.scheduleRecurrenceTask(this);
                 AutoBackupBroadcastReceiver.scheduleAutoBackupTask(this);
+                notifyTaskFinished(ACTION_RESTORE);
             } finally {
                 FileUtils.deleteQuietly(revision);
             }

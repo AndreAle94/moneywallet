@@ -122,6 +122,10 @@ public class Utils {
         return R.drawable.ic_file_outline_24dp;
     }
 
+    public static int getRandomMDColor(int index) {
+        return PALETTE[index % PALETTE.length];
+    }
+
     public static int getRandomMDColor() {
         return PALETTE[new Random().nextInt(PALETTE.length)];
     }

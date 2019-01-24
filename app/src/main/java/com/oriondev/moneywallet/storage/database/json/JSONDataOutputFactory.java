@@ -23,6 +23,7 @@ import com.oriondev.moneywallet.storage.database.model.Attachment;
 import com.oriondev.moneywallet.storage.database.model.Budget;
 import com.oriondev.moneywallet.storage.database.model.BudgetWallet;
 import com.oriondev.moneywallet.storage.database.model.Category;
+import com.oriondev.moneywallet.storage.database.model.Currency;
 import com.oriondev.moneywallet.storage.database.model.Debt;
 import com.oriondev.moneywallet.storage.database.model.DebtPerson;
 import com.oriondev.moneywallet.storage.database.model.Event;
@@ -65,6 +66,18 @@ import java.util.HashMap;
     private final HashMap<Long, String> mCacheTransactions = new HashMap<>();
     private final HashMap<Long, String> mCacheTransfers = new HashMap<>();
     private final HashMap<Long, String> mCacheAttachments = new HashMap<>();
+
+    /*package-local*/ JSONObject getObject(Currency currency) throws JSONException {
+        JSONObject object = new JSONObject();
+        object.put(JSONDatabase.Currency.ISO, currency.mIso);
+        object.put(JSONDatabase.Currency.NAME, currency.mName);
+        object.put(JSONDatabase.Currency.SYMBOL, currency.mSymbol);
+        object.put(JSONDatabase.Currency.DECIMALS, currency.mDecimals);
+        object.put(JSONDatabase.Currency.FAVOURITE, currency.mFavourite);
+        object.put(JSONDatabase.Currency.LAST_EDIT, currency.mLastEdit);
+        object.put(JSONDatabase.Currency.DELETED, currency.mDeleted);
+        return object;
+    }
 
     /*package-local*/ JSONObject getObject(Wallet wallet) throws JSONException {
         JSONObject object = new JSONObject();

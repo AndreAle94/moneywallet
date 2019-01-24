@@ -62,6 +62,22 @@ public class JSONDatabaseExporter implements DatabaseExporter {
     }
 
     @Override
+    public void exportCurrencies(Cursor cursor) throws ExportException {
+        try {
+            mWriter.writeName(JSONDatabase.Currency.ARRAY);
+            mWriter.beginArray();
+            while (cursor.moveToNext()) {
+                Currency currency = SQLDatabaseExporter.getCurrency(cursor);
+                JSONObject object = mFactory.getObject(currency);
+                mWriter.writeJSONObject(object);
+            }
+            mWriter.endArray();
+        } catch (IOException | JSONException e) {
+            throw new ExportException(e.getMessage());
+        }
+    }
+
+    @Override
     public void exportWallets(Cursor cursor) throws ExportException {
         try {
             mWriter.writeName(JSONDatabase.Wallet.ARRAY);

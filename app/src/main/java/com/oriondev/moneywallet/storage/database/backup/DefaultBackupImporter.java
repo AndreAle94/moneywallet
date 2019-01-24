@@ -71,6 +71,7 @@ public class DefaultBackupImporter extends AbstractBackupImporter {
             importer = new JSONDatabaseImporter(inputStream);
             ContentResolver contentResolver = getContentResolver();
             importer.importHeader();
+            importer.importCurrencies(contentResolver);
             importer.importWallets(contentResolver);
             importer.importCategories(contentResolver);
             importer.importEvents(contentResolver);

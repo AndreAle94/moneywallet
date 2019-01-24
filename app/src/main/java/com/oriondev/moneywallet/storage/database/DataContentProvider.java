@@ -84,41 +84,43 @@ public class DataContentProvider extends ContentProvider {
     private static final int ATTACHMENT_LIST = 16;
     private static final int ATTACHMENT_ITEM = 17;
 
-    private static final int WALLET_ITEM = 18;
-    private static final int TRANSACTION_ITEM = 19;
-    private static final int TRANSFER_ITEM = 20;
-    private static final int CATEGORY_ITEM = 21;
-    private static final int DEBT_ITEM = 22;
-    private static final int BUDGET_ITEM = 23;
-    private static final int SAVING_ITEM = 24;
-    private static final int EVENT_ITEM = 25;
-    private static final int RECURRENT_TRANSACTION_ITEM = 26;
-    private static final int RECURRENT_TRANSFER_ITEM = 27;
-    private static final int TRANSACTION_MODEL_ITEM = 28;
-    private static final int TRANSFER_MODEL_ITEM = 29;
-    private static final int PLACE_ITEM = 30;
-    private static final int PERSON_ITEM = 31;
+    private static final int CURRENCY_ITEM = 18;
+    private static final int WALLET_ITEM = 19;
+    private static final int TRANSACTION_ITEM = 20;
+    private static final int TRANSFER_ITEM = 21;
+    private static final int CATEGORY_ITEM = 22;
+    private static final int DEBT_ITEM = 23;
+    private static final int BUDGET_ITEM = 24;
+    private static final int SAVING_ITEM = 25;
+    private static final int EVENT_ITEM = 26;
+    private static final int RECURRENT_TRANSACTION_ITEM = 27;
+    private static final int RECURRENT_TRANSFER_ITEM = 28;
+    private static final int TRANSACTION_MODEL_ITEM = 29;
+    private static final int TRANSFER_MODEL_ITEM = 30;
+    private static final int PLACE_ITEM = 31;
+    private static final int PERSON_ITEM = 32;
 
-    private static final int TRANSACTION_ATTACHMENTS = 32;
-    private static final int TRANSACTION_PEOPLE = 33;
-    private static final int TRANSFER_ATTACHMENTS = 34;
-    private static final int TRANSFER_PEOPLE = 35;
-    private static final int DEBT_PEOPLE = 36;
-    private static final int BUDGET_WALLETS = 37;
+    private static final int TRANSACTION_ATTACHMENTS = 33;
+    private static final int TRANSACTION_PEOPLE = 34;
+    private static final int TRANSFER_ATTACHMENTS = 35;
+    private static final int TRANSFER_PEOPLE = 36;
+    private static final int DEBT_PEOPLE = 37;
+    private static final int BUDGET_WALLETS = 38;
 
-    private static final int CATEGORY_TRANSACTION_LIST = 38;
-    private static final int DEBT_TRANSACTION_LIST = 39;
-    private static final int BUDGET_TRANSACTION_LIST = 40;
-    private static final int SAVING_TRANSACTION_LIST = 41;
-    private static final int EVENT_TRANSACTION_LIST = 42;
-    private static final int PLACE_TRANSACTION_LIST = 43;
-    private static final int PERSON_TRANSACTION_LIST = 44;
+    private static final int CATEGORY_TRANSACTION_LIST = 39;
+    private static final int DEBT_TRANSACTION_LIST = 40;
+    private static final int BUDGET_TRANSACTION_LIST = 41;
+    private static final int SAVING_TRANSACTION_LIST = 42;
+    private static final int EVENT_TRANSACTION_LIST = 43;
+    private static final int PLACE_TRANSACTION_LIST = 44;
+    private static final int PERSON_TRANSACTION_LIST = 45;
 
     private static final UriMatcher mUriMatcher = createUriMatcher();
 
     private static UriMatcher createUriMatcher() {
         UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         matcher.addURI(AUTHORITY, "currencies", CURRENCY_LIST);
+        matcher.addURI(AUTHORITY, "currencies/*", CURRENCY_ITEM);
         matcher.addURI(AUTHORITY, "wallets", WALLET_LIST);
         matcher.addURI(AUTHORITY, "wallets/#", WALLET_ITEM);
         matcher.addURI(AUTHORITY, "transactions", TRANSACTION_LIST);
@@ -188,6 +190,10 @@ public class DataContentProvider extends ContentProvider {
             case CURRENCY_LIST:
                 cursor = new MultiUriCursorWrapper(mDatabase.getCurrencies(projection, selection, selectionArgs, sortOrder));
                 cursor.setNotificationUri(getContentResolver(), CONTENT_CURRENCIES);
+                break;
+            case CURRENCY_ITEM:
+                cursor = new MultiUriCursorWrapper(mDatabase.getCurrency(uri.getLastPathSegment(), projection));
+                cursor.setNotificationUri(getContentResolver(), uri);
                 break;
             case WALLET_LIST:
                 cursor = new MultiUriCursorWrapper(mDatabase.getWallets(projection, selection, selectionArgs, sortOrder));
@@ -490,6 +496,8 @@ public class DataContentProvider extends ContentProvider {
         switch (mUriMatcher.match(uri)) {
             case CURRENCY_LIST:
                 return "vnd.android.cursor.dir/vnd.com.oriondev.moneywallet.storage.currency";
+            case CURRENCY_ITEM:
+                return "vnd.android.cursor.item/vnd.com.oriondev.moneywallet.storage.currency";
             case WALLET_LIST:
                 return "vnd.android.cursor.dir/vnd.com.oriondev.moneywallet.storage.wallet";
             case WALLET_ITEM:
@@ -583,10 +591,12 @@ public class DataContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
+        String currencyIso = null;
         long objectId = 0L;
         switch (mUriMatcher.match(uri)) {
             case CURRENCY_LIST:
-                throw new RuntimeException("User cannot add extra currencies by now");
+                currencyIso = mDatabase.insertCurrency(contentValues);
+                break;
             case WALLET_LIST:
                 objectId = mDatabase.insertWallet(contentValues);
                 break;
@@ -633,14 +643,22 @@ public class DataContentProvider extends ContentProvider {
                 objectId = mDatabase.insertAttachment(contentValues);
                 break;
         }
-        if (objectId > 0L) {
+        if (currencyIso != null || objectId > 0L) {
             PreferenceManager.setLastTimeDataIsChanged(System.currentTimeMillis());
             ContentResolver contentResolver = getContentResolver();
-            Uri objectUri = ContentUris.withAppendedId(uri, objectId);
-            if (contentResolver != null) {
-                contentResolver.notifyChange(objectUri, null);
+            if (currencyIso != null) {
+                Uri objectUri = Uri.withAppendedPath(uri, currencyIso);
+                if (contentResolver != null) {
+                    contentResolver.notifyChange(objectUri, null);
+                }
+                return objectUri;
+            } else if (objectId > 0L) {
+                Uri objectUri = ContentUris.withAppendedId(uri, objectId);
+                if (contentResolver != null) {
+                    contentResolver.notifyChange(objectUri, null);
+                }
+                return objectUri;
             }
-            return objectUri;
         }
         return null;
     }
@@ -650,6 +668,10 @@ public class DataContentProvider extends ContentProvider {
         int result = 0;
         Uri notifyUri = null;
         switch (mUriMatcher.match(uri)) {
+            case CURRENCY_ITEM:
+                notifyUri = DataContentProvider.CONTENT_CURRENCIES;
+                result = mDatabase.deleteCurrency(uri.getLastPathSegment());
+                break;
             case WALLET_ITEM:
                 notifyUri = DataContentProvider.CONTENT_WALLETS;
                 result = mDatabase.deleteWallet(ContentUris.parseId(uri));
@@ -723,6 +745,9 @@ public class DataContentProvider extends ContentProvider {
     public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         int result = 0;
         switch (mUriMatcher.match(uri)) {
+            case CURRENCY_ITEM:
+                result = mDatabase.updateCurrency(uri.getLastPathSegment(), values);
+                break;
             case WALLET_ITEM:
                 result = mDatabase.updateWallet(ContentUris.parseId(uri), values);
                 break;
