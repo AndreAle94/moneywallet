@@ -30,7 +30,7 @@ values-es-rES/strings.xml
     <string name="menu_calculator">"Calculadora"</string>
     <string name="menu_search_atm">"Buscar cajero automático"</string>
     <string name="menu_search_bank">"Buscar banco"</string>
-    <string name="menu_setting">"Configuración"</string>
+    <string name="menu_setting">"Ajustes"</string>
     <string name="menu_about">"Acerca de"</string>
     <!-- Transactions -->
     <string name="menu_transaction_tab_transfers">"Transferencias"</string>
@@ -54,14 +54,14 @@ values-es-rES/strings.xml
     <string name="action_deposit">"Depositar"</string>
     <string name="action_withdraw_everything">"Retirar todo"</string>
     <string name="action_add">"Añadir entrada"</string>
-    <string name="msg_no_wallet_found">"Presione aquí y proceda a añadir una"</string>
-    <string name="msg_add_one_wallet">"Favor de añadir una cartera"</string>
+    <string name="msg_no_wallet_found">"Pulse aquí para añadir una"</string>
+    <string name="msg_add_one_wallet">"Por favor, añade una cartera"</string>
     <string name="hint_description">"Descripción"</string>
     <string name="hint_category">"Categoría"</string>
     <string name="hint_date">"Fecha"</string>
     <string name="hint_start_date">"Fecha de inicio"</string>
     <string name="hint_end_date">"Fecha final"</string>
-    <string name="hint_expiration_date">"Fecha de vencimiento"</string>
+    <string name="hint_expiration_date">"Fecha de caducación"</string>
     <string name="hint_wallet">"Cartera"</string>
     <string name="hint_wallets">"Carteras"</string>
     <string name="hint_wallet_from">"Desde"</string>
@@ -148,8 +148,8 @@ values-es-rES/strings.xml
     <string name="setting_item_ui_theme_type_light">"Tema claro"</string>
     <string name="setting_item_ui_theme_type_dark">"Tema oscuro"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"Tema oscuro profundo"</string>
-    <string name="notification_title_daily_reminder_title">¿Alguna transacción hoy?</string>
-    <string name="notification_title_daily_reminder_text">Presione aquí para agregarlo inmediatamente</string>
+    <string name="notification_title_daily_reminder_title">¿Hay transacción para hoy?</string>
+    <string name="notification_title_daily_reminder_text">Presione aquí para añadirlo inmediatamente</string>
     <string name="about_hint_version">"Versión"</string>
     <string name="about_hint_changelog">"Historial de cambios "</string>
     <string name="about_hint_translators">"Traductores"</string>
