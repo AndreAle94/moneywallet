@@ -43,6 +43,7 @@ import com.oriondev.moneywallet.model.CurrencyUnit;
 import com.oriondev.moneywallet.model.ExchangeRate;
 import com.oriondev.moneywallet.picker.CurrencyPicker;
 import com.oriondev.moneywallet.service.AbstractCurrencyRateDownloadIntentService;
+import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 import com.oriondev.moneywallet.ui.activity.base.SinglePanelActivity;
 import com.oriondev.moneywallet.utils.CurrencyManager;
 import com.oriondev.moneywallet.utils.MoneyFormatter;
@@ -181,8 +182,8 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
             }
 
         });
-        CurrencyUnit currency1 = getDefaultCurrencyUnit(true);
-        CurrencyUnit currency2 = getDefaultCurrencyUnit(false);
+        CurrencyUnit currency1 = getCurrency(true);
+        CurrencyUnit currency2 = getCurrency(false);
         FragmentManager fragmentManager = getSupportFragmentManager();
         mCurrencyFromPicker = CurrencyPicker.createPicker(fragmentManager, TAG_CURRENCY_FROM_PICKER, currency1);
         mCurrencyToPicker = CurrencyPicker.createPicker(fragmentManager, TAG_CURRENCY_TO_PICKER, currency2);
@@ -199,6 +200,20 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+    }
+
+    private CurrencyUnit getCurrency(boolean primary) {
+        CurrencyUnit currencyUnit;
+        if (primary) {
+            currencyUnit = CurrencyManager.getCurrency(PreferenceManager.getCurrencyConverterLastCurrency1());
+        } else {
+            currencyUnit = CurrencyManager.getCurrency(PreferenceManager.getCurrencyConverterLastCurrency2());
+        }
+        if (currencyUnit == null) {
+            // if no default currency is found, return the system default currency
+            return getDefaultCurrencyUnit(primary);
+        }
+        return currencyUnit;
     }
 
     private CurrencyUnit getDefaultCurrencyUnit(boolean primary) {
@@ -259,10 +274,12 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
             case TAG_CURRENCY_FROM_PICKER:
                 loadCurrencyFlag(mImageCurrencyFrom, currency.getIso());
                 mTextCurrencyFrom.setText(currency.getIso());
+                PreferenceManager.setCurrencyConverterLastCurrency1(currency.getIso());
                 break;
             case TAG_CURRENCY_TO_PICKER:
                 loadCurrencyFlag(mImageCurrencyTo, currency.getIso());
                 mTextCurrencyTo.setText(currency.getIso());
+                PreferenceManager.setCurrencyConverterLastCurrency2(currency.getIso());
                 break;
         }
         if (mCurrencyFromPicker.isSelected() && mCurrencyToPicker.isSelected()) {

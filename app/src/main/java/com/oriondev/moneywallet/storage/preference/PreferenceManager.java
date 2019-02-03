@@ -65,6 +65,8 @@ public class PreferenceManager {
     private static final String DAILY_REMINDER = "daily_reminder";
     private static final String FIRST_START = "first_start";
     private static final String SERVICE_API_KEY = "user_api_key_";
+    private static final String CONVERTER_LAST_CURRENCY_1 = "converter_currency_iso_1";
+    private static final String CONVERTER_LAST_CURRENCY_2 = "converter_currency_iso_2";
 
     private static final String LAST_DATA_CHANGE_TIME = "last_data_change_time";
 
@@ -196,6 +198,14 @@ public class PreferenceManager {
         mPreferences.edit().putString(SERVICE_API_KEY + String.valueOf(service), key).apply();
     }
 
+    public static void setCurrencyConverterLastCurrency1(String iso) {
+        mPreferences.edit().putString(CONVERTER_LAST_CURRENCY_1, iso).apply();
+    }
+
+    public static void setCurrencyConverterLastCurrency2(String iso) {
+        mPreferences.edit().putString(CONVERTER_LAST_CURRENCY_2, iso).apply();
+    }
+
     public static void setLastTimeDataIsChanged(long timestamp) {
         mPreferences.edit().putLong(LAST_DATA_CHANGE_TIME, timestamp).apply();
     }
@@ -293,6 +303,14 @@ public class PreferenceManager {
 
     public static String getServiceApiKey(int service) {
         return mPreferences.getString(SERVICE_API_KEY + String.valueOf(service), null);
+    }
+
+    public static String getCurrencyConverterLastCurrency1() {
+        return mPreferences.getString(CONVERTER_LAST_CURRENCY_1, null);
+    }
+
+    public static String getCurrencyConverterLastCurrency2() {
+        return mPreferences.getString(CONVERTER_LAST_CURRENCY_2, null);
     }
 
     public static long getLastTimeDataIsChanged() {
