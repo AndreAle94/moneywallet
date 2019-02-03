@@ -24,9 +24,12 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.Category;
@@ -57,6 +60,14 @@ public class CategoryPickerActivity extends SinglePanelViewPagerActivity impleme
             showSystemCategories = intent.getBooleanExtra(SHOW_SYSTEM_CATEGORIES, false);
         }
         return new CategoryViewPagerAdapter(fragmentManager, this, showSubCategories, showSystemCategories);
+    }
+
+    @Override
+    protected void onCreatePanelView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+        super.onCreatePanelView(inflater, parent, savedInstanceState);
+        if (savedInstanceState == null) {
+            setViewPagerPosition(1);
+        }
     }
 
     @Override

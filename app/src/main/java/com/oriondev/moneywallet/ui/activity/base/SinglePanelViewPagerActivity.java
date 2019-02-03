@@ -59,6 +59,10 @@ public abstract class SinglePanelViewPagerActivity extends SinglePanelAppBarActi
     @NonNull
     protected abstract PagerAdapter onCreatePagerAdapter(FragmentManager fragmentManager);
 
+    protected void setViewPagerPosition(int position) {
+        mViewPager.setCurrentItem(position);
+    }
+
     protected int getViewPagerPosition() {
         return mViewPager.getCurrentItem();
     }
