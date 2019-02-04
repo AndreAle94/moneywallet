@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.utils.Utils;
 
 /**
  * Created by andrea on 09/02/18.
@@ -89,7 +90,12 @@ public abstract class SinglePanelActivity extends BaseActivity implements Toolba
 
     protected void onConfigureRootLayout(Bundle savedInstanceState) {
         LayoutInflater inflater = getLayoutInflater();
-        ViewGroup parent = findViewById(R.id.primary_panel_container);
+        ViewGroup parent = Utils.findViewGroupByIds(this,
+                R.id.primary_panel_container_frame_layout,
+                R.id.primary_panel_container_card_view,
+                R.id.primary_panel_container_linear_layout,
+                R.id.primary_panel_container_coordinator_layout
+        );
         onCreatePanelView(inflater, parent, savedInstanceState);
     }
 

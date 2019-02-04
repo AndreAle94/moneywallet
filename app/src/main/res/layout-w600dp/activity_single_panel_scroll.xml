@@ -82,7 +82,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/primary_panel_container"
+                    android:id="@+id/primary_panel_container_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >

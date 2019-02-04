@@ -19,6 +19,7 @@
 
 package com.oriondev.moneywallet.utils;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -128,6 +129,12 @@ public class Utils {
 
     public static int getRandomMDColor() {
         return PALETTE[new Random().nextInt(PALETTE.length)];
+    }
+
+    public static ViewGroup findViewGroupByIds(Activity activity, @IdRes int... resIds) {
+        View rootView = activity.getWindow().getDecorView();
+        View contentView = rootView.findViewById(android.R.id.content);
+        return findViewGroupByIds(contentView != null ? contentView : rootView, resIds);
     }
 
     public static ViewGroup findViewGroupByIds(View root, @IdRes int... resIds) {

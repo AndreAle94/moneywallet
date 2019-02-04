@@ -33,6 +33,7 @@
         app:layout_constraintGuide_begin="?attr/actionBarSize" />
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout
+        android:id="@+id/app_bar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -48,7 +49,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
-        android:id="@+id/primary_panel_container"
+        android:id="@+id/primary_panel_container_card_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/layout_single_panel_primary_panel_margin_left"

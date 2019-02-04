@@ -36,6 +36,7 @@ import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.ui.activity.ToolbarController;
+import com.oriondev.moneywallet.utils.Utils;
 
 /**
  * Created by andrea on 17/08/18.
@@ -48,7 +49,12 @@ public abstract class SinglePanelFragment extends Fragment implements Toolbar.On
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_single_panel, container, false);
         mToolbar = view.findViewById(R.id.primary_toolbar);
-        ViewGroup parent = view.findViewById(R.id.primary_panel_container);
+        ViewGroup parent = Utils.findViewGroupByIds(view,
+                R.id.primary_panel_container_frame_layout,
+                R.id.primary_panel_container_card_view,
+                R.id.primary_panel_container_linear_layout,
+                R.id.primary_panel_container_coordinator_layout
+        );
         onCreatePanelView(inflater, parent, savedInstanceState);
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floating_action_button);
         onSetupFloatingActionButton(floatingActionButton);

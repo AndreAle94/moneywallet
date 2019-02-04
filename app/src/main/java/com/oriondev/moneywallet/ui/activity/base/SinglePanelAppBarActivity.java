@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.utils.Utils;
 
 /**
  * Created by andrea on 09/02/18.
@@ -37,7 +38,12 @@ public abstract class SinglePanelAppBarActivity extends SinglePanelActivity {
     protected void onConfigureRootLayout(Bundle savedInstanceState) {
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup headerContainer = findViewById(R.id.app_bar_container);
-        ViewGroup panelContainer = findViewById(R.id.primary_panel_container);
+        ViewGroup panelContainer = Utils.findViewGroupByIds(this,
+                R.id.primary_panel_container_frame_layout,
+                R.id.primary_panel_container_card_view,
+                R.id.primary_panel_container_linear_layout,
+                R.id.primary_panel_container_coordinator_layout
+        );
         onCreateHeaderView(inflater, headerContainer, savedInstanceState);
         onCreatePanelView(inflater, panelContainer, savedInstanceState);
     }

@@ -40,7 +40,7 @@
     </com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedFrameLayout
-        android:id="@+id/primary_panel_container"
+        android:id="@+id/primary_panel_container_frame_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/app_bar_container"
