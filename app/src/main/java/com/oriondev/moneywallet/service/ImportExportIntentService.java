@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.oriondev.moneywallet.broadcast.LocalAction;
@@ -183,7 +184,10 @@ public class ImportExportIntentService extends IntentService {
             dataExporter.close();
             // if no exception has been thrown so far, we can ask the exporter
             // for the output file: we can pass the uri of this file inside the intent
-            Uri resultUri = Uri.fromFile(dataExporter.getOutputFile());
+            // Uri resultUri = Uri.fromFile(dataExporter.getOutputFile());
+            String authority = "com.oriondev.moneywallet.storage.file";
+            File outputFile = dataExporter.getOutputFile();
+            Uri resultUri = FileProvider.getUriForFile(this, authority, outputFile);
             String resultType = dataExporter.getResultType();
             // send a successful intent to inform the receivers that the operation succeed
             notifyTaskFinished(LocalAction.ACTION_EXPORT_SERVICE_FINISHED, resultUri, resultType);
