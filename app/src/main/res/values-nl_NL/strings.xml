@@ -1,0 +1,155 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="menu_transaction">"Transacties"</string>
+    <string name="menu_category">"Categorieën"</string>
+    <string name="menu_overview">"Recent"</string>
+    <string name="menu_debt">"Schulden"</string>
+    <string name="menu_budget">"Budgets"</string>
+    <string name="menu_saving">"Spaarbedragen"</string>
+    <string name="menu_event">"Gebeurtenissen"</string>
+    <string name="menu_converter">"Valutarekener"</string>
+    <string name="menu_calculator">"Rekenmachine"</string>
+    <string name="menu_search_atm">"Zoek geldautomaat"</string>
+    <string name="menu_search_bank">"Zoek banken"</string>
+    <string name="menu_setting">"Instellingen"</string>
+    <string name="menu_about">"Over"</string>
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transfers">"Overboekingen"</string>
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"Inkomsten"</string>
+    <string name="menu_category_tab_system">"Systeem"</string>
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"Schulden"</string>
+    <string name="menu_debt_tab_credit">"Kredieten"</string>
+    <!-- Budgets -->
+    <string name="menu_budget_tab_expired">"Afgelopen"</string>
+    <!-- Savings -->
+    <string name="menu_saving_tab_completed">"Afgesloten"</string>
+    <!-- Events -->
+    <!-- Models -->
+    <string name="action_new_wallet">"Nieuwe portemonnee"</string>
+    <string name="action_manage_wallets">"Portemonnees beheren"</string>
+    <string name="action_pay_debt">"Betalen"</string>
+    <string name="action_receive_debt">"Ontvangen"</string>
+    <string name="action_withdraw">"Opnemen"</string>
+    <string name="action_deposit">"Storten"</string>
+    <string name="action_withdraw_everything">"Alles opnemen"</string>
+    <string name="action_add">"Boeking toevoegen"</string>
+    <string name="msg_no_wallet_found">"Type hier en voeg een toe"</string>
+    <string name="msg_add_one_wallet">"Voeg een portemonnee toe aub"</string>
+    <string name="hint_description">"Beschrijving"</string>
+    <string name="hint_category">"Categorie"</string>
+    <string name="hint_date">"Datum"</string>
+    <string name="hint_start_date">"Startdatum"</string>
+    <string name="hint_end_date">"Einddatum"</string>
+    <string name="hint_expiration_date">"Vervaldatum"</string>
+    <string name="hint_wallet">"Portemonnee"</string>
+    <string name="hint_wallets">"Portemonnees"</string>
+    <string name="hint_wallet_from">"Van"</string>
+    <string name="hint_wallet_to">"Naar"</string>
+    <string name="hint_event">"Gebeurtenis"</string>
+    <string name="hint_place">"Plaats"</string>
+    <string name="hint_note">"Notitie"</string>
+    <string name="hint_tax">"Transactiebelasting"</string>
+    <string name="hint_atm_name">"Naam van de ATM"</string>
+    <string name="hint_bank_name">"Naam van de Bank"</string>
+    <string name="hint_show_currency_symbol">"Valutasymbool tonen"</string>
+    <string name="hint_group_digits">"Cijfers groeperen"</string>
+    <string name="hint_round_decimals">"Decimalen ronden"</string>
+    <string name="total_wallet_name">"Totaal"</string>
+    <string name="title_activity_new_wallet">Nieuw Portemonnee</string>
+    <string name="title_activity_edit_wallet">Portemonnee bewerken</string>
+    <string name="title_activity_new_transaction">"Nieuw Transactie"</string>
+    <string name="title_activity_edit_transaction">"Transactie bewerken"</string>
+    <string name="title_activity_new_category">"Nieuw Categorie"</string>
+    <string name="title_activity_edit_category">"Categorie bewerken"</string>
+    <string name="title_activity_new_debt">"Nieuw Schulden"</string>
+    <string name="title_activity_edit_debt">"Schulden bewerken"</string>
+    <string name="title_activity_new_budget">"Nieuw Budget"</string>
+    <string name="title_activity_edit_budget">"Budget bewerken"</string>
+    <string name="title_activity_new_saving">"Nieuw spaarbedrag"</string>
+    <string name="title_activity_edit_saving">"Spaarbedrag bewerken"</string>
+    <string name="title_activity_new_event">"Nieuw Gebeurtenis"</string>
+    <string name="title_activity_edit_event">"Gebeurtenis bewerken"</string>
+    <string name="title_activity_category_picker">Kies een symbool</string>
+    <string name="title_activity_calculator">Rekenmachine</string>
+    <string name="title_activity_currency_converter">"Valutarekener"</string>
+    <string name="menu_advanced_settings">"Uitgebreid"</string>
+    <string name="menu_action_edit_item">"Bewerken"</string>
+    <string name="menu_action_delete_item">"Wissen"</string>
+    <string name="menu_action_search_item">"Zoeken"</string>
+    <string name="menu_action_open_calendar">"Agenda"</string>
+    <string name="menu_action_open_map">"Kaart"</string>
+    <string name="menu_action_service_disconnect">"Ontkoppelen"</string>
+    <string name="error_input_missing_wallet">"Kies aub een geldig portemonnee"</string>
+    <string name="error_input_missing_category">"Kies een geldig categorie"</string>
+    <string name="system_category_transfer">"Geld overgeboekt"</string>
+    <string name="system_category_transfer_tax">"Overboekbelasting"</string>
+    <string name="system_category_debt">Schulden</string>
+    <string name="system_category_debt_paid">Schuldenbetaling</string>
+    <string name="system_category_credit">Krediet</string>
+    <string name="system_category_credit_paid">Kreditbetaling</string>
+    <string name="system_category_generic_tax">Inkomstenbelasting</string>
+    <string name="system_category_saving_in">"Spaarbedrag"</string>
+    <string name="system_category_saving_out">"Opnemen"</string>
+    <string name="default_category_tip">"Fooi"</string>
+    <string name="default_category_prize">"Winst"</string>
+    <string name="default_category_salary">"Loon"</string>
+    <string name="default_category_interests">"Aandelen"</string>
+    <string name="default_category_sale">"Verkoop"</string>
+    <string name="default_category_car_expenses">"Voertuig"</string>
+    <string name="default_category_travel">"Reizen"</string>
+    <string name="default_category_friends">"Vrienden"</string>
+    <string name="default_category_technology">"Techniek"</string>
+    <string name="default_category_food_drinks">"Eten en Drank"</string>
+    <string name="default_category_hobby">"Hobby"</string>
+    <string name="message_no_wallet_found">"Geen portemonnee gevonden"</string>
+    <string name="message_no_transaction_found">"Geen transactie gevonden"</string>
+    <string name="message_no_transfer_found">"Geen overboeking gevonden"</string>
+    <string name="message_no_category_found">"Geen categorie gevonden"</string>
+    <string name="message_no_debt_found">"Geen Schulden gevonden"</string>
+    <string name="message_no_recurrence_found">"Geen regelmatige transacties gevonden"</string>
+    <string name="setting_title_user_interface">"Gebruikersinterface"</string>
+    <string name="setting_title_utility">"Diensten"</string>
+    <string name="setting_title_about">"Informaties"</string>
+    <string name="setting_title_ui_income_color">"Inkomstenkleur"</string>
+    <string name="setting_title_ui_expense_color">"Uitgavenkleur"</string>
+    <string name="setting_title_ui_custom_digits">"Weergavestijl van de Cijfers"</string>
+    <string name="setting_title_ui_date_format">"Datumsformaat"</string>
+    <string name="setting_title_ui_first_day_week">"Eerste dag van de week"</string>
+    <string name="setting_title_ui_first_day_month">"Eerste dag van de maan"</string>
+    <string name="setting_title_ui_group_type">"Groeperingstype"</string>
+    <string name="setting_title_ui_theme_color_primary">"Hoofdkleur"</string>
+    <string name="setting_title_ui_theme_color_accent">"Accentkleur"</string>
+    <string name="setting_title_daily_reminder">"Dagelijks herinnern"</string>
+    <string name="setting_item_ui_group_type_daily">"Groepeer dagelijks"</string>
+    <string name="setting_item_ui_group_type_weekly">"Groepeer wekelijks"</string>
+    <string name="setting_item_ui_group_type_monthly">"Groepeer maandelijks"</string>
+    <string name="setting_item_ui_group_type_yearly">"Groepeer jaarlijks"</string>
+    <string name="setting_item_ui_theme_type_light">"Helder Theme"</string>
+    <string name="setting_item_ui_theme_type_dark">"Donker Theme"</string>
+    <string name="setting_item_ui_theme_type_deep_dark">"Diepdonker Theme"</string>
+    <string name="notification_title_daily_reminder_title">"Tegenwoordige transacties?"</string>
+    <string name="notification_title_daily_reminder_text">"Hier typen, om meteen toe te voegen"</string>
+    <string name="about_hint_version">"Versie"</string>
+    <string name="about_hint_changelog">"Changelog"</string>
+    <string name="about_hint_translators">"Vertaler"</string>
+</resources>
