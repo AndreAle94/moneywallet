@@ -18,6 +18,8 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">MoneyWallet</string>
+  
     <string name="menu_transaction">"Transaktionen"</string>
     <string name="menu_category">"Kategorien"</string>
     <string name="menu_overview">"Verlauf"</string>
@@ -25,26 +27,47 @@
     <string name="menu_budget">"Budgets"</string>
     <string name="menu_saving">"Sparbeträge"</string>
     <string name="menu_event">"Ereignisse"</string>
+    <string name="menu_recurrences">"Wiederkehrende Zahlungen"</string>
+    <string name="menu_models">"Vorlagen"</string>
+    <string name="menu_place">"Orte"</string>
+    <string name="menu_people">"Personen"</string>
     <string name="menu_converter">"Währungsumrechner"</string>
     <string name="menu_calculator">"Taschenrechner"</string>
     <string name="menu_search_atm">"Suche Bankautomaten"</string>
     <string name="menu_search_bank">"Suche Banken"</string>
     <string name="menu_setting">"Einstellungen"</string>
+    <string name="menu_support_developer">"Entwickler untersützen"</string>
     <string name="menu_about">"Über"</string>
+  
     <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"Buchungen"</string>
     <string name="menu_transaction_tab_transfers">"Überweisungen"</string>
+  
     <!-- Categories -->
-    <string name="menu_category_tab_income">"Einkommen"</string>
+    <string name="menu_category_tab_income">"Einnahmen"</string>
+    <string name="menu_category_tab_expense">"Ausgaben"</string>
     <string name="menu_category_tab_system">"System"</string>
+  
     <!-- Debts -->
     <string name="menu_debt_tab_debt">"Schulden"</string>
-    <string name="menu_debt_tab_credit">"Kredite"</string>
+    <string name="menu_debt_tab_credit">"Verliehen"</string>
+  
     <!-- Budgets -->
+    <string name="menu_budget_tab_running">"Laufend"</string>
     <string name="menu_budget_tab_expired">"Abgelaufen"</string>
+  
     <!-- Savings -->
+    <string name="menu_saving_tab_running">"Laufend"</string>
     <string name="menu_saving_tab_completed">"Abgeschlossen"</string>
+  
     <!-- Events -->
+    <string name="menu_event_tab_running">"Laufend"</string>
+    <string name="menu_event_tab_completed">"Abgeschlossen"</string>
+  
     <!-- Models -->
+    <string name="menu_model_tab_transactions">"Buchungen"</string>
+    <string name="menu_model_tab_transfers">"Überweisungen"</string>
+  
     <string name="action_new_wallet">"Neue Geldbörse"</string>
     <string name="action_manage_wallets">"Geldbörsen verwalten"</string>
     <string name="action_pay_debt">"Zahlen"</string>
@@ -52,11 +75,36 @@
     <string name="action_withdraw">"Abheben"</string>
     <string name="action_deposit">"Einzahlen"</string>
     <string name="action_withdraw_everything">"Alles abheben"</string>
-    <string name="action_add">"Eintrag hinzufügen"</string>
-    <string name="msg_no_wallet_found">"Tippe hier und füge eine hinzu"</string>
+    <string name="action_add">"Hinzufügen"</string>
+    <string name="action_new">"Neu"</string>
+    <string name="action_edit">"Bearbeiten"</string>
+    <string name="action_search">"Suchen"</string>
+    <string name="action_filter">"Filtern"</string>
+    <string name="action_remove">"Entfernen"</string>
+    <string name="action_open">"Öffnen"</string>
+    <string name="action_undo">"Rückgängig"</string>
+    <string name="action_skip">"Überspringen"</string>
+  
+    <string name="msg_no_wallet_found">"Keine Geldbörse gefunden"</string>
     <string name="msg_add_one_wallet">"Bitte füge eine Geldbörse hinzu"</string>
+  
+    <string name="hint_total_sum">"Gesamt"</string>
+  
+    <string name="hint_name">"Name"</string>
     <string name="hint_description">"Beschreibung"</string>
+    <string name="hint_currency">"Währung"</string>
+    <string name="hint_money">"Geld"</string>
+    <string name="hint_start_money">"Startguthaben"</string>
+    <string name="hint_not_exclude_wallet">"Diese Geldbörse im Gesamtguthaben anzeigen"</string>
     <string name="hint_category">"Kategorie"</string>
+    <string name="hint_parent_category">"Übergeordnete Kategorie"</string>
+    <string name="hint_show_category_report">"Diese Kategorie in den Reports anzeigen"</string>
+    <string name="hint_show_category_report_on">"Diese Kategorie ist in den Reports eingeschlossen"</string>
+    <string name="hint_show_category_report_off">"Diese Kategorie ist nicht in den Reports eingeschlossen"</string>
+    <string name="hint_confirmed">"Bestätigt"</string>
+    <string name="hint_show_in_total">"Im Gesamtguthaben anzeigen"</string>
+    <string name="hint_income">"Einnahme"</string>
+    <string name="hint_expense">"Ausgabe"</string>
     <string name="hint_date">"Datum"</string>
     <string name="hint_start_date">"Startdatum"</string>
     <string name="hint_end_date">"Enddatum"</string>
@@ -64,81 +112,307 @@
     <string name="hint_wallet">"Geldbörse"</string>
     <string name="hint_wallets">"Geldbörsen"</string>
     <string name="hint_wallet_from">"Von"</string>
-    <string name="hint_wallet_to">"Nach"</string>
+    <string name="hint_wallet_to">"Bis"</string>
+    <string name="hint_recurrence">"Wiederholung"</string>
+    <string name="hint_recurrence_invalid">"Ungültige Wiederholung"</string>
     <string name="hint_event">"Ereignis"</string>
+    <string name="hint_people">"Personen"</string>
     <string name="hint_place">"Ort"</string>
     <string name="hint_note">"Notiz"</string>
-    <string name="hint_tax">"Transaktionssteuer"</string>
+    <string name="hint_tax">"Steuer"</string>
+    <string name="hint_type">"Typ"</string>
+    <string name="hint_incomes">"Einnahmen"</string>
+    <string name="hint_expenses">"Ausaben"</string>
+    <string name="hint_net_incomes">"Nettoeinkommen"</string>
+    <string name="hint_summary">"Zusammenfassung"</string>
+    <string name="hint_address">"Addresse"</string>
+    <string name="hint_size_unknown">"Unbekannte Größe"</string>
+    <string name="hint_address_unknown">"Unbekannte Adresse"</string>
+    <string name="hint_unknown">"Unbekannt"</string>
+    <string name="hint_directory">"Verzeichnis"</string>
+    <string name="hint_navigate_up">"Nach oben springen"</string>
+    <string name="hint_password">"Passwort"</string>
     <string name="hint_atm_name">"Name des Bankautomaten"</string>
     <string name="hint_bank_name">"Name der Bank"</string>
+    <string name="hint_attachments">"Attachment"</string>
+    <string name="hint_operation_in_progress">"In Bearbeitung…"</string>
+    <string name="hint_search_something">"Etwas suchen"</string>
+    <string name="hint_exchange_rate">"Wechselkurs"</string>
+    <string name="hint_recurrence_finished">"Beendet"</string>
+    <string name="hint_new_folder">"Neuer Ordner"</string>
+    <string name="hint_import_format">"Importformat"</string>
+    <string name="hint_export_format">"Exportformat"</string>
+    <string name="hint_import_file">"Datei zum importieren"</string>
+    <string name="hint_export_folder">"Export-Ordner"</string>
+    <string name="hint_export_optional_columns">"Optionale Spalten"</string>
+    <string name="hint_export_unique_wallet">"Transaktionen von verschiedenen Geldbörsen zusammenführen"</string>
+    <string name="hint_data_format_csv">"CSV"</string>
+    <string name="hint_data_format_xls">"XLS"</string>
+    <string name="hint_data_format_pdf">"PDF"</string>
+    <string name="hint_iso_code">"ISO code"</string>
+    <string name="hint_symbol">"Symbol"</string>
+    <string name="hint_decimals">"Zahl der Dezimalstellen"</string>
+  
     <string name="hint_show_currency_symbol">"Währungssymbol anzeigen"</string>
     <string name="hint_group_digits">"Ziffern gruppieren"</string>
     <string name="hint_round_decimals">"Dezimalstellen runden"</string>
-    <string name="total_wallet_name">"Gesamt"</string>
+    <string name="hint_show_always_plus_minus">"+/- Symbole immer anzeigen"</string>
+    <string name="hint_auto_backup_enabled">"Dienst aktiviert"</string>
+    <string name="hint_auto_backup_wifi_only">"Nur über WLAN-Netzwerk"</string>
+    <string name="hint_auto_backup_only_if_data_changed">"Nur bei veränderten Daten"</string>
+    <string name="hint_auto_backup_every_n_hours">"Alle %d Stunden"</string>
+    <string name="hint_auto_backup_folder">"Ordner"</string>
+    <string name="hint_auto_backup_root_folder">"Ursprungsordner"</string>
+  
+    <string name="total_wallet_name">"Gesamtguthaben"</string>
+  
+    <string name="title_activity_new_currency">"Neue Währung"</string>
+    <string name="title_activity_edit_currency">"Währung bearbeiten"</string>
     <string name="title_activity_new_wallet">Neue Geldbörse</string>
     <string name="title_activity_edit_wallet">Geldbörse bearbeiten</string>
-    <string name="title_activity_new_transaction">"Neue Transaktion"</string>
-    <string name="title_activity_edit_transaction">"Transaktion bearbeiten"</string>
+    <string name="title_activity_new_transaction">"Neue Buchung"</string>
+    <string name="title_activity_edit_transaction">"Buchung bearbeiten"</string>
+    <string name="title_activity_new_transfer">"Neue Überweisung"</string>
+    <string name="title_activity_edit_transfer">"Überweisung bearbeiten"</string>
     <string name="title_activity_new_category">"Neue Kategorie"</string>
     <string name="title_activity_edit_category">"Kategorie bearbeiten"</string>
     <string name="title_activity_new_debt">"Neue Schulden"</string>
     <string name="title_activity_edit_debt">"Schulden bearbeiten"</string>
     <string name="title_activity_new_budget">"Neues Budget"</string>
     <string name="title_activity_edit_budget">"Budget bearbeiten"</string>
-    <string name="title_activity_new_saving">"Neuer Sparbetrag"</string>
-    <string name="title_activity_edit_saving">"Sparbetrag bearbeiten"</string>
+    <string name="title_activity_new_saving">"Neues Sparziel"</string>
+    <string name="title_activity_edit_saving">"Sparziel bearbeiten"</string>
     <string name="title_activity_new_event">"Neues Ereignis"</string>
     <string name="title_activity_edit_event">"Ereignis bearbeiten"</string>
-    <string name="title_activity_category_picker">Wähle ein Symbol</string>
-    <string name="title_activity_calculator">Taschenrechner</string>
-    <string name="title_activity_currency_converter">"Währungsumrechner"</string>
+    <string name="title_activity_new_recurrence">"Neue Wiederholung"</string>
+    <string name="title_activity_edit_recurrence">"Wiederholung bearbeiten"</string>
+    <string name="title_activity_new_model">"Neue Vorlage"</string>
+    <string name="title_activity_edit_model">"Vorlage bearbeiten"</string>
+    <string name="title_activity_new_place">"Neuer Ort"</string>
+    <string name="title_activity_edit_place">"Ort bearbeiten"</string>
+    <string name="title_activity_new_person">"Neue Person"</string>
+    <string name="title_activity_edit_person">"Person bearbeiten"</string>
+    <string name="title_activity_wallet_sort">"Geldbörsen sortieren"</string>
+    <string name="title_activity_currency_list">"Währungen"</string>
+    <string name="title_activity_category_picker">Wähle eine Kategorie</string>
+    <string name="title_activity_category_sort">"Kategorien sortieren"</string>
+    <string name="title_activity_icon_list">"Icons"</string>
+    <string name="title_activity_backup_services">"Backup-Dienste"</string>
+    <string name="title_activity_about">"Über"</string>
+    <string name="title_activity_calculator">Rechner</string>
+    <string name="title_activity_currency_converter">"WährungsumrechnerSuchestringSuche
+    <string name="title_activity_search_transaction">"Kalender"</string>
+    <string name="title_activity_calendar">"Karte"</string>
+    <string name="title_activity_map">"Karte"</string>
+    <string name="title_activity_backend_explorer">"Backend erkunden"</string>
+    <string name="title_activity_backend_file_picker">"Datei auswählen"</string>
+    <string name="title_activity_backend_folder_picker">"Ordner auswählen"</string>
+    <string name="title_activity_support_developer">"Entwickler unterstützen"</string>
+    <string name="title_activity_import_data">"Daten importieren"</string>
+    <string name="title_activity_export_data">"Daten exportierten"</string>
+  
+    <string name="title_fragment_item_wallet">"Geldbörse"</string>
+    <string name="title_fragment_item_transaction">"Buchung"</string>
+    <string name="title_fragment_item_transfer">"Überweisung"</string>
+    <string name="title_fragment_item_category">"Kategorie"</string>
+    <string name="title_fragment_item_debt">"Schulden"</string>
+    <string name="title_fragment_item_budget">"Budget"</string>
+    <string name="title_fragment_item_saving">"Sparziel"</string>
+    <string name="title_fragment_item_event">"Ereignis"</string>
+    <string name="title_fragment_item_recurrence">"Wiederholung"</string>
+    <string name="title_fragment_item_model">"Vorlage"</string>
+    <string name="title_fragment_item_place">"Ort"</string>
+    <string name="title_fragment_item_person">"Person"</string>
+      
+    <string name="menu_action_attach_file">"Datei anhängen"</string>
+    <string name="menu_action_save_changes">"Änderungen sichern"</string>
+    <string name="menu_refresh_currency_rate">"Wechselkurs aktualisieren"</string>
     <string name="menu_advanced_settings">"Erweitert"</string>
     <string name="menu_action_edit_item">"Bearbeiten"</string>
     <string name="menu_action_delete_item">"Löschen"</string>
-    <string name="menu_action_search_item">"Suche"</string>
+    <string name="menu_action_search_item">"Suchen"</string>
     <string name="menu_action_open_calendar">"Kalender"</string>
     <string name="menu_action_open_map">"Karte"</string>
+    <string name="menu_action_sort_items">"Sortieren"</string>
+    <string name="menu_action_show_transaction_list">"Transaktionen anzeigen"</string>
     <string name="menu_action_service_disconnect">"Trennen"</string>
-    <string name="error_input_missing_wallet">"Bitte wähle eine gültige Geldbörse"</string>
-    <string name="error_input_missing_category">"Bitte wähle eine gültige Kategorie"</string>
-    <string name="system_category_transfer">"Geld überwiesen"</string>
+    <string name="menu_action_service_auto_backup">"Automatisches Backup"</string>
+    <string name="menu_action_select_folder">"Ordner auswählen"</string>
+    <string name="menu_action_import_data">"Daten importieren"</string>
+    <string name="menu_action_export_data">"Daten exportieren"</string>
+      
+    <string name="bottom_sheet_icon_picker_title">"Icon personalisieren"</string>
+    <string name="bottom_sheet_icon_picker_action_select_icon">"Icon auswählen"</string>
+    <string name="bottom_sheet_icon_picker_action_change_icon">"Icon ändern"</string>
+    <string name="bottom_sheet_icon_picker_action_remove_icon">"Icon entfernen"</string>
+    <string name="bottom_sheet_icon_picker_action_change_bg_color">"Hintergrundfarbe ändern"</string>
+      
+    <string name="dialog_color_picker_title_icon_picker_background_color">"Farbe auswählen"</string>
+    <string name="dialog_color_picker_title">"Farbe auswählen"</string>
+    <string name="dialog_wallet_picker_title">"Geldbörsen"</string>
+    <string name="dialog_event_picker_title">"Ereignisse"</string>
+    <string name="dialog_category_picker_title">"Kategorien"</string>
+    <string name="dialog_budget_type_picker_title">"Budgettypen"</string>
+    <string name="dialog_place_picker_title">"Orte"</string>
+    <string name="dialog_people_picker_title">"Personen"</string>
+    <string name="dialog_filter_search_title">"Filter"</string>
+    <string name="dialog_change_log_title">"Änderungen"</string>
+    <string name="dialog_overview_setting_title">"Erweiterte"</string>
+    <string name="dialog_recurrence_title">"Wiederholen"</string>
+    <string name="dialog_auto_backup_title">"Automatisches Backup"</string>
+    <string name="dialog_data_format_picker_title">"Datenformat"</string>
+    <string name="dialog_export_optional_columns_title">"Optionale Spalten"</string>
+    
+    <string name="error_input_name_not_valid">"Kein gültiger Name"</string>
+    <string name="error_input_iso_not_valid">"Kein gültiger ISO code"</string>
+    <string name="error_input_decimals_not_valid">"Es muss eine Zahl zwischen 0 und 8 sein"</string>
+    <string name="error_input_currency_not_valid">"Keine gültige Währung"</string>
+    <string name="error_input_date_range_not_valid">"Kein gültiger Datumsbereich"</string>
+    <string name="error_input_missing_budget_type">"Budgettyp auswählen"</string>
+    <string name="error_input_missing_wallet">"Geldbörse auswählen"</string>
+    <string name="error_input_missing_multiple_wallets">"Mindestens eine Geldbörse auswählen"</string>
+    <string name="error_input_invalid_multiple_wallets">"Die ausgewählten Geldbörsen müssen die gleiche Währung haben"</string>
+    <string name="error_input_missing_date">"Datum auswählen"</string>
+    <string name="error_input_missing_start_date">"Startdatum auswählen"</string>
+    <string name="error_input_missing_end_date">"Enddatum auswählen"</string>
+    <string name="error_input_invalid_date_range">"Ungültiger Datumsbereich"</string>
+    <string name="error_input_missing_category">"Kategorie auswählen"</string>
+    <string name="error_input_missing_description">"Beschreibung eingeben"</string>
+    <string name="error_input_missing_format">"Dateiformat auswählen"</string>
+    <string name="error_input_missing_input_file">"Eingabedatei auswählen"</string>
+    <string name="error_input_missing_output_folder">"Ausgabeordner auswählen"</string>
+      
+    <string name="system_category_transfer">"Überweisung"</string>
     <string name="system_category_transfer_tax">"Überweisungssteuer"</string>
     <string name="system_category_debt">Schulden</string>
     <string name="system_category_debt_paid">Schuldenzahlung</string>
-    <string name="system_category_credit">Kredit</string>
-    <string name="system_category_credit_paid">Kreditzahlung</string>
-    <string name="system_category_generic_tax">Tätigkeitssteuer</string>
-    <string name="system_category_saving_in">"Sparbetrag"</string>
-    <string name="system_category_saving_out">"Abheben"</string>
+    <string name="system_category_credit">Verleihe</string>
+    <string name="system_category_credit_paid">Leihenrückzahlung</string>
+    <string name="system_category_generic_tax">Steuer</string>
+    <string name="system_category_saving_in">"Einzahlung"</string>
+    <string name="system_category_saving_out">"Auszahlung"</string>
+      
     <string name="default_category_tip">"Trinkgeld"</string>
-    <string name="default_category_prize">"Gewinn"</string>
+    <string name="default_category_prize">"Preis"</string>
     <string name="default_category_salary">"Gehalt"</string>
-    <string name="default_category_interests">"Anteile"</string>
+    <string name="default_category_interests">"Zinsen"</string>
     <string name="default_category_sale">"Verkauf"</string>
-    <string name="default_category_car_expenses">"Fahrzeug"</string>
+    <string name="default_category_car_expenses">"Verkehrsmittel"</string>
     <string name="default_category_travel">"Reisen"</string>
     <string name="default_category_friends">"Freunde"</string>
     <string name="default_category_technology">"Technik"</string>
-    <string name="default_category_food_drinks">"Essen und Getränke"</string>
+    <string name="default_category_food_drinks">"Essen und Trinken"</string>
     <string name="default_category_hobby">"Hobby"</string>
+      
+    <string name="relative_string_ended_on">"Endete am: %s"</string>
+    <string name="relative_string_will_end_on">"Wird enden am: %s"</string>
+    <string name="relative_string_money_to_settle_debt">"%s verbleibend, um diese Schulden zu begleichen"</string>
+    <string name="relative_string_debt_completed">"Diese Schulden wurden beglichen"</string>
+    <string name="relative_string_expired_on">"abgelaufen am: %s"</string>
+    <string name="relative_string_will_expire_on">"Wird abegelaufen sein am: %s"</string>
+    <string name="relative_string_version_name">"Version %s"</string>
+      
+    <string name="adapter_current_money">"Aktuell:"</string>
+    <string name="adapter_needed_money">"Benötigt:"</string>
+    <string name="adapter_used_money">"Verwendet:"</string>
+    <string name="adapter_available_money">"Verfügbar:"</string>
+    <string name="adapter_tax_money">"Steuer:"</string>
+      
+    <string name="header_debts_to_pay">"Zu begleichen:"</string>
+    <string name="header_debts_to_receive">"Zu erhalten:"</string>
+    <string name="header_debts_archived">"Archiviert"</string>
+      
+    <string name="message_no_currency_found">"Keine Währung gefunden"</string>
     <string name="message_no_wallet_found">"Keine Geldbörse gefunden"</string>
-    <string name="message_no_transaction_found">"Keine Transaktion gefunden"</string>
+    <string name="message_no_transaction_found">"Keine Buchung gefunden"</string>
     <string name="message_no_transfer_found">"Keine Überweisung gefunden"</string>
     <string name="message_no_category_found">"Kategorie nicht gefunden"</string>
     <string name="message_no_debt_found">"Keine Schulden gefunden"</string>
-    <string name="message_no_recurrence_found">"Keine regelmäßige Transaktion gefunden"</string>
+    <string name="message_no_category_found">"Keine Kategorie gefunden"</string>
+    <string name="message_no_debt_found">"Keine Schulden gefunden"</string>
+    <string name="message_no_budget_found">"Kein Budget gefunden"</string>
+    <string name="message_no_saving_found">"Kein Sparziel gefunden"</string>
+    <string name="message_no_event_found">"Kein Ereignis gefunden"</string>
+    <string name="message_no_recurrence_found">"Keine wiederkehrende Transaktion gefunden"</string>
+    <string name="message_no_model_found">"Keine Vorlage gefunden"</string>
+    <string name="message_no_place_found">"Kein Ort gefunden"</string>
+    <string name="message_no_person_found">"Keine Person gefunden"</string>
+    <string name="message_no_icon_found">"Kein Icon gefunden"</string>
+    <string name="message_no_file_found">"Keine Datei gefunden"</string>
+    <string name="message_error_backend_recoverable">"Verbindungsproblem. Bitte erneut versuchen."</string>
+    
+    <string name="cover_message_backup_external_memory_title">"Die Anwendung kann Backups direkt auf dem externen Speicher erstellen und wiederherstellen"</string>
+    <string name="cover_message_backup_dropbox_title">"Die Anwendung kann Backups auf Ihrem persönlichen Dropbox-Account erstellen und wiederherstellen"</string>
+    <string name="cover_message_backup_google_drive_title">"ie Anwendung kann Backups auf Ihrem persönlichen Google Drive-Account erstellen und wiederherstellen"</string>
+    <string name="cover_message_backup_external_memory_button">"Fortfahren"</string>
+    <string name="cover_message_backup_dropbox_button">"Login"</string>
+    <string name="cover_message_backup_google_drive_button">"Login"</string>
+      
+    <string name="empty_message_secondary_panel">"Ein Element vom linken Panel auswählen, um die Details zu sehen"</string>
+    <string name="empty_message_backup_cover">"Einen Service zum speichern von persönlichen Backups auswählen"</string>
+      
+    <string name="title_warning">"Warnung"</string>
+    <string name="title_request_permission">"Berechtigungsanfrage"</string>
+    <string name="title_backup_create">"Backup erstellen"</string>
+    <string name="title_backup_creation">"Erstelle Backup"</string>
+    <string name="title_backup_restore">"Backup wiederherstellen"</string>
+    <string name="title_backup_restoring">"Stelle Backup wieder her"</string>
+    <string name="title_backend_create_folder">"Neuer Ordner"</string>
+    <string name="title_success">"Erfolg"</string>
+    <string name="title_failed">"Fehlgeschlagen"</string>
+    <string name="title_error">"Fehler"</string>
+    <string name="title_atm_search">"Suche Bankautomat"</string>
+    <string name="title_bank_search">"Suche Bank"</string>
+    <string name="title_changelog">"Changelog"</string>
+    <string name="title_licenses">"Lizenzen"</string>
+    <string name="title_debt_insert_master_transaction">"Gut gemacht"</string>
+    <string name="title_currency_exchange_rate">"Wechselkurs"</string>
+    <string name="title_data_importing">"Daten importieren"</string>
+    <string name="title_data_exporting">"Daten exportieren"</string>
+
+    <string name="message_async_init">"Initialisierung …"</string>
+      
+    <string name="snackbar_message_model_transaction_added">"Buchung hinzugefügt"</string>
+    <string name="snackbar_message_model_transfer_added">"Überweisung hinzugefügt"</string>
+    <string name="snackbar_message_model_transaction_removed">"Buchung entfernt"</string>
+    <string name="snackbar_message_model_transfer_removed">"Überweisung entfernt"</string>
+      
+    <string name="spinner_item_group_type_daily">"Nach Tag gruppieren"</string>
+    <string name="spinner_item_group_type_weekly">"Nach Woche gruppieren"</string>
+    <string name="spinner_item_group_type_monthly">"Nach Monat gruppieren"</string>
+    <string name="spinner_item_group_type_yearly">"Nach Jahr gruppieren"</string>
+    <string name="spinner_item_type_cash_flow">"Geldfluss"</string>
+    <string name="spinner_item_type_category">"Kategrie"</string>
+    <string name="spinner_item_cash_flow_incomes">"Nur Einnahmen"</string>
+    <string name="spinner_item_cash_flow_expenses">"Nur Ausgaben"</string>
+    <string name="spinner_item_cash_flow_net_incomes">"Nettoeinnahmen"</string>
+      
+    <string name="spinner_item_start_date">"Von:   %s"</string>
+    <string name="spinner_item_end_date">"Bis:   %s"</string>
+
+    <string name="service_backup_drop_box">"DropBox"</string>
+    <string name="service_backup_google_drive">"Google Drive"</string>
+    <string name="service_backup_external_memory">"Externer Speicher"</string>
+      
     <string name="setting_title_user_interface">"Benutzeroberfläche"</string>
     <string name="setting_title_utility">"Dienste"</string>
-    <string name="setting_title_about">"Informationen"</string>
-    <string name="setting_title_ui_income_color">"Einkommensfarbe"</string>
-    <string name="setting_title_ui_expense_color">"Ausgabenfarbe"</string>
+    <string name="setting_title_database">"Datenbank"</string>
+    <string name="setting_title_about">"Über"</string>
+      
+    <string name="setting_category_ui_appearance">"Aussehen"</string>
+    <string name="setting_category_ui_theme">"Theme"</string>
+    <string name="setting_title_ui_income_color">"Farbe für Einnahmen"</string>
+    <string name="setting_title_ui_expense_color">"Farbe für Ausgaben"</string>
     <string name="setting_title_ui_custom_digits">"Anzeigestil der Ziffern"</string>
+    <string name="setting_summary_ui_custom_digits">"Anzeigestil der Ziffern personalisieren"</string>
     <string name="setting_title_ui_date_format">"Datumsformat"</string>
     <string name="setting_title_ui_first_day_week">"Erster Tag der Woche"</string>
     <string name="setting_title_ui_first_day_month">"Erster Tag des Monats"</string>
     <string name="setting_title_ui_group_type">"Gruppierungstyp"</string>
     <string name="setting_title_ui_theme_color_primary">"Hauptfarbe"</string>
     <string name="setting_title_ui_theme_color_accent">"Akzentfarbe"</string>
+    <string name="setting_title_ui_theme_type">"Typ"</string>
+      
     <string name="setting_title_daily_reminder">"Täglich erinnern"</string>
     <string name="setting_item_ui_group_type_daily">"Gruppiere täglich"</string>
     <string name="setting_item_ui_group_type_weekly">"Gruppiere wöchentlich"</string>
