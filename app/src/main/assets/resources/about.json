@@ -185,6 +185,10 @@
           "icon": "ic_perm_identity_black_24dp",
           "title": "herotux",
           "subtitle": "Persian"
+        },{
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "heyarne",
+          "subtitle": "German"
         }
       ]
     }
