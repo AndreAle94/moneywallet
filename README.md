@@ -13,6 +13,8 @@
 
 MoneyWallet is an application designed to help you keep track of your expenses. This repository contains the source code of the latest version, completely rewritten from scratch.
 
+### Redistributing this app as your own is NOT permitted.
+
 # Table of Contents
 
 1. [History](#history)
