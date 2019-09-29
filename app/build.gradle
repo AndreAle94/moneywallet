@@ -20,11 +20,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.oriondev.moneywallet"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 65
         versionName "4.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -113,7 +113,7 @@ dependencies {
     // google-map dependencies
     gmapImplementation googlePlayServices.places
     // floss dependencies
-    osmImplementation 'org.osmdroid:osmdroid-android:6.0.2'
+    osmImplementation 'org.osmdroid:osmdroid-android:6.1.1'
     // test dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
