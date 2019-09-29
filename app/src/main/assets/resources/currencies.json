@@ -121,9 +121,9 @@
   },
   {
     "name": "Belarussian Ruble",
-    "symbol": "Br.",
-    "code": "BYR",
-    "decimals": 0
+    "symbol": "Br",
+    "code": "BYN",
+    "decimals": 2
   },
   {
     "name": "Belize Dollar",
