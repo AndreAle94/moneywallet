@@ -25,25 +25,35 @@
     <string name="menu_budget">"Budgets"</string>
     <string name="menu_saving">"Sparbeträge"</string>
     <string name="menu_event">"Ereignisse"</string>
+    <string name="menu_recurrences">"Regelmäßige Transaktion"</string>
+    <string name="menu_place">"Orte"</string>
+    <string name="menu_people">"Personen"</string>
     <string name="menu_converter">"Währungsumrechner"</string>
     <string name="menu_calculator">"Taschenrechner"</string>
     <string name="menu_search_atm">"Suche Bankautomaten"</string>
     <string name="menu_search_bank">"Suche Banken"</string>
     <string name="menu_setting">"Einstellungen"</string>
+    <string name="menu_support_developer">"Unterstützen"</string>
     <string name="menu_about">"Über"</string>
     <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"Transaktionen"</string>
     <string name="menu_transaction_tab_transfers">"Überweisungen"</string>
     <!-- Categories -->
     <string name="menu_category_tab_income">"Einkommen"</string>
+    <string name="menu_category_tab_expense">"Ausgaben"</string>
     <string name="menu_category_tab_system">"System"</string>
     <!-- Debts -->
     <string name="menu_debt_tab_debt">"Schulden"</string>
     <string name="menu_debt_tab_credit">"Kredite"</string>
     <!-- Budgets -->
+    <string name="menu_budget_tab_running">"Aktiv"</string>
     <string name="menu_budget_tab_expired">"Abgelaufen"</string>
     <!-- Savings -->
+    <string name="menu_saving_tab_running">"Aktiv"</string>
     <string name="menu_saving_tab_completed">"Abgeschlossen"</string>
     <!-- Events -->
+    <string name="menu_event_tab_running">"Aktiv"</string>
+    <string name="menu_event_tab_completed">"Abgeschlossen"</string>
     <!-- Models -->
     <string name="action_new_wallet">"Neue Geldbörse"</string>
     <string name="action_manage_wallets">"Geldbörsen verwalten"</string>
@@ -53,19 +63,42 @@
     <string name="action_deposit">"Einzahlen"</string>
     <string name="action_withdraw_everything">"Alles abheben"</string>
     <string name="action_add">"Eintrag hinzufügen"</string>
+    <string name="action_new">"Neu"</string>
+    <string name="action_edit">"Bearbeiten"</string>
+    <string name="action_search">"Suchen"</string>
+    <string name="action_filter">"Filtern"</string>
+    <string name="action_remove">"Entfernen"</string>
+    <string name="action_open">"Öffnen"</string>
+    <string name="action_undo">"Rückgängig"</string>
+    <string name="action_skip">"Überspringen"</string>
     <string name="msg_no_wallet_found">"Tippe hier und füge eine hinzu"</string>
     <string name="msg_add_one_wallet">"Bitte füge eine Geldbörse hinzu"</string>
     <string name="hint_description">"Beschreibung"</string>
+    <string name="hint_currency">"Währung"</string>
+    <string name="hint_money">"Geld"</string>
+    <string name="hint_start_money">"Startsumme"</string>
+    <string name="hint_not_exclude_wallet">"Diesen Geldbeutel in die Gesamtsumme miteinbeziehen"</string>
     <string name="hint_category">"Kategorie"</string>
+    <string name="hint_parent_category">"Übergeordnete Kategorie"</string>
+    <string name="hint_show_category_report">"Diese Kategorie in den Reports aufführen"</string>
+    <string name="hint_show_category_report_on">"Diese Kategorie wird in den Reports aufgeführt"</string>
+    <string name="hint_show_category_report_off">"Diese Kategorie wird nicht in den Reports aufgeführt"</string>
+    <string name="hint_confirmed">"Bestätigt"</string>
+    <string name="hint_income">"Einkommen"</string>
+    <string name="hint_expense">"Ausgaben"</string>
     <string name="hint_date">"Datum"</string>
     <string name="hint_start_date">"Startdatum"</string>
     <string name="hint_end_date">"Enddatum"</string>
     <string name="hint_expiration_date">"Fälligkeitsdatum"</string>
+    <string name="hint_time">"Zeit"</string>
     <string name="hint_wallet">"Geldbörse"</string>
     <string name="hint_wallets">"Geldbörsen"</string>
     <string name="hint_wallet_from">"Von"</string>
     <string name="hint_wallet_to">"Nach"</string>
+    <string name="hint_recurrence">"Regelmäßige Transaktion"</string>
+    <string name="hint_recurrence_invalid">"Ungültige Wiederholung"</string>
     <string name="hint_event">"Ereignis"</string>
+    <string name="hint_people">"Personen"</string>
     <string name="hint_place">"Ort"</string>
     <string name="hint_note">"Notiz"</string>
     <string name="hint_tax">"Transaktionssteuer"</string>
