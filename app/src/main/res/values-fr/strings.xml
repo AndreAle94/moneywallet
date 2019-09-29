@@ -79,17 +79,18 @@
     <string name="action_new">"Nouveau"</string>
     <string name="action_edit">"Éditer"</string>
     <string name="action_search">"Rechercher"</string>
-   <string name="action_filter">"Filtrer"</string>
+    <string name="action_filter">"Filtrer"</string>
     <string name="action_remove">"Supprimer"</string>
     <string name="action_open">"Ouvrir"</string>
     <string name="action_undo">"Annuler"</string>
+    <string name="action_skip">"Passer"</string>
 
     <string name="msg_no_wallet_found">"Aucun portefeuille trouvé"</string>
     <string name="msg_add_one_wallet">"Veuillez ajouter un portefeuille"</string>
 
     <string name="hint_total_sum">"Total"</string>
 
-   <string name="hint_name">"Nom"</string>
+    <string name="hint_name">"Nom"</string>
     <string name="hint_description">"Description"</string>
     <string name="hint_currency">"Devise"</string>
     <string name="hint_money">"Argent"</string>
@@ -140,7 +141,7 @@
     <string name="hint_exchange_rate">"Taux de change"</string>
     <string name="hint_recurrence_finished">"Terminé"</string>
     <string name="hint_new_folder">"Nouveau dossier"</string>
-   <string name="hint_import_format">"Format d'importation"</string>
+    <string name="hint_import_format">"Format d'importation"</string>
     <string name="hint_export_format">"Format d'exportation"</string>
     <string name="hint_import_file">"Fichier à importer"</string>
     <string name="hint_export_folder">"Dossier d'exportation"</string>
@@ -149,10 +150,14 @@
     <string name="hint_data_format_csv">"CSV"</string>
     <string name="hint_data_format_xls">"XLS"</string>
     <string name="hint_data_format_pdf">"PDF"</string>
+    <string name="hint_iso_code">"Code ISO"</string>
+    <string name="hint_symbol">"Symbole"</string>
+    <string name="hint_decimals">"Nombre de décimales"</string>
 
     <string name="hint_show_currency_symbol">"Afficher le symbole monétaire"</string>
     <string name="hint_group_digits">"Grouper les chiffres"</string>
     <string name="hint_round_decimals">"Arrondir"</string>
+    <string name="hint_show_always_plus_minus">"Toujours afficher les symboles +/-"</string>
     <string name="hint_auto_backup_enabled">"Service activé"</string>
     <string name="hint_auto_backup_wifi_only">"Seulement par wifi"</string>
     <string name="hint_auto_backup_only_if_data_changed">"Seulement si les données ont changé"</string>
@@ -162,6 +167,8 @@
 
     <string name="total_wallet_name">Total</string>
 
+    <string name="title_activity_new_currency">"Nouvelle devise"</string>
+    <string name="title_activity_edit_currency">"Modifier la devise"</string>
     <string name="title_activity_new_wallet">"Nouveau portefeuille"</string>
     <string name="title_activity_edit_wallet">"Éditer le portefeuille"</string>
     <string name="title_activity_new_transaction">"Nouvelle transaction"</string>
@@ -186,8 +193,10 @@
     <string name="title_activity_edit_place">Éditer le lieu</string>
     <string name="title_activity_new_person">Nouvelle personne</string>
     <string name="title_activity_edit_person">"Editer persone"</string>
+    <string name="title_activity_wallet_sort">"Trier les portefeuilles"</string>
     <string name="title_activity_currency_list">"Monnaies"</string>
     <string name="title_activity_category_picker">"Choisissez une catégorie"</string>
+    <string name="title_activity_category_sort">"Trier les catégories"</string>
     <string name="title_activity_icon_list">Icônes</string>
     <string name="title_activity_backup_services">"Services de sauvegarde"</string>
     <string name="title_activity_about">À propos</string>
@@ -227,6 +236,7 @@
     <string name="menu_action_search_item">"rechercher"</string>
     <string name="menu_action_open_calendar">"Calendrier"</string>
     <string name="menu_action_open_map">"Carte"</string>
+    <string name="menu_action_sort_items">"Trier"</string>
     <string name="menu_action_show_transaction_list">"Afficher les transactions"</string>
     <string name="menu_action_service_disconnect">"Déconnecter"</string>
     <string name="menu_action_service_auto_backup">"Sauvegarde automatique"</string>
@@ -257,6 +267,8 @@
     <string name="dialog_export_optional_columns_title">"Colonnes optionnelles"</string>
 
     <string name="error_input_name_not_valid">"Nom invalide"</string>
+    <string name="error_input_iso_not_valid">"Code ISO non valide"</string>
+    <string name="error_input_decimals_not_valid">"La valeur doit être comprise entre 0 et 8."</string>
     <string name="error_input_currency_not_valid">"Monnaie invalide"</string>
     <string name="error_input_date_range_not_valid">"Plage de dates invalide"</string>
     <string name="error_input_missing_budget_type">"Sélectionnez un type de budget"</string>
@@ -358,13 +370,15 @@
     <string name="title_currency_exchange_rate">"Taux de change"</string>
     <string name="title_data_importing">"Importer des données"</string>
     <string name="title_data_exporting">"Exporter des données"</string>
+    <string name="message_multiply_currency_decimals">"Les montants de la base de données doivent être mis à jour pour correspondre au nouveau nombre de chiffres décimaux. L'opération peut prendre un certain temps. Si vous le souhaitez, vous pouvez ignorer la mise à jour, mais les montants seront affichés divisés par %d après le changement."</string>
+    <string name="message_divide_currency_decimals">"Les montants de la base de données doivent être mis à jour pour correspondre au nouveau nombre de chiffres décimaux. L'opération peut prendre un certain temps. Si vous le souhaitez, vous pouvez ignorer la mise à jour, mais les montants seront affichés multipliés par% d après le changement. Si les montants sont mis à jour, certaines informations sur leur partie decimale actuelle seront perdues."</string>
     <string name="message_backend_create_folder">"Nom du dossier que vous voulez créer"</string>
     <string name="message_permission_required_external_storage">"La permission d'accéder au stockage externe est requise pour pouvoir lire et écrire sur l'appareil. Veuillez l'activer."</string>
     <string name="message_permission_required_not_granted">"Permission refusée. Veuillez modifier les permissions de l'application via les réglages."</string>
     <string name="message_backup_create">"Êtes-vous sûr de vouloir créer une nouvelle sauvegarde? L'opération ne peut pas être arrêtée. Si vous le souhaitez, vous pouvez définir un mot de passe pour protéger le fichier de sauvegarde."</string>
     <string name="message_backup_restore_standard">"Êtes-vous sûr de vouloir restaurer cette sauvegarde? Toutes les données actuelles seront perdues et l'opération ne pourra pas être arrêtée. Continuer ?"</string>
     <string name="message_backup_restore_protected">"Êtes-vous sûr de vouloir restaurer cette sauvegarde? Toutes les données actuelles seront perdues et l'opération ne pourra pas être arrêtée. La sauvegarde est protégée par un mot de passe, veuillez l’entrer pour continuer. Continuer ?"</string>
-
+    <string name="message_backup_restore_legacy">"Êtes-vous sûr de vouloir restaurer cette sauvegarde? Toutes les données actuelles seront perdues et l'opération ne pourra pas être arrêtée. AVERTISSEMENT!: Il s'agit d'une sauvegarde héritée et l'application peut ne pas être importée. Procéder?"</string>
     <string name="message_backup_status_creation">"Création du fichier de sauvegarde en cours…"</string>
     <string name="message_backup_status_uploading">"Envoi du fichier de sauvegarde en cours…"</string>
     <string name="message_backup_status_downloading">"Téléchargement du fichier de sauvegarde en cours…"</string>
@@ -382,6 +396,8 @@
     <string name="message_action_archive_saving">"Êtes-vous sûr de vouloir archiver cette économie?"</string>
     <string name="message_action_unarchive_saving">"Êtes-vous sûr de vouloir désarchiver cette économie?"</string>
     <string name="message_error_activity_not_found">"Aucune application n'a été trouvée sur cet appareil pour traiter la demande."</string>
+    <string name="message_delete_currency">"Êtes-vous sûr de vouloir supprimer cette devise?"</string>
+    <string name="message_error_delete_currency">"Cette devise ne peut pas être supprimée car elle est en cours d'utilisation."</string>
     <string name="message_delete_wallet">"Êtes-vous sûr de vouloir supprimer ce portefeuille? Toutes les données associées seront supprimées."</string>
     <string name="message_error_delete_wallet_of_transfer">"Ce portefeuille ne peut pas être supprimé car il est utilisé dans un ou plusieurs virements. Supprimez les transferts associés pour pouvoir supprimer ce portefeuille."</string>
     <string name="message_delete_category">"Êtes-vous sûr de vouloir supprimer cette catégorie?"</string>
@@ -472,6 +488,8 @@
     <string name="setting_summary_exchange_rate_api_key_missing">"Aucune"</string>
     <string name="setting_title_exchange_rate_update">"Mettre à jour les taux de change"</string>
     <string name="setting_summary_exchange_rate_update">"Dernière mise à jour : %s"</string>
+    <string name="setting_title_currency_management">"Gérer les devises"</string>
+    <string name="setting_summary_currency_management">"Ajouter des devises personnalisées"</string>
     <string name="setting_subtitle_user_interface">"Personnaliser l'application"</string>
     <string name="setting_subtitle_utility">"Configuration"</string>
     <string name="setting_subtitle_database">"Gérer vos données"</string>
@@ -491,7 +509,7 @@
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Insérer votre clée d'api ici"</string>
     <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"Ce service nécessite une clé api valide pour fonctionner. Cela signifie que cette version de l'application a été compilée sans clé par défaut, probablement en raison de problèmes de licence. Pour pouvoir communiquer avec ce fournisseur externe, vous devez vous rendre sur https://openexchangerates.org et vous enregistrer: vous recevrez une clé gratuite."</string>
-    
+
     <string name="setting_category_database_backup">"Sauvegarde"</string>
     <string name="setting_title_database_backup_services">"Services de sauvegarde"</string>
     <string name="setting_summary_database_backup_services">"Créer et restaurer la base de données"</string>
@@ -538,7 +556,7 @@
     <string name="about_hint_website">Site web</string>
     <string name="about_hint_icon_licenses">Images et icônes</string>
     <string name="about_hint_icon_image_intro">"Images de présentation"</string>
-        <string name="about_hint_md_icons">"icônes material design"</string>
+    <string name="about_hint_md_icons">"icônes material design"</string>
     <string name="about_hint_icon_pack">Pack d\'îcones</string>
     <string name="about_hint_translators">Traducteurs</string>
 
