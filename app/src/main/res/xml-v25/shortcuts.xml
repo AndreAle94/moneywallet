@@ -1,0 +1,29 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:icon="@drawable/ic_transfer_24dp"
+        android:shortcutId="fast_transfer"
+        android:shortcutLongLabel="@string/title_activity_new_transfer"
+        android:shortcutShortLabel="@string/title_activity_new_transfer">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.oriondev.moneywallet.ui.activity.NewEditTransferActivity"
+            android:targetPackage="com.oriondev.moneywallet" />
+
+    </shortcut>
+
+    <shortcut
+        android:icon="@drawable/ic_add_24dp"
+        android:shortcutId="fast_transaction"
+        android:shortcutLongLabel="@string/title_activity_new_transaction"
+        android:shortcutShortLabel="@string/title_activity_new_transaction">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.oriondev.moneywallet.ui.activity.NewEditTransactionActivity"
+            android:targetPackage="com.oriondev.moneywallet" />
+
+    </shortcut>
+
+</shortcuts>
