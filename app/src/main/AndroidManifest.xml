@@ -96,17 +96,17 @@
 
         <provider
             android:name=".storage.database.DataContentProvider"
-            android:authorities="com.oriondev.moneywallet.storage.data"
-            android:readPermission="com.oriondev.moneywallet.permission.READ_DATA"
-            android:writePermission="com.oriondev.moneywallet.permission.WRITE_DATA"
+            android:authorities="${applicationId}.storage.data"
+            android:readPermission="${applicationId}.permission.READ_DATA"
+            android:writePermission="${applicationId}.permission.WRITE_DATA"
             android:exported="true" />
         <provider
             android:name=".storage.database.SyncContentProvider"
-            android:authorities="com.oriondev.moneywallet.storage.sync"
+            android:authorities="${applicationId}.storage.sync"
             android:exported="false" />
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.oriondev.moneywallet.storage.file"
+            android:authorities="${applicationId}.storage.file"
             android:grantUriPermissions="true"
             android:exported="false" >
             <meta-data
