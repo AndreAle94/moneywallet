@@ -185,4 +185,16 @@
     <string name="about_hint_version">"Version"</string>
     <string name="about_hint_changelog">"Changelog"</string>
     <string name="about_hint_translators">"Übersetzer"</string>
+    <string name="activity_launcher_first_start_title">Willkommen bei MoneyWallet</string>
+    <string name="activity_launcher_first_start_content">Benutzt du die App zum ersten Mal oder möchtest du ein Backup wiederherstellen?</string>
+    <string name="activity_launcher_first_start_button_restore_backup">Backup wiederherstellen</string>
+    <string name="activity_intro_title_slide_1">Keine bösen Überraschungen mehr</string>
+    <string name="activity_intro_description_slide_1">Hilft dir, all deine Ausgaben zu überwachen</string>
+    <string name="activity_intro_title_slide_2">Entdecke und plane</string>
+    <string name="activity_intro_description_slide_2">Du kannst herausfinden, wo du viel ausgibst und Budgets einrichten</string>
+    <string name="activity_intro_title_slide_3">Quelloffen</string>
+    <string name="activity_intro_description_slide_3">Das Projekt ist jetzt Open Source und alle können dazu beitragen</string>
+    <string name="activity_intro_description_slide_4">Es unterstützt die am meisten genutzten Cloud Anbieter, damit du nie deine Daten verlierst</string>
+    <string name="activity_intro_title_slide_5">Gut gemacht</string>
+    <string name="activity_intro_description_slide_5">Du wirst jetzt weitergeleitet, um deine erste Geldbörse zu erstellen</string>
 </resources>
