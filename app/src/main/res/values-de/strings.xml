@@ -197,4 +197,18 @@
     <string name="activity_intro_description_slide_4">Es unterstützt die am meisten genutzten Cloud Anbieter, damit du nie deine Daten verlierst</string>
     <string name="activity_intro_title_slide_5">Gut gemacht</string>
     <string name="activity_intro_description_slide_5">Du wirst jetzt weitergeleitet, um deine erste Geldbörse zu erstellen</string>
+    <string name="activity_donation_first_content">Wenn dir die App gefällt und du sie nützlich findest, gib mir doch ein Bier aus. Das unterstützt das Projekt und motiviert mich, weiterzumachen.</string>
+    <string name="activity_donation_first_title">Danke!</string>
+    <string name="activity_donation_second_title">Warum sollte ich?</string>
+    <string name="activity_donation_third_title">Du kannst kein Geld geben? Kein Problem, du kannst trotzdem mithelfen!</string>
+    <string name="activity_donation_action_share_title">Teilen</string>
+    <string name="activity_donation_action_rate_title">Bewerten</string>
+    <string name="activity_donation_action_rate_content">Schreib eine 5 Sterne Bewertung und sag uns, was du denkst</string>
+    <string name="activity_donation_action_translate_title">Übersetzen</string>
+    <string name="activity_donation_action_translate_content">Übersetze Texte in deine Sprache</string>
+    <string name="activity_donation_action_contribute_content">Der Quelltext ist öffentlich und alle können dazu beitragen.</string>
+    <string name="activity_donation_final_content">Jede Unterstützung, finanziel oder nicht, ist gleichwertig und macht einen fundamentalen Unterschied für mich. Danke dass du diese App benutz. Ich hoffe, sie gefällt dir.</string>
+    <string name="activity_donation_second_content">Manche sagen, \"Die besten Dinge im Leben sind kostenlos\" und da stimme ich zu. Man kann Freundschaft, Liebe oder die Erinnerung an einen Sonnenaufgang nicht kaufen. Deswegen habe ich den Quelltext dieser App kostenlos veröffentlicht. Aber leider ist das Leben nicht kostenlos. Wir haben nur 24 Stunden am Tag und müssen uns entscheiden, wie wir die für uns nutzen. Wenn dir dieses Projekt gefällt, unterstütze meine Arbeit, damit ich mehr Zeit darin investieren kann. Jeder Beitrag macht einen immensen Unterschied.</string>
+    <string name="activity_donation_action_share_content">Erzähl\'s deinen Bekannten</string>
+    <string name="activity_donation_action_contribute_title">Entwickeln</string>
 </resources>
