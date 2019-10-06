@@ -944,6 +944,10 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     @Override
     protected void onSaveChanges(Mode mode) {
         if (validate()) {
+            if (mCategoryEditText.getText() != null) {
+                Pair<Category, Long> p = new Pair<>(mCategoryPicker.getCurrentCategory(), mMoneyPicker.getCurrentMoney());
+                categories.add(p);
+            }
             ContentValues contentValues = new ContentValues();
             contentValues.put(Contract.Transaction.DATE, DateUtils.getSQLDateTimeString(mDateTimePicker.getCurrentDateTime()));
             contentValues.put(Contract.Transaction.DESCRIPTION, mDescriptionEditText.getTextAsString());
