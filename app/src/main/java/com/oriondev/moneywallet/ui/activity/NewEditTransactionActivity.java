@@ -44,6 +44,7 @@ import com.oriondev.moneywallet.model.Attachment;
 import com.oriondev.moneywallet.model.Category;
 import com.oriondev.moneywallet.model.CurrencyUnit;
 import com.oriondev.moneywallet.model.Event;
+import com.oriondev.moneywallet.model.Pair;
 import com.oriondev.moneywallet.model.Person;
 import com.oriondev.moneywallet.model.Place;
 import com.oriondev.moneywallet.model.Wallet;
@@ -150,6 +151,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     private boolean mSavingCompleted = false;
 
     private MoneyFormatter mMoneyFormatter = MoneyFormatter.getInstance();
+    private ArrayList<Pair<Category, Long>> categories = new ArrayList<Pair<Category, Long>>();
 
     @Override
     protected void onCreateHeaderView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -270,9 +272,12 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                     View vi = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_category_amount_item, null);
                     TextView txtName = vi.findViewById(R.id.category_name_text);
                     TextView txtAmount = vi.findViewById(R.id.category_money_amount_text);
+                    long amount = mMoneyPicker.getCurrentMoney();
                     txtName.setText(category.getName());
-                    txtAmount.setText(mCategoryAmountEditText.getText());
+                    txtAmount.setText(mMoneyFormatter.getNotTintedString(null, amount, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
                     mCategoryList.addView(vi);
+                    Pair<Category, Long> p = new Pair<>(category, amount);
+                    categories.add(p);
                 }
             }
         });
@@ -934,10 +939,8 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     protected void onSaveChanges(Mode mode) {
         if (validate()) {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(Contract.Transaction.MONEY, mMoneyPicker.getCurrentMoney());
             contentValues.put(Contract.Transaction.DATE, DateUtils.getSQLDateTimeString(mDateTimePicker.getCurrentDateTime()));
             contentValues.put(Contract.Transaction.DESCRIPTION, mDescriptionEditText.getTextAsString());
-            contentValues.put(Contract.Transaction.CATEGORY_ID, mCategoryPicker.getCurrentCategory().getId());
             contentValues.put(Contract.Transaction.DIRECTION, mCategoryPicker.getCurrentCategory().getDirection());
             contentValues.put(Contract.Transaction.TYPE, mType);
             contentValues.put(Contract.Transaction.WALLET_ID, mWalletPicker.getCurrentWallet().getId());
@@ -950,18 +953,26 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
             contentValues.put(Contract.Transaction.COUNT_IN_TOTAL, mCountInTotalCheckBox.isChecked());
             contentValues.put(Contract.Transaction.PEOPLE_IDS, Contract.getObjectIds(mPersonPicker.getCurrentPeople()));
             contentValues.put(Contract.Transaction.ATTACHMENT_IDS, Contract.getObjectIds(mAttachmentPicker.getCurrentAttachments()));
-            ContentResolver contentResolver = getContentResolver();
-            switch (mode) {
-                case NEW_ITEM:
-                    contentResolver.insert(DataContentProvider.CONTENT_TRANSACTIONS, contentValues);
-                    if (mSavingId != null && mSavingCompleted) {
-                        setSavingCompleted(contentResolver, mSavingId);
-                    }
-                    break;
-                case EDIT_ITEM:
-                    Uri uri = ContentUris.withAppendedId(DataContentProvider.CONTENT_TRANSACTIONS, getItemId());
-                    contentResolver.update(uri, contentValues, null, null);
-                    break;
+
+            for(Pair p: categories) {
+                Category category = (Category) p.getL();
+                long amount = (long) p.getR();
+
+                contentValues.put(Contract.Transaction.CATEGORY_ID, category.getId());
+                contentValues.put(Contract.Transaction.MONEY, amount);
+                ContentResolver contentResolver = getContentResolver();
+                switch (mode) {
+                    case NEW_ITEM:
+                        contentResolver.insert(DataContentProvider.CONTENT_TRANSACTIONS, contentValues);
+                        if (mSavingId != null && mSavingCompleted) {
+                            setSavingCompleted(contentResolver, mSavingId);
+                        }
+                        break;
+                    case EDIT_ITEM:
+                        Uri uri = ContentUris.withAppendedId(DataContentProvider.CONTENT_TRANSACTIONS, getItemId());
+                        contentResolver.update(uri, contentValues, null, null);
+                        break;
+                }
             }
             mAttachmentPicker.cleanUp(false);
             setResult(RESULT_OK);
