@@ -944,7 +944,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     @Override
     protected void onSaveChanges(Mode mode) {
         if (validate()) {
-            if (mCategoryEditText.getText() != null) {
+            if (mCategoryEditText.getText() != null && !mCategoryEditText.getTextAsString().equals("")) {
                 Pair<Category, Long> p = new Pair<>(mCategoryPicker.getCurrentCategory(), mMoneyPicker.getCurrentMoney());
                 categories.add(p);
             }
