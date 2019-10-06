@@ -193,6 +193,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         mEventEditText.setTextViewMode(true);
         mPeopleEditText.setTextViewMode(true);
         mPlaceEditText.setTextViewMode(true);
+        mCategoryAmountEditText.setTextViewMode(true);
         // add validators
         mDateEditText.addValidator(new Validator() {
 
@@ -273,6 +274,12 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                     txtAmount.setText(mCategoryAmountEditText.getText());
                     mCategoryList.addView(vi);
                 }
+            }
+        });
+        mCategoryAmountEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMoneyPicker.showPicker();
             }
         });
         mDateEditText.setOnClickListener(new View.OnClickListener() {
@@ -1016,7 +1023,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         } else {
             mCurrencyTextView.setText("?");
         }
-        mMoneyTextView.setText(mMoneyFormatter.getNotTintedString(currency, money, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
+        mCategoryAmountEditText.setText(mMoneyFormatter.getNotTintedString(currency, money, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
     }
 
     @Override
