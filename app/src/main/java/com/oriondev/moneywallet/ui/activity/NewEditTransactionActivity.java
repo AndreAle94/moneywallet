@@ -278,6 +278,10 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                     mCategoryList.addView(vi);
                     Pair<Category, Long> p = new Pair<>(category, amount);
                     categories.add(p);
+
+                    mMoneyPicker.setMoney(0);
+                    mCategoryEditText.setText(null);
+                    mCategoryAmountEditText.setText(null);
                 }
             }
         });
