@@ -44,7 +44,7 @@
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
             android:id="@+id/category_edit_text"
-            android:layout_width="271dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_category"
             android:inputType="textMultiLine"
@@ -53,12 +53,23 @@
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
             android:id="@+id/category_amount_edit_text"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="amount"
             android:inputType="textMultiLine"
             app:met_mode="floatingLabel" />
+
+        <ImageButton
+            android:id="@+id/reset_category_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_delete_black_24dp" />
     </LinearLayout>
 
     <Button

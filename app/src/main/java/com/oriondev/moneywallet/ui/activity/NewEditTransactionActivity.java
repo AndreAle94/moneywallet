@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -135,6 +136,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     private Button mAddCategoryButton;
     private MaterialEditText mCategoryAmountEditText;
     private LinearLayout mCategoryList;
+    private ImageButton mResetCategoryButton;
 
     private MoneyPicker mMoneyPicker;
     private CategoryPicker mCategoryPicker;
@@ -187,6 +189,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         mConfirmedCheckBox = view.findViewById(R.id.confirmed_checkbox);
         mCountInTotalCheckBox = view.findViewById(R.id.count_in_total_checkbox);
         mAttachmentView = view.findViewById(R.id.attachment_view);
+        mResetCategoryButton = view.findViewById(R.id.reset_category_button);
         // disable unused edit texts
         mCategoryEditText.setTextViewMode(true);
         mDateEditText.setTextViewMode(true);
@@ -291,6 +294,13 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
             @Override
             public void onClick(View v) {
                 mMoneyPicker.showPicker();
+            }
+        });
+        mResetCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCategoryEditText.setText(null);
+                mCategoryAmountEditText.setText(null);
             }
         });
         mDateEditText.setOnClickListener(new View.OnClickListener() {
