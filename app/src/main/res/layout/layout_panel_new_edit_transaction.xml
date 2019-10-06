@@ -37,14 +37,42 @@
         app:met_mode="floatingLabel"
         app:met_leftIcon="@drawable/ic_format_align_left_black_24dp" />
 
-    <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
-        android:id="@+id/category_edit_text"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_category"
-        android:inputType="textMultiLine"
-        app:met_mode="floatingLabel"
-        app:met_leftIcon="@drawable/ic_table_large_24dp" />
+        android:orientation="horizontal">
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
+            android:id="@+id/category_edit_text"
+            android:layout_width="271dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_category"
+            android:inputType="textMultiLine"
+            app:met_leftIcon="@drawable/ic_table_large_24dp"
+            app:met_mode="floatingLabel" />
+
+        <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
+            android:id="@+id/category_amount_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="amount"
+            android:inputType="textMultiLine"
+            app:met_mode="floatingLabel" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_category_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Add category" />
+
+    <LinearLayout
+        android:id="@+id/category_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

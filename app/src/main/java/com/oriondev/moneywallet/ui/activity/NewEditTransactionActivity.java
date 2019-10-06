@@ -34,7 +34,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oriondev.moneywallet.R;
@@ -129,6 +131,9 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     private CheckBox mConfirmedCheckBox;
     private CheckBox mCountInTotalCheckBox;
     private AttachmentView mAttachmentView;
+    private Button mAddCategoryButton;
+    private MaterialEditText mCategoryAmountEditText;
+    private LinearLayout mCategoryList;
 
     private MoneyPicker mMoneyPicker;
     private CategoryPicker mCategoryPicker;
@@ -167,6 +172,9 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         View view = inflater.inflate(R.layout.layout_panel_new_edit_transaction, parent, true);
         mDescriptionEditText = view.findViewById(R.id.description_edit_text);
         mCategoryEditText = view.findViewById(R.id.category_edit_text);
+        mAddCategoryButton = view.findViewById(R.id.add_category_button);
+        mCategoryAmountEditText = view.findViewById(R.id.category_amount_edit_text);
+        mCategoryList = view.findViewById(R.id.category_list_layout);
         mDateEditText = view.findViewById(R.id.date_edit_text);
         mTimeEditText = view.findViewById(R.id.time_edit_text);
         mWalletEditText = view.findViewById(R.id.wallet_edit_text);
@@ -251,6 +259,21 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                 mCategoryPicker.showPicker();
             }
 
+        });
+        mAddCategoryButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(mCategoryPicker.getCurrentCategory() != null){
+                    Category category = mCategoryPicker.getCurrentCategory();
+                    View vi = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_category_amount_item, null);
+                    TextView txtName = vi.findViewById(R.id.category_name_text);
+                    TextView txtAmount = vi.findViewById(R.id.category_money_amount_text);
+                    txtName.setText(category.getName());
+                    txtAmount.setText(mCategoryAmountEditText.getText());
+                    mCategoryList.addView(vi);
+                }
+            }
         });
         mDateEditText.setOnClickListener(new View.OnClickListener() {
 
