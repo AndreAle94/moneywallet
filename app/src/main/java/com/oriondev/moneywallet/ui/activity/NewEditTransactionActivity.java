@@ -282,6 +282,8 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                     mMoneyPicker.setMoney(0);
                     mCategoryEditText.setText(null);
                     mCategoryAmountEditText.setText(null);
+
+                    refreshTotalAmount();
                 }
             }
         });
@@ -1120,5 +1122,13 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     @Override
     public void onAttachmentDelete(Attachment attachment) {
         mAttachmentPicker.remove(attachment);
+    }
+
+    void refreshTotalAmount() {
+        long total = 0;
+        for (Pair p: categories) {
+            total += (long) p.getR();
+        }
+        mMoneyTextView.setText(mMoneyFormatter.getNotTintedString(null, total, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
     }
 }
