@@ -36,6 +36,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
@@ -49,7 +50,7 @@ public class DataContentProvider extends ContentProvider {
 
     private static final boolean IS_REMOTE_SYNC_ENABLED = false;
 
-    /*package-local*/ static final String AUTHORITY = "com.oriondev.moneywallet.storage.data";
+    /*package-local*/ static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".storage.data";
 
     public static final Uri CONTENT_CURRENCIES = Uri.parse("content://" + AUTHORITY + "/currencies");
     public static final Uri CONTENT_WALLETS = Uri.parse("content://" + AUTHORITY + "/wallets");
