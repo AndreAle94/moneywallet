@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.storage.database.ImportException;
 import com.oriondev.moneywallet.storage.database.SQLDatabaseImporter;
 import com.oriondev.moneywallet.storage.database.SyncContentProvider;
@@ -93,9 +94,9 @@ public abstract class AbstractBackupImporter {
     }
 
     /*package-local*/ void notifyImportStarted() {
-        // Before starting to write the database file, it is necessary to notify the
-        // SyncContentProvider that we are going to write a new file, so the internal
-        // reference to the old SQLDatabase must be replaced by a new one.
+        // Before starting to write the database file, it is necessary to notify both the providers
+        // to ensure that they point to the new file (and not the old reference)
+        DataContentProvider.notifyDatabaseIsChanged(mContext);
         SyncContentProvider.notifyDatabaseIsChanged(mContext);
     }
 
