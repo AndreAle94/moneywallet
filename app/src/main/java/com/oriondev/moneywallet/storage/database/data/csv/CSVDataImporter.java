@@ -5,16 +5,15 @@ import android.text.TextUtils;
 
 import com.opencsv.CSVReaderHeaderAware;
 import com.oriondev.moneywallet.model.CurrencyUnit;
-import com.oriondev.moneywallet.model.Money;
 import com.oriondev.moneywallet.storage.database.Contract;
 import com.oriondev.moneywallet.storage.database.data.AbstractDataImporter;
 import com.oriondev.moneywallet.utils.CurrencyManager;
 import com.oriondev.moneywallet.utils.DateUtils;
-import com.oriondev.moneywallet.utils.MoneyFormatter;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 
@@ -57,13 +56,15 @@ public class CSVDataImporter extends AbstractDataImporter {
             if (currencyUnit == null) {
                 throw new RuntimeException("Unknown currency unit (" + currency + ")");
             }
-            Double moneyDouble;
+            BigDecimal moneyDecimal;
             try {
-                moneyDouble = Double.parseDouble(moneyString.replaceAll(",", "."));
+                moneyDecimal = new BigDecimal(moneyString.replaceAll(",", "."));
             } catch (NumberFormatException e) {
                 throw new RuntimeException("Invalid money amount (" + e.getMessage() + ")");
             }
-            long money = (long) (moneyDouble * Math.pow(10, currencyUnit.getDecimals()));
+            BigDecimal decimalMultiply = new BigDecimal(Math.pow(10, currencyUnit.getDecimals()));
+            moneyDecimal = moneyDecimal.multiply(decimalMultiply);
+            long money = moneyDecimal.longValue();
             int direction = money < 0 ? Contract.Direction.EXPENSE : Contract.Direction.INCOME;
             Date datetime = DateUtils.getDateFromSQLDateTimeString(datetimeString);
             insertTransaction(wallet, currencyUnit, category, datetime, Math.abs(money), direction, description, event, place, people, note);
