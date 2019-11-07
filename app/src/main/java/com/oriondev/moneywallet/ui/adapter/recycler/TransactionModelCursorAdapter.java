@@ -75,7 +75,7 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
     public void onBindViewHolder(TransactionModelViewHolder holder, Cursor cursor) {
         Icon icon = IconLoader.parse(cursor.getString(mIndexCategoryIcon));
         IconLoader.loadInto(icon, holder.mAvatarImageView);
-        holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
+        holder.mPrimaryTextView.setText(cursor.getString(mIndexDescription));
         CurrencyUnit currency = CurrencyManager.getCurrency(cursor.getString(mIndexWalletCurrency));
         long money = cursor.getLong(mIndexMoney);
         if (cursor.getInt(mIndexDirection) == Contract.Direction.INCOME) {
@@ -83,7 +83,7 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
         } else {
             mMoneyFormatter.applyTintedExpense(holder.mMoneyTextView, currency, money);
         }
-        holder.mSecondaryTextView.setText(cursor.getString(mIndexDescription));
+        holder.mSecondaryTextView.setText(cursor.getString(mIndexCategoryName));
     }
 
     @Override
