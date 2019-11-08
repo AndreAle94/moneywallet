@@ -75,7 +75,6 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
     public void onBindViewHolder(TransactionModelViewHolder holder, Cursor cursor) {
         Icon icon = IconLoader.parse(cursor.getString(mIndexCategoryIcon));
         IconLoader.loadInto(icon, holder.mAvatarImageView);
-        holder.mPrimaryTextView.setText(cursor.getString(mIndexDescription));
         CurrencyUnit currency = CurrencyManager.getCurrency(cursor.getString(mIndexWalletCurrency));
         long money = cursor.getLong(mIndexMoney);
         if (cursor.getInt(mIndexDirection) == Contract.Direction.INCOME) {
@@ -83,7 +82,16 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
         } else {
             mMoneyFormatter.applyTintedExpense(holder.mMoneyTextView, currency, money);
         }
-        holder.mSecondaryTextView.setText(cursor.getString(mIndexCategoryName));
+
+        // Sets heading and subheading appropriately
+        String descriptionString = cursor.getString(mIndexDescription).trim();
+        if (descriptionString.isEmpty()) { // https://git.io/JeVcQ
+            holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
+            holder.mSecondaryTextView.setText(descriptionString); // empty string TODO: replace with placeholder e.g. "No Description"
+        } else {
+            holder.mPrimaryTextView.setText(descriptionString);
+            holder.mSecondaryTextView.setText(cursor.getString(mIndexCategoryName));
+        }
     }
 
     @Override
