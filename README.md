@@ -1,6 +1,7 @@
 # MoneyWallet - Expense Manager [BETA]
 [![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Release](https://img.shields.io/github/release/AndreAle94/moneywallet.svg)](https://github.com/AndreAle94/moneywallet/releases/latest)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/andreale94)
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
       alt="Download from Google Play" 
@@ -31,6 +32,7 @@ As you may have noticed, the previous version on the PlayStore required a small 
 ## Donations
 This project is completely free, I decided to completely remove the in-app purchase in favor of a donation policy. It contains no advertising and never will contain it. If you find this application useful you may consider the option of offering me a beer, in real life or through a donation. It would be a very appreciated gesture to support my work.
 
+- PayPal: https://www.paypal.me/andreale94
 - BTC: 1J3APoaFT2jcqRzpb8bEt2rwUn3mDpWE5U
 - BCH: qzaw9naw5c367r4du2eg6fvmkr7smwagru53lt67zl
 - ETH: 0x4ee996Bf75a89c75B18b4f0509c8c77B87D81392
