@@ -22,6 +22,7 @@ package com.oriondev.moneywallet.ui.adapter.recycler;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,14 +83,12 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
         } else {
             mMoneyFormatter.applyTintedExpense(holder.mMoneyTextView, currency, money);
         }
-
-        // Sets heading and subheading appropriately
-        String descriptionString = cursor.getString(mIndexDescription).trim();
-        if (descriptionString.isEmpty()) { // https://git.io/JeVcQ
+        String description = cursor.getString(mIndexDescription);
+        if (TextUtils.isEmpty(description)) {
             holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
-            holder.mSecondaryTextView.setText(descriptionString); // empty string TODO: replace with placeholder e.g. "No Description"
+            holder.mSecondaryTextView.setText(description);
         } else {
-            holder.mPrimaryTextView.setText(descriptionString);
+            holder.mPrimaryTextView.setText(description.trim());
             holder.mSecondaryTextView.setText(cursor.getString(mIndexCategoryName));
         }
     }
