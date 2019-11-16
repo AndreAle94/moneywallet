@@ -22,6 +22,7 @@ package com.oriondev.moneywallet.ui.adapter.recycler;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +76,6 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
     public void onBindViewHolder(TransactionModelViewHolder holder, Cursor cursor) {
         Icon icon = IconLoader.parse(cursor.getString(mIndexCategoryIcon));
         IconLoader.loadInto(icon, holder.mAvatarImageView);
-        holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
         CurrencyUnit currency = CurrencyManager.getCurrency(cursor.getString(mIndexWalletCurrency));
         long money = cursor.getLong(mIndexMoney);
         if (cursor.getInt(mIndexDirection) == Contract.Direction.INCOME) {
@@ -83,7 +83,14 @@ public class TransactionModelCursorAdapter extends AbstractCursorAdapter<Transac
         } else {
             mMoneyFormatter.applyTintedExpense(holder.mMoneyTextView, currency, money);
         }
-        holder.mSecondaryTextView.setText(cursor.getString(mIndexDescription));
+        String description = cursor.getString(mIndexDescription);
+        if (TextUtils.isEmpty(description)) {
+            holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
+            holder.mSecondaryTextView.setText(description);
+        } else {
+            holder.mPrimaryTextView.setText(description.trim());
+            holder.mSecondaryTextView.setText(cursor.getString(mIndexCategoryName));
+        }
     }
 
     @Override
