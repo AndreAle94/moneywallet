@@ -30,9 +30,9 @@
     <string name="menu_recurrences">"Επαναλήψεις"</string>
     <string name="menu_models">"Μοντέλα"</string>
     <string name="menu_place">"Μέρη"</string>
-    <string name="menu_people">"Άνθρωποι"</string>
+    <string name="menu_people">"Άτομα"</string>
     <string name="menu_converter">"Μετατροπέας"</string>
-    <string name="menu_calculator">"Υπολογιστική"</string>
+    <string name="menu_calculator">"Αριθμομηχανή"</string>
     <string name="menu_search_atm">"Αναζήτηση atm"</string>
     <string name="menu_search_bank">"Αναζήτηση τράπεζας"</string>
     <string name="menu_setting">"Ρυθμίσεις"</string>
@@ -50,7 +50,7 @@
 
     <!-- Debts -->
     <string name="menu_debt_tab_debt">"Χρέη"</string>
-    <string name="menu_debt_tab_credit">"Πίστωση"</string>
+    <string name="menu_debt_tab_credit">"Πιστώσεις"</string>
 
     <!-- Budgets -->
     <string name="menu_budget_tab_running">"Τρέχοντα"</string>
