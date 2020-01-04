@@ -19,7 +19,7 @@
 
 package com.oriondev.moneywallet.ui.view.text;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by andrea on 30/01/18.

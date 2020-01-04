@@ -20,9 +20,9 @@
 package com.oriondev.moneywallet.ui.activity;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.ui.activity.base.SinglePanelViewPagerActivity;

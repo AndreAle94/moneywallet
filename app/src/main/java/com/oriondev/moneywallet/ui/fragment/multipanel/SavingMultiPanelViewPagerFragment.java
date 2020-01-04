@@ -24,10 +24,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.broadcast.LocalAction;

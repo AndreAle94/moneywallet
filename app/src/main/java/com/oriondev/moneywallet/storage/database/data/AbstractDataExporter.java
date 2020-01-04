@@ -2,7 +2,7 @@ package com.oriondev.moneywallet.storage.database.data;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.util.LongSparseArray;
+import androidx.collection.LongSparseArray;
 
 import com.oriondev.moneywallet.model.Wallet;
 import com.oriondev.moneywallet.storage.database.Contract;

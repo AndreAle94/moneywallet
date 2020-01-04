@@ -23,7 +23,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.text.TextUtils;
 
 import com.oriondev.moneywallet.ui.drawable.TextDrawable;

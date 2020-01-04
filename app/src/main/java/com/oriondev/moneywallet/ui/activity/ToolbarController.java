@@ -19,7 +19,7 @@
 
 package com.oriondev.moneywallet.ui.activity;
 
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Created by andrea on 24/01/18.

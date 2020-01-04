@@ -21,7 +21,7 @@ package com.oriondev.moneywallet.ui.view.theme;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.R;

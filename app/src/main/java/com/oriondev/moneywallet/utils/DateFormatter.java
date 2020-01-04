@@ -20,7 +20,7 @@
 package com.oriondev.moneywallet.utils;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.text.format.DateUtils;
 import android.widget.TextView;
 

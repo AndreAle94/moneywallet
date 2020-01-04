@@ -23,7 +23,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 import com.mikepenz.iconics.typeface.IIcon;
 import com.mikepenz.materialdrawer.holder.StringHolder;

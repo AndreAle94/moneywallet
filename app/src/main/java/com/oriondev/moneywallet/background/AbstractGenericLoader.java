@@ -20,7 +20,7 @@
 package com.oriondev.moneywallet.background;
 
 import android.content.Context;
-import android.support.v4.content.AsyncTaskLoader;
+import androidx.loader.content.AsyncTaskLoader;
 
 /**
  * Created by andrea on 06/04/18.

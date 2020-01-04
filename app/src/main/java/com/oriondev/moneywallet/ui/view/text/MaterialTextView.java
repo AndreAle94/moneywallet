@@ -27,8 +27,8 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.R;

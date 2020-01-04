@@ -20,11 +20,11 @@
 package com.oriondev.moneywallet.ui.activity.base;
 
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.MenuRes;
-import android.support.annotation.StringRes;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.MenuRes;
+import androidx.annotation.StringRes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;

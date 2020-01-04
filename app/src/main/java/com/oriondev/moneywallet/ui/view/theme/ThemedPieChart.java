@@ -21,8 +21,8 @@ package com.oriondev.moneywallet.ui.view.theme;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.ui.view.chart.PieChart;

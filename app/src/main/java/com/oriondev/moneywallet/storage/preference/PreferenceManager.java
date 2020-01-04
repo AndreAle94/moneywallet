@@ -25,19 +25,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
 import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.broadcast.DailyBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.Group;
-import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.model.LockMode;
 
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by andrea on 24/01/18.

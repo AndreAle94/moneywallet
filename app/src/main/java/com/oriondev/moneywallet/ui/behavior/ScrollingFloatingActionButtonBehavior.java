@@ -21,10 +21,10 @@ package com.oriondev.moneywallet.ui.behavior;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import com.google.android.material.appbar.AppBarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import android.util.AttributeSet;
 import android.view.View;
 

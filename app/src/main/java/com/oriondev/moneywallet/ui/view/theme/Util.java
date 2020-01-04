@@ -20,8 +20,8 @@
 package com.oriondev.moneywallet.ui.view.theme;
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
+import androidx.annotation.ColorInt;
+import androidx.annotation.FloatRange;
 
 /**
  * Created by andrea on 10/04/18.

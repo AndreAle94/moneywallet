@@ -26,9 +26,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;

@@ -22,8 +22,8 @@ package com.oriondev.moneywallet.ui.view.theme;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.R;

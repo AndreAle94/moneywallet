@@ -22,10 +22,8 @@ package com.oriondev.moneywallet.api;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-
-import com.oriondev.moneywallet.model.IFile;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 /**
  * Created by andrea on 21/11/18.

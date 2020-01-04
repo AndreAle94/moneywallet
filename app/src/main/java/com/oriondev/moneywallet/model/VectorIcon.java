@@ -23,8 +23,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

@@ -20,11 +20,9 @@
 package com.oriondev.moneywallet;
 
 import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
-import android.support.multidex.MultiDex;
+
+import androidx.multidex.MultiDex;
 
 import com.oriondev.moneywallet.broadcast.AutoBackupBroadcastReceiver;
 import com.oriondev.moneywallet.broadcast.DailyBroadcastReceiver;

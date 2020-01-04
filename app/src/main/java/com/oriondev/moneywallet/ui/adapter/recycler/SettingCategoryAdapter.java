@@ -19,9 +19,9 @@
 
 package com.oriondev.moneywallet.ui.adapter.recycler;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

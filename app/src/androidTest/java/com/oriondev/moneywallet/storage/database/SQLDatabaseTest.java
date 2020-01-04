@@ -19,33 +19,28 @@
 
 package com.oriondev.moneywallet.storage.database;
 
+import android.app.Instrumentation;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import android.support.test.InstrumentationRegistry;
 import android.test.RenamingDelegatingContext;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.text.TextUtils;
 
-import com.oriondev.moneywallet.model.CurrencyUnit;
+import androidx.test.platform.app.InstrumentationRegistry;
+
 import com.oriondev.moneywallet.model.Money;
 import com.oriondev.moneywallet.utils.DateUtils;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -53,73 +48,32 @@ import static junit.framework.Assert.assertNotNull;
 /**
  * Created by andrea on 28/08/18.
  */
+@LargeTest
 public class SQLDatabaseTest {
 
     private Context mContext;
     private SQLDatabase mDatabase;
 
     @Before
-    public void setUp() throws Exception {
-        Context baseContext = InstrumentationRegistry.getTargetContext();
-        mContext = new RenamingDelegatingContext(new DelegatedMockContext(baseContext), baseContext, "test.");
+    public void setUp() {
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        Context baseContext = instrumentation.getTargetContext();
+        mContext = new RenamingDelegatingContext(baseContext, "test.");
+        // load existing databases and files if found
+        if (mContext instanceof RenamingDelegatingContext) {
+            ((RenamingDelegatingContext) mContext).makeExistingFilesAndDbsAccessible();
+        }
+        // remove existing database (if any) before starting the test
+        mContext.deleteDatabase(SQLDatabase.DATABASE_NAME);
+        // create a new database for testing purposes
         mDatabase = new SQLDatabase(mContext);
         mDatabase.setDeletedObjectCacheEnabled(false);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         mDatabase.close();
         mContext.deleteDatabase(SQLDatabase.DATABASE_NAME);
-    }
-
-    private Map<String, CurrencyUnit> getAllCurrencies() throws Exception {
-        StringBuilder jsonBuilder = new StringBuilder();
-        InputStream inputStream = mContext.getAssets().open("resources/currencies.json");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            jsonBuilder.append(line);
-        }
-        JSONArray array = new JSONArray(jsonBuilder.toString());
-        Map<String, CurrencyUnit> currencyUnitMap = new HashMap<>();
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject currency = array.getJSONObject(i);
-            String iso = currency.getString("code");
-            String name = currency.getString("name");
-            String symbols = currency.optString("symbol", null);
-            int decimals = currency.optInt("decimals", 2);
-            CurrencyUnit currencyUnit = new CurrencyUnit(iso, name, symbols, decimals);
-            currencyUnitMap.put(currencyUnit.getIso(), currencyUnit);
-        }
-        return currencyUnitMap;
-    }
-
-    @Test
-    public void getCurrencies() throws Exception {
-        // this test must check if the database is correctly initialized with the default currencies
-        Map<String, CurrencyUnit> currencyUnitMap = getAllCurrencies();
-        Cursor cursor = mDatabase.getCurrencies(null, null, null, null);
-        assertNotNull(cursor);
-        int numberOfCurrencies = cursor.getCount();
-        int indexIso = cursor.getColumnIndex(Contract.Currency.ISO);
-        int indexName = cursor.getColumnIndex(Contract.Currency.NAME);
-        int indexSymbol = cursor.getColumnIndex(Contract.Currency.SYMBOL);
-        int indexDecimals = cursor.getColumnIndex(Contract.Currency.DECIMALS);
-        while (cursor.moveToNext()) {
-            String iso = cursor.getString(indexIso);
-            String name = cursor.getString(indexName);
-            String symbol = cursor.getString(indexSymbol);
-            int decimals = cursor.getInt(indexDecimals);
-            // extract the category from the extracted map
-            CurrencyUnit currencyUnit = currencyUnitMap.get(iso);
-            assertNotNull(currencyUnit);
-            assertEquals(currencyUnit.getIso(), iso);
-            assertEquals(currencyUnit.getName(), name);
-            assertEquals(currencyUnit.getSymbol(), symbol);
-            assertEquals(currencyUnit.getDecimals(), decimals);
-        }
-        cursor.close();
-        assertEquals(numberOfCurrencies, currencyUnitMap.size());
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

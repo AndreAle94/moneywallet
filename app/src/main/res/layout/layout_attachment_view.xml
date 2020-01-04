@@ -33,7 +33,7 @@
         app:expansion_layout="@id/expansion_layout"
         app:expansion_toggleOnClick="true">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:paddingLeft="16dp"
@@ -65,7 +65,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:theme_backgroundColor="colorWindowBackground" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.github.florent37.expansionpanel.ExpansionHeader>
 

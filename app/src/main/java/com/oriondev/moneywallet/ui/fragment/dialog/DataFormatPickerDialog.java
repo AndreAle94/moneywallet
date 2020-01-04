@@ -3,9 +3,9 @@ package com.oriondev.moneywallet.ui.fragment.dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.DataFormat;

@@ -21,7 +21,7 @@ package com.oriondev.moneywallet.ui.preference;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.preference.PreferenceViewHolder;
+import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.R;

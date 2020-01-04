@@ -21,8 +21,8 @@ package com.oriondev.moneywallet.ui.adapter.recycler;
 
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by andrea on 26/01/18.

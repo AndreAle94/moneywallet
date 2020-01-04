@@ -20,7 +20,7 @@
 package com.oriondev.moneywallet.ui.preference;
 
 import android.content.Context;
-import android.support.v7.preference.PreferenceCategory;
+import androidx.preference.PreferenceCategory;
 import android.util.AttributeSet;
 
 import com.oriondev.moneywallet.R;

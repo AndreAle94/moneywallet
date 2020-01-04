@@ -20,8 +20,8 @@
 package com.oriondev.moneywallet.ui.activity.base;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import com.oriondev.moneywallet.R;

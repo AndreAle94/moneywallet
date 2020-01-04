@@ -24,7 +24,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.widget.ImageView;
 
 import com.oriondev.moneywallet.ui.drawable.TextDrawable;

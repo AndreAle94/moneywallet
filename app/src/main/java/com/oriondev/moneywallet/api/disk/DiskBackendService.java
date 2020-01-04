@@ -23,10 +23,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -34,8 +34,6 @@ import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.BackendException;
 import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
-import com.oriondev.moneywallet.model.IFile;
-import com.oriondev.moneywallet.model.LocalFile;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
 
 /**

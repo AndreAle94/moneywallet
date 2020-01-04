@@ -24,7 +24,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
-import android.support.v4.util.LongSparseArray;
+import androidx.collection.LongSparseArray;
 import android.text.TextUtils;
 
 import com.oriondev.moneywallet.model.ColorIcon;
@@ -37,7 +37,6 @@ import com.oriondev.moneywallet.storage.database.DataContentProvider;
 import com.oriondev.moneywallet.storage.database.DatabaseImporter;
 import com.oriondev.moneywallet.storage.database.ImportException;
 import com.oriondev.moneywallet.storage.database.SQLDatabaseImporter;
-import com.oriondev.moneywallet.storage.database.SQLiteDataException;
 import com.oriondev.moneywallet.storage.database.model.Attachment;
 import com.oriondev.moneywallet.storage.database.model.Budget;
 import com.oriondev.moneywallet.storage.database.model.BudgetWallet;
@@ -57,7 +56,6 @@ import com.oriondev.moneywallet.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;

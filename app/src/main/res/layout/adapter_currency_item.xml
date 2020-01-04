@@ -18,7 +18,7 @@
   ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@mipmap/ic_launcher" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/text_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,4 +75,4 @@
         app:theme_textColor="textColorSecondary"
         tools:text="€" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,8 @@
 
 package com.oriondev.moneywallet.api;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.utils.ProgressInputStream;

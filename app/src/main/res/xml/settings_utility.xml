@@ -18,7 +18,7 @@
   ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<android.support.v7.preference.PreferenceScreen
+<androidx.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory
@@ -67,4 +67,4 @@
 
     </com.oriondev.moneywallet.ui.preference.ThemedPreferenceCategory>
 
-</android.support.v7.preference.PreferenceScreen>
+</androidx.preference.PreferenceScreen>

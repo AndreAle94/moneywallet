@@ -24,7 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 
 import com.danielstone.materialaboutlibrary.MaterialAboutFragment;
 import com.danielstone.materialaboutlibrary.holders.MaterialAboutItemViewHolder;

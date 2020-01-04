@@ -53,7 +53,7 @@
             android:text="@string/activity_donation_first_content"
             app:theme_textColor="textColorSecondary" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
@@ -155,7 +155,7 @@
 
             </LinearLayout>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
             android:layout_width="match_parent"
@@ -194,7 +194,7 @@
 
         <!-- Action list -->
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_share_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:theme_backgroundColor="colorWindowForeground" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/action_share_guideline"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -238,9 +238,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:theme_textColor="textColorSecondary" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_rate_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -255,7 +255,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:theme_backgroundColor="colorWindowForeground" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/action_rate_guideline"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -284,9 +284,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:theme_textColor="textColorSecondary" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_translate_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -301,7 +301,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:theme_backgroundColor="colorWindowForeground" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/action_translate_guideline"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -330,9 +330,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:theme_textColor="textColorSecondary" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_contribute_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:theme_backgroundColor="colorWindowForeground" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/action_contribute_guideline"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -376,7 +376,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:theme_textColor="textColorSecondary" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
             android:layout_width="match_parent"

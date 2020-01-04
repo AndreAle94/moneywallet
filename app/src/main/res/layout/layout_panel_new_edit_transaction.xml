@@ -46,7 +46,7 @@
         app:met_mode="floatingLabel"
         app:met_leftIcon="@drawable/ic_table_large_24dp" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -72,7 +72,7 @@
             app:met_mode="floatingLabel"
             app:layout_constraintEnd_toEndOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedMaterialEditText
         android:id="@+id/wallet_edit_text"

@@ -20,7 +20,7 @@
 package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.oriondev.moneywallet.storage.database.DatabaseExporter;

@@ -28,10 +28,10 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.core.view.ViewCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -47,7 +47,7 @@ import java.util.List;
 /**
  * Created by andrea on 27/01/18.
  */
-public class MaterialEditText extends android.support.v7.widget.AppCompatEditText implements ValueAnimator.AnimatorUpdateListener, View.OnTouchListener {
+public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditText implements ValueAnimator.AnimatorUpdateListener, View.OnTouchListener {
 
     private final static int ANIMATION_DURATION = 300;
     private final static int ICON_CONTAINER_SIZE_DP = 48;

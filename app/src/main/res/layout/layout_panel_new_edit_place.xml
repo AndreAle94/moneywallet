@@ -27,7 +27,7 @@
     tools:parentTag="android.widget.LinearLayout"
     tools:orientation="vertical" >
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/material_activity_body_edit_text_margin_top"
@@ -58,7 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:theme_backgroundColor="colorWindowBackground" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedCardView
         android:id="@+id/map_card_view"

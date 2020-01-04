@@ -21,7 +21,7 @@ package com.oriondev.moneywallet.storage.database.backup;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.oriondev.moneywallet.storage.database.ExportException;
 import com.oriondev.moneywallet.storage.database.SQLDatabaseExporter;

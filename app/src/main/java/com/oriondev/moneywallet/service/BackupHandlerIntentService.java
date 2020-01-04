@@ -20,7 +20,6 @@
 package com.oriondev.moneywallet.service;
 
 import android.app.IntentService;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -28,14 +27,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import com.oriondev.moneywallet.BuildConfig;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.BackendException;
 import com.oriondev.moneywallet.api.BackendServiceFactory;

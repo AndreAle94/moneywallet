@@ -20,8 +20,8 @@
 package com.oriondev.moneywallet.ui.adapter.recycler;
 
 import android.database.Cursor;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,9 +31,7 @@ import android.widget.TextView;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.Icon;
-import com.oriondev.moneywallet.model.Pair;
 import com.oriondev.moneywallet.storage.database.Contract;
-import com.oriondev.moneywallet.ui.view.CategoryChildIndicator;
 import com.oriondev.moneywallet.utils.IconLoader;
 
 import java.util.ArrayList;

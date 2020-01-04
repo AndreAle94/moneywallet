@@ -22,12 +22,10 @@ package com.oriondev.moneywallet.ui.view.theme;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.support.annotation.UiThread;
-import android.support.v4.graphics.ColorUtils;
+import androidx.annotation.UiThread;
+import androidx.core.graphics.ColorUtils;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.oriondev.moneywallet.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

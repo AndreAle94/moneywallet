@@ -21,7 +21,7 @@ package com.oriondev.moneywallet.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.MenuRes;
+import androidx.annotation.MenuRes;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;

@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/material_component_lists_card_top_layout_height">
 
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@mipmap/ic_launcher" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/text_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,11 +103,11 @@
                 app:theme_textColor="textColorSecondary"
                 tools:text="Wallet 1 -> Wallet 2" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Central layout -->
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tax_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                 app:theme_textColor="textColorSecondary"
                 tools:text="€ 0,00" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Bottom layout -->
 

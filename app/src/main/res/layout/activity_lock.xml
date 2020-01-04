@@ -26,7 +26,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:theme_backgroundColor="colorPrimary">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pin_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,9 +64,9 @@
             app:keypadTextSize="@dimen/activity_lock_pin_lock_view_text_size"
             app:theme_backgroundColor="colorPrimary" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sequence_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -94,9 +94,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:theme_backgroundColor="colorPrimary" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fingerprint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -122,6 +122,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:theme_textColor="textOverColorPrimary" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.oriondev.moneywallet.ui.view.theme.ThemedFrameLayout>

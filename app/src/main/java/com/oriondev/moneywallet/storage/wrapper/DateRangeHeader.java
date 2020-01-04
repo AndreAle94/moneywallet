@@ -19,7 +19,7 @@
 
 package com.oriondev.moneywallet.storage.wrapper;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.oriondev.moneywallet.model.Group;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;

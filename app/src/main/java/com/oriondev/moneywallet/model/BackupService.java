@@ -19,8 +19,8 @@
 
 package com.oriondev.moneywallet.model;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
 /**
  * Created by andre on 21/03/2018.

@@ -25,12 +25,11 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 
 import com.oriondev.moneywallet.R;
-import com.oriondev.moneywallet.storage.cache.TypefaceCache;
 
 /**
  * Created by andrea on 08/03/18.
  */
-public class CardButton extends android.support.v7.widget.AppCompatButton {
+public class CardButton extends androidx.appcompat.widget.AppCompatButton {
 
     public CardButton(Context context) {
         super(context);

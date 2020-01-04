@@ -20,8 +20,8 @@
 package com.oriondev.moneywallet.ui.preference;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.preference.Preference;
+import androidx.annotation.NonNull;
+import androidx.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 

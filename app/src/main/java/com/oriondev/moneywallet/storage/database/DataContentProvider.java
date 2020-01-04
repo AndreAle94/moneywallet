@@ -20,25 +20,19 @@
 package com.oriondev.moneywallet.storage.database;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.oriondev.moneywallet.BuildConfig;
-import com.oriondev.moneywallet.broadcast.LocalAction;
-import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.preference.PreferenceManager;
 
 import java.util.List;
