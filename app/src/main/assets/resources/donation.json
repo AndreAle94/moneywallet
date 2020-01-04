@@ -7,16 +7,15 @@
       "crypto_link": "LZW1AUMWN4BdUvSu8fujEYVLgqWH2HsLZs"
     },
     "option_two": {
+      "icon": "ic_paypal_24dp",
+      "name": "Paypal",
+      "url": "https://www.paypal.me/andreale94"
+    },
+    "option_three": {
       "icon": "ic_bitcoin_24dp",
       "name": "Bitcoin",
       "crypto_scheme": "bitcoin",
       "crypto_link": "1J3APoaFT2jcqRzpb8bEt2rwUn3mDpWE5U"
-    },
-    "option_three": {
-      "icon": "ic_ethereum_24dp",
-      "name": "Ethereum",
-      "crypto_scheme": "ethereum",
-      "crypto_link": "0x4ee996Bf75a89c75B18b4f0509c8c77B87D81392"
     }
   },
   "non-monetary": {
