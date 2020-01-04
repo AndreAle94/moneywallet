@@ -37,7 +37,8 @@
         android:supportsRtl="true"
         android:allowBackup="false"
         android:theme="@style/MoneyWalletAppTheme"
-        tools:replace="android:allowBackup" >
+        tools:replace="android:allowBackup"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
