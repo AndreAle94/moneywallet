@@ -153,5 +153,12 @@
     "version":"5.5.13",
     "copyright":"Copyright (c) iText",
     "license":"AGPL"
+  },{
+    "name":"FreeReflection",
+    "author":"weishu",
+    "website":"https://github.com/tiann/FreeReflection",
+    "version":"2.2.0",
+    "copyright":"Copyright (c) 2018 weishu",
+    "license":"MIT"
   }
 ]

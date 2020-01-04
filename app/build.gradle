@@ -20,11 +20,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.oriondev.moneywallet"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 70
         versionName "4.0.5.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -112,6 +112,7 @@ dependencies {
     implementation 'com.opencsv:opencsv:4.4'
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation 'com.itextpdf:itextpdf:5.5.13'
+    implementation 'me.weishu:free_reflection:2.2.0'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     // google play dependencies
