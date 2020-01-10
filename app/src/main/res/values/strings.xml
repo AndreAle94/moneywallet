@@ -277,7 +277,7 @@
     <string name="error_input_invalid_multiple_wallets">"Wallets must have the same currency"</string>
     <string name="error_input_missing_date">"Select a date"</string>
     <string name="error_input_missing_start_date">"Select a start date"</string>
-    <string name="error_input_missing_end_date">"Select a end date"</string>
+    <string name="error_input_missing_end_date">Select an end date</string>
     <string name="error_input_invalid_date_range">"Invalid date range"</string>
     <string name="error_input_missing_category">"Select a category"</string>
     <string name="error_input_missing_description">"Provide a description"</string>
