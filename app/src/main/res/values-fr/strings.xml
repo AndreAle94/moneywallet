@@ -147,9 +147,6 @@
     <string name="hint_export_folder">"Dossier d'exportation"</string>
     <string name="hint_export_optional_columns">"Colonnes optionnelles"</string>
     <string name="hint_export_unique_wallet">"Joindre des transactions de différents portefeuilles"</string>
-    <string name="hint_data_format_csv">"CSV"</string>
-    <string name="hint_data_format_xls">"XLS"</string>
-    <string name="hint_data_format_pdf">"PDF"</string>
     <string name="hint_iso_code">"Code ISO"</string>
     <string name="hint_symbol">"Symbole"</string>
     <string name="hint_decimals">"Nombre de décimales"</string>
@@ -507,7 +504,6 @@
     <string name="setting_item_ui_theme_type_dark">"Sombre"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"Noir"</string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Insérer votre clée d'api ici"</string>
-    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"Ce service nécessite une clé api valide pour fonctionner. Cela signifie que cette version de l'application a été compilée sans clé par défaut, probablement en raison de problèmes de licence. Pour pouvoir communiquer avec ce fournisseur externe, vous devez vous rendre sur https://openexchangerates.org et vous enregistrer: vous recevrez une clé gratuite."</string>
 
     <string name="setting_category_database_backup">"Sauvegarde"</string>
