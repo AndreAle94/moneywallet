@@ -201,6 +201,10 @@
           "icon": "ic_perm_identity_black_24dp",
           "title": "FoseFx",
           "subtitle": "German"
+        },{
+          "icon": "ic_perm_identity_black_24dp",
+          "title": "bendaf",
+          "subtitle": "Hungarian"
         }
       ]
     }
