@@ -135,31 +135,26 @@ public class EquationSolver {
     }
 
     public boolean execute(boolean fireCallback) {
-        double first = parseNumber(mFirstNumber);
-        double second = parseNumber(mSecondNumber);
+        BigDecimal first = parseNumber(mFirstNumber);
+        BigDecimal second = parseNumber(mSecondNumber);
         try {
-            double result;
+            BigDecimal result;
             switch (mOperation) {
                 case ADDITION:
-                    result = first + second;
+                    result = first.add(second);
                     break;
                 case SUBTRACTION:
-                    result = first - second;
+                    result = first.subtract(second);
                     break;
                 case MULTIPLICATION:
-                    result = first * second;
+                    result = first.multiply(second);
                     break;
                 case DIVISION:
-                    result = first / second;
+                    result = first.divide(second,BigDecimal.ROUND_HALF_EVEN);
                     break;
                 default:
-                    result = 0D;
+                    result = BigDecimal.valueOf(0);
                     break;
-            }
-            if (mCurrency != null && !Double.isInfinite(result) && !Double.isNaN(result)) {
-                BigDecimal bigDecimal = new BigDecimal(result);
-                bigDecimal = bigDecimal.setScale(mCurrency.getDecimals(), RoundingMode.HALF_UP);
-                result = bigDecimal.doubleValue();
             }
             mFirstNumber = String.valueOf(result);
             if (mFirstNumber.endsWith(".0")) {
@@ -182,7 +177,7 @@ public class EquationSolver {
             // Error occurred during calculation
             return 0L;
         }
-        double parsedNumber = parseNumber(mFirstNumber);
+        double parsedNumber = parseNumber(mFirstNumber).doubleValue();
         if (!Double.isInfinite(parsedNumber) && !Double.isNaN(parsedNumber)) {
             BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL32);
             if (mCurrency != null) {
@@ -195,15 +190,15 @@ public class EquationSolver {
         return 0L;
     }
 
-    private double parseNumber(String number) {
+    private BigDecimal parseNumber(String number) {
         String safe = number == null || number.isEmpty() ? "0" : number;
         if (safe.endsWith(".")) {
             safe = safe.substring(0, safe.length() - 1);
         }
         try {
-            return Double.parseDouble(safe);
+            return new BigDecimal(safe);
         } catch (NumberFormatException ignore) {}
-        return 0D;
+        return BigDecimal.valueOf(0);
     }
 
     public enum Operation {
