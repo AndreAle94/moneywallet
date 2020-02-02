@@ -146,9 +146,6 @@
     <string name="hint_export_folder"> "Klasörü dışa aktar" </string>
     <string name="hint_export_optional_columns"> "İsteğe bağlı sütunlar" </string>
     <string name="hint_export_unique_wallet"> "Farklı cüzdanlardan işlemlere katıl" </string>
-    <string name="hint_data_format_csv"> "CSV" </string>
-    <string name="hint_data_format_xls"> "XLS" </string>
-    <string name="hint_data_format_pdf"> "PDF" </string>
 
     <string name="hint_show_currency_symbol"> "Para birimi simgesini göster" </string>
     <string name="hint_group_digits"> "Grup basamakları" </string>
@@ -493,7 +490,6 @@
     <string name="setting_item_ui_theme_type_dark"> "Karanlık" </string>
     <string name="setting_item_ui_theme_type_deep_dark"> "Derin karanlık" </string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint"> "Api-anahtar ekle" </string>
-    <string name="setting_item_utility_exchange_rates_service_oer"> "OpenExchangeRates.org" </string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message"> "Bu hizmetin çalışması için geçerli bir api anahtarı gerekiyor. Bu, bu uygulama sürümünün muhtemelen lisans sorunları nedeniyle varsayılan bir anahtar olmadan derlendiği anlamına geliyor. https://openexchangerates.org adresine gitmeli ve kayıt olmalısınız: ücretsiz bir anahtar alacaksınız. "</string>
 
     <string name="setting_category_database_backup"> "Yedekleme" </string>

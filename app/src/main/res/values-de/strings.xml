@@ -345,9 +345,6 @@
     <string name="hint_auto_backup_only_if_data_changed">Nur wenn die Daten verändert wurden</string>
     <string name="hint_auto_backup_root_folder">Wurzel</string>
     <string name="hint_auto_backup_wifi_only">Nur über WLAN</string>
-    <string name="hint_data_format_csv">CSV</string>
-    <string name="hint_data_format_pdf">PDF</string>
-    <string name="hint_data_format_xls">XLS</string>
     <string name="hint_decimals">Anzahl der Nachkommastellen</string>
     <string name="hint_directory">Ordner</string>
     <string name="hint_exchange_rate">Wechselkurs</string>
@@ -556,7 +553,6 @@
     <string name="setting_subtitle_about">Anerkennungen und Lizenz</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">Dieser Service benötigt einen API Schlüssel um zu funktionieren. Dies bedeutet, dass diese Version der Anwendung ohne den vereingestellten Schlüssel kompiliert wurde, vermutlich aus lizensrechtlichen Gründen. Um mit diesem Anbieter zu kommunizieren musst du dich auf https://openexchangerates.org registrieren, um einen kostenlosen API Schlüssel bekommen.</string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">API Schlüssel eingeben</string>
-    <string name="setting_item_utility_exchange_rates_service_oer">OpenExchangeRates.org</string>
     <string name="setting_item_security_sequence">Abfolge</string>
     <string name="setting_item_security_pin">PIN</string>
     <string name="setting_item_security_none">Ausgeschaltet</string>

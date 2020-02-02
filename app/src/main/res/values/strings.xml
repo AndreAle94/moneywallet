@@ -147,9 +147,9 @@
     <string name="hint_export_folder">"Export folder"</string>
     <string name="hint_export_optional_columns">"Optional columns"</string>
     <string name="hint_export_unique_wallet">"Join transactions from different wallets"</string>
-    <string name="hint_data_format_csv">"CSV"</string>
-    <string name="hint_data_format_xls">"XLS"</string>
-    <string name="hint_data_format_pdf">"PDF"</string>
+    <string name="hint_data_format_csv" translatable="false">"CSV"</string>
+    <string name="hint_data_format_xls" translatable="false">"XLS"</string>
+    <string name="hint_data_format_pdf" translatable="false">"PDF"</string>
     <string name="hint_iso_code">"ISO code"</string>
     <string name="hint_symbol">"Symbol"</string>
     <string name="hint_decimals">"Number of decimals"</string>
@@ -277,7 +277,7 @@
     <string name="error_input_invalid_multiple_wallets">"Wallets must have the same currency"</string>
     <string name="error_input_missing_date">"Select a date"</string>
     <string name="error_input_missing_start_date">"Select a start date"</string>
-    <string name="error_input_missing_end_date">"Select a end date"</string>
+    <string name="error_input_missing_end_date">Select an end date</string>
     <string name="error_input_invalid_date_range">"Invalid date range"</string>
     <string name="error_input_missing_category">"Select a category"</string>
     <string name="error_input_missing_description">"Provide a description"</string>
@@ -507,7 +507,7 @@
     <string name="setting_item_ui_theme_type_dark">"Dark"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"Deep dark"</string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Insert api-key"</string>
-    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
+    <string name="setting_item_utility_exchange_rates_service_oer" translatable="false">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"This service requires a valid api-key in order to work. This means that this application release was compiled without a default key, probably due to licensing issues. To be able to communicate with this external provider you must go to https://openexchangerates.org and register: you will receive a free key."</string>
 
     <string name="setting_category_database_backup">"Backup"</string>

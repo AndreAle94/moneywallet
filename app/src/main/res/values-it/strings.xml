@@ -147,9 +147,6 @@
     <string name="hint_export_folder">"Cartella di destinazione"</string>
     <string name="hint_export_optional_columns">"Colonne facoltative"</string>
     <string name="hint_export_unique_wallet">"Unisci transazioni da portafogli differenti"</string>
-    <string name="hint_data_format_csv">"CSV"</string>
-    <string name="hint_data_format_xls">"XLS"</string>
-    <string name="hint_data_format_pdf">"PDF"</string>
     <string name="hint_iso_code">"Codice ISO"</string>
     <string name="hint_symbol">"Simbolo"</string>
     <string name="hint_decimals">"Numero di decimali"</string>
@@ -507,7 +504,6 @@
     <string name="setting_item_ui_theme_type_dark">"Scuro"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"Nero profondo"</string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Inserisci api-key"</string>
-    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"Questo servizio richiede un api-key valida per funzionare. Questo vuol dire che questa release dell'applicazione è stata compilata senza una chiave di default, probabilmente a causa di una licenza. Per poter comunicare con questa piattaforma devi andare sul sito https://openexchangerates.org e registrarti: riceverai una chiave gratuitamente."</string>
 
     <string name="setting_category_database_backup">"Backup"</string>

@@ -462,7 +462,6 @@
     <string name="setting_item_ui_theme_type_dark">"تاریک"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"تیره کامل"</string>
     <string name="setting_item_utility_exchange_rates_custom_api_key_hint">"قرار دادن api-key"</string>
-    <string name="setting_item_utility_exchange_rates_service_oer">"OpenExchangeRates.org"</string>
     <string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"این سرویس نیاز به کلید API معتبر دارد تا کار کند. این به این معنی است که انتشار این برنامه بدون کلید پیش فرض کامپایل شده است، احتمالا به دلیل مسائل مربوط به صدور مجوز. برای برقراری ارتباط با این ارائه دهنده خارجی، باید به https://openexchangerates.org بروید و ثبت نام کنید: یک کلید رایگان دریافت خواهید کرد."</string>
 
     <string name="setting_category_database_backup">"پشتیبان گیری"</string>
