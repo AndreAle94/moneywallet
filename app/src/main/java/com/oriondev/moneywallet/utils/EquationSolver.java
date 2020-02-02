@@ -179,7 +179,7 @@ public class EquationSolver {
         }
         double parsedNumber = parseNumber(mFirstNumber).doubleValue();
         if (!Double.isInfinite(parsedNumber) && !Double.isNaN(parsedNumber)) {
-            BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL32);
+            BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL64);
             if (mCurrency != null) {
                 BigDecimal multiplier = new BigDecimal(Math.pow(10, mCurrency.getDecimals()));
                 BigDecimal result = number.multiply(multiplier);
