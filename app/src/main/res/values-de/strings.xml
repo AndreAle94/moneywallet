@@ -157,7 +157,7 @@
     <string name="message_no_wallet_found">"Keine Geldbörse gefunden"</string>
     <string name="message_no_transaction_found">"Keine Transaktion gefunden"</string>
     <string name="message_no_transfer_found">"Keine Überweisung gefunden"</string>
-    <string name="message_no_category_found">"Kategorie nicht gefunden"</string>
+    <string name="message_no_category_found">"Keine Kategorie gefunden"</string>
     <string name="message_no_debt_found">"Keine Schulden gefunden"</string>
     <string name="message_no_recurrence_found">"Keine regelmäßige Transaktion gefunden"</string>
     <string name="setting_title_user_interface">"Benutzeroberfläche"</string>
@@ -207,7 +207,7 @@
     <string name="activity_donation_action_translate_title">Übersetzen</string>
     <string name="activity_donation_action_translate_content">Übersetze Texte in deine Sprache</string>
     <string name="activity_donation_action_contribute_content">Der Quelltext ist öffentlich und alle können dazu beitragen.</string>
-    <string name="activity_donation_final_content">Jede Unterstützung, finanziel oder nicht, ist gleichwertig und macht einen fundamentalen Unterschied für mich. Danke dass du diese App benutz. Ich hoffe, sie gefällt dir.</string>
+    <string name="activity_donation_final_content">Jede Unterstützung, finanziell oder nicht, ist gleichwertig und macht einen fundamentalen Unterschied für mich. Danke dass du diese App benutzt. Ich hoffe, sie gefällt dir.</string>
     <string name="activity_donation_second_content">Manche sagen, \"Die besten Dinge im Leben sind kostenlos\" und da stimme ich zu. Man kann Freundschaft, Liebe oder die Erinnerung an einen Sonnenaufgang nicht kaufen. Deswegen habe ich den Quelltext dieser App kostenlos veröffentlicht. Aber leider ist das Leben nicht kostenlos. Wir haben nur 24 Stunden am Tag und müssen uns entscheiden, wie wir die für uns nutzen. Wenn dir dieses Projekt gefällt, unterstütze meine Arbeit, damit ich mehr Zeit darin investieren kann. Jeder Beitrag macht einen immensen Unterschied.</string>
     <string name="activity_donation_action_share_content">Erzähl\'s deinen Bekannten</string>
     <string name="activity_donation_action_contribute_title">Entwickeln</string>
@@ -236,7 +236,7 @@
     <string name="about_hint_google_plus">Google Plus</string>
     <string name="about_hint_icon_image_intro">Bilder im Intro</string>
     <string name="about_hint_icon_licenses">Bilder und Symbole</string>
-    <string name="about_hint_icon_pack">Symbolpacket</string>
+    <string name="about_hint_icon_pack">Symbolpaket</string>
     <string name="about_hint_logo_designer">Logo designer</string>
     <string name="about_hint_md_icons">Material Design Symbole</string>
     <string name="about_hint_open_source_libraries">Open Source Bibliotheken</string>
@@ -301,7 +301,7 @@
     <string name="dialog_recurrence_title">Wiederhole</string>
     <string name="dialog_wallet_picker_title">Geldbörse</string>
     <string name="empty_message_backup_cover">Wähle den Service, der für die Sicherungen verwendet werden soll, aus</string>
-    <string name="empty_message_secondary_panel">Wähle ein Element von der linken Seite für mehr details aus</string>
+    <string name="empty_message_secondary_panel">Wähle ein Element von der linken Seite für mehr Details aus</string>
     <string name="error_input_currency_not_valid">Keine gültige Währung</string>
     <string name="error_input_date_range_not_valid">Kein gültiger Datumsbereich</string>
     <string name="error_input_decimals_not_valid">Muss zwischen 0 und 8 liegen</string>
@@ -317,7 +317,7 @@
     <string name="error_input_missing_multiple_wallets">Wähle mindestens eine Geldbörse aus</string>
     <string name="error_input_missing_output_folder">Wähle den Ausgabeordner</string>
     <string name="error_input_missing_start_date">Wähle das Anfangsdatum</string>
-    <string name="error_input_name_not_valid">Kein gültiger name</string>
+    <string name="error_input_name_not_valid">Kein gültiger Name</string>
     <string name="header_debts_archived">Archiviert</string>
     <string name="header_debts_to_pay">Zu Bezahlen:</string>
     <string name="header_debts_to_receive">Zu Erhalten:</string>
@@ -373,7 +373,7 @@
     <string name="hint_unknown">Unbekannt</string>
     <string name="icon_category_animals">Tiere</string>
     <string name="icon_category_baby">Baby</string>
-    <string name="icon_category_beauty_and_wellness">Beauty und wellness</string>
+    <string name="icon_category_beauty_and_wellness">Beauty und Wellness</string>
     <string name="icon_category_clothes">Kleidung</string>
     <string name="icon_category_finance">Finanzen</string>
     <string name="icon_category_food_and_drinks">Essen und Trinken</string>
@@ -529,7 +529,7 @@
     <string name="setting_title_ui_theme_type">Typ</string>
     <string name="setting_title_security_change_sequence">Entsperrabfolge ändern</string>
     <string name="setting_title_security_change_pin">PIN ändern</string>
-    <string name="setting_title_security">Zugangsbeschrenkung</string>
+    <string name="setting_title_security">Zugangsbeschränkung</string>
     <string name="setting_title_import_data">Daten importieren</string>
     <string name="setting_title_export_data">Daten exportieren</string>
     <string name="setting_title_exchange_rate_update">Wechselkurse ändern</string>
