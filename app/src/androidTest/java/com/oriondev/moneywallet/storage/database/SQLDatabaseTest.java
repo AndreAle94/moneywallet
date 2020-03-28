@@ -1515,11 +1515,11 @@ public class SQLDatabaseTest {
         long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
 
         // Setup transfer between the wallets of the budget
-        insertTransfer("desc", startDate, wallet1, wallet3, null, 4000L, 4000L, 0L, "note", null, null, true, true, null, null, "tag-1");
-        insertTransferModel("desc", wallet1, wallet3, 4000L, 4000L, 0L, "note", null, null, true, true, "tag-2");
+        insertTransfer("desc", startDate, wallet1, wallet3, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet3, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
 
         // transfer should not be added towards the progress of the budgets
-        long expectedProgress = 4000L;
+        long expectedProgress = 4010L;
         checkBudgetId(expenseBudget, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", expectedProgress);
     }
 
@@ -1543,13 +1543,12 @@ public class SQLDatabaseTest {
         long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-2");
 
         // Setup transfer between the wallets of the budget
-        insertTransfer("desc", startDate, wallet1, wallet2, null, 4000L, 4000L, 0L, "note", null, null, true, true, null, null, "tag-1");
-        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 0L, "note", null, null, true, true, "tag-2");
+        insertTransfer("desc", startDate, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
 
         // transfer should not be added towards the progress of the budgets
-        long expectedProgress = 0L;
-        checkBudgetId(incomeBudget, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", expectedProgress);
-        checkBudgetId(expenseBudget, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-2", expectedProgress);
+        checkBudgetId(incomeBudget, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", 0L);
+        checkBudgetId(expenseBudget, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-2", 10L);
     }
 
     @Test
