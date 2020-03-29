@@ -1488,7 +1488,7 @@ public class SQLDatabaseTest {
         // Setup budget of type income
         long incomeBudget = insertBudget(Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
 
-        // Setup transfer between the wallets of the budget
+        // Setup transfer between wallets not in the budget
         insertTransfer("desc", startDate, wallet3, wallet1, null, 4000L, 4000L, 0L, "note", null, null, true, true, null, null, "tag-1");
         insertTransferModel("desc", wallet3, wallet1, 4000L, 4000L, 0L, "note", null, null, true, true, "tag-2");
 
@@ -1514,7 +1514,7 @@ public class SQLDatabaseTest {
         // Setup budget of type expense
         long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
 
-        // Setup transfer between the wallets of the budget
+        // Setup transfer between wallets not in the budget
         insertTransfer("desc", startDate, wallet1, wallet3, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
         insertTransferModel("desc", wallet1, wallet3, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
 
