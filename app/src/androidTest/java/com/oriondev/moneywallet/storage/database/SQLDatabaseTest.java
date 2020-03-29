@@ -1585,6 +1585,44 @@ public class SQLDatabaseTest {
     }
 
     @Test
+    public void getBudgetTransactions() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 1);
+        Date afterBudgetDuration = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget
+        long budget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup transfers
+        insertTransfer("desc", startDate, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-3");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-4");
+        insertTransfer("desc", afterBudgetDuration, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        // Setup transactions
+        long customCategory = insertCategory("Test category 1", "encoded-icon", 1, null, true, "category-tag");
+        insertTransaction(100, startDate, null, customCategory, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+        insertTransaction(100, afterBudgetDuration, null, customCategory, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+
+        Cursor transactions = mDatabase.getBudgetTransactions(budget, null, null, null, null);
+        assertEquals(2, transactions.getCount());
+        assertEquals(true, transactions.moveToFirst());
+        assertEquals("Transfer tax", transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(true, transactions.moveToNext());
+        assertEquals("Test category 1", transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+
+    }
+
+    @Test
     public void insertSaving() throws Exception {
         long id1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
         Date exp = new Date();
