@@ -2465,6 +2465,7 @@ import java.util.UUID;
                 "SUM(_progress) AS " + Contract.Budget.PROGRESS + "," +
                 "GROUP_CONCAT('<' || _wallet_id || '>') AS " + Contract.Budget.WALLET_IDS + "," +
                 "MAX(_wallet_total) AS " + Contract.Budget.HAS_WALLET_IN_TOTAL + " FROM(" +
+
                 // query all budgets of type expenses
                 "SELECT b.*, SUM(t." + Schema.Transaction.MONEY + ") AS _progress " +
                 "FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
@@ -2480,8 +2481,21 @@ import java.util.UUID;
                 Schema.Transaction.DIRECTION + " = 0 AND DATETIME(t." + Schema.Transaction.DATE +
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." + Schema.Transaction.DATE +
-                ") <=  DATE(b." + Schema.Budget.END_DATE + ") GROUP BY b." + Schema.Budget.ID +
-                ", _wallet_id UNION " +
+                ") <=  DATE(b." + Schema.Budget.END_DATE + ") " +
+                // exclude transfers within the budget
+                "AND t." + Schema.Transaction.ID + " NOT IN ( " +
+                "SELECT tf." + Schema.Transfer.TRANSACTION_FROM + " " +
+                "FROM " + Schema.Transfer.TABLE + " AS tf " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS t2 " +
+                "ON tf." + Schema.Transfer.TRANSACTION_TO + " = t2." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS bw2 " +
+                "ON t2." + Schema.Transaction.WALLET + " = bw2." + Schema.BudgetWallet.WALLET + " " +
+                "WHERE bw2." + Schema.BudgetWallet.BUDGET + " = b." + Schema.Budget.ID + " " +
+                "AND bw2." + Schema.BudgetWallet.WALLET + " != b._wallet_id " +
+                ") " +
+                "GROUP BY b." + Schema.Budget.ID + ",b._wallet_id " +
+                "UNION " +
+
                 // query all budgets of type incomes
                 "SELECT b.*, SUM(t." + Schema.Transaction.MONEY + ") AS _progress " +
                 "FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
@@ -2497,7 +2511,20 @@ import java.util.UUID;
                 Schema.Transaction.DIRECTION + " = 1 AND DATETIME(t." + Schema.Transaction.DATE +
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." +
-                Schema.Transaction.DATE + ") <= DATE(b." + Schema.Budget.END_DATE + ") GROUP BY b."
+                Schema.Transaction.DATE + ") <= DATE(b." + Schema.Budget.END_DATE + ") " +
+                // exclude transfers within the budget
+                "AND t." + Schema.Transaction.ID + " NOT IN ( " +
+                "SELECT tf." + Schema.Transfer.TRANSACTION_TO + " " +
+                "FROM " + Schema.Transfer.TABLE + " AS tf " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS t2 " +
+                "ON tf." + Schema.Transfer.TRANSACTION_FROM + " = t2." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS bw2 " +
+                "ON t2." + Schema.Transaction.WALLET + " = bw2." + Schema.BudgetWallet.WALLET + " " +
+                "WHERE bw2." + Schema.BudgetWallet.BUDGET + " = b." + Schema.Budget.ID + " " +
+                "AND bw2." + Schema.BudgetWallet.WALLET + " != b._wallet_id " +
+                ") " +
+
+                "GROUP BY b."
                 + Schema.Budget.ID + ", _wallet_id UNION " +
                 // query all budgets of type category
                 "SELECT b.*, SUM(((t." + Schema.Transaction.DIRECTION + " * 2) - 1) * t." +
