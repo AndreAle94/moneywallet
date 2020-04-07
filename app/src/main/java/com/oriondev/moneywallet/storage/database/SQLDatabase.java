@@ -2608,7 +2608,8 @@ import java.util.UUID;
                 "t." + Schema.Transaction.TAG + " AS " + Contract.Transaction.TAG + ", " +
                 "GROUP_CONCAT('<' || pe." + Schema.Person.ID + " || '>') AS " + Contract.Transaction.PEOPLE_IDS + " " +
                 "FROM (" +
-                // case budget of type 0
+
+                // case budget of type expense
                 "SELECT t.* FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
                 "w." + Schema.Wallet.CURRENCY + " AS _wallet_currency, " +
                 "w." + Schema.Wallet.COUNT_IN_TOTAL + " AS _wallet_total FROM " +
@@ -2623,8 +2624,9 @@ import java.util.UUID;
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." + Schema.Transaction.DATE +
                 ") <= DATE(b." + Schema.Budget.END_DATE + ") WHERE b." + Schema.Budget.ID + " = " +
-                String.valueOf(budgetId) + " UNION " +
-                // case budget of type 1
+                budgetId + " UNION " +
+
+                // case budget of type income
                 "SELECT t.* FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
                 "w." + Schema.Wallet.CURRENCY + " AS _wallet_currency, " +
                 "w." + Schema.Wallet.COUNT_IN_TOTAL + " AS _wallet_total FROM " +
@@ -2639,8 +2641,9 @@ import java.util.UUID;
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." +
                 Schema.Transaction.DATE + ") <= DATE(b." + Schema.Budget.END_DATE + ") WHERE b."
-                + Schema.Budget.ID + " = " + String.valueOf(budgetId) + " UNION " +
-                // case budget of type 2
+                + Schema.Budget.ID + " = " + budgetId + " UNION " +
+
+                // case budget of type category
                 "SELECT t.* FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
                 "w." + Schema.Wallet.CURRENCY + " AS _wallet_currency, " +
                 "w." + Schema.Wallet.COUNT_IN_TOTAL + " AS _wallet_total FROM " +
@@ -2659,19 +2662,45 @@ import java.util.UUID;
                 "AND DATE(t." + Schema.Transaction.DATE + ") >= DATE(b." +
                 Schema.Budget.START_DATE + ") AND DATE(t." + Schema.Transaction.DATE +
                 ") <=  DATE(b." + Schema.Budget.END_DATE + ") " + "AND b." + Schema.Budget.ID +
-                " = " + String.valueOf(budgetId) + ") AS t LEFT JOIN " + Schema.Category.TABLE +
-                " AS c ON t." + Schema.Transaction.CATEGORY + " = c." + Schema.Category.ID + " AND c." +
-                Schema.Category.DELETED + " = 0 JOIN " + Schema.Wallet.TABLE + " AS w ON t." +
-                Schema.Transaction.WALLET + " = w." + Schema.Wallet.ID + " AND w." +
-                Schema.Wallet.DELETED + " = 0 LEFT JOIN " + Schema.TransactionPeople.TABLE + " AS tp ON t." +
-                Schema.Transaction.ID + " = tp." + Schema.TransactionPeople.TRANSACTION + " AND tp." +
-                Schema.TransactionPeople.DELETED + " = 0 LEFT JOIN " + Schema.Person.TABLE + " AS pe ON tp." +
-                Schema.TransactionPeople.PERSON + " = pe." + Schema.Person.ID + " AND pe." +
-                Schema.Person.DELETED + " = 0 LEFT JOIN " + Schema.Place.TABLE + " AS p ON t." +
-                Schema.Transaction.PLACE + " = " + Schema.Place.ID + " AND p." + Schema.Place.DELETED +
-                " = 0 LEFT JOIN " + Schema.Event.TABLE + " AS e ON t." + Schema.Transaction.EVENT +
-                " = e." + Schema.Event.ID + " AND e." + Schema.Event.DELETED + " = 0 WHERE t." +
-                Schema.Transaction.DELETED + " = 0 GROUP BY t." + Schema.Transaction.ID;
+                " = " + budgetId + " " +
+
+                // exclude all internal transfers
+                "EXCEPT SELECT Transaction1.* FROM " + Schema.Transfer.TABLE + " AS Transfer " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS Transaction1 " +
+                "ON Transfer." + Schema.Transfer.TRANSACTION_FROM + " = Transaction1." + Schema.Transaction.ID + " " +
+                "OR Transfer." + Schema.Transfer.TRANSACTION_TO + " = Transaction1." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS Transaction2 " +
+                "ON Transfer." + Schema.Transfer.TRANSACTION_FROM + " = Transaction2." + Schema.Transaction.ID + " " +
+                "OR Transfer." + Schema.Transfer.TRANSACTION_TO + " = Transaction2." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS BudgetWallet1 " +
+                "ON Transaction1." + Schema.Transaction.WALLET + " = BudgetWallet1." + Schema.BudgetWallet.WALLET + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS BudgetWallet2 " +
+                "ON Transaction2." + Schema.Transaction.WALLET + " = BudgetWallet2." + Schema.BudgetWallet.WALLET + " " +
+                "AND Transaction1." + Schema.Transaction.ID + " != Transaction2." + Contract.Transaction.ID + " " +
+                "AND BudgetWallet1." + Schema.BudgetWallet.BUDGET + " = " + budgetId + " " +
+                "AND BudgetWallet2." + Schema.BudgetWallet.BUDGET + " = " + budgetId + " " +
+
+                ") AS t " +
+                "LEFT JOIN " + Schema.Category.TABLE + " AS c " +
+                "ON t." + Schema.Transaction.CATEGORY + " = c." + Schema.Category.ID + " " +
+                "AND c." + Schema.Category.DELETED + " = 0 " +
+                "JOIN " + Schema.Wallet.TABLE + " AS w " +
+                "ON t." + Schema.Transaction.WALLET + " = w." + Schema.Wallet.ID + " " +
+                "AND w." + Schema.Wallet.DELETED + " = 0 " +
+                "LEFT JOIN " + Schema.TransactionPeople.TABLE + " AS tp " +
+                "ON t." + Schema.Transaction.ID + " = tp." + Schema.TransactionPeople.TRANSACTION + " " +
+                "AND tp." + Schema.TransactionPeople.DELETED + " = 0 " +
+                "LEFT JOIN " + Schema.Person.TABLE + " AS pe " +
+                "ON tp." + Schema.TransactionPeople.PERSON + " = pe." + Schema.Person.ID + " " +
+                "AND pe." + Schema.Person.DELETED + " = 0 " +
+                "LEFT JOIN " + Schema.Place.TABLE + " AS p " +
+                "ON t." + Schema.Transaction.PLACE + " = " + Schema.Place.ID + " " +
+                "AND p." + Schema.Place.DELETED + " = 0 " +
+                "LEFT JOIN " + Schema.Event.TABLE + " AS e " +
+                "ON t." + Schema.Transaction.EVENT + " = e." + Schema.Event.ID + " " +
+                "AND e." + Schema.Event.DELETED + " = 0 " +
+                "WHERE t." + Schema.Transaction.DELETED + " = 0 " +
+                "GROUP BY t." + Schema.Transaction.ID;
         return queryFrom(subQuery, projection, selection, selectionArgs, sortOrder);
     }
 
