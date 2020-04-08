@@ -2651,7 +2651,18 @@ import java.util.UUID;
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." + Schema.Transaction.DATE +
                 ") <= DATE(b." + Schema.Budget.END_DATE + ") WHERE b." + Schema.Budget.ID + " = " +
-                budgetId + " UNION " +
+                budgetId + " " +
+                // exclude transfers within the budget
+                "AND t." + Schema.Transaction.ID + " NOT IN ( " +
+                "SELECT tf." + Schema.Transfer.TRANSACTION_FROM + " " +
+                "FROM " + Schema.Transfer.TABLE + " AS tf " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS t2 " +
+                "ON tf." + Schema.Transfer.TRANSACTION_TO + " = t2." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS bw2 " +
+                "ON t2." + Schema.Transaction.WALLET + " = bw2." + Schema.BudgetWallet.WALLET + " " +
+                "WHERE bw2." + Schema.BudgetWallet.BUDGET + " = b." + Schema.Budget.ID + " " +
+                ") " +
+                "UNION " +
 
                 // case budget of type income
                 "SELECT t.* FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
@@ -2668,7 +2679,18 @@ import java.util.UUID;
                 ") <= DATETIME('now', 'localtime') AND DATE(t." + Schema.Transaction.DATE +
                 ") >= DATE(b." + Schema.Budget.START_DATE + ") AND DATE(t." +
                 Schema.Transaction.DATE + ") <= DATE(b." + Schema.Budget.END_DATE + ") WHERE b."
-                + Schema.Budget.ID + " = " + budgetId + " UNION " +
+                + Schema.Budget.ID + " = " + budgetId + " " +
+                // exclude transfers within the budget
+                "AND t." + Schema.Transaction.ID + " NOT IN ( " +
+                "SELECT tf." + Schema.Transfer.TRANSACTION_TO + " " +
+                "FROM " + Schema.Transfer.TABLE + " AS tf " +
+                "LEFT JOIN " + Schema.Transaction.TABLE + " AS t2 " +
+                "ON tf." + Schema.Transfer.TRANSACTION_FROM + " = t2." + Schema.Transaction.ID + " " +
+                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS bw2 " +
+                "ON t2." + Schema.Transaction.WALLET + " = bw2." + Schema.BudgetWallet.WALLET + " " +
+                "WHERE bw2." + Schema.BudgetWallet.BUDGET + " = b." + Schema.Budget.ID + " " +
+                ") " +
+                "UNION " +
 
                 // case budget of type category
                 "SELECT t.* FROM(SELECT b.*, w." + Schema.Wallet.ID + " AS _wallet_id, " +
@@ -2690,22 +2712,6 @@ import java.util.UUID;
                 Schema.Budget.START_DATE + ") AND DATE(t." + Schema.Transaction.DATE +
                 ") <=  DATE(b." + Schema.Budget.END_DATE + ") " + "AND b." + Schema.Budget.ID +
                 " = " + budgetId + " " +
-
-                // exclude all internal transfers
-                "EXCEPT SELECT Transaction1.* FROM " + Schema.Transfer.TABLE + " AS Transfer " +
-                "LEFT JOIN " + Schema.Transaction.TABLE + " AS Transaction1 " +
-                "ON Transfer." + Schema.Transfer.TRANSACTION_FROM + " = Transaction1." + Schema.Transaction.ID + " " +
-                "OR Transfer." + Schema.Transfer.TRANSACTION_TO + " = Transaction1." + Schema.Transaction.ID + " " +
-                "LEFT JOIN " + Schema.Transaction.TABLE + " AS Transaction2 " +
-                "ON Transfer." + Schema.Transfer.TRANSACTION_FROM + " = Transaction2." + Schema.Transaction.ID + " " +
-                "OR Transfer." + Schema.Transfer.TRANSACTION_TO + " = Transaction2." + Schema.Transaction.ID + " " +
-                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS BudgetWallet1 " +
-                "ON Transaction1." + Schema.Transaction.WALLET + " = BudgetWallet1." + Schema.BudgetWallet.WALLET + " " +
-                "LEFT JOIN " + Schema.BudgetWallet.TABLE + " AS BudgetWallet2 " +
-                "ON Transaction2." + Schema.Transaction.WALLET + " = BudgetWallet2." + Schema.BudgetWallet.WALLET + " " +
-                "AND Transaction1." + Schema.Transaction.ID + " != Transaction2." + Contract.Transaction.ID + " " +
-                "AND BudgetWallet1." + Schema.BudgetWallet.BUDGET + " = " + budgetId + " " +
-                "AND BudgetWallet2." + Schema.BudgetWallet.BUDGET + " = " + budgetId + " " +
 
                 ") AS t " +
                 "LEFT JOIN " + Schema.Category.TABLE + " AS c " +
