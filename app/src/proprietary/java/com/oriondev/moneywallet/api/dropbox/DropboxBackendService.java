@@ -22,6 +22,8 @@ package com.oriondev.moneywallet.api.dropbox;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import androidx.activity.ComponentActivity;
 import androidx.annotation.NonNull;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -72,12 +74,12 @@ public class DropboxBackendService extends AbstractBackendServiceDelegate {
     }
 
     @Override
-    public void setup(Activity activity) throws BackendException {
+    public void setup(ComponentActivity activity) throws BackendException {
         Auth.startOAuth2Authentication(activity, BuildConfig.API_KEY_DROPBOX);
     }
 
     @Override
-    public void teardown(final Activity activity) throws BackendException {
+    public void teardown(final ComponentActivity activity) throws BackendException {
         ThemedDialog.buildMaterialDialog(activity)
                 .title(R.string.title_warning)
                 .content(R.string.message_backup_service_dropbox_disconnect)

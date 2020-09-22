@@ -19,9 +19,10 @@
 
 package com.oriondev.moneywallet.api;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.activity.ComponentActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
@@ -39,21 +40,21 @@ public abstract class AbstractBackendServiceDelegate {
     public abstract String getId();
 
     @StringRes
-    public abstract int getName();
+    public abstract int getBackupCoverMessage();
 
     @StringRes
-    public abstract int getBackupCoverMessage();
+    public abstract int getName();
 
     @StringRes
     public abstract int getBackupCoverAction();
 
     public abstract boolean isServiceEnabled(Context context);
 
-    public abstract void setup(Activity activity) throws BackendException;
+    public abstract void setup(ComponentActivity activity) throws BackendException;
 
-    public abstract void teardown(Activity activity) throws BackendException;
+    public abstract void teardown(ComponentActivity activity) throws BackendException;
 
-    public boolean handlePermissionsResult(Context context, int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public boolean handlePermissionsResult(Context context, int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         return false;
     }
 

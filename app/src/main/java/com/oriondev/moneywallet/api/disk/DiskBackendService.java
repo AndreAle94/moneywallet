@@ -20,28 +20,29 @@
 package com.oriondev.moneywallet.api.disk;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.oriondev.moneywallet.R;
-import com.oriondev.moneywallet.api.BackendException;
 import com.oriondev.moneywallet.api.AbstractBackendServiceDelegate;
+import com.oriondev.moneywallet.api.BackendException;
 import com.oriondev.moneywallet.api.BackendServiceFactory;
 import com.oriondev.moneywallet.ui.view.theme.ThemedDialog;
+
+import androidx.activity.ComponentActivity;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by andrea on 21/11/18.
  */
 public class DiskBackendService extends AbstractBackendServiceDelegate {
-
-    private static final int REQUEST_PERMISSION = 2364;
 
     public DiskBackendService(BackendServiceStatusListener listener) {
         super(listener);
@@ -75,7 +76,23 @@ public class DiskBackendService extends AbstractBackendServiceDelegate {
     }
 
     @Override
-    public void setup(final Activity activity) throws BackendException {
+    public void setup(final ComponentActivity activity) throws BackendException {
+        final ActivityResultLauncher<String> launcher = activity.registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                new ActivityResultCallback<Boolean>() {
+                    @Override
+                    public void onActivityResult(Boolean isGranted) {
+                        setBackendServiceEnabled(isGranted);
+                        if (!isGranted) {
+                            setBackendServiceEnabled(false);
+                            ThemedDialog.buildMaterialDialog(activity)
+                                    .title(R.string.title_warning)
+                                    .content(R.string.message_permission_required_not_granted)
+                                    .show();
+                        }
+                    }
+                }
+        );
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             ThemedDialog.buildMaterialDialog(activity)
                     .title(R.string.title_request_permission)
@@ -86,34 +103,23 @@ public class DiskBackendService extends AbstractBackendServiceDelegate {
 
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION);
+                            launcher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
                         }
 
                     }).show();
         } else {
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION);
+            launcher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
     }
 
     @Override
-    public void teardown(Activity activity) throws BackendException {
+    public void teardown(ComponentActivity activity) throws BackendException {
         // action not supported: cannot revoke storage permission
     }
 
     @Override
     public boolean handlePermissionsResult(Context context, int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == DiskBackendService.REQUEST_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                setBackendServiceEnabled(true);
-            } else {
-                setBackendServiceEnabled(false);
-                ThemedDialog.buildMaterialDialog(context)
-                        .title(R.string.title_warning)
-                        .content(R.string.message_permission_required_not_granted)
-                        .show();
-            }
-            return true;
-        }
+        // Do nothing. This is handled by the ActivityResultCallback.
         return false;
     }
 }
