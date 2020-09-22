@@ -646,4 +646,21 @@
     <string name="message_no_event_found">Keine Ereignisse gefunden</string>
     <string name="message_no_currency_found">Keine Währungen gefunden</string>
     <string name="message_no_budget_found">Kein Buget gefunden</string>
+    <string name="hint_operation_in_progress">Vorgang läuft…</string>
+    <string name="title_activity_new_recurrence">Neue wiederkehrende Zahlung</string>
+    <string name="title_activity_edit_recurrence">Wiederkehrende Zahlung bearbeiten</string>
+    <string name="title_fragment_item_saving">Erspartes</string>
+    <string name="title_fragment_item_recurrence">Wiederkehrende Zahlung</string>
+    <string name="cover_message_backup_storage_access_framework_title">Die Anwednung kann Sicherungen auf jedem Dokument-Provider (z.B. Dropbox, Nextcloud, OneDrive, etc.) anlegen und abrufen.</string>
+    <string name="cover_message_backup_storage_access_framework_button">Weiter</string>
+    <string name="message_multiply_currency_decimals">Die Zahlenwerte in der Datenbank müssen auf die neue Anzahl Dezimalstellen angepasst werden. Dieser Vorgang kann einige Zeit in Anspruch nehemen. Der Vorgang kann auch Übersprungen werden. In diesem Fall werden die Zahlenwerte allerdings dividiert durch %d angezeigt.</string>
+    <string name="message_backup_service_storage_access_framework_disconnect">Sicher, dass du den aktuellen Dokument-Provider trennen möchtest? Es werden keine Dateien gelöscht.</string>
+    <string name="spinner_item_group_type_daily">Tägliche Gruppierung</string>
+    <string name="spinner_item_group_type_weekly">Wöchentliche Gruppierung</string>
+    <string name="spinner_item_group_type_monthly">Monatliche Gruppierung</string>
+    <string name="spinner_item_group_type_yearly">Jährliche Gruppierung</string>
+    <string name="notification_title_backup_restoring">Wiederherstellung</string>
+    <string name="notification_title_backup_restoring_failed">Wiederherstellung fehlgeschlagen</string>
+    <string name="help_verify_created_pin_code_failed">PIN stimmt nicht überein. Lege eine neue PIN an.</string>
+    <string name="recurrence_type_monthly_repeat_same_day">Jeden Monat am selben Tag</string>
 </resources>

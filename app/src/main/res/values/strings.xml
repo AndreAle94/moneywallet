@@ -457,7 +457,7 @@
     <string name="service_backup_drop_box">"DropBox"</string>
     <string name="service_backup_google_drive">"Google Drive"</string>
     <string name="service_backup_external_memory">"External Memory"</string>
-    <string name="service_backup_storage_access_framework">"Storage Access Framework"</string>
+    <string name="service_backup_storage_access_framework" translatable="false">"Storage Access Framework"</string>
 
     <string name="setting_title_user_interface">"User interface"</string>
     <string name="setting_title_utility">"Utilities"</string>
