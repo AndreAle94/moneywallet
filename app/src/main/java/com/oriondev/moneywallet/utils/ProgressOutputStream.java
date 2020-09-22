@@ -19,13 +19,13 @@
 
 package com.oriondev.moneywallet.utils;
 
-import androidx.annotation.NonNull;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by andrea on 26/07/18.
@@ -34,7 +34,7 @@ public class ProgressOutputStream extends OutputStream {
 
     private static final int MIN_NOTIFY_RANGE = 5;
 
-    private final FileOutputStream mOutputStream;
+    private final OutputStream mOutputStream;
     private final DownloadProgressListener mListener;
 
     private final long mFileSize;
@@ -42,7 +42,11 @@ public class ProgressOutputStream extends OutputStream {
     private int mLastPercentage;
 
     public ProgressOutputStream(File file, long size, DownloadProgressListener listener) throws FileNotFoundException {
-        mOutputStream = new FileOutputStream(file);
+        this(new FileOutputStream(file), size, listener);
+    }
+
+    public ProgressOutputStream(OutputStream out, long size, DownloadProgressListener listener) throws FileNotFoundException {
+        mOutputStream = out;
         mListener = listener;
         mFileSize = size;
         mProgress = 0L;

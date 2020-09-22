@@ -27,12 +27,19 @@ public class BackendException extends Exception {
     private boolean mIsRecoverable;
 
     public BackendException(String message) {
-        super(message);
-        mIsRecoverable = false;
+        this(message, null);
+    }
+
+    public BackendException(String message, Throwable cause) {
+        this(message, cause, false);
     }
 
     public BackendException(String message, boolean isRecoverable) {
-        super(message);
+        this(message, null, isRecoverable);
+    }
+
+    public BackendException(String message, Throwable cause, boolean isRecoverable) {
+        super(message, cause);
         mIsRecoverable = isRecoverable;
     }
 
