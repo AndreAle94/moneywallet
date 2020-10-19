@@ -342,10 +342,12 @@
     <string name="message_no_file_found">"No file found"</string>
     <string name="message_error_backend_recoverable">"Connection problem. Please retry."</string>
 
+    <string name="cover_message_backup_storage_access_framework_title">"The application can create and restore the backups from any document provider (e.g. Nextcloud, Dropbox or your filesystem)"</string>
     <string name="cover_message_backup_external_memory_title">"The application can create and restore the backups directly from the external storage of the device"</string>
     <string name="cover_message_backup_dropbox_title">"The application can create and restore the backups from your personal Dropbox account"</string>
     <string name="cover_message_backup_google_drive_title">"The application can create and restore the backups from your personal Google Drive account"</string>
     <string name="cover_message_backup_external_memory_button">"Continue"</string>
+    <string name="cover_message_backup_storage_access_framework_button">"Continue"</string>
     <string name="cover_message_backup_dropbox_button">"Login"</string>
     <string name="cover_message_backup_google_drive_button">"Login"</string>
 
@@ -388,6 +390,7 @@
     <string name="message_backup_creation_failed">"Failure during the creation of the backup. Message: %s"</string>
     <string name="message_backup_restoring_failed">"Failure during the restoring of the backup. Message: %s"</string>
     <string name="message_backup_service_dropbox_disconnect">"Are you sure you want to disconnect your Dropbox account?"</string>
+    <string name="message_backup_service_storage_access_framework_disconnect">"Are you sure you want to release the current content provider? No files will be deleted."</string>
     <string name="message_backup_service_google_drive_disconnect">"Are you sure you want to disconnect your Google Drive account?"</string>
     <string name="message_action_archive_wallet">"Are you sure you want to archive this wallet? It will not be visible in the menu anymore."</string>
     <string name="message_action_unarchive_wallet">"Are you sure you want to unarchive this wallet? It will be visible in the menu again."</string>
@@ -454,6 +457,7 @@
     <string name="service_backup_drop_box">"DropBox"</string>
     <string name="service_backup_google_drive">"Google Drive"</string>
     <string name="service_backup_external_memory">"External Memory"</string>
+    <string name="service_backup_storage_access_framework" translatable="false">"Storage Access Framework"</string>
 
     <string name="setting_title_user_interface">"User interface"</string>
     <string name="setting_title_utility">"Utilities"</string>

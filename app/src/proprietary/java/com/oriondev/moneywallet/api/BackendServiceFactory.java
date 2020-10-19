@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.api;
 
 import android.content.Context;
+import android.os.Build;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.disk.DiskBackendService;
@@ -28,11 +29,14 @@ import com.oriondev.moneywallet.api.dropbox.DropboxBackendService;
 import com.oriondev.moneywallet.api.dropbox.DropboxBackendServiceAPI;
 import com.oriondev.moneywallet.api.google.GoogleDriveBackendService;
 import com.oriondev.moneywallet.api.google.GoogleDriveBackendServiceAPI;
+import com.oriondev.moneywallet.api.saf.SAFBackendService;
+import com.oriondev.moneywallet.api.saf.SAFBackendServiceAPI;
 import com.oriondev.moneywallet.model.BackupService;
 import com.oriondev.moneywallet.model.DropBoxFile;
 import com.oriondev.moneywallet.model.GoogleDriveFile;
 import com.oriondev.moneywallet.model.IFile;
 import com.oriondev.moneywallet.model.LocalFile;
+import com.oriondev.moneywallet.model.SAFFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +49,7 @@ public class BackendServiceFactory {
     public static final String SERVICE_ID_DROPBOX = "dropbox";
     public static final String SERVICE_ID_GOOGLE_DRIVE = "google_drive";
     public static final String SERVICE_ID_EXTERNAL_MEMORY = "external_memory";
+    public static final String SERVICE_ID_SAF = "storage_access_framework";
 
     public static AbstractBackendServiceDelegate getServiceById(String backendId, AbstractBackendServiceDelegate.BackendServiceStatusListener listener) {
         switch (backendId) {
@@ -54,6 +59,8 @@ public class BackendServiceFactory {
                 return new GoogleDriveBackendService(listener);
             case SERVICE_ID_EXTERNAL_MEMORY:
                 return new DiskBackendService(listener);
+            case SERVICE_ID_SAF:
+                return new SAFBackendService(listener);
         }
         return null;
     }
@@ -66,6 +73,8 @@ public class BackendServiceFactory {
                 return new GoogleDriveBackendServiceAPI(context);
             case SERVICE_ID_EXTERNAL_MEMORY:
                 return new DiskBackendServiceAPI();
+            case SERVICE_ID_SAF:
+                return new SAFBackendServiceAPI(context);
             default:
                 throw new BackendException("Invalid backend");
         }
@@ -76,6 +85,9 @@ public class BackendServiceFactory {
         services.add(new BackupService(SERVICE_ID_DROPBOX, R.drawable.ic_dropbox_24dp, R.string.service_backup_drop_box));
         services.add(new BackupService(SERVICE_ID_GOOGLE_DRIVE, R.drawable.ic_google_drive_24dp, R.string.service_backup_google_drive));
         services.add(new BackupService(SERVICE_ID_EXTERNAL_MEMORY, R.drawable.ic_sd_24dp, R.string.service_backup_external_memory));
+        if (Build.VERSION.SDK_INT >= 21) {
+            services.add(new BackupService(SERVICE_ID_SAF, R.drawable.ic_storage_black_24dp, R.string.service_backup_storage_access_framework));
+        }
         return services;
     }
 
@@ -88,6 +100,8 @@ public class BackendServiceFactory {
                     return new GoogleDriveFile(encoded);
                 case SERVICE_ID_EXTERNAL_MEMORY:
                     return new LocalFile(encoded);
+                case SERVICE_ID_SAF:
+                    return new SAFFile(encoded);
             }
         }
         return null;
