@@ -93,7 +93,7 @@ public class BackupHandlerIntentService extends IntentService {
     private static final String ATTACHMENT_FOLDER = "attachments";
     private static final String BACKUP_CACHE_FOLDER = "backups";
     private static final String TEMP_FOLDER = "temp";
-    private static final String FILE_DATETIME_PATTERN = "yyyy-MM-dd_HH:mm:ss";
+    private static final String FILE_DATETIME_PATTERN = "yyyy-MM-dd_HH-mm-ss";
     private static final String OUTPUT_FILE = "backup_%s%s";
 
     private static final int ACTION_NONE = 0;
