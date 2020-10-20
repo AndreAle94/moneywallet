@@ -25,10 +25,6 @@
           "icon": "ic_perm_identity_black_24dp",
           "title": "Adam Lapinski"
         },{
-          "icon": "ic_google_plus_black_24dp",
-          "title_resource": "about_hint_google_plus",
-          "link": "https://plus.google.com/u/0/+AdamLapinski_Yeti"
-        },{
           "icon": "ic_public_black_24dp",
           "title_resource": "about_hint_website",
           "link": "http://www.yeti-designs.com"
