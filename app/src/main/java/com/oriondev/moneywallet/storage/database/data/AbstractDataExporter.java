@@ -32,7 +32,7 @@ public abstract class AbstractDataExporter {
     }
 
     protected String getDefaultFileName(String extension) {
-        String dateTimeString = DateUtils.getSQLDateTimeString(new Date());
+        String dateTimeString = DateUtils.getFilenameDateTimeString(new Date());
         return "MoneyWallet_export_" + dateTimeString + extension;
     }
 
