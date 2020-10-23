@@ -36,6 +36,7 @@ public class DateUtils {
 
     private static final String SQL_DATE = "yyyy-MM-dd";
     private static final String SQL_DATETIME = "yyyy-MM-dd HH:mm:ss";
+    private static final String FILENAME_DATETIME = "yyyy-MM-dd_HH-mm-ss";
 
     public static Date getDateFromSQLDateString(String date) {
         DateFormat dateFormat = new SimpleDateFormat(SQL_DATE, Locale.ENGLISH);
@@ -73,6 +74,11 @@ public class DateUtils {
     public static String getSQLDateTimeString(long millis) {
         DateFormat format = new SimpleDateFormat(SQL_DATETIME, Locale.ENGLISH);
         return format.format(new Date(millis));
+    }
+
+    public static String getFilenameDateTimeString(Date date) {
+        DateFormat format = new SimpleDateFormat(FILENAME_DATETIME, Locale.ENGLISH);
+        return format.format(date);
     }
 
     public static Date setTime(Date date, int hour, int minute, int second, int millis) {
