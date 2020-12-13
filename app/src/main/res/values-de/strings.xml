@@ -249,7 +249,7 @@
     <string name="activity_donation_action_share_using">Teile über</string>
     <string name="activity_donation_crypto_address_copied">Adresse kopiert</string>
     <string name="activity_intro_title_slide_4">Cloud-Sicherungen</string>
-    <string name="activity_launcher_first_start_button_first_time">Erstes mal</string>
+    <string name="activity_launcher_first_start_button_first_time">Erstes Mal</string>
     <string name="activity_launcher_legacy_edition_upgrade_title">Erneuere…</string>
     <string name="adapter_available_money">Verfügbar:</string>
     <string name="adapter_current_money">Aktuell:</string>
@@ -309,7 +309,7 @@
     <string name="error_input_invalid_date_range">Kein gültiger Datumsbereich</string>
     <string name="error_input_invalid_multiple_wallets">Geldbörsen müssen die gleiche Währung besitzen</string>
     <string name="error_input_iso_not_valid">Kein gültiger ISO-Code</string>
-    <string name="error_input_missing_budget_type">Wähle einen Bugettyp</string>
+    <string name="error_input_missing_budget_type">Wähle einen Budgettyp</string>
     <string name="error_input_missing_date">Wähle ein Datum</string>
     <string name="error_input_missing_description">Gib eine Beschreibung an</string>
     <string name="error_input_missing_end_date">Wähle ein Datum</string>
@@ -646,7 +646,7 @@
     <string name="message_no_file_found">Keine Dateien gefunden</string>
     <string name="message_no_event_found">Keine Ereignisse gefunden</string>
     <string name="message_no_currency_found">Keine Währungen gefunden</string>
-    <string name="message_no_budget_found">Kein Buget gefunden</string>
+    <string name="message_no_budget_found">Kein Budget gefunden</string>
     <string name="hint_operation_in_progress">Vorgang läuft…</string>
     <string name="title_activity_new_recurrence">Neue wiederkehrende Zahlung</string>
     <string name="title_activity_edit_recurrence">Wiederkehrende Zahlung bearbeiten</string>
