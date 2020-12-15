@@ -158,7 +158,7 @@
     <string name="message_no_wallet_found">"Keine Geldbörse gefunden"</string>
     <string name="message_no_transaction_found">"Keine Transaktion gefunden"</string>
     <string name="message_no_transfer_found">"Keine Überweisung gefunden"</string>
-    <string name="message_no_category_found">"Kategorie nicht gefunden"</string>
+    <string name="message_no_category_found">"Keine Kategorie gefunden"</string>
     <string name="message_no_debt_found">"Keine Schulden gefunden"</string>
     <string name="message_no_recurrence_found">"Keine regelmäßige Transaktion gefunden"</string>
     <string name="setting_title_user_interface">"Benutzeroberfläche"</string>
