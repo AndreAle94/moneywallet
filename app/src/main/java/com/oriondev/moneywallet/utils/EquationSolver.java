@@ -21,11 +21,11 @@ package com.oriondev.moneywallet.utils;
 
 import android.os.Bundle;
 
+import androidx.annotation.VisibleForTesting;
+
 import com.oriondev.moneywallet.model.CurrencyUnit;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 
 /**
  * Created by andrea on 31/03/18.
@@ -39,10 +39,12 @@ public class EquationSolver {
 
     private final Controller mController;
 
-    private String mFirstNumber;
+    @VisibleForTesting
+    /*package-local*/ String mFirstNumber;
     private String mSecondNumber;
     private Operation mOperation;
-    private CurrencyUnit mCurrency;
+    @VisibleForTesting
+    /*package-local*/ CurrencyUnit mCurrency;
 
     public EquationSolver(Bundle savedInstanceState, Controller controller) {
         mController = controller;
@@ -177,17 +179,11 @@ public class EquationSolver {
             // Error occurred during calculation
             return 0L;
         }
-        double parsedNumber = parseNumber(mFirstNumber).doubleValue();
-        if (!Double.isInfinite(parsedNumber) && !Double.isNaN(parsedNumber)) {
-            BigDecimal number = new BigDecimal(parsedNumber, MathContext.DECIMAL64);
-            if (mCurrency != null) {
-                BigDecimal multiplier = new BigDecimal(Math.pow(10, mCurrency.getDecimals()));
-                BigDecimal result = number.multiply(multiplier);
-                return result.longValue();
-            }
-            return number.longValue();
+        BigDecimal parsedNumber = parseNumber(mFirstNumber);
+        if (mCurrency != null) {
+            return parsedNumber.movePointRight(mCurrency.getDecimals()).longValue();
         }
-        return 0L;
+        return parsedNumber.longValue();
     }
 
     private BigDecimal parseNumber(String number) {

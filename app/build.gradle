@@ -128,6 +128,7 @@ dependencies {
     osmImplementation 'org.osmdroid:osmdroid-android:6.1.1'
     // test dependencies (local tests)
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:3.6.28'
     // android test dependencies (on-device tests)
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:core:1.2.0'
