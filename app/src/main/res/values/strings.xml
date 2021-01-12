@@ -697,7 +697,7 @@
     <string name="activity_donation_action_share_message">"Hi, take a look at %s"</string>
     <string name="activity_donation_action_share_using">"Share using"</string>
     <string name="activity_donation_action_rate_title">"Rate"</string>
-    <string name="activity_donation_action_rate_content">"Write a 5 start review telling us what you think about it"</string>
+    <string name="activity_donation_action_rate_content">"Write a 5 star review telling us what you think about it"</string>
     <string name="activity_donation_action_translate_title">"Translate"</string>
     <string name="activity_donation_action_translate_content">"Localize the strings in your language"</string>
     <string name="activity_donation_action_contribute_title">"Contribute"</string>
