@@ -491,7 +491,7 @@
     <string name="setting_title_database_backup_services">Резервное копирование</string>
     <string name="setting_summary_database_backup_services">Создание и восстановление базы данных</string>
     <string name="setting_category_database_import_export">Импорт/Экспорт</string>
-    <string name="setting_title_import_data">Импортировать данные</string>
+    <string name="setting_title_import_data">Импортировать данные</string>ё
     <string name="setting_summary_import_data">Загрузить данные из внешнего файла</string>
     <string name="setting_title_export_data">Экспортировать данные</string>
     <string name="setting_summary_export_data">Сохранить данные приложения в файл</string>

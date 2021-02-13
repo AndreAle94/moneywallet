@@ -213,6 +213,21 @@
         },
         {
           "resource": "ic_icon_pos"
+        },
+        {
+          "resource": "ic_bank_blue_card"
+        },
+        {
+          "resource": "ic_bank_green_card"
+        },
+        {
+          "resource": "ic_bank_red_card"
+        },
+        {
+          "resource": "ic_bank_yellow_card"
+        },
+        {
+          "resource": "ic_bank_black_card"
         }
       ]
     }
