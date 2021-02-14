@@ -18,7 +18,7 @@
   -->
 
 <resources>
-    <string name="app_name">MoneyWallet</string>
+    <string name="app_name" translatable="false">MoneyWalletX</string>
 
     <string name="menu_transaction">"Transactions"</string>
     <string name="menu_category">"Categories"</string>

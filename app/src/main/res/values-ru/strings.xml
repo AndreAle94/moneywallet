@@ -169,7 +169,6 @@
     <string name="description_backspace_icon">Удалить символ</string>
     <string name="description_place_picker_icon">Значок выбора места</string>
     <string name="description_setting_category_icon">Значок раздела настроек</string>
-    <string name="app_name">MoneyWallet</string>
     <string name="menu_recurrences">Регулярные платежи</string>
     <string name="menu_models">Шаблоны</string>
     <string name="menu_place">Места</string>

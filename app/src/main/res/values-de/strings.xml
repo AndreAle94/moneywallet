@@ -256,7 +256,6 @@
     <string name="adapter_needed_money">Benötigt:</string>
     <string name="adapter_tax_money">Steuer</string>
     <string name="adapter_used_money">Verwendet:</string>
-    <string name="app_name">MoneyWallet</string>
     <string name="bottom_sheet_icon_picker_action_change_bg_color">Hintergrundfarbe ändern</string>
     <string name="bottom_sheet_icon_picker_action_change_icon">Symbol ändern</string>
     <string name="bottom_sheet_icon_picker_action_remove_icon">Symbol entfernen</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MoneyWallet</string>
     <string name="about_hint_developer">Fejlesztő</string>
     <string name="about_hint_author">Tulajdonos</string>
     <string name="about_hint_changelog">Változások listája</string>
