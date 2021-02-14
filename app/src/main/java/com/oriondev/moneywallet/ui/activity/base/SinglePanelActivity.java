@@ -32,6 +32,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.oriondev.moneywallet.R;
+import com.oriondev.moneywallet.ui.view.theme.ITheme;
+import com.oriondev.moneywallet.ui.view.theme.ThemeEngine;
 import com.oriondev.moneywallet.utils.Utils;
 
 /**
@@ -45,12 +47,22 @@ public abstract class SinglePanelActivity extends BaseActivity implements Toolba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(ThemeEngine.getTheme().getStyle());
         onInflateRootLayout();
         onSetupRootLayout();
         onConfigureRootLayout(savedInstanceState);
         onSetupFloatingActionButton(mFloatingActionButton);
         onViewCreated(savedInstanceState);
         setupToolbar();
+    }
+
+    @Override
+    public void onThemeChanged(ITheme theme) {
+        // Recreate the activity to fully apply the theme
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 
     protected void onInflateRootLayout() {
