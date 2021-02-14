@@ -62,6 +62,7 @@ import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.broadcast.LocalAction;
 import com.oriondev.moneywallet.model.ColorIcon;
 import com.oriondev.moneywallet.model.Money;
+import com.oriondev.moneywallet.model.VectorIcon;
 import com.oriondev.moneywallet.model.WalletAccount;
 import com.oriondev.moneywallet.service.BackupHandlerIntentService;
 import com.oriondev.moneywallet.storage.database.Contract;
@@ -201,6 +202,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
      * @param name string resource of the name of the item.
      * @return the created drawer item.
      */
+    @SuppressWarnings("rawtypes")
     private IDrawerItem createDrawerItem(int identifier, @DrawableRes int icon, @StringRes int name) {
         return new PrimaryDrawerItem()
                 .withIdentifier(identifier)
@@ -582,7 +584,8 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
             return new WalletAccount()
                     .withIdentifier(PreferenceManager.TOTAL_WALLET_ID)
                     .withName(name)
-                    .withIcon(this, new ColorIcon("#000000", name.substring(0, 1)))
+//                    .withIcon(this, new ColorIcon("#000000", name.substring(0, 1)))
+                    .withIcon(this, new VectorIcon("ic_bank_all"))
                     .withMoney(money)
                     .withNameShown(true);
         }
@@ -636,6 +639,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
         }
     }
 
+    @SuppressWarnings("rawtypes")
     private void applyNavigationDrawerBodyTheme(ITheme theme) {
         RecyclerView recyclerView = mDrawer.getRecyclerView();
         ThemedRecyclerView.applyTheme(recyclerView, theme);

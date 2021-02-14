@@ -94,8 +94,8 @@ public class PreferenceManager {
     public static final long NO_CURRENT_WALLET = -1L;
     public static final long TOTAL_WALLET_ID = 0L;
 
-    private static final int DEFAULT_COLOR_INCOME = Color.BLUE;
-    private static final int DEFAULT_COLOR_EXPENSE = Color.RED;
+    private static final int DEFAULT_COLOR_INCOME = Color.parseColor("#FF8BC34A");
+    private static final int DEFAULT_COLOR_EXPENSE = Color.parseColor("#FFFF5722");
 
     private static SharedPreferences mPreferences;
 
@@ -192,7 +192,7 @@ public class PreferenceManager {
     }
 
     public static void setServiceApiKey(int service, String key) {
-        mPreferences.edit().putString(SERVICE_API_KEY + String.valueOf(service), key).apply();
+        mPreferences.edit().putString(SERVICE_API_KEY + service, key).apply();
     }
 
     public static void setCurrencyConverterLastCurrency1(String iso) {
@@ -278,12 +278,10 @@ public class PreferenceManager {
     }
 
     public static boolean hasCurrentExchangeRateServiceDefaultApiKey() {
-        switch (getCurrentExchangeRateService()) {
-            case SERVICE_OPEN_EXCHANGE_RATE:
-                return !TextUtils.isEmpty(BuildConfig.API_KEY_OPEN_EXCHANGE_RATES) && !"INSERT_API_KEY_HERE".equals(BuildConfig.API_KEY_OPEN_EXCHANGE_RATES);
-            default:
-                return false;
+        if (getCurrentExchangeRateService() == SERVICE_OPEN_EXCHANGE_RATE) {
+            return !TextUtils.isEmpty(BuildConfig.API_KEY_OPEN_EXCHANGE_RATES) && !"INSERT_API_KEY_HERE".equals(BuildConfig.API_KEY_OPEN_EXCHANGE_RATES);
         }
+        return false;
     }
 
     public static String getCurrentExchangeRateServiceCustomApiKey() {
@@ -299,7 +297,7 @@ public class PreferenceManager {
     }
 
     public static String getServiceApiKey(int service) {
-        return mPreferences.getString(SERVICE_API_KEY + String.valueOf(service), null);
+        return mPreferences.getString(SERVICE_API_KEY + service, null);
     }
 
     public static String getCurrencyConverterLastCurrency1() {

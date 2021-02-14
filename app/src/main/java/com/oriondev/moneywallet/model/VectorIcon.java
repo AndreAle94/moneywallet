@@ -46,6 +46,10 @@ public class VectorIcon extends Icon {
         mResourceName = jsonObject.getString(RESOURCE);
     }
 
+    public VectorIcon(String resourceName) {
+        mResourceName = resourceName;
+    }
+
     protected VectorIcon(Parcel source) {
         mResourceName = source.readString();
     }
