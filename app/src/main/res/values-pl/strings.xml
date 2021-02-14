@@ -561,7 +561,7 @@
     <string name="about_hint_translators">"Tłumacze"</string>
 
     <string name="activity_launcher_legacy_edition_upgrade_title">"Aktualizacja…"</string>
-    <string name="activity_launcher_first_start_title">"Witamy w MoneyWallet"</string>
+    <string name="activity_launcher_first_start_title">"Witamy w MoneyWalletX"</string>
     <string name="activity_launcher_first_start_content">"Czy używasz tej aplikacji po raz pierwszy, czy chcesz przywrócić poprzednią kopię zapasową?"</string>
     <string name="activity_launcher_first_start_button_first_time">"Pierwszy raz"</string>
     <string name="activity_launcher_first_start_button_restore_backup">"Przywróc kopię zapasową"</string>

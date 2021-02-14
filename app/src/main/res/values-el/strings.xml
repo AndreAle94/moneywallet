@@ -557,7 +557,7 @@
     <string name="about_hint_translators">"Μεταφραστές"</string>
 
     <string name="activity_launcher_legacy_edition_upgrade_title">"Γίνεται ενημέρωση.."</string>
-    <string name="activity_launcher_first_start_title">"Καλωσήρθατε στο MoneyWallet"</string>
+    <string name="activity_launcher_first_start_title">"Καλωσήρθατε στο MoneyWalletX"</string>
     <string name="activity_launcher_first_start_content">"Είναι η πρώτη σας φορά που χρησιμοποιείτε αυτή την εφαρμογή ή θέλετε να επαναφέρετε κάποιο προηγούμενο αντίγραφο ασφαλείας;"</string>
     <string name="activity_launcher_first_start_button_first_time">"Πρώτη φορά"</string>
     <string name="activity_launcher_first_start_button_restore_backup">"Επαναφορά αντίγραφου ασφαλείας"</string>

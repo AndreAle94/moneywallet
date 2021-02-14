@@ -186,7 +186,7 @@
     <string name="about_hint_version">"Version"</string>
     <string name="about_hint_changelog">"Changelog"</string>
     <string name="about_hint_translators">"Übersetzer"</string>
-    <string name="activity_launcher_first_start_title">Willkommen bei MoneyWallet</string>
+    <string name="activity_launcher_first_start_title">Willkommen bei MoneyWalletX</string>
     <string name="activity_launcher_first_start_content">Benutzt du die App zum ersten Mal oder möchtest du ein Backup wiederherstellen?</string>
     <string name="activity_launcher_first_start_button_restore_backup">Backup wiederherstellen</string>
     <string name="activity_intro_title_slide_1">Keine bösen Überraschungen mehr</string>

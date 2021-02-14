@@ -522,7 +522,7 @@
     <string name="about_hint_md_icons">Значки в стиле Material Design</string>
     <string name="about_hint_icon_pack">Набор значков</string>
     <string name="activity_launcher_legacy_edition_upgrade_title">Обновление…</string>
-    <string name="activity_launcher_first_start_title">Добро пожаловать в MoneyWallet</string>
+    <string name="activity_launcher_first_start_title">Добро пожаловать в MoneyWalletX</string>
     <string name="activity_launcher_first_start_content">Это ваше первое знакомство с приложением, или у вас есть резервная копия?</string>
     <string name="activity_launcher_first_start_button_first_time">Первый запуск</string>
     <string name="activity_launcher_first_start_button_restore_backup">Восстановить</string>

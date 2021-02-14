@@ -509,7 +509,7 @@
     <string name="about_hint_translators">"مترجمان"</string>
 
     <string name="activity_launcher_legacy_edition_upgrade_title">"ارتقاء …"</string>
-    <string name="activity_launcher_first_start_title">"به MoneyWallet خوش آمدید"</string>
+    <string name="activity_launcher_first_start_title">"به MoneyWalletX خوش آمدید"</string>
     <string name="activity_launcher_first_start_content">"آیا اولین بار است که شما از این برنامه استفاده می کنید یا میخواهید پشتیبان قبلی را بازگردانید؟"</string>
     <string name="activity_launcher_first_start_button_first_time">"بار اول"</string>
     <string name="activity_launcher_first_start_button_restore_backup">"بازگرداندن پشتیبان"</string>

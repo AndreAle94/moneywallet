@@ -556,7 +556,7 @@
     <string name="about_hint_translators">Traducteurs</string>
 
     <string name="activity_launcher_legacy_edition_upgrade_title">"Mise à jour…"</string>
-    <string name="activity_launcher_first_start_title">Bienvenue sur MoneyWallet</string>
+    <string name="activity_launcher_first_start_title">Bienvenue sur MoneyWalletX</string>
     <string name="activity_launcher_first_start_content">C\'est la première fois que vous utilisez cette application ou voulez-vous restaurer une sauvegarde?</string>
     <string name="activity_launcher_first_start_button_first_time">Première fois</string>
     <string name="activity_launcher_first_start_button_restore_backup">Restaurer une sauvegarde</string>

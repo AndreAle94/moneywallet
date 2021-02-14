@@ -542,7 +542,7 @@
     <string name="about_hint_translators"> "Çevirmenler" </string>
 
     <string name="activity_launcher_legacy_edition_upgrade_title"> "Yükseltme…" </string>
-    <string name="activity_launcher_first_start_title"> "MoneyWallet'e Hoş Geldiniz" </string>
+    <string name="activity_launcher_first_start_title"> "MoneyWalletX'e Hoş Geldiniz" </string>
     <string name="activity_launcher_first_start_content"> "Bu uygulamayı ilk kez kullanıyor musunuz veya önceki bir yedeği geri yüklemek mi istiyorsunuz?" </string>
     <string name="activity_launcher_first_start_button_first_time"> "İlk kez" </string>
     <string name="activity_launcher_first_start_button_restore_backup"> "Yedeklemeyi geri yükle" </string>

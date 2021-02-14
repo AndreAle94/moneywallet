@@ -22,7 +22,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.oriondev.moneywallet"
+        applicationId "com.oriondev.moneywalletx"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 74

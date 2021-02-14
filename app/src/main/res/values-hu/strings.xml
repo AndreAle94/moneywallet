@@ -63,8 +63,8 @@
     <string name="activity_launcher_first_start_button_first_time">Első alkalom</string>
     <string name="activity_launcher_first_start_button_restore_backup">Biztonsági mentés visszaállítása</string>
     <string name="activity_launcher_first_start_content">Ez az első alkalom, hogy ezt az alkalmazást használod, vagy szeretnéd visszaállítani a biztonsági mentésedet?</string>
-    <string name="activity_launcher_first_start_title">Üdvözöllek a MoneyWallet-ben</string>
-    <string name="activity_launcher_legacy_edition_upgrade_title">Frissítés...</string>
+    <string name="activity_launcher_first_start_title">Üdvözöllek a MoneyWalletX-ben</string>
+    <string name="activity_launcher_legacy_edition_upgrade_title">Frissítés…</string>
     <string name="adapter_available_money">Elérhető:</string>
     <string name="adapter_current_money">Jelenlegi:</string>
     <string name="adapter_needed_money">Szükséges:</string>
