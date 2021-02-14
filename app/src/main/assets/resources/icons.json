@@ -206,13 +206,7 @@
       "name": "icon_category_finance",
       "icons": [
         {
-          "resource": "ic_icon_wallet_2"
-        },
-        {
-          "resource": "ic_icon_atm"
-        },
-        {
-          "resource": "ic_icon_pos"
+          "resource": "ic_bank_black_card"
         },
         {
           "resource": "ic_bank_blue_card"
@@ -227,7 +221,28 @@
           "resource": "ic_bank_yellow_card"
         },
         {
-          "resource": "ic_bank_black_card"
+          "resource": "ic_bank_safe_black"
+        },
+        {
+          "resource": "ic_bank_safe_blue"
+        },
+        {
+          "resource": "ic_bank_safe_green"
+        },
+        {
+          "resource": "ic_bank_safe_red"
+        },
+        {
+          "resource": "ic_bank_safe_yellow"
+        },
+        {
+          "resource": "ic_icon_wallet_2"
+        },
+        {
+          "resource": "ic_icon_atm"
+        },
+        {
+          "resource": "ic_icon_pos"
         }
       ]
     }
