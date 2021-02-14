@@ -183,11 +183,11 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
                         new DividerDrawerItem(),
                         createDrawerItem(ID_SECTION_CALCULATOR, R.drawable.ic_calculator_24dp, R.string.menu_calculator),
                         createDrawerItem(ID_SECTION_CONVERTER, R.drawable.ic_converter_24dp,R.string.menu_converter),
-                        createDrawerItem(ID_SECTION_ATM, R.drawable.ic_credit_card_24dp, R.string.menu_search_atm),
-                        createDrawerItem(ID_SECTION_BANK, R.drawable.ic_account_balance_24dp, R.string.menu_search_bank),
+//                        createDrawerItem(ID_SECTION_ATM, R.drawable.ic_credit_card_24dp, R.string.menu_search_atm),
+//                        createDrawerItem(ID_SECTION_BANK, R.drawable.ic_account_balance_24dp, R.string.menu_search_bank),
                         new DividerDrawerItem(),
                         createDrawerItem(ID_SECTION_SETTING, R.drawable.ic_settings_24dp, R.string.menu_setting),
-                        createDrawerItem(ID_SECTION_SUPPORT_DEVELOPER, R.drawable.ic_favorite_border_black_24dp, R.string.menu_support_developer),
+//                        createDrawerItem(ID_SECTION_SUPPORT_DEVELOPER, R.drawable.ic_favorite_border_black_24dp, R.string.menu_support_developer),
                         createDrawerItem(ID_SECTION_ABOUT, R.drawable.ic_info_outline_24dp, R.string.menu_about)
                 )
                 .withOnDrawerItemClickListener(this)
@@ -217,7 +217,7 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
             mCurrentSelection = ID_SECTION_TRANSACTIONS;
         }
         mDrawer.setSelection(mCurrentSelection, true);
-        getSupportLoaderManager().restartLoader(LOADER_WALLETS, null, this);
+        LoaderManager.getInstance(this).restartLoader(LOADER_WALLETS, null, this);
     }
 
     private void registerReceiver() {
@@ -320,12 +320,12 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
                 case ID_SECTION_CONVERTER:
                     startActivity(new Intent(this, CurrencyConverterActivity.class));
                     break;
-                case ID_SECTION_ATM:
-                    showAtmSearchDialog();
-                    break;
-                case ID_SECTION_BANK:
-                    showBankSearchDialog();
-                    break;
+//                case ID_SECTION_ATM:
+//                    showAtmSearchDialog();
+//                    break;
+//                case ID_SECTION_BANK:
+//                    showBankSearchDialog();
+//                    break;
                 case ID_SECTION_SUPPORT_DEVELOPER:
                     startActivity(new Intent(this, DonationActivity.class));
                     break;
@@ -343,44 +343,44 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
         return true;
     }
 
-    private void showAtmSearchDialog() {
-        ThemedDialog.buildMaterialDialog(this)
-                .title(R.string.title_atm_search)
-                .input(R.string.hint_atm_name, 0, false, new MaterialDialog.InputCallback() {
-
-                    @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        Uri mapUri = Uri.parse("geo:0,0?q=atm " + input);
-                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapUri);
-                        try {
-                            startActivity(mapIntent);
-                        } catch (ActivityNotFoundException ignore) {
-                            showActivityNotFoundDialog();
-                        }
-                    }
-
-                }).show();
-    }
-
-    private void showBankSearchDialog() {
-        ThemedDialog.buildMaterialDialog(this)
-                .title(R.string.title_bank_search)
-                .input(R.string.hint_bank_name, 0, false, new MaterialDialog.InputCallback() {
-
-                    @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        Uri mapUri = Uri.parse("geo:0,0?q=bank " + input);
-                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapUri);
-                        try {
-                            startActivity(mapIntent);
-                        } catch (ActivityNotFoundException ignore) {
-                            showActivityNotFoundDialog();
-                        }
-                    }
-
-                }).show();
-    }
-
+//    private void showAtmSearchDialog() {
+//        ThemedDialog.buildMaterialDialog(this)
+//                .title(R.string.title_atm_search)
+//                .input(R.string.hint_atm_name, 0, false, new MaterialDialog.InputCallback() {
+//
+//                    @Override
+//                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+//                        Uri mapUri = Uri.parse("geo:0,0?q=atm " + input);
+//                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapUri);
+//                        try {
+//                            startActivity(mapIntent);
+//                        } catch (ActivityNotFoundException ignore) {
+//                            showActivityNotFoundDialog();
+//                        }
+//                    }
+//
+//                }).show();
+//    }
+//
+//    private void showBankSearchDialog() {
+//        ThemedDialog.buildMaterialDialog(this)
+//                .title(R.string.title_bank_search)
+//                .input(R.string.hint_bank_name, 0, false, new MaterialDialog.InputCallback() {
+//
+//                    @Override
+//                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+//                        Uri mapUri = Uri.parse("geo:0,0?q=bank " + input);
+//                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapUri);
+//                        try {
+//                            startActivity(mapIntent);
+//                        } catch (ActivityNotFoundException ignore) {
+//                            showActivityNotFoundDialog();
+//                        }
+//                    }
+//
+//                }).show();
+//    }
+//
     private void showActivityNotFoundDialog() {
         ThemedDialog.buildMaterialDialog(this)
                 .title(R.string.title_error)
