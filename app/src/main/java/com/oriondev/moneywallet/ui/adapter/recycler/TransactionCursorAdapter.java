@@ -22,6 +22,8 @@ package com.oriondev.moneywallet.ui.adapter.recycler;
 import android.database.Cursor;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +64,7 @@ public class TransactionCursorAdapter extends AbstractCursorAdapter<RecyclerView
     private int mIndexTransactionDate;
     private int mIndexTransactionMoney;
     private int mIndexCurrency;
+    private int mIndexConfirmed;
 
     private MoneyFormatter mMoneyFormatter;
 
@@ -86,6 +89,7 @@ public class TransactionCursorAdapter extends AbstractCursorAdapter<RecyclerView
         mIndexTransactionDate = cursor.getColumnIndex(Contract.Transaction.DATE);
         mIndexTransactionMoney = cursor.getColumnIndex(Contract.Transaction.MONEY);
         mIndexCurrency = cursor.getColumnIndex(Contract.Transaction.WALLET_CURRENCY);
+        mIndexConfirmed = cursor.getColumnIndex(Contract.Transaction.CONFIRMED);
     }
 
     @Override
@@ -101,6 +105,12 @@ public class TransactionCursorAdapter extends AbstractCursorAdapter<RecyclerView
         Icon icon = IconLoader.parse(cursor.getString(mIndexCategoryIcon));
         IconLoader.loadInto(icon, holder.mAvatarImageView);
         holder.mPrimaryTextView.setText(cursor.getString(mIndexCategoryName));
+        Log.i("TransactionView", String.valueOf(cursor.getInt(mIndexConfirmed)));
+        if(cursor.getInt(mIndexConfirmed) == 0) {
+            holder.mPrimaryTextView.setTextColor(holder.mPrimaryTextView.getTextColors().withAlpha(127));
+        } else {
+            holder.mPrimaryTextView.setTextColor(holder.mPrimaryTextView.getTextColors().withAlpha(255));
+        }
         holder.mSecondaryTextView.setText(cursor.getString(mIndexTransactionDescription));
         CurrencyUnit currency = CurrencyManager.getCurrency(cursor.getString(mIndexCurrency));
         long money = cursor.getLong(mIndexTransactionMoney);
