@@ -38,6 +38,7 @@
         android:allowBackup="true"
         android:theme="@style/MoneyWalletAppTheme"
         android:requestLegacyExternalStorage="true"
+        android:fullBackupContent="@xml/backup_rules"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.LauncherActivity">
             <intent-filter>
