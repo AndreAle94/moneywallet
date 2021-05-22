@@ -23,8 +23,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/material_component_dialog_lists_with_avatar_height"
-    android:background="?attr/selectableItemBackground" >
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingTop="@dimen/material_component_lists_padding_top"
+    android:paddingBottom="@dimen/material_component_lists_padding_bottom">
 
     <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
         android:id="@+id/avatar_image_view"

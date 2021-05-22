@@ -18,53 +18,54 @@
   ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/material_component_dialog_lists_with_avatar_height"
-    android:background="?attr/selectableItemBackground" >
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingTop="@dimen/material_component_lists_padding_top"
+    android:paddingBottom="@dimen/material_component_lists_padding_bottom">
 
     <ImageView
         android:id="@+id/avatar_image_view"
         android:layout_width="@dimen/material_component_dialog_lists_avatar_width"
         android:layout_height="@dimen/material_component_dialog_lists_avatar_height"
-        android:layout_marginLeft="@dimen/material_component_dialog_lists_start_margin"
         android:layout_marginStart="@dimen/material_component_dialog_lists_start_margin"
+        android:layout_marginLeft="@dimen/material_component_dialog_lists_start_margin"
         android:contentDescription="@string/description_person_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@mipmap/ic_launcher" />
 
-    <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
-        android:id="@+id/primary_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/material_component_dialog_lists_with_avatar_text_start_margin"
-        android:layout_marginStart="@dimen/material_component_dialog_lists_with_avatar_text_start_margin"
-        android:layout_marginRight="@dimen/material_component_dialog_lists_with_avatar_text_end_margin"
-        android:layout_marginEnd="@dimen/material_component_dialog_lists_with_avatar_text_end_margin"
-        android:textSize="@dimen/material_component_lists_two_line_with_avatar_primary_text_size"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/avatar_image_view"
-        app:layout_constraintEnd_toStartOf="@+id/selector_image_view"
-        app:theme_textColor="textColorPrimary"
-        tools:text="John Doe" />
-    
     <com.oriondev.moneywallet.ui.view.theme.ThemedImageView
         android:id="@+id/selector_image_view"
         android:layout_width="@dimen/material_component_dialog_lists_selector_width"
         android:layout_height="@dimen/material_component_dialog_lists_selector_height"
-        android:layout_marginRight="@dimen/material_component_dialog_lists_end_margin"
         android:layout_marginEnd="@dimen/material_component_dialog_lists_end_margin"
+        android:layout_marginRight="@dimen/material_component_dialog_lists_end_margin"
         android:contentDescription="@string/description_selector_icon"
         android:src="@drawable/ic_check_black_24dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:theme_backgroundColor="colorWindowBackground" />
+
+    <com.oriondev.moneywallet.ui.view.theme.ThemedTextView
+        android:id="@+id/primary_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_component_dialog_lists_with_avatar_text_start_margin"
+        android:layout_marginLeft="@dimen/material_component_dialog_lists_with_avatar_text_start_margin"
+        android:layout_marginEnd="@dimen/material_component_dialog_lists_with_avatar_text_end_margin"
+        android:layout_marginRight="@dimen/material_component_dialog_lists_with_avatar_text_end_margin"
+        android:textSize="@dimen/material_component_lists_two_line_with_avatar_primary_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/selector_image_view"
+        app:layout_constraintStart_toEndOf="@+id/avatar_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme_textColor="textColorPrimary"
+        tools:text="John Doe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
