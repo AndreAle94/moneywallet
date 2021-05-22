@@ -30,6 +30,7 @@ import android.text.TextUtils;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.Money;
 import com.oriondev.moneywallet.utils.DateUtils;
 
@@ -1621,11 +1622,11 @@ public class SQLDatabaseTest {
         Cursor transactions = mDatabase.getBudgetTransactions(budget, null, null, null, null);
         assertEquals(4, transactions.getCount());
         assertEquals(true, transactions.moveToFirst());
-        assertEquals("Transfer tax", transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(mContext.getString(R.string.system_category_transfer_tax), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
         assertEquals(true, transactions.moveToNext());
-        assertEquals("Transfer", transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(mContext.getString(R.string.system_category_transfer), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
         assertEquals(true, transactions.moveToNext());
-        assertEquals("Transfer tax", transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(mContext.getString(R.string.system_category_transfer_tax), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
     }
 
     @Test
