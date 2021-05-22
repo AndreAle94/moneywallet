@@ -30,6 +30,7 @@ import android.text.TextUtils;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.Money;
 import com.oriondev.moneywallet.utils.DateUtils;
 
@@ -468,7 +469,7 @@ public class SQLDatabaseTest {
     }
 
     private void checkBudgetId(long id, int type, Long categoryId, Date startDate, Date endDate,
-                               long money, String currency, Long[] walletIds, String tag) {
+                               long money, String currency, Long[] walletIds, String tag, long progress) {
         Cursor cursor = mDatabase.getBudget(id, null);
         assertNotNull(cursor);
         assertEquals(1, cursor.getCount());
@@ -481,6 +482,7 @@ public class SQLDatabaseTest {
         assertEquals(currency, cursor.getString(cursor.getColumnIndex(Contract.Budget.CURRENCY)));
         assertEquals(getObjectIds(walletIds), cursor.getString(cursor.getColumnIndex(Contract.Budget.WALLET_IDS)));
         assertEquals(tag, cursor.getString(cursor.getColumnIndex(Contract.Budget.TAG)));
+        assertEquals(progress, cursor.getLong(cursor.getColumnIndex(Contract.Budget.PROGRESS)));
         cursor.close();
     }
 
@@ -913,7 +915,7 @@ public class SQLDatabaseTest {
         long id7 = insertSaving("desc", "encoded-icon", 0L, 100L, id1, null, false, null, null);
         long id8 = insertDebt(Contract.DebtType.DEBT.getValue(), "encoded-icon", "desc", new Date(), null, id1, null, null, 20, false, null, null, false);
         long id9 = insertBudget(Schema.BudgetType.CATEGORY, id3, startDate, endDate, 3000L, "EUR", new Long[] {id1, id2}, null);
-        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id3, startDate, endDate, 3000L, "EUR", new Long[] {id1, id2}, null);
+        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id3, startDate, endDate, 3000L, "EUR", new Long[] {id1, id2}, null, -10L);
         // now delete the wallet 1
         mDatabase.deleteWallet(id1);
         // check if everything has been deleted
@@ -922,7 +924,7 @@ public class SQLDatabaseTest {
         checkCursorSize(mDatabase.getTransferModel(id6, null), 0);
         checkCursorSize(mDatabase.getSaving(id7, null), 0);
         checkCursorSize(mDatabase.getDebt(id8, null), 0);
-        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id3, startDate, endDate, 3000L, "EUR", new Long[] {id2}, null);
+        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id3, startDate, endDate, 3000L, "EUR", new Long[] {id2}, null, 0L);
     }
 
     @Test(expected = SQLiteDataException.class)
@@ -1294,9 +1296,9 @@ public class SQLDatabaseTest {
         long id8 = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 10000L, "EUR", walletIds2, "tag-2");
         long id9 = insertBudget(Schema.BudgetType.CATEGORY, id6, startDate, endDate, 13000L, "USD", walletIds3, "tag-3");
         // now ensure everything is stored correctly
-        checkBudgetId(id7, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", walletIds1, "tag-1");
-        checkBudgetId(id8, Schema.BudgetType.EXPENSES, null, startDate, endDate, 10000L, "EUR", walletIds2, "tag-2");
-        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id6, startDate, endDate, 13000L, "USD", walletIds3, "tag-3");
+        checkBudgetId(id7, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", walletIds1, "tag-1", 0L);
+        checkBudgetId(id8, Schema.BudgetType.EXPENSES, null, startDate, endDate, 10000L, "EUR", walletIds2, "tag-2", 0L);
+        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id6, startDate, endDate, 13000L, "USD", walletIds3, "tag-3", 0L);
     }
 
     @Test(expected = SQLiteDataException.class)
@@ -1371,9 +1373,9 @@ public class SQLDatabaseTest {
         assertEquals(1, updateBudget(id8, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "USD", walletIds2, "tag-2-edited"));
         assertEquals(1, updateBudget(id9, Schema.BudgetType.CATEGORY, id6, newStartDate, newEndDate, 8000L, "USD", walletIds3, "tag-3-edited"));
         // now check that everything has been updated correctly
-        checkBudgetId(id7, Schema.BudgetType.CATEGORY, id6, startDate, endDate, 1000L, "EUR", walletIds1, "tag-1-edited");
-        checkBudgetId(id8, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "USD", walletIds2, "tag-2-edited");
-        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id6, newStartDate, newEndDate, 8000L, "USD", walletIds3, "tag-3-edited");
+        checkBudgetId(id7, Schema.BudgetType.CATEGORY, id6, startDate, endDate, 1000L, "EUR", walletIds1, "tag-1-edited", 0L);
+        checkBudgetId(id8, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "USD", walletIds2, "tag-2-edited", 0L);
+        checkBudgetId(id9, Schema.BudgetType.CATEGORY, id6, newStartDate, newEndDate, 8000L, "USD", walletIds3, "tag-3-edited", 0L);
     }
 
     @Test(expected = SQLiteDataException.class)
@@ -1468,6 +1470,163 @@ public class SQLDatabaseTest {
         checkCursorSize(mDatabase.getWallet(id4, null), 1);
         checkCursorSize(mDatabase.getWallet(id5, null), 1);
         checkCursorSize(mDatabase.getCategory(id6, null), 1);
+    }
+
+    @Test
+    public void considerExternalTransactionsInIncomeBudget() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+        long wallet3 = insertWallet("Test wallet 3", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-3");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget of type income
+        long incomeBudget = insertBudget(Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup transfer between wallets not in the budget
+        insertTransfer("desc", startDate, wallet3, wallet1, null, 4000L, 4000L, 0L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet3, wallet1, 4000L, 4000L, 0L, "note", null, null, true, true, "tag-2");
+
+        // Transfer should not be added towards the progress of the budgets
+        long expectedProgress = 4000L;
+        checkBudgetId(incomeBudget, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", expectedProgress);
+    }
+
+    @Test
+    public void considerExternalTransactionsInExpenseBudget() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+        long wallet3 = insertWallet("Test wallet 3", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-3");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget of type expense
+        long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup transfer between wallets not in the budget
+        insertTransfer("desc", startDate, wallet1, wallet3, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet3, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        // Transfer should not be added towards the progress of the budgets
+        long expectedProgress = 4010L;
+        checkBudgetId(expenseBudget, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", expectedProgress);
+    }
+
+    @Test
+    public void ignoreInternalTransactionsInBudget() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget of type income
+        long incomeBudget = insertBudget(Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup budget of type expense
+        long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-2");
+
+        // Setup transfer between the wallets of the budget
+        insertTransfer("desc", startDate, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        // Transfer should not be added towards the progress of the budgets
+        checkBudgetId(incomeBudget, Schema.BudgetType.INCOMES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", 0L);
+        checkBudgetId(expenseBudget, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-2", 10L);
+    }
+
+    @Test
+    public void considerTransactionsWithinBudgetDurationOnly() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 1);
+        Date afterBudgetDuration = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget of type expense
+        long expenseBudget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup transfers
+        insertTransfer("desc", startDate, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-3");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-4");
+        insertTransfer("desc", afterBudgetDuration, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        // Setup transactions
+        long category = insertCategory("Test category 1", "encoded-icon", 1, null, true, "category-tag");
+        insertTransaction(100, startDate, null, category, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+        insertTransaction(100, afterBudgetDuration, null, category, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+
+        long expectedProgress = 110L;
+        checkBudgetId(expenseBudget, Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1", expectedProgress);
+    }
+
+    @Test
+    public void getBudgetTransactions() throws Exception {
+        // Setup wallets
+        long wallet1 = insertWallet("Test wallet 1", "encoded-icon-1", "EUR", "note-wallet-1", true, 2000L, false, "tag-wallet-1");
+        long wallet2 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-2");
+        long wallet3 = insertWallet("Test wallet 2", "encoded-icon-2", "EUR", "note-wallet-2", true, 3000L, false, "tag-wallet-3");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date startDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 6);
+        Date endDate = calendar.getTime();
+        calendar.add(Calendar.MONTH, 1);
+        Date afterBudgetDuration = calendar.getTime();
+        Long[] wallets = new Long[] {wallet1, wallet2};
+
+        // Setup budget
+        long budget = insertBudget(Schema.BudgetType.EXPENSES, null, startDate, endDate, 5000L, "EUR", wallets, "tag-1");
+
+        // Setup transfers
+        insertTransfer("desc", startDate, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-3");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-4");
+
+        insertTransfer("desc", afterBudgetDuration, wallet1, wallet2, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet2, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        insertTransfer("desc", startDate, wallet1, wallet3, wallet1, 4000L, 4000L, 10L, "note", null, null, true, true, null, null, "tag-1");
+        insertTransferModel("desc", wallet1, wallet3, 4000L, 4000L, 10L, "note", null, null, true, true, "tag-2");
+
+        // Setup transactions
+        long customCategory = insertCategory("Test category 1", "encoded-icon", 1, null, true, "category-tag");
+        insertTransaction(100, startDate, null, customCategory, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+        insertTransaction(100, afterBudgetDuration, null, customCategory, Contract.Direction.EXPENSE, Contract.TransactionType.STANDARD, wallet1, null, null, null, null, null, true, true, null, null, "tag");
+
+        Cursor transactions = mDatabase.getBudgetTransactions(budget, null, null, null, null);
+        assertEquals(4, transactions.getCount());
+        assertEquals(true, transactions.moveToFirst());
+        assertEquals(mContext.getString(R.string.system_category_transfer_tax), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(true, transactions.moveToNext());
+        assertEquals(mContext.getString(R.string.system_category_transfer), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
+        assertEquals(true, transactions.moveToNext());
+        assertEquals(mContext.getString(R.string.system_category_transfer_tax), transactions.getString(transactions.getColumnIndex(Contract.Transaction.CATEGORY_NAME)));
     }
 
     @Test
