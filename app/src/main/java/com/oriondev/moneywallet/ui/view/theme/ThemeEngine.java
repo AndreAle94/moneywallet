@@ -27,6 +27,8 @@ import androidx.core.graphics.ColorUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.oriondev.moneywallet.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -260,6 +262,21 @@ public class ThemeEngine implements ITheme {
             default:
                 // the stored value has been manually altered
                 return Mode.LIGHT;
+        }
+    }
+
+    @Override
+    public int getStyle() {
+        switch (mPreferences.getInt(MODE, DEFAULT_MODE.getIndex())) {
+            case INDEX_MODE_LIGHT:
+                return R.style.LightTheme;
+            case INDEX_MODE_DARK:
+                return R.style.DarkTheme;
+            case INDEX_MODE_DEEP_DARK:
+                return R.style.DeepDarkTheme;
+            default:
+                // the stored value has been manually altered
+                return R.style.LightTheme;
         }
     }
 

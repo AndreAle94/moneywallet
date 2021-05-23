@@ -117,6 +117,8 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     private final static int ID_ACTION_NEW_WALLET = 1;
     private final static int ID_ACTION_MANAGE_WALLET = 2;
 
+    private static boolean themeChanged;
+
     private AccountHeader mAccountHeader;
     private Drawer mDrawer;
 
@@ -128,9 +130,21 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(ThemeEngine.getTheme().getStyle());
         initializeUi();
         loadUi(savedInstanceState);
         registerReceiver();
+        reopenSettings();
+    }
+
+    /**
+     * If the theme was changed, reopen the settings section
+     */
+    private void reopenSettings() {
+        if (themeChanged) {
+            loadSection(ID_SECTION_SETTING);
+            themeChanged = false;
+        }
     }
 
     /**
@@ -590,6 +604,16 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     protected void onThemeSetup(ITheme theme) {
         super.onThemeSetup(theme);
         applyNavigationDrawerTheme(theme);
+    }
+
+    @Override
+    public void onThemeChanged(ITheme theme) {
+        themeChanged = true;
+        // Recreate the activity to fully apply the theme
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 
     private void applyNavigationDrawerTheme(ITheme theme) {

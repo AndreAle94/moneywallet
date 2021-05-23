@@ -32,6 +32,8 @@ public interface ITheme {
 
     ThemeEngine.Mode getMode();
 
+    int getStyle();
+
     boolean isDark();
 
     int getTextColorPrimary();
