@@ -8,6 +8,9 @@
         },
         {
           "resource": "ic_icon_shoewear"
+        },
+        {
+          "resource": "ic_icon_clothing"
         }
       ]
     },
@@ -78,6 +81,12 @@
         },
         {
           "resource": "ic_icon_path_direction"
+        },
+        {
+          "resource": "ic_icon_taxi"
+        },
+        {
+          "resource": "ic_icon_train"
         }
       ]
     },
@@ -98,6 +107,21 @@
         },
         {
           "resource": "ic_icon_armchair_lamp"
+        },
+        {
+          "resource": "ic_icon_children"
+        },
+        {
+          "resource": "ic_icon_electricity"
+        },
+        {
+          "resource": "ic_icon_family"
+        },
+        {
+          "resource": "ic_icon_home_services"
+        },
+        {
+          "resource": "ic_icon_pets"
         }
       ]
     },
@@ -127,6 +151,9 @@
         },
         {
           "resource": "ic_icon_sale"
+        },
+        {
+          "resource": "ic_icon_shopping"
         }
       ]
     },
@@ -165,6 +192,15 @@
         },
         {
           "resource": "ic_icon_pass"
+        },
+        {
+          "resource": "ic_icon_entertainment"
+        },
+        {
+          "resource": "ic_icon_games"
+        },
+        {
+          "resource": "ic_icon_movies"
         }
       ]
     },
@@ -173,6 +209,15 @@
       "icons": [
         {
           "resource": "ic_icon_cocktail"
+        },
+        {
+          "resource": "ic_icon_cafe"
+        },
+        {
+          "resource": "ic_icon_food"
+        },
+        {
+          "resource": "ic_icon_meal"
         }
       ]
     },
@@ -199,6 +244,9 @@
         },
         {
           "resource": "ic_icon_equalizer"
+        },
+        {
+          "resource": "ic_icon_internet"
         }
       ]
     },
@@ -213,6 +261,24 @@
         },
         {
           "resource": "ic_icon_pos"
+        },
+        {
+          "resource": "ic_icon_pocket_money"
+        },
+        {
+          "resource": "ic_icon_prize"
+        },
+        {
+          "resource": "ic_icon_salary"
+        },
+        {
+          "resource": "ic_icon_sale"
+        },
+        {
+          "resource": "ic_icon_survey"
+        },
+        {
+          "resource": "ic_icon_bill"
         }
       ]
     }
