@@ -28,12 +28,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/primary_panel_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="match_parent">
 
         <com.oriondev.moneywallet.ui.view.theme.ThemedAppBarLayout
             android:id="@+id/primary_app_bar_container"
-            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:theme_backgroundColor="colorPrimary" >
 
@@ -53,7 +55,7 @@
         <com.oriondev.moneywallet.ui.view.theme.ThemedForegroundCardView
             android:id="@+id/primary_panel_body_container_card_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginLeft="@dimen/layout_multi_panel_primary_panel_margin_left"
             android:layout_marginRight="@dimen/layout_multi_panel_primary_panel_margin_right"
             android:layout_marginStart="@dimen/layout_multi_panel_primary_panel_margin_left"
