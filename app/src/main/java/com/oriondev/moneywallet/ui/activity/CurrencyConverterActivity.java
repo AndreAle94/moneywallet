@@ -241,10 +241,11 @@ public class CurrencyConverterActivity extends SinglePanelActivity implements Vi
                 mCurrencyToPicker.getCurrentCurrency()
         );
         if (exchangeRate != null) {
-            BigDecimal bigMoney = new BigDecimal(text);
-            bigMoney = bigMoney.multiply(new BigDecimal(exchangeRate.getRate()));
             CurrencyUnit currencyUnit = mCurrencyToPicker.getCurrentCurrency();
-            long money = (long) (bigMoney.doubleValue() * Math.pow(10, currencyUnit.getDecimals()));
+            long money = new BigDecimal(text)
+                    .multiply(BigDecimal.valueOf(exchangeRate.getRate()))
+                    .movePointRight(currencyUnit.getDecimals())
+                    .longValue();
             mTextMoneyTo.setText(mMoneyFormatter.getNotTintedString(currencyUnit, money, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
         } else {
             mTextMoneyTo.setText(R.string.hint_unknown);

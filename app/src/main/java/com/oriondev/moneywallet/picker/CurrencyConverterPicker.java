@@ -31,6 +31,8 @@ import com.oriondev.moneywallet.model.ExchangeRate;
 import com.oriondev.moneywallet.ui.fragment.dialog.CurrencyConverterDialog;
 import com.oriondev.moneywallet.utils.CurrencyManager;
 
+import java.math.BigDecimal;
+
 /**
  * Created by andrea on 15/03/18.
  */
@@ -170,11 +172,11 @@ public class CurrencyConverterPicker extends Fragment implements CurrencyConvert
     }
 
     public long convert(long money) {
-        double divider1 = Math.pow(10, mCurrency1.getDecimals());
-        double divider2 = Math.pow(10, mCurrency2.getDecimals());
-        double money1 = money / divider1;
-        double money2 = mConversionRate * money1;
-        return (long) (money2 * divider2);
+        return new BigDecimal(money)
+                .movePointLeft(mCurrency1.getDecimals())
+                .multiply(new BigDecimal(mConversionRate))
+                .movePointRight(mCurrency2.getDecimals())
+                .longValue();
     }
 
     public void notifyMoneyChanged() {
