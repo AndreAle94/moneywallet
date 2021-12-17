@@ -34,7 +34,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oriondev.moneywallet.R;
@@ -42,6 +45,7 @@ import com.oriondev.moneywallet.model.Attachment;
 import com.oriondev.moneywallet.model.Category;
 import com.oriondev.moneywallet.model.CurrencyUnit;
 import com.oriondev.moneywallet.model.Event;
+import com.oriondev.moneywallet.model.Pair;
 import com.oriondev.moneywallet.model.Person;
 import com.oriondev.moneywallet.model.Place;
 import com.oriondev.moneywallet.model.Wallet;
@@ -129,6 +133,10 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     private CheckBox mConfirmedCheckBox;
     private CheckBox mCountInTotalCheckBox;
     private AttachmentView mAttachmentView;
+    private Button mAddCategoryButton;
+    private MaterialEditText mCategoryAmountEditText;
+    private LinearLayout mCategoryList;
+    private ImageButton mResetCategoryButton;
 
     private MoneyPicker mMoneyPicker;
     private CategoryPicker mCategoryPicker;
@@ -145,6 +153,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     private boolean mSavingCompleted = false;
 
     private MoneyFormatter mMoneyFormatter = MoneyFormatter.getInstance();
+    private ArrayList<Pair<Category, Long>> categories = new ArrayList<Pair<Category, Long>>();
 
     @Override
     protected void onCreateHeaderView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -167,6 +176,9 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         View view = inflater.inflate(R.layout.layout_panel_new_edit_transaction, parent, true);
         mDescriptionEditText = view.findViewById(R.id.description_edit_text);
         mCategoryEditText = view.findViewById(R.id.category_edit_text);
+        mAddCategoryButton = view.findViewById(R.id.add_category_button);
+        mCategoryAmountEditText = view.findViewById(R.id.category_amount_edit_text);
+        mCategoryList = view.findViewById(R.id.category_list_layout);
         mDateEditText = view.findViewById(R.id.date_edit_text);
         mTimeEditText = view.findViewById(R.id.time_edit_text);
         mWalletEditText = view.findViewById(R.id.wallet_edit_text);
@@ -177,6 +189,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         mConfirmedCheckBox = view.findViewById(R.id.confirmed_checkbox);
         mCountInTotalCheckBox = view.findViewById(R.id.count_in_total_checkbox);
         mAttachmentView = view.findViewById(R.id.attachment_view);
+        mResetCategoryButton = view.findViewById(R.id.reset_category_button);
         // disable unused edit texts
         mCategoryEditText.setTextViewMode(true);
         mDateEditText.setTextViewMode(true);
@@ -185,6 +198,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         mEventEditText.setTextViewMode(true);
         mPeopleEditText.setTextViewMode(true);
         mPlaceEditText.setTextViewMode(true);
+        mCategoryAmountEditText.setTextViewMode(true);
         // add validators
         mDateEditText.addValidator(new Validator() {
 
@@ -251,6 +265,43 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
                 mCategoryPicker.showPicker();
             }
 
+        });
+        mAddCategoryButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(mCategoryPicker.getCurrentCategory() != null){
+                    Category category = mCategoryPicker.getCurrentCategory();
+                    View vi = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_category_amount_item, null);
+                    TextView txtName = vi.findViewById(R.id.category_name_text);
+                    TextView txtAmount = vi.findViewById(R.id.category_money_amount_text);
+                    long amount = mMoneyPicker.getCurrentMoney();
+                    txtName.setText(category.getName());
+                    txtAmount.setText(mMoneyFormatter.getNotTintedString(null, amount, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
+                    mCategoryList.addView(vi);
+                    Pair<Category, Long> p = new Pair<>(category, amount);
+                    categories.add(p);
+
+                    mMoneyPicker.setMoney(0);
+                    mCategoryEditText.setText(null);
+                    mCategoryAmountEditText.setText(null);
+
+                    refreshTotalAmount();
+                }
+            }
+        });
+        mCategoryAmountEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMoneyPicker.showPicker();
+            }
+        });
+        mResetCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCategoryEditText.setText(null);
+                mCategoryAmountEditText.setText(null);
+            }
         });
         mDateEditText.setOnClickListener(new View.OnClickListener() {
 
@@ -903,11 +954,13 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     @Override
     protected void onSaveChanges(Mode mode) {
         if (validate()) {
+            if (mCategoryEditText.getText() != null && !mCategoryEditText.getTextAsString().equals("")) {
+                Pair<Category, Long> p = new Pair<>(mCategoryPicker.getCurrentCategory(), mMoneyPicker.getCurrentMoney());
+                categories.add(p);
+            }
             ContentValues contentValues = new ContentValues();
-            contentValues.put(Contract.Transaction.MONEY, mMoneyPicker.getCurrentMoney());
             contentValues.put(Contract.Transaction.DATE, DateUtils.getSQLDateTimeString(mDateTimePicker.getCurrentDateTime()));
             contentValues.put(Contract.Transaction.DESCRIPTION, mDescriptionEditText.getTextAsString());
-            contentValues.put(Contract.Transaction.CATEGORY_ID, mCategoryPicker.getCurrentCategory().getId());
             contentValues.put(Contract.Transaction.DIRECTION, mCategoryPicker.getCurrentCategory().getDirection());
             contentValues.put(Contract.Transaction.TYPE, mType);
             contentValues.put(Contract.Transaction.WALLET_ID, mWalletPicker.getCurrentWallet().getId());
@@ -920,18 +973,26 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
             contentValues.put(Contract.Transaction.COUNT_IN_TOTAL, mCountInTotalCheckBox.isChecked());
             contentValues.put(Contract.Transaction.PEOPLE_IDS, Contract.getObjectIds(mPersonPicker.getCurrentPeople()));
             contentValues.put(Contract.Transaction.ATTACHMENT_IDS, Contract.getObjectIds(mAttachmentPicker.getCurrentAttachments()));
-            ContentResolver contentResolver = getContentResolver();
-            switch (mode) {
-                case NEW_ITEM:
-                    contentResolver.insert(DataContentProvider.CONTENT_TRANSACTIONS, contentValues);
-                    if (mSavingId != null && mSavingCompleted) {
-                        setSavingCompleted(contentResolver, mSavingId);
-                    }
-                    break;
-                case EDIT_ITEM:
-                    Uri uri = ContentUris.withAppendedId(DataContentProvider.CONTENT_TRANSACTIONS, getItemId());
-                    contentResolver.update(uri, contentValues, null, null);
-                    break;
+
+            for(Pair p: categories) {
+                Category category = (Category) p.getL();
+                long amount = (long) p.getR();
+
+                contentValues.put(Contract.Transaction.CATEGORY_ID, category.getId());
+                contentValues.put(Contract.Transaction.MONEY, amount);
+                ContentResolver contentResolver = getContentResolver();
+                switch (mode) {
+                    case NEW_ITEM:
+                        contentResolver.insert(DataContentProvider.CONTENT_TRANSACTIONS, contentValues);
+                        if (mSavingId != null && mSavingCompleted) {
+                            setSavingCompleted(contentResolver, mSavingId);
+                        }
+                        break;
+                    case EDIT_ITEM:
+                        Uri uri = ContentUris.withAppendedId(DataContentProvider.CONTENT_TRANSACTIONS, getItemId());
+                        contentResolver.update(uri, contentValues, null, null);
+                        break;
+                }
             }
             mAttachmentPicker.cleanUp(false);
             setResult(RESULT_OK);
@@ -993,7 +1054,7 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
         } else {
             mCurrencyTextView.setText("?");
         }
-        mMoneyTextView.setText(mMoneyFormatter.getNotTintedString(currency, money, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
+        mCategoryAmountEditText.setText(mMoneyFormatter.getNotTintedString(currency, money, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
     }
 
     @Override
@@ -1075,5 +1136,13 @@ public class NewEditTransactionActivity extends NewEditItemActivity implements M
     @Override
     public void onAttachmentDelete(Attachment attachment) {
         mAttachmentPicker.remove(attachment);
+    }
+
+    void refreshTotalAmount() {
+        long total = 0;
+        for (Pair p: categories) {
+            total += (long) p.getR();
+        }
+        mMoneyTextView.setText(mMoneyFormatter.getNotTintedString(null, total, MoneyFormatter.CurrencyMode.ALWAYS_HIDDEN));
     }
 }
