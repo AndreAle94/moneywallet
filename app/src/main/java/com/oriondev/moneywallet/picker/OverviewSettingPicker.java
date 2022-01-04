@@ -20,6 +20,7 @@
 package com.oriondev.moneywallet.picker;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,14 +71,32 @@ public class OverviewSettingPicker extends Fragment implements OverviewSettingDi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Calendar calendar = Calendar.getInstance();
+        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        Date startDate;
+        Date endDate;
+        Group groupType;
+        OverviewSetting.CashFlow cashFlow;
+        // check saved picker settings
+        long savedStartDate = preferences.getLong("overview_start_date_millis", -1);
+        long savedEndDate = preferences.getLong("overview_end_date_millis", -1);
+        int savedGroupType = preferences.getInt("overview_group_type", -1);
+        int savedCashFlow = preferences.getInt("overview_cash_flow", -1);
         if (savedInstanceState != null) {
             mOverviewSetting = savedInstanceState.getParcelable(SS_OVERVIEW_SETTING);
+        } else if (savedStartDate != -1 && savedEndDate != -1
+                && savedGroupType != -1 && savedCashFlow != -1) {
+            calendar.setTimeInMillis(savedStartDate);
+            startDate = calendar.getTime();
+            calendar.setTimeInMillis(savedEndDate);
+            endDate = calendar.getTime();
+            groupType = Group.values()[savedGroupType];
+            cashFlow = OverviewSetting.CashFlow.values()[savedCashFlow];
+            mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, cashFlow);
         } else {
-            Date startDate;
-            Date endDate;
-            Calendar calendar = Calendar.getInstance();
             calendar.setFirstDayOfWeek(Calendar.SUNDAY);
-            Group groupType = PreferenceManager.getCurrentGroupType();
+            groupType = PreferenceManager.getCurrentGroupType();
+            cashFlow = OverviewSetting.CashFlow.NET_INCOMES;
             switch (groupType) {
                 case DAILY:
                     // we consider the current week
@@ -122,7 +141,7 @@ public class OverviewSettingPicker extends Fragment implements OverviewSettingDi
                     endDate = calendar.getTime();
                     break;
             }
-            mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, OverviewSetting.CashFlow.NET_INCOMES);
+            mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, cashFlow);
         }
         mOverviewSettingDialog = (OverviewSettingDialog) getChildFragmentManager().findFragmentByTag(getDialogTag());
         if (mOverviewSettingDialog == null) {
@@ -170,6 +189,16 @@ public class OverviewSettingPicker extends Fragment implements OverviewSettingDi
     @Override
     public void onOverviewSettingChanged(OverviewSetting overviewSetting) {
         mOverviewSetting = overviewSetting;
+        Calendar calendar = Calendar.getInstance();
+        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        calendar.setTime(mOverviewSetting.getStartDate());
+        editor.putLong("overview_start_date_millis", calendar.getTimeInMillis());
+        calendar.setTime(mOverviewSetting.getEndDate());
+        editor.putLong("overview_end_date_millis", calendar.getTimeInMillis());
+        editor.putInt("overview_group_type", overviewSetting.getGroupType().ordinal());
+        editor.putInt("overview_cash_flow", overviewSetting.getCashFlow().ordinal());
+        editor.apply();
         fireCallbackSafely();
     }
 
