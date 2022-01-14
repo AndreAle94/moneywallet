@@ -75,24 +75,32 @@ public class OverviewSettingPicker extends Fragment implements OverviewSettingDi
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
         Date startDate;
         Date endDate;
+        OverviewSetting.Type type;
         Group groupType;
         OverviewSetting.CashFlow cashFlow;
         // check saved picker settings
         long savedStartDate = preferences.getLong("overview_start_date_millis", -1);
         long savedEndDate = preferences.getLong("overview_end_date_millis", -1);
+        int savedType = preferences.getInt("overview_type", -1); //
         int savedGroupType = preferences.getInt("overview_group_type", -1);
         int savedCashFlow = preferences.getInt("overview_cash_flow", -1);
+        long savedCategoryId = preferences.getLong("overview_category_id", -1);
         if (savedInstanceState != null) {
             mOverviewSetting = savedInstanceState.getParcelable(SS_OVERVIEW_SETTING);
         } else if (savedStartDate != -1 && savedEndDate != -1
-                && savedGroupType != -1 && savedCashFlow != -1) {
+                && savedType != -1) {
             calendar.setTimeInMillis(savedStartDate);
             startDate = calendar.getTime();
             calendar.setTimeInMillis(savedEndDate);
             endDate = calendar.getTime();
             groupType = Group.values()[savedGroupType];
-            cashFlow = OverviewSetting.CashFlow.values()[savedCashFlow];
-            mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, cashFlow);
+            type = OverviewSetting.Type.values()[savedType];
+            if (type == OverviewSetting.Type.CATEGORY) {
+                mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, savedCategoryId);
+            } else { // CASH_FLOW
+                cashFlow = OverviewSetting.CashFlow.values()[savedCashFlow];
+                mOverviewSetting = new OverviewSetting(startDate, endDate, groupType, cashFlow);
+            }
         } else {
             calendar.setFirstDayOfWeek(Calendar.SUNDAY);
             groupType = PreferenceManager.getCurrentGroupType();
@@ -197,7 +205,13 @@ public class OverviewSettingPicker extends Fragment implements OverviewSettingDi
         calendar.setTime(mOverviewSetting.getEndDate());
         editor.putLong("overview_end_date_millis", calendar.getTimeInMillis());
         editor.putInt("overview_group_type", overviewSetting.getGroupType().ordinal());
-        editor.putInt("overview_cash_flow", overviewSetting.getCashFlow().ordinal());
+        OverviewSetting.Type saveType = overviewSetting.getType();
+        editor.putInt("overview_type", saveType.ordinal());
+        if (saveType == OverviewSetting.Type.CASH_FLOW) {
+            editor.putInt("overview_cash_flow", overviewSetting.getCashFlow().ordinal());
+        } else { // CATEGORY
+            editor.putLong("overview_category_id", overviewSetting.getCategoryId());
+        }
         editor.apply();
         fireCallbackSafely();
     }
