@@ -1,0 +1,707 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    < string name = " app_name " >MoneyWallet</ string >
+
+    <字符串名称=“菜单交易”>“交易”</字符串>
+    <字符串名称=“菜单类别”>“类别”</字符串>
+    < string name = " menu_overview " >"概览"</ string >
+    <string name="menu_debt" >"债务"</string>
+    <字符串名称=“菜单预算”>“预算”</字符串>
+    <string name = "menu_saving" >"Savings"</string>
+    <字符串名称=“菜单事件”>“事件”</字符串>
+    <字符串名称=“菜单重复”>“重复”</字符串>
+    <字符串名称=“菜单模型”>“模型”</字符串>
+    <字符串名称=“菜单位置”>“位置”</字符串>
+    <string name = "menu_people" >"人物"</string>
+    <string name="menu_converter" >"护照"</string>
+    <string name = ">"计算"</string>
+    <string name="menu_search_atm" >"搜索atm"</string>
+    < string name = " menu_search_bank " >"搜索银行"</ string >
+    <字符串名称=“菜单设置”>“设置”</字符串>
+    < string name = " menu_support_developer " >"支持开发者"</ string >
+    < string name = " menu_about " >"关于"</ string >
+
+    <!--交易-->
+    < string name = " menu_transaction_tab_transactions " >"事务"</ string >
+    < string name = " menu_transaction_tab_transfers " >"转帐"</ string >
+
+    <!--分类-->
+    <string name="menu_category_tab_income" >"收入"</string>
+    < string name = " menu_category_tab_expense " >"费用"</ string >
+    < string name = " menu_category_tab_system " >"系统"</ string >
+
+    <!--债务-->
+    <string name="menu_debt_tab_debt" >“债务”</string>
+    < string name = " menu_debt_tab_credit " >"信用"</ string >
+
+    <!--预算-->
+    < string name = " menu_budget_tab_running " >"正在运行"</ string >
+    < string name = " menu_budget_tab_expired " >"过渡期"</ string >
+
+    <!--节约-->
+    < string name = " menu_saving_tab_running " >"正在运行"</ string >
+    <string name = "menu_saving_tab_completed" >"完成"</string>
+
+    <!--事件-->
+    < string name = " menu_event_tab_running " >"正在运行"</ string >
+    <string name = "menu_event_tab_completed" >"已完成"</string>
+
+    <!--模型-->
+    <string name="menu_model_tab_transactions" >"事务"</string>
+    < string name = " menu_model_tab_transfers " >"转帐"</ string >
+
+    <string name="action_new_wallet" >“新钱包”</string>
+    <string name="action_manage_wallets" >"管理钱包"</string>
+    <字符串名称=“action_pay_debt”>“支付”</字符串>
+    <字符串名称=“action_receive_debt”>“接收”</字符串>
+    <string name="action_withdraw" >“提”</string>
+    <string name="action_deposit" >"存款"</string>
+    <string name_with_everything“>”=“所​​有内容”</string
+    <字符串名称=“action_add”>“添加”</字符串>
+    <字符串名称=“action_new”>“新”</字符串>
+    <字符串名称=“action_edit”>“编辑”</字符串>
+    <字符串名称=“action_search”>“搜索”</字符串>
+    <字符串名称=“action_filter”>“过滤器”</字符串>
+    <字符串名称=“action_remove”>“删除”</字符串>
+    <字符串名称=“action_open”>“打开”</字符串>
+    <字符串名称=“action_undo”>“撤消”</字符串>
+    <字符串名称=“action_skip”>“跳过”</字符串>
+
+    < string name = " msg_no_wallet_found " >"没有找到钱包"</ string >
+    < string name = " msg_add_one_wallet " >"请添加一个钱包"</ string >
+
+    <string name = “hint_total_sum” >“总和”</string>
+
+    <字符串名称=“提示名称”>“名称”</字符串名称>
+    <字符串名称=“提示描述”>“描述”</字符串>
+    <字符串名称=“提示货币”>“货币”</字符串>
+    < string name = "hint_money " >"钱"</ string >
+    <string name = "start_money" >"hint_start_money"</string>
+    <string name="hint_not_exclude_wallet" >"在总清点中显示这个钱包"</string>
+    <字符串名称=“提示类别”>“类别”</字符串>
+    <string name="hint_parent_category" >“父类别”</string>
+    <string name="hint_show_category_report" >"在报告中显示该类别"</string >
+    <string name="hint_show_category_report_on" >"此类别包含在报告中"</string>
+    <string name = "hint_show_category_report_off " >"此类别不包含在报告中"</string >
+    <字符串名称=“提示确认”>“确认”</字符串>
+    <string name="hint_show_in_total" >"显示在总钱包中"</string>
+    <字符串名称=“提示收入”>“收入”</字符串>
+    <字符串名称=“提示费用”>“费用”</字符串>
+    <字符串名称=“提示日期”>“日期”</字符串>
+    < string name = " hint_start_date " >"开始日期"</ string >
+    <字符串名称=“提示结束日期”>“结束日期”</字符串>
+    <string = "hintation_date" >"exp_日期名称"</string
+    <字符串名称=“提示时间”>“时间”</字符串>
+    <字符串名称=“提示钱包”>“钱包”</字符串>
+    <字符串名称=“提示钱包”>“钱包”</字符串>
+    <字符串名称=“提示钱包发件人”>“发件人”</字符串>
+    <string name="hint_wallet_to" >"To"</string>
+    <字符串名称=“提示重复”>“重复”</字符串>
+    <string name="hint_recurrence_invalid" >"无效重复"</string>
+    <字符串名称=“提示事件”>“事件”</字符串>
+    <字符串名称=“提示人”>“人”</字符串>
+    <字符串名称=“地点提示”>“地点”</字符串>
+    <字符串名称=“提示注释”>“注释”</字符串>
+    <字符串名称=“提示税”>“税”</字符串>
+    <字符串名称=“提示类型”>“类型”</字符串>
+    <字符串名称=“提示收入”>“收入”</字符串>
+    <字符串名称=“提示费用”>“费用”</字符串>
+    <string name="hint_net_incomes" >"净收入"</string>
+    <字符串名称=“提示摘要”>“摘要”</字符串>
+    <字符串名称=“提示地址”>“地址”</字符串>
+    < string name = "hint_size_unknown " >"未知大小"</ string >
+    < string name = "hint_address_unknown " >"未知地址"</ string >
+    <字符串名称=“提示未知”>“未知”</字符串>
+    <字符串名称=“提示目录”>“目录”</字符串>
+    <字符串名称=“hint_navigate_up”>“向上导航”</字符串>
+    <字符串名称=“提示密码”>“密码”</字符串>
+    < string  name = " hint_atm_name " >"ATM 名称"</ string >
+    < string  name = " hint_bank_name " >"银行名称"</ string >
+    <字符串 名称= “提示附件” >“附件”</字符串>
+    < string  name = " hint_operation_in_progress " >"进行中..."</ string >
+    < string  name = " hint_search_something " >"搜索某事"</ string >
+    < string  name = " hint_exchange_rate " >"汇率"</ string >
+    < string  name = " hint_recurrence_finished " >"结束"</ string >
+    < string  name = " hint_new_folder " >"新建文件夹"</ string >
+    <字符串 名称= “提示导入格式” >“导入格式”</字符串>
+    <字符串 名称= “提示导出格式” >“导出格式”</字符串>
+    < string  name = " hint_import_file " >"要导入的文件"</ string >
+    < string  name = " hint_export_folder " >"导出文件夹"</ string >
+    < string  name = " hint_export_optional_columns " >"可选列"</ string >
+    < string  name = " hint_export_unique_wallet " >"加入不同钱包的交易"</ string >
+    <字符串 名称= “ hint_data_format_csv ” 可翻译= “假” >“CSV”</字符串>
+    <字符串 名称= “提示数据格式_xls ” 可翻译= “假” >“XLS”</字符串>
+    <字符串 名称= “ hint_data_format_pdf ” 可翻译= “假” >“PDF”</字符串>
+    < string  name = " hint_iso_code " >"ISO 代码"</ string >
+    <字符串 名称= “提示符号” >“符号”</字符串>
+    < string  name = " hint_decimals " >"小数位数"</ string >
+
+    < string  name = " hint_show_currency_symbol " >"显示货币符号"</ string >
+    < string  name = " hint_group_digits " >"组数字"</ string >
+    < string  name = " hint_round_decimals " >"四舍五入"</ string >
+    < string  name = " hint_show_always_plus_minus " >"总是显示 +/- 符号"</ string >
+    < string  name = " hint_auto_backup_enabled " >"服务已启用"</ string >
+    < string  name = " hint_auto_backup_wifi_only " >"仅在 WiFi 网络上"</ string >
+    < string  name = " hint_auto_backup_only_if_data_changed " >"仅当数据更改时"</ string >
+    < string  name = " hint_auto_backup_every_n_hours " >"每 %d 小时"</ string >
+    <字符串 名称= “提示自动备份文件夹” >“文件夹”</字符串>
+    <字符串 名称= “ hint_auto_backup_root_folder ” >“根”</字符串>
+
+    <字符串 名称= “ total_wallet_name ” >“总计”</字符串>
+
+    < string  name = " title_activity_new_currency " >"新货币"</ string >
+    < string  name = " title_activity_edit_currency " >"编辑货币"</ string >
+    < string  name = " title_activity_new_wallet " >"新钱包"</ string >
+    < string  name = " title_activity_edit_wallet " >"编辑钱包"</ string >
+    < string  name = " title_activity_new_transaction " >"新交易"</ string >
+    < string  name = " title_activity_edit_transaction " >"编辑事务"</ string >
+    < string  name = " title_activity_new_transfer " >"新转账"</ string >
+    < string  name = " title_activity_edit_transfer " >"编辑转账"</ string >
+    < string  name = " title_activity_new_category " >"新类别"</ string >
+    < string  name = " title_activity_edit_category " >"编辑类别"</ string >
+    < string  name = " title_activity_new_debt " >"新债务"</ string >
+    < string  name = " title_activity_edit_debt " >"编辑债务"</ string >
+    < string  name = " title_activity_new_budget " >"新预算"</ string >
+    < string  name = " title_activity_edit_budget " >"编辑预算"</ string >
+    < string  name = " title_activity_new_saving " >"新保存"</ string >
+    < string  name = " title_activity_edit_saving " >"编辑保存"</ string >
+    < string  name = " title_activity_new_event " >"新事件"</ string >
+    < string  name = " title_activity_edit_event " >"编辑事件"</ string >
+    < string  name = " title_activity_new_recurrence " >"新的重复"</ string >
+    < string  name = " title_activity_edit_recurrence " >"编辑重复周期"</ string >
+    < string  name = " title_activity_new_model " >"新模型"</ string >
+    < string  name = " title_activity_edit_model " >"编辑模型"</ string >
+    < string  name = " title_activity_new_place " >"新地点"</ string >
+    < string  name = " title_activity_edit_place " >"编辑地点"</ string >
+    < string  name = " title_activity_new_person " >"新人"</ string >
+    < string  name = " title_activity_edit_person " >"编辑人员"</ string >
+    < string  name = " title_activity_wallet_sort " >"排序钱包"</ string >
+    <字符串 名称= “ title_activity_currency_list ” >“货币”</字符串>
+    < string  name = " title_activity_category_picker " >"选择一个类别"</ string >
+    < string  name = " title_activity_category_sort " >"排序类别"</ string >
+    <字符串 名称= “ title_activity_icon_list ” >“图标”</字符串>
+    < string  name = " title_activity_backup_services " >"备份服务"</ string >
+    < string  name = " title_activity_about " >"关于"</ string >
+    < string  name = " title_activity_calculator " >"计算器"</ string >
+    < string  name = " title_activity_currency_converter " >"货币转换器"</ string >
+    <字符串 名称= “ title_activity_search_transaction ” >“搜索”</字符串>
+    <字符串 名称= “ title_activity_calendar ” >“日历”</字符串>
+    <字符串 名称= “ title_activity_map ” >“地图”</字符串>
+    < string  name = " title_activity_backend_explorer " >"探索后端"</ string >
+    < string  name = " title_activity_backend_file_picker " >"选择一个文件"</ string >
+    < string  name = " title_activity_backend_folder_picker " >"选择一个文件夹"</ string >
+    < string  name = " title_activity_support_developer " >"支持开发者"</ string >
+    < string  name = " title_activity_import_data " >"导入数据"</ string >
+    < string  name = " title_activity_export_data " >"导出数据"</ string >
+
+    < string  name = " title_fragment_item_wallet " >“钱包”</ string >
+    < string  name = " title_fragment_item_transaction " >"交易"</ string >
+    < string  name = " title_fragment_item_transfer " >"转账"</ string >
+    <字符串 名称= “ title_fragment_item_category ” >“类别”</字符串>
+    <字符串 名称= “ title_fragment_item_debt ” >“债务”</字符串>
+    < string  name = " title_fragment_item_budget " >"预算"</ string >
+    < string  name = " title_fragment_item_saving " >"Saving"</ string >
+    <字符串 名称= “ title_fragment_item_event ” >“事件”</字符串>
+    < string  name = " title_fragment_item_recurrence " >"Recurrence"</ string >
+    <字符串 名称= “ title_fragment_item_model ” >“模型”</字符串>
+    < string  name = " title_fragment_item_place " >"地点"</ string >
+    < string  name = " title_fragment_item_person " >"Person"</ string >
+
+    < string  name = " menu_action_attach_file " >"附加文件"</ string >
+    < string  name = " menu_action_save_changes " >"保存更改"</ string >
+    < string  name = " menu_refresh_currency_rate " >"刷新货币汇率"</ string >
+    < string  name = " menu_advanced_settings " >"高级设置"</ string >
+    < string  name = " menu_action_edit_item " >"编辑"</ string >
+    < string  name = " menu_action_delete_item " >"删除"</ string >
+    < string  name = " menu_action_archive_item " >"存档"</ string >
+    < string  name = " menu_action_unarchive_item " >"Unarchive"</ string >
+    < string  name = " menu_action_search_item " >"搜索"</ string >
+    < string  name = " menu_action_open_calendar " >"日历"</ string >
+    <字符串 名称= “ menu_action_open_map ” >“地图”</字符串>
+    < string  name = " menu_action_sort_items " >"排序"</ string >
+    < string  name = " menu_action_show_transaction_list " >"显示事务"</ string >
+    < string  name = " menu_action_service_disconnect " >"断开连接"</ string >
+    < string  name = " menu_action_service_auto_backup " >"自动备份"</ string >
+    < string  name = " menu_action_select_folder " >"选择文件夹"</ string >
+    < string  name = " menu_action_import_data " >"导入数据"</ string >
+    < string  name = " menu_action_export_data " >"导出数据"</ string >
+
+    < string  name = " bottom_sheet_icon_picker_title " >"个性化图标"</ string >
+    < string  name = " bottom_sheet_icon_picker_action_select_icon " >"选择一个图标"</ string >
+    < string  name = " bottom_sheet_icon_picker_action_change_icon " >"更改图标"</ string >
+    < string  name = " bottom_sheet_icon_picker_action_remove_icon " >"删除图标"</ string >
+    < string  name = " bottom_sheet_icon_picker_action_change_bg_color " >"更改背景颜色"</ string >
+
+    < string  name = " dialog_color_picker_title_icon_picker_background_color " >"选择颜色"</ string >
+    < string  name = " dialog_color_picker_title " >"选择颜色"</ string >
+    < string  name = " dialog_wallet_picker_title " >"钱包"</ string >
+    < string  name = " dialog_event_picker_title " >"事件"</ string >
+    < string  name = " dialog_category_picker_title " >"Categories"</ string >
+    < string  name = " dialog_budget_type_picker_title " >"预算类型"</ string >
+    < string  name = " dialog_place_picker_title " >"地点"</ string >
+    < string  name = " dialog_people_picker_title " >"人物"</ string >
+    < string  name = " dialog_filter_search_title " >"过滤器"</ string >
+    < string  name = " dialog_change_log_title " >"更改日志"</ string >
+    < string  name = " dialog_overview_setting_title " >"高级设置"</ string >
+    < string  name = " dialog_recurrence_title " >"重复"</ string >
+    < string  name = " dialog_auto_backup_title " >"自动备份"</ string >
+    < string  name = " dialog_data_format_picker_title " >"数据格式"</ string >
+    < string  name = " dialog_export_optional_columns_title " >"可选列"</ string >
+
+    < string  name = " error_input_name_not_valid " >"不是一个有效的名字"</ string >
+    < string  name = " error_input_iso_not_valid " >"不是一个有效的 ISO 代码"</ string >
+    < string  name = " error_input_decimals_not_valid " >"必须是 0 到 8 之间的值"</ string >
+    < string  name = " error_input_currency_not_valid " >"不是有效货币"</ string >
+    < string  name = " error_input_date_range_not_valid " >"不是一个有效的日期范围"</ string >
+    < string  name = " error_input_missing_budget_type " >"选择预算类型"</ string >
+    < string  name = " error_input_missing_wallet " >"选择一个钱包"</ string >
+    < string  name = " error_input_missing_multiple_wallets " >"选择至少一个钱包"</ string >
+    < string  name = " error_input_invalid_multiple_wallets " >"钱包必须有相同的货币"</ string >
+    < string  name = " error_input_missing_date " >"选择一个日期"</ string >
+    < string  name = " error_input_missing_start_date " >"选择开始日期"</ string >
+    < string  name = " error_input_missing_end_date " >选择结束日期</ string >
+    < string  name = " error_input_invalid_date_range " >"无效日期范围"</ string >
+    < string  name = " error_input_missing_category " >"选择一个类别"</ string >
+    < string  name = " error_input_missing_description " >"提供描述"</ string >
+    < string  name = " error_input_missing_format " >"选择文件格式"</ string >
+    < string  name = " error_input_missing_input_file " >"选择一个输入文件"</ string >
+    < string  name = " error_input_missing_output_folder " >"选择一个输出文件夹"</ string >
+
+    < string  name = " system_category_transfer " >转账</ string >
+    < string  name = " system_category_transfer_tax " >转让税</ string >
+    < string  name = " system_category_debt " >债务</ string >
+    < string  name = " system_category_debt_paid " >已付债务</ string >
+    < string  name = " system_category_credit " >信用</ string >
+    < string  name = " system_category_credit_paid " >信用支付</ string >
+    < string  name = " system_category_generic_tax " >税</ string >
+    < string  name = " system_category_saving_in " >存款</ string >
+    < string  name = " system_category_saving_out " >提现</ string >
+
+    <字符串 名称= “默认类别提示” >“提示”</字符串>
+    < string  name = " default_category_prize " >"奖品"</ string >
+    < string  name = " default_category_salary " >"薪水"</ string >
+    < string  name = " default_category_interests " >"兴趣"</ string >
+    <字符串 名称= “ default_category_sale ” >“销售”</字符串>
+    < string  name = " default_category_car_expenses " >"汽车费用"</ string >
+    <字符串 名称= “ default_category_travel ” >“旅行”</字符串>
+    <字符串 名称= “ default_category_friends ” >“朋友”</字符串>
+    < string  name = " default_category_technology " >"技术"</ string >
+    < string  name = " default_category_food_drinks " >"食物和饮料"</ string >
+    < string  name = " default_category_hobby " >"爱好"</ string >
+
+    < string  name = " relative_string_ended_on " >"结束于：%s"</ string >
+    < string  name = " relative_string_will_end_on " >"将结束于：%s"</ string >
+    < string  name = " relative_string_money_to_settle_debt " >"还剩 %s 来清偿这笔债务"</ string >
+    < string  name = " relative_string_debt_completed " >"此债务已完成"</ string >
+    < string  name = " relative_string_expired_on " >"过期时间：%s"</ string >
+    < string  name = " relative_string_will_expire_on " >"将过期：%s"</ string >
+    < string  name = " relative_string_version_name " >"版本 %s"</ string >
+
+    < string  name = " adapter_current_money " >"当前："</ string >
+    < string  name = " adapter_needed_money " >"需要："</ string >
+    < string  name = " adapter_used_money " >"Used:"</ string >
+    < string  name = " adapter_available_money " >"可用："</ string >
+    < string  name = " adapter_tax_money " >"税："</ string >
+
+    < string  name = " header_debts_to_pay " >"要支付："</ string >
+    < string  name = " header_debts_to_receive " >"接收："</ string >
+    < string  name = " header_debts_archived " >"已归档"</ string >
+
+    < string  name = " message_no_currency_found " >"未找到货币"</ string >
+    < string  name = " message_no_wallet_found " >"没有找到钱包"</ string >
+    < string  name = " message_no_transaction_found " >"未找到事务"</ string >
+    < string  name = " message_no_transfer_found " >"未找到传输"</ string >
+    < string  name = " message_no_category_found " >"未找到类别"</ string >
+    < string  name = " message_no_debt_found " >"未找到债务"</ string >
+    < string  name = " message_no_budget_found " >"未找到预算"</ string >
+    < string  name = " message_no_saving_found " >"未找到保存"</ string >
+    < string  name = " message_no_event_found " >"未找到事件"</ string >
+    < string  name = " message_no_recurrence_found " >"未找到重复出现"</ string >
+    < string  name = " message_no_model_found " >"未找到模型"</ string >
+    < string  name = " message_no_place_found " >“找不到地点”</ string >
+    < string  name = " message_no_person_found " >"没有找到人"</ string >
+    < string  name = " message_no_icon_found " >"未找到图标"</ string >
+    < string  name = " message_no_file_found " >"未找到文件"</ string >
+    < string  name = " message_error_backend_recoverable " >"连接问题，请重试。"</ string >
+
+    < string  name = " cover_message_backup_storage_access_framework_title " >"应用程序可以从任何文档提供商（例如 Nextcloud、Dropbox 或您的文件系统）创建和恢复备份"</ string >
+    < string  name = " cover_message_backup_external_memory_title " >"应用程序可以直接从设备的外部存储创建和恢复备份"</ string >
+    < string  name = " cover_message_backup_dropbox_title " >"应用程序可以从您的个人 Dropbox 帐户创建和恢复备份"</ string >
+    < string  name = " cover_message_backup_google_drive_title " >"该应用程序可以从您的个人 Google Drive 帐户创建和恢复备份"</ string >
+    <字符串 名称= “ cover_message_backup_external_memory_button ” >“继续”</字符串>
+    < string  name = " cover_message_backup_storage_access_framework_button " >"继续"</ string >
+    <字符串 名称= “ cover_message_backup_dropbox_button ” >“登录”</字符串>
+    <字符串 名称= “ cover_message_backup_google_drive_button ” >“登录”</字符串>
+
+    < string  name = " empty_message_secondary_panel " >"从左侧面板中选择一个元素以查看详细信息"</ string >
+    < string  name = " empty_message_backup_cover " >"选择您要用于存储和检索个人备份的服务"</ string >
+
+    <字符串 名称= “标题警告” >“警告”</字符串>
+    < string  name = " title_request_permission " >"权限请求"</ string >
+    < string  name = " title_backup_create " >"创建备份"</ string >
+    < string  name = " title_backup_creation " >"正在创建备份"</ string >
+    < string  name = " title_backup_restore " >"恢复备份"</ string >
+    < string  name = " title_backup_restoreing " >"正在恢复备份"</ string >
+    < string  name = " title_backend_create_folder " >"新建文件夹"</ string >
+    < string  name = " title_success " >"成功"</ string >
+    <字符串 名称= “ title_failed ” >“失败”</字符串>
+    <字符串 名称= “标题错误” >“错误”</字符串>
+    < string  name = " title_atm_search " >"搜索 ATM"</ string >
+    < string  name = " title_bank_search " >"搜索银行"</ string >
+    < string  name = " title_changelog " >"Changelog"</ string >
+    < string  name = " title_licenses " >"许可证"</ string >
+    < string  name = " title_debt_insert_master_transaction " >"干得好"</ string >
+    < string  name = " title_currency_exchange_rate " >"汇率"</ string >
+    < string  name = " title_data_importing " >"导入数据"</ string >
+    < string  name = " title_data_exporting " >"正在导出数据"</ string >
+    < string  name = " message_multiply_currency_decimals " >"必须更新数据库中的金额以匹配新的小数位数。操作可能需要一些时间。如果您愿意，可以跳过更新，但金额将显示为变化后除以 %d。"</ string >
+    < string  name = " message_divide_currency_decimals " >"必须更新数据库中的金额以匹配新的小数位数。该操作可能需要一些时间。如果您愿意，可以跳过更新，但金额将显示为更改后乘以 %d。如果金额更新，有关其当前小数部分的一些信息将丢失。"</ string >
+    < string  name = " message_backend_create_folder " >"插入您要创建的文件夹的名称"</ string >
+    < string  name = " message_permission_required_external_storage " >"需要访问外部存储的权限才能读取和写入文件。请启用它。"</ string >
+    < string  name = " message_permission_required_not_granted " >"权限被拒绝。请进入应用程序设置并启用它。"</ string >
+    < string  name = " message_backup_create " >"您确定要创建新备份吗？操作无法停止。如果需要，您可以设置密码来保护备份文件。"</ string >
+    < string  name = " message_backup_restore_standard " >"您确定要恢复此备份吗？所有当前数据将丢失且无法停止操作。继续吗？"</ string >
+    < string  name = " message_backup_restore_protected " >"您确定要恢复此备份吗？所有当前数据将丢失且操作无法停止。备份受密码保护，请输入密码并继续。"</ string >
+    < string  name = " message_backup_restore_legacy " >"您确定要恢复此备份吗？所有当前数据将丢失且无法停止操作。警告！：这是旧备份，应用程序可能无法导入它。继续?"</字符串>
+    < string  name = " message_backup_status_creation " >"正在创建备份文件..."</ string >
+    < string  name = " message_backup_status_uploading " >"正在上传备份文件..."</ string >
+    < string  name = " message_backup_status_downloading " >"正在下载备份文件..."</ string >
+    < string  name = " message_backup_status_restoring " >"正在恢复备份文件..."</ string >
+    < string  name = " message_backup_creation_success " >"备份创建正确。"</ string >
+    < string  name = " message_backup_restoreing_success " >"备份恢复正确。"</ string >
+    < string  name = " message_backup_creation_failed " >"创建备份失败。消息：%s"</ string >
+    < string  name = " message_backup_restoring_failed " >"恢复备份失败。消息：%s"</ string >
+    < string  name = " message_backup_service_dropbox_disconnect " >"您确定要断开您的 Dropbox 帐户吗？"</ string >
+    < string  name = " message_backup_service_storage_access_framework_disconnect " >"您确定要释放当前的内容提供者吗？不会删除任何文件。"</ string >
+    < string  name = " message_backup_service_google_drive_disconnect " >"您确定要断开您的 Google Drive 帐户吗？"</ string >
+    < string  name = " message_action_archive_wallet " >"你确定要归档这​​个钱包吗？它不会再出现在菜单中了。"</ string >
+    < string  name = " message_action_unarchive_wallet " >"您确定要取消存档此钱包吗？它将再次出现在菜单中。"</ string >
+    < string  name = " message_action_archive_debt " >"您确定要归档此债务吗？"</ string >
+    < string  name = " message_action_unarchive_debt " >"您确定要取消归档此债务吗？"</ string >
+    < string  name = " message_action_archive_saving " >"您确定要存档此保存吗？"</ string >
+    < string  name = " message_action_unarchive_saving " >"您确定要取消存档此保存吗？"</ string >
+    < string  name = " message_error_activity_not_found " >"在此设备上找不到处理请求的应用程序。"</ string >
+    < string  name = " message_delete_currency " >"您确定要删除此货币吗？"</ string >
+    < string  name = " message_error_delete_currency " >"此货币正在使用中，无法删除。"</ string >
+    < string  name = " message_delete_wallet " >"确定要删除这个钱包吗？所有相关数据都将被删除。"</ string >
+    < string  name = " message_error_delete_wallet_of_transfer " >"此钱包用于一次或多次转账，无法删除。请删除相关转账以删除此钱包。"</ string >
+    < string  name = " message_delete_category " >"您确定要删除该类别吗？"</ string >
+    < string  name = " message_error_insert_category_deep_hierarchy " >"不支持嵌套子类别：所选父类别已经是另一个类别的子类别。"</ string >
+    < string  name = " message_error_insert_category_not_consistent " >"选择的父类别与该类别的类型不同。"</ string >
+    < string  name = " message_error_update_category_deep_hierarchy " >"不支持嵌套子类别：此类别有一个或多个子类别，不能更新为子类别。"</ string >
+    < string  name = " message_error_update_category_not_consistent " >"选择的父类别与该类别的类型不同。"</ string >
+    < string  name = " message_error_delete_category_with_children " >"此类别有一个或多个孩子，无法删除。请先将其删除。"</ string >
+    < string  name = " message_error_delete_category_in_use " >"该类别正在使用中，无法删除。请删除对该类别的所有引用并重试。"</ string >
+    < string  name = " message_error_delete_system_category " >"此类别无法删除，因为它是系统类别。"</ string >
+    < string  name = " message_delete_transaction " >"您确定要删除此交易吗？"</ string >
+    < string  name = " message_delete_transfer " >"您确定要删除此传输吗？"</ string >
+    < string  name = " message_error_delete_transaction_of_transfer " >"此交易无法删除，因为它是转账的一部分。请删除相关转账以删除此交易。"</ string >
+    < string  name = " message_delete_debt " >"您确定要删除此债务吗？所有相关数据都将被删除。"</ string >
+    < string  name = " message_delete_budget " >"您确定要删除此预算吗？"</ string >
+    < string  name = " message_delete_saving " >"您确定要删除此保存吗？所有相关数据都将被删除。"</ string >
+    < string  name = " message_delete_event " >"您确定要删除此事件吗？"</ string >
+    < string  name = " message_delete_transaction_model " >"您确定要删除此事务模型吗？"</ string >
+    < string  name = " message_delete_transfer_model " >"您确定要删除此传输模型吗？"</ string >
+    < string  name = " message_delete_recurrent_transaction " >"您确定要删除这个循环交易吗？所有已经生成的交易都不会被删除。"</ string >
+    < string  name = " message_delete_recurrent_transfer " >"您确定要删除这个循环转账吗？所有已经生成的转账都不会被删除。"</ string >
+    < string  name = " message_delete_place " >"您确定要删除这个地方吗？"</ string >
+    < string  name = " message_delete_person " >"您确定要删除此人吗？"</ string >
+    < string  name = " message_debt_insert_master_transaction " >"你想为这个债务添加一个主交易吗？"</ string >
+    < string  name = " message_error_legacy_upgrade_failed " >"升级内部数据库时发生错误。请耐心等待并将此消息通知开发人员。请勿卸载应用程序，否则您将丢失数据。您将被重定向到应用程序检查是否有东西损坏。错误消息：%s"</ string >
+    < string  name = " message_data_import_without_backup " >"此功能可能会失败并弄乱您的数据，请确保您已备份现有数据，然后再继续。仍然要继续吗？"</ string >
+    < string  name = " message_data_import_running " >"正在导入..."</ string >
+    < string  name = " message_data_export_running " >"正在导出…"</ string >
+    < string  name = " message_data_import_failed " >"导入过程失败。消息：%s"</ string >
+    < string  name = " message_data_export_failed " >"导出过程失败。消息：%s"</ string >
+    < string  name = " message_data_import_success " >"数据导入正确。"</ string >
+    < string  name = " message_data_export_success " >"数据导出正确。要打开创建的文件吗？"</ string >
+
+    < string  name = " message_async_init " >"初始化…"</ string >
+
+    < string  name = " snackbar_message_model_transaction_added " >"添加的交易"</ string >
+    < string  name = " snackbar_message_model_transfer_added " >"转移已添加"</ string >
+    < string  name = " snackbar_message_model_transaction_removed " >"事务已删除"</ string >
+    < string  name = " snackbar_message_model_transfer_removed " >"转移已移除"</ string >
+
+    < string  name = " spinner_item_group_type_daily " >"每天分组"</ string >
+    < string  name = " spinner_item_group_type_weekly " >"每周分组"</ string >
+    < string  name = " spinner_item_group_type_monthly " >"每月分组"</ string >
+    < string  name = " spinner_item_group_type_yearly " >"每年分组"</ string >
+    < string  name = " spinner_item_type_cash_flow " >"现金流量"</ string >
+    < string  name = " spinner_item_type_category " >"类别"</ string >
+    < string  name = " spinner_item_cash_flow_incomes " >"只有收入"</ string >
+    < string  name = " spinner_item_cash_flow_expenses " >"仅费用"</ string >
+    < string  name = " spinner_item_cash_flow_net_incomes " >"净收入"</ string >
+
+    < string  name = " spinner_item_start_date " >"发件人：%s"</ string >
+    < string  name = " spinner_item_end_date " >"收件人：%s"</ string >
+
+    < string  name = " service_backup_drop_box " >"DropBox"</ string >
+    < string  name = " service_backup_google_drive " >"Google Drive"</ string >
+    < string  name = " service_backup_external_memory " >"外部内存"</ string >
+    < string  name = " service_backup_storage_access_framework "  translatable = " false " >"存储访问框架"</ string >
+
+    < string  name = " setting_title_user_interface " >"用户界面"</ string >
+    < string  name = " setting_title_utility " >"Utilities"</ string >
+    <字符串 名称= “设置标题数据库” >“数据库”</字符串>
+    < string  name = " setting_title_about " >"关于"</ string >
+
+    < string  name = " setting_category_ui_appearance " >"外观"</ string >
+    < string  name = " setting_category_ui_theme " >“主题”</ string >
+    < string  name = " setting_title_ui_income_color " >"收入颜色"</ string >
+    < string  name = " setting_title_ui_expense_color " >"费用颜色"</ string >
+    < string  name = " setting_title_ui_custom_digits " >"数字显示样式"</ string >
+    < string  name = " setting_summary_ui_custom_digits " >"个性化数字显示风格"</ string >
+    < string  name = " setting_title_ui_date_format " >"日期格式"</ string >
+    < string  name = " setting_title_ui_first_day_week " >"一周的第一天"</ string >
+    < string  name = " setting_title_ui_first_day_month " >"每月的第一天"</ string >
+    < string  name = " setting_title_ui_group_type " >"分组"</ string >
+    < string  name = " setting_title_ui_theme_color_primary " >"原色"</ string >
+    < string  name = " setting_title_ui_theme_color_accent " >"颜色重音"</ string >
+    < string  name = " setting_title_ui_theme_type " >"类型"</ string >
+
+    < string  name = " setting_category_utility_notification " >"通知"</ string >
+    <字符串 名称= “设置类别实用程序安全” >“安全”</字符串>
+    < string  name = " setting_category_utility_exchange_rates " >"汇率"</ string >
+    < string  name = " setting_title_daily_reminder " >"每日提醒"</ string >
+    < string  name = " setting_summary_daily_reminder " >"每天：%02d:00"</ string >
+    < string  name = " setting_title_security " >"访问保护"</ string >
+    < string  name = " setting_title_security_change_pin " >"更改密码"</ string >
+    < string  name = " setting_title_security_change_sequence " >"更改解锁顺序"</ string >
+    < string  name = " setting_title_exchange_rate_source " >"服务"</ string >
+    < string  name = " setting_title_exchange_rate_api_key " >"自定义 api-key"</ string >
+    < string  name = " setting_summary_exchange_rate_api_key " >"Api-key: %s"</ string >
+    < string  name = " setting_summary_exchange_rate_api_key_missing " >"Api-key 丢失"</ string >
+    < string  name = " setting_title_exchange_rate_update " >"更新汇率"</ string >
+    < string  name = " setting_summary_exchange_rate_update " >"上次更新：%s"</ string >
+    < string  name = " setting_title_currency_management " >"管理货币"</ string >
+    < string  name = " setting_summary_currency_management " >"添加自定义货币"</ string >
+    < string  name = " setting_subtitle_user_interface " >"随心所欲"</ string >
+    < string  name = " setting_subtitle_utility " >"设置可用工具"</ string >
+    < string  name = " setting_subtitle_database " >"管理您的数据"</ string >
+    < string  name = " setting_subtitle_about " >"信用和许可"</ string >
+    < string  name = " setting_item_daily_reminder_none " >"已禁用"</ string >
+    < string  name = " setting_item_security_none " >"已禁用"</ string >
+    < string  name = " setting_item_security_pin " >"密码"</ string >
+    < string  name = " setting_item_security_sequence " >"序列"</ string >
+    < string  name = " setting_item_security_fingerprint " >"指纹"</ string >
+    < string  name = " setting_item_ui_group_type_daily " >"每日"</ string >
+    < string  name = " setting_item_ui_group_type_weekly " >"每周"</ string >
+    < string  name = " setting_item_ui_group_type_monthly " >"每月"</ string >
+    < string  name = " setting_item_ui_group_type_yearly " >"每年"</ string >
+    < string  name = " setting_item_ui_theme_type_light " >"灯光"</ string >
+    < string  name = " setting_item_ui_theme_type_dark " >"Dark"</ string >
+    < string  name = " setting_item_ui_theme_type_deep_dark " >"深黑"</ string >
+    < string  name = " setting_item_utility_exchange_rates_custom_api_key_hint " >"插入 api-key"</ string >
+    <字符串 名称= “ setting_item_utility_exchange_rates_service_oer ” 可翻译= “假” >“OpenExchangeRates.org”</字符串>
+    < string  name = " setting_item_utility_exchange_rates_service_oer_custom_api_key_message " >"此服务需要有效的 api-key 才能工作。这意味着此应用程序版本是在没有默认密钥的情况下编译的，可能是由于许可问题。能够与此外部提供程序通信您必须访问 https://openexchangerates.org 并注册：您将收到一个免费密钥。"</ string >
+
+    < string  name = " setting_category_database_backup " >"备份"</ string >
+    < string  name = " setting_title_database_backup_services " >"备份服务"</ string >
+    < string  name = " setting_summary_database_backup_services " >"创建和恢复数据库"</ string >
+    < string  name = " setting_category_database_import_export " >"导入/导出"</ string >
+    < string  name = " setting_title_import_data " >"导入数据"</ string >
+    < string  name = " setting_summary_import_data " >"从外部文件读取数据"</ string >
+    < string  name = " setting_title_export_data " >"导出数据"</ string >
+    < string  name = " setting_summary_export_data " >"将数据写入外部文件"</ string >
+
+    < string  name = " notification_title_daily_reminder_title " >"今天有交易吗？"</ string >
+    < string  name = " notification_title_daily_reminder_text " >"点击此处立即添加"</ string >
+    < string  name = " notification_title_download_exchange_rates " >"更新汇率"</ string >
+    < string  name = " notification_title_backup_creation " >"备份创建"</ string >
+    < string  name = " notification_title_backup_restoreing " >"备份恢复"</ string >
+    < string  name = " notification_title_backup_creation_failed " >"备份创建失败"</ string >
+    < string  name = " notification_title_backup_restoreing_failed " >"备份恢复失败"</ string >
+    < string  name = " notification_content_downloading_data " >"正在下载更新数据..."</ string >
+    < string  name = " notification_content_caching_data " >"正在存储更新的数据…"</ string >
+    < string  name = " notification_content_error_message " >"错误：%s"</ string >
+    < string  name = " notification_content_backup_file_creation " >"正在写入本地备份文件..."</ string >
+    < string  name = " notification_content_backup_file_uploading " >"正在上传备份文件..."</ string >
+    < string  name = " notification_content_backup_file_downloading " >"正在下载备份文件..."</ string >
+    < string  name = " notification_content_backup_file_restoreing " >"正在读取备份文件..."</ string >
+    < string  name = " notification_content_backup_error_wifi_network " >"该操作已编程为仅在设备连接到 WiFi 网络时执行。连接到 WiFi 网络并重试。"</ string >
+    < string  name = " notification_content_backup_error_backend_recoverable " >"与后端服务通信时出错。请检查您的互联网连接，然后重试。"</ string >
+    < string  name = " notification_content_backup_error_backend " >"后台出错，已禁用自动备份，检查是否有问题。"</ string >
+    < string  name = " notification_content_backup_error_internal " >"操作过程中出现内部错误，可能是bug，请将此消息报告给开发者：%s"</ string >
+    < string  name = " notification_action_retry " >"重试"</ string >
+    < string  name = " message_error_network_connection " >"网络连接"</ string >
+    < string  name = " message_error_invalid_response " >"无效响应"</ string >
+    < string  name = " message_error_missing_api_key " >"api key 缺失或无效，请更新设置中的 api key 以便使用此服务"</ string >
+
+    < string  name = " about_hint_version " >"构建版本"</ string >
+    <字符串 名称= “ about_hint_changelog ” >“更改日志”</字符串>
+    < string  name = " about_hint_support " >"支持开发"</ string >
+    < string  name = " about_hint_rate_app " >"评价这个应用程序"</ string >
+    < string  name = " about_hint_open_source_libraries " >"开源库"</ string >
+    < string  name = " about_hint_report_bug " >"报告错误"</ string >
+    <字符串 名称= “ about_hint_author ” >“作者”</字符串>
+    <字符串 名称= “ about_hint_developer ” >“开发人员”</字符串>
+    < string  name = " about_hint_fork " >"在 GitHub 上的 Fork"</ string >
+    < string  name = " about_hint_logo_designer " >"标志设计师"</ string >
+    <字符串 名称= “ about_hint_google_plus ” >“Google Plus”</字符串>
+    < string  name = " about_hint_website " >"网站"</ string >
+    < string  name = " about_hint_icon_licenses " >"图像和图标"</ string >
+    < string  name = " about_hint_icon_image_intro " >"介绍图片"</ string >
+    < string  name = " about_hint_md_icons " >"Material design icons"</ string >
+    < string  name = " about_hint_icon_pack " >"图标包"</ string >
+    < string  name = " about_hint_translators " >"译者"</ string >
+
+    < string  name = " activity_launcher_legacy_edition_upgrade_title " >"升级中..."</ string >
+    < string  name = " activity_launcher_first_start_title " >"欢迎使用 MoneyWallet"</ string >
+    < string  name = " activity_launcher_first_start_content " >"您是第一次使用这个应用程序还是要恢复以前的备份？"</ string >
+    < string  name = " activity_launcher_first_start_button_first_time " >"第一次"</ string >
+    < string  name = " activity_launcher_first_start_button_restore_backup " >"恢复备份"</ string >
+
+    < string  name = " activity_intro_title_slide_1 " >“没有更多的意外”</ string >
+    < string  name = " activity_intro_title_slide_2 " >“发现和计划”</ string >
+    < string  name = " activity_intro_title_slide_3 " >"开源"</ string >
+    < string  name = " activity_intro_title_slide_4 " >"云备份"</ string >
+    < string  name = " activity_intro_title_slide_5 " >"干得好"</ string >
+    < string  name = " activity_intro_description_slide_1 " >"它将帮助您跟踪所有费用"</ string >
+    < string  name = " activity_intro_description_slide_2 " >"您可以分析您在哪里花费很多并设置一些预算"</ string >
+    < string  name = " activity_intro_description_slide_3 " >"项目现已开源，人人都可以贡献"</ string >
+    < string  name = " activity_intro_description_slide_4 " >"它支持最常用的云服务，帮助您永远不会丢失数据"</ string >
+    < string  name = " activity_intro_description_slide_5 " >"您现在将被重定向到创建您的第一个钱包"</ string >
+
+    < string  name = " help_create_new_pin_code " >"创建一个新的 pin 码"</ string >
+    < string  name = " help_verify_created_pin_code " >"重新插入 pin 码"</ string >
+    < string  name = " help_verify_created_pin_code_failed " >"代码不匹配，创建一个新的 pin 码"</ string >
+    < string  name = " help_insert_pin_code " >"插入 pin 码"</ string >
+    < string  name = " help_insert_pin_code_failed " >"密码错误，重试"</ string >
+    < string  name = " help_insert_old_pin_code " >"插入旧密码"</ string >
+    < string  name = " help_create_new_sequence " >"创建一个新序列"</ string >
+    < string  name = " help_verify_created_sequence " >"重新插入序列"</ string >
+    < string  name = " help_verify_created_sequence_failed " >"序列不匹配，创建新序列"</ string >
+    < string  name = " help_insert_sequence " >"插入序列"</ string >
+    < string  name = " help_insert_sequence_failed " >"错误序列，重试"</ string >
+    < string  name = " help_insert_old_sequence " >"插入旧序列"</ string >
+    < string  name = " help_create_fingerprint " >"使用指纹确认"</ string >
+    < string  name = " help_insert_fingerprint " >"使用指纹解锁"</ string >
+    < string  name = " help_insert_fingerprint_failed " >"验证失败，重试"</ string >
+    < string  name = " help_fingerprint_not_initialized " >"此设备上没有注册指纹"</ string >
+
+    < string  name = " icon_category_clothes " >"衣服"</ string >
+    < string  name = " icon_category_people " >"人物"</ string >
+    < string  name = " icon_category_toys " >“玩具”</ string >
+    < string  name = " icon_category_travel_and_transportation " >"旅游交通"</ string >
+    <字符串 名称= “ icon_category_home ” >“家”</字符串>
+    < string  name = " icon_category_animals " >"动物"</ string >
+    < string  name = " icon_category_shopping " >"购物"</ string >
+    < string  name = " icon_category_sport_and_free_time " >"运动和空闲时间"</ string >
+    <字符串 名称= “ icon_category_payments ” >“付款”</字符串>
+    < string  name = " icon_category_party " >"派对"</ string >
+    < string  name = " icon_category_food_and_drinks " >"食物和饮料"</ string >
+    < string  name = " icon_category_baby " >“宝贝”</ string >
+    < string  name = " icon_category_beauty_and_wellness " >"美容养生"</ string >
+    < string  name = " icon_category_technology " >"技术"</ string >
+    <字符串 名称= “ icon_category_finance ” >“财务”</字符串>
+
+    <字符串 名称= “ keyboard_9 ” >9</字符串>
+    <字符串 名称= “ keyboard_8 ” >8</字符串>
+    <字符串 名称= “ keyboard_7 ” >7</字符串>
+    <字符串 名称= “ keyboard_6 ” >6</字符串>
+    <字符串 名称= “ keyboard_5 ” >5</字符串>
+    <字符串 名称= “ keyboard_4 ” >4</字符串>
+    <字符串 名称= “ keyboard_3 ” >3</字符串>
+    <字符串 名称= “ keyboard_2 ” >2</字符串>
+    <字符串 名称= “ keyboard_1 ” >1</字符串>
+    <字符串 名称= “键盘_0 ” >0</字符串>
+    <字符串 名称= “ keyboard_000 ” >000</字符串>
+    <字符串 名称= “键盘点” >。</字符串>
+    <字符串 名称= “键盘清除” >“C”</字符串>
+    <字符串 名称= “键盘乘法” >“×”</字符串>
+    <字符串 名称= “键盘分区” >“÷”</字符串>
+    < string  name = " keyboard_addition " >"+"</ string >
+    <字符串 名称= “键盘减法” >“-”</字符串>
+    < string  name = " keyboard_equal " >"="</ string >
+    < string  name = " keyboard_commit " >">"</ string >
+
+    < string  name = " recurrence_type_daily " >"每日"</ string >
+    <字符串 名称= “ recurrence_type_weekly ” >“每周”</字符串>
+    < string  name = " recurrence_type_monthly " >"每月"</ string >
+    < string  name = " recurrence_type_yearly " >"每年"</ string >
+
+    < string  name = " recurrence_hint_from " >"From"</ string >
+    < string  name = " recurrence_hint_every " >"Every"</ string >
+    < string  name = " recurrence_hint_days " >"days"</ string >
+    < string  name = " recurrence_hint_weeks " >"weeks"</ string >
+    < string  name = " recurrence_hint_months " >"months"</ string >
+    <字符串 名称= “ recurrence_hint_years ” >“年”</字符串>
+    <字符串 名称= “ recurrence_hint_times ” >“次”</字符串>
+
+    < string  name = " recurrence_type_weekly_sunday " >"星期天"</ string >
+    < string  name = " recurrence_type_weekly_monday " >"星期一"</ string >
+    < string  name = " recurrence_type_weekly_tuesday " >"周二"</ string >
+    < string  name = " recurrence_type_weekly_wednesday " >"周三"</ string >
+    < string  name = " recurrence_type_weekly_thursday " >"星期四"</ string >
+    < string  name = " recurrence_type_weekly_friday " >"周五"</ string >
+    < string  name = " recurrence_type_weekly_saturday " >"星期六"</ string >
+    < string  name = " recurrence_type_monthly_repeat_same_day " >"每个月的同一天"</ string >
+
+    < string  name = " recurrence_end_type_forever " >"永远"</ string >
+    < string  name = " recurrence_end_type_until " >"Until"</ string >
+    < string  name = " recurrence_end_type_for " >"For"</ string >
+
+    < string  name = " recurrence_hint_repeat_every_day " >"每天重复，"</ string >
+    < string  name = " recurrence_hint_repeat_every_n_days " >"每隔 %d 天重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_week " >"每周重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_n_weeks " >"每 %d 周重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_month " >"每个月重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_n_months " >"每 %d 个月重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_year " >"每年重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_every_n_years " >"每 %d 年重复一次，"</ string >
+    < string  name = " recurrence_hint_repeat_weekly_sunday " >"星期天"</ string >
+    < string  name = " recurrence_hint_repeat_weekly_monday " >"周一"</ string >
+    <字符串 名称= “ recurrence_hint_repeat_weekly_tuesday ” >“周二，”</字符串>
+    <字符串 名称= “ recurrence_hint_repeat_weekly_wednesday ” >“周三，”</字符串>
+    < string  name = " recurrence_hint_repeat_weekly_thursday " >"星期四，"</ string >
+    < string  name = " recurrence_hint_repeat_weekly_friday " >"周五，"</ string >
+    < string  name = " recurrence_hint_repeat_weekly_saturday " >"星期六"</ string >
+    < string  name = " recurrence_hint_repeat_starting_from " >"从 %s 开始，"</ string >
+    <字符串 名称= “ recurrence_hint_repeat_forever ” >“永远”</字符串>
+    <字符串 名称= “ recurrence_hint_repeat_until ” >“直到%s”</字符串>
+    < string  name = " recurrence_hint_repeat_for_one_occurrence " >"出现 1 次"</ string >
+    < string  name = " recurrence_hint_repeat_for_n_occurrence " >"对于 %d 次出现"</ string >
+
+    < string  name = " notification_channel_name_backup " >"备份"</ string >
+    < string  name = " notification_channel_name_reminder " >"提醒"</ string >
+    < string  name = " notification_channel_name_exchange_rate " >"汇率"</ string >
+    < string  name = " notification_channel_name_error " >"错误"</ string >
+
+    < string  name = " activity_donation_first_title " >"谢谢！"</ string >
+    < string  name = " activity_donation_first_content " >"如果您喜欢这个应用程序并且觉得它有用，请考虑给我买杯啤酒。它将支持这个项目并鼓励我继续开发它。"</ string >
+    < string  name = " activity_donation_second_title " >"我为什么要这样做？"</ string >
+    < string  name = " activity_donation_second_content " >"有人可能会说，“生命中最美好的东西是免费的”，我同意这一点。友谊、爱情或美丽日出的记忆都买不来。这就是为什么我决定分享这个应用程序的源代码是免费的。但不幸的是，生活不是免费的。你每天只有24小时的稀缺时间，你必须决定如何使用它们来养活自己。如果你喜欢这个项目，你想看看它在未来不断发展，考虑支持我的工作，让我可以在上面分配更多时间。任何贡献都会产生巨大的影响。”</ string >
+    < string  name = " activity_donation_third_title " >"不能捐钱吗？没问题，你还是可以帮忙的！"</ string >
+    < string  name = " activity_donation_crypto_address_copied " >"地址已复制"</ string >
+    < string  name = " activity_donation_action_share_title " >"分享"</ string >
+    < string  name = " activity_donation_action_share_content " >"在你的朋友中传播消息"</ string >
+    < string  name = " activity_donation_action_share_message " >"你好，看看 %s"</ string >
+    < string  name = " activity_donation_action_share_using " >"分享使用"</ string >
+    < string  name = " activity_donation_action_rate_title " >"费率"</ string >
+    < string  name = " activity_donation_action_rate_content " >"写一个 5 星评论告诉我们你的想法"</ string >
+    < string  name = " activity_donation_action_translate_title " >"翻译"</ string >
+    < string  name = " activity_donation_action_translate_content " >"用您的语言本地化字符串"</ string >
+    < string  name = " activity_donation_action_contribute_title " >"贡献"</ string >
+    < string  name = " activity_donation_action_contribute_content " >"源代码公开，大家可以合作"</ string >
+    <string name = "activity_donation_final_content " >"无论是我的每一个贡献，希望都是金钱还是非金钱，都是平等的，对有意义的意义。您喜欢它，再次感谢您选择使用这个应用程序。"</字符串 >
+
+</resources>
