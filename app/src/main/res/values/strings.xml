@@ -20,12 +20,12 @@
 <resources>
     < string name = " app_name " >MoneyWallet</ string >
 
-    <字符串名称=“菜单交易”>“交易”</字符串>
-    <字符串名称=“菜单类别”>“类别”</字符串>
-    < string name = " menu_overview " >"概览"</ string >
-    <string name="menu_debt" >"债务"</string>
-    <字符串名称=“菜单预算”>“预算”</字符串>
-    <string name = "menu_saving" >"Savings"</string>
+    < string name =“菜单交易”>“交易”</字符串>
+    < string name =“菜单类别”>“类别”</字符串>
+    < string name =" menu_overview " >"概览"</ string >
+    < string name ="menu_debt" >"债务"</string>
+    < string name =“菜单预算”>“预算”</字符串>
+    < string name = "menu_saving" >"Savings"</string>
     <字符串名称=“菜单事件”>“事件”</字符串>
     <字符串名称=“菜单重复”>“重复”</字符串>
     <字符串名称=“菜单模型”>“模型”</字符串>
@@ -35,7 +35,7 @@
     <string name = ">"计算"</string>
     <string name="menu_search_atm" >"搜索atm"</string>
     < string name = " menu_search_bank " >"搜索银行"</ string >
-    <字符串名称=“菜单设置”>“设置”</字符串>
+    < string name =“菜单设置”>“设置”</字符串>
     < string name = " menu_support_developer " >"支持开发者"</ string >
     < string name = " menu_about " >"关于"</ string >
 
