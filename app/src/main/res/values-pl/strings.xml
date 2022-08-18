@@ -26,7 +26,7 @@
     <string name="menu_saving">"Oszczędności"</string>
     <string name="menu_event">"Zdarzenia"</string>
     <string name="menu_recurrences">"Powtarzalne"</string>
-    <string name="menu_models">"Modele"</string>
+    <string name="menu_models">"Szablony"</string>
     <string name="menu_place">"Miejsca"</string>
     <string name="menu_people">"Ludzie"</string>
     <string name="menu_converter">"Konwerter"</string>
@@ -112,7 +112,7 @@
     <string name="hint_wallets">"Portfele"</string>
     <string name="hint_wallet_from">"Od"</string>
     <string name="hint_wallet_to">"Do"</string>
-    <string name="hint_recurrence">"Powtarzalne"</string>
+    <string name="hint_recurrence">"Cykliczne"</string>
     <string name="hint_recurrence_invalid">"Nieprawidłowe powtarzalne"</string>
     <string name="hint_event">"Wydarzenie"</string>
     <string name="hint_people">"Ludzie"</string>
@@ -183,8 +183,8 @@
     <string name="title_activity_edit_saving">"Edytuj oszczędności"</string>
     <string name="title_activity_new_event">"Nowe zdarzenie"</string>
     <string name="title_activity_edit_event">"Edytuj zdarzenie"</string>
-    <string name="title_activity_new_recurrence">"Nowa powtarzalność"</string>
-    <string name="title_activity_edit_recurrence">"Edytuj powtarzalność"</string>
+    <string name="title_activity_new_recurrence">"Nowe zdarzenie cykliczne"</string>
+    <string name="title_activity_edit_recurrence">"Edytuj zdarzenie cykliczne"</string>
     <string name="title_activity_new_model">"Nowy model"</string>
     <string name="title_activity_edit_model">"Edytuj model"</string>
     <string name="title_activity_new_place">"Nowe miejsce"</string>
@@ -255,7 +255,7 @@
     <string name="dialog_category_picker_title">"Kategorie"</string>
     <string name="dialog_budget_type_picker_title">"Typy budżetu"</string>
     <string name="dialog_place_picker_title">"Miejsca"</string>
-    <string name="dialog_people_picker_title">"Ludzie"</string>
+    <string name="dialog_people_picker_title">"Osoby"</string>
     <string name="dialog_filter_search_title">"Filtruj"</string>
     <string name="dialog_change_log_title">"Rejestr zmian"</string>
     <string name="dialog_overview_setting_title">"Zaawansowane ustawienia"</string>
@@ -286,7 +286,7 @@
     <string name="system_category_transfer">Przelew</string>
     <string name="system_category_transfer_tax">Przelew podatkowy</string>
     <string name="system_category_debt">Dług</string>
-    <string name="system_category_debt_paid">Dług spałacony</string>
+    <string name="system_category_debt_paid">Dług spłacony</string>
     <string name="system_category_credit">Kredyt</string>
     <string name="system_category_credit_paid">Kredyt spłacony</string>
     <string name="system_category_generic_tax">Podatek</string>
@@ -295,9 +295,9 @@
 
     <string name="default_category_tip">"Napiwek"</string>
     <string name="default_category_prize">"Nagroda"</string>
-    <string name="default_category_salary">"Pęsja"</string>
+    <string name="default_category_salary">"Pensja"</string>
     <string name="default_category_interests">"Odsetki"</string>
-    <string name="default_category_sale">"Wybrzedaż"</string>
+    <string name="default_category_sale">"Wyprzedaż"</string>
     <string name="default_category_car_expenses">"Wydatki na samochód"</string>
     <string name="default_category_travel">"Podróż"</string>
     <string name="default_category_friends">"Przyjaciale"</string>
@@ -333,7 +333,7 @@
     <string name="message_no_saving_found">"Nie znaleziono oszczędności"</string>
     <string name="message_no_event_found">"Nie znaleziono wydarzenia"</string>
     <string name="message_no_recurrence_found">"Nie znaleziono rutyny"</string>
-    <string name="message_no_model_found">"Nie znaleziono modelu"</string>
+    <string name="message_no_model_found">"Nie znaleziono szablonu"</string>
     <string name="message_no_place_found">"Nie znaleziono miejsca"</string>
     <string name="message_no_person_found">"Nie znaleziono osoby"</string>
     <string name="message_no_icon_found">"Nie znaleziono ikony"</string>
@@ -458,7 +458,7 @@
     <string name="setting_title_user_interface">"Interfejs użytkownika"</string>
     <string name="setting_title_utility">"Narzędzia"</string>
     <string name="setting_title_database">"Baza danych"</string>
-    <string name="setting_title_about">"Na temat"</string>
+    <string name="setting_title_about">"O aplikacji"</string>
 
     <string name="setting_category_ui_appearance">"Wygląd"</string>
     <string name="setting_category_ui_theme">"Motyw"</string>
@@ -493,7 +493,7 @@
     <string name="setting_subtitle_user_interface">"Skonfiguruj dostępne narzędzia"</string>
     <string name="setting_subtitle_utility">"Skonfiguruj dostępne narzędzia"</string>
     <string name="setting_subtitle_database">"Zarządzaj swoimi danymi"</string>
-    <string name="setting_subtitle_about">"Kredyty i licencje"</string>
+    <string name="setting_subtitle_about">"Twórcy i licencje"</string>
     <string name="setting_item_daily_reminder_none">"Wyłączony"</string>
     <string name="setting_item_security_none">"Wyłączony"</string>
     <string name="setting_item_security_pin">"kod PIN"</string>
@@ -636,7 +636,7 @@
     <string name="recurrence_type_yearly">"Co rok"</string>
 
     <string name="recurrence_hint_from">"Od"</string>
-    <string name="recurrence_hint_every">"Wszystki"</string>
+    <string name="recurrence_hint_every">"Wszystkie"</string>
     <string name="recurrence_hint_days">"dni"</string>
     <string name="recurrence_hint_weeks">"tygodnie"</string>
     <string name="recurrence_hint_months">"miesiące"</string>
@@ -652,9 +652,9 @@
     <string name="recurrence_type_weekly_saturday">"w sobotę"</string>
     <string name="recurrence_type_monthly_repeat_same_day">"tego samego dnia każdego miesiąca"</string>
 
-    <string name="recurrence_end_type_forever">"Zawsze"</string>
-    <string name="recurrence_end_type_until">"Póki"</string>
-    <string name="recurrence_end_type_for">"dla"</string>
+    <string name="recurrence_end_type_forever">"Bez końca"</string>
+    <string name="recurrence_end_type_until">"Do daty"</string>
+    <string name="recurrence_end_type_for">"Przez"</string>
 
     <string name="recurrence_hint_repeat_every_day">"Powtórz każdego dnia, "</string>
     <string name="recurrence_hint_repeat_every_n_days">"Powtórz co %d dni, "</string>
