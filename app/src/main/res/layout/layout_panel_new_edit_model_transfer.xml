@@ -115,7 +115,7 @@
         android:layout_marginRight="@dimen/material_activity_body_check_box_start_end_margin"
         android:paddingLeft="@dimen/material_activity_body_check_box_start_padding"
         android:paddingStart="@dimen/material_activity_body_check_box_start_padding"
-        android:text="@string/hint_show_in_total"
+        android:text="@string/hint_show_in_total"500000000000.00
         android:checked="true"
         tools:ignore="RtlSymmetry" />
 
