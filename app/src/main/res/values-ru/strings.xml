@@ -25,38 +25,48 @@
     <string name="menu_budget">"Бюджеты"</string>
     <string name="menu_saving">"Сбережения"</string>
     <string name="menu_event">"События"</string>
+    <string name="menu_recurrences">"Регулярные операции"</string>
+    <string name="menu_models">"Модели"</string>
+    <string name="menu_place">"Места"</string>
+    <string name="menu_people">"Люди"</string>
     <string name="menu_converter">"Конвертер"</string>
     <string name="menu_calculator">"Калькулятор"</string>
     <string name="menu_search_atm">"Поиск банкоматов"</string>
     <string name="menu_search_bank">"Поиск банка"</string>
     <string name="menu_setting">"Настройки"</string>
+    <string name="menu_support_developer">"Поддержать разработчика"</string>
     <string name="menu_about">"О программе"</string>
     <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"Операции"</string>
     <string name="menu_transaction_tab_transfers">"Переводы"</string>
     <!-- Categories -->
     <string name="menu_category_tab_income">"Доход"</string>
+    <string name="menu_category_tab_expense">"Траты"</string>
     <string name="menu_category_tab_system">"Система"</string>
     <!-- Debts -->
-    <string name="menu_debt_tab_debt">"долги"</string>
-    <string name="menu_debt_tab_credit">"кредиты"</string>
+    <string name="menu_debt_tab_debt">"Долги"</string>
+    <string name="menu_debt_tab_credit">"Кредиты"</string>
     <!-- Budgets -->
-    <string name="menu_budget_tab_expired">"Исполненный"</string>
+    <string name="menu_budget_tab_running">"Действительные"</string>
+    <string name="menu_budget_tab_expired">"Просроченные"</string>
     <!-- Savings -->
+    <string name="menu_saving_tab_running">"Действительные"</string>
     <string name="menu_saving_tab_completed">"Завершенные"</string>
     <!-- Events -->
+    <string name="menu_event_tab_running">"Действительные"</string>
+    <string name="menu_event_tab_completed">"Завершенные"</string>
     <!-- Models -->
-    <string name="action_new_wallet">"Новый счёт"</string>
-    <string name="action_manage_wallets">"Управление счетами"</string>
-    <string name="action_pay_debt">"Оплатить"</string>
-    <string name="action_receive_debt">"Получить"</string>
-    <string name="action_withdraw">"Вывести"</string>
-    <string name="action_deposit">"Депозит"</string>
-    <string name="action_withdraw_everything">"Вывести все"</string>
-    <string name="action_add">"Добавить запись"</string>
-    <string name="msg_no_wallet_found">"Нажмите здесь, чтобы добавить ещё"</string>
-    <string name="msg_add_one_wallet">"Пожалуйста, добавьте счёт"</string>
+    <string name="menu_model_tab_transactions">"Операции"</string>
+    <string name="menu_model_tab_transfers">"Переводы"</string>
+
+    <string name="hint_address">"Адрес"</string>
+    <string name="hint_unknown">"Неизвестно"</string>
+    <string name="hint_money">"Деньги"</string>
+    <string name="hint_start_money">"Изначальное значение"</string>
+    <string name="hint_currency">"Валюта"</string>
     <string name="hint_description">"Описание"</string>
     <string name="hint_category">"Категория"</string>
+    <string name="hint_search_something">"Поищите что-то"</string>
     <string name="hint_date">"Дата"</string>
     <string name="hint_start_date">"Дата начала"</string>
     <string name="hint_end_date">"Дата завершения"</string>
@@ -68,14 +78,57 @@
     <string name="hint_event">"Событие"</string>
     <string name="hint_place">"Место"</string>
     <string name="hint_note">"Заметка"</string>
+    <string name="hint_name">"Название"</string>
+    <string name="hint_income">"Доход"</string>
+    <string name="hint_expense">"Трата"</string>
+    <string name="hint_show_category_report">"Показать эту категорию в отчетах"</string>
+    <string name="hint_parent_category">"Родительская категория"</string>
+    <string name="hint_people">"Человек"</string>
     <string name="hint_tax">"Налог на операцию"</string>
     <string name="hint_atm_name">"Имя банкомата"</string>
+    <string name="hint_confirmed">"Подтвержденная"</string>
+    <string name="hint_show_in_total">"Отобразить влияние на общей сумме"</string>
     <string name="hint_bank_name">"Имя банка"</string>
     <string name="hint_show_currency_symbol">"Показать значок валюты"</string>
     <string name="hint_group_digits">"Отделять порядки"</string>
     <string name="hint_round_decimals">"Округлять"</string>
+    <string name="hint_incomes">"Доход"</string>
+    <string name="hint_net_incomes">"Чистые доходы"</string>
+    <string name="hint_expenses">"Траты"</string>
+    <string name="hint_summary">"Итог"</string>
+
+    <string name="menu_action_open_map">"Карта"</string>
+    <string name="menu_action_sort_items">"Сортировка"</string>
+    <string name="menu_action_edit_item">"Редактировать"</string>
+    <string name="menu_action_delete_item">"Удалить"</string>
+    <string name="menu_action_search_item">"Поиск"</string>
+    <string name="menu_action_open_calendar">"Календарь"</string>
+    <string name="menu_action_attach_file">"Приложить файл"</string>
+    <string name="menu_action_save_changes">"Сохранить изменения"</string>
+    <string name="menu_action_service_disconnect">"Отключить"</string>
+
+    <string name="menu_advanced_settings">"Расширенный"</string>
+    <string name="menu_refresh_currency_rate">"Обновить курсы"</string>
+
+    <string name="action_filter">"Фильтр"</string>
+    <string name="action_new">"Создать новую"</string>
+    <string name="action_new_wallet">"Новый счёт"</string>
+    <string name="action_manage_wallets">"Управление счетами"</string>
+    <string name="action_pay_debt">"Оплатить"</string>
+    <string name="action_receive_debt">"Получить"</string>
+    <string name="action_withdraw">"Вывести"</string>
+    <string name="action_deposit">"Депозит"</string>
+    <string name="action_withdraw_everything">"Вывести все"</string>
+    <string name="action_add">"Добавить запись"</string>
+
     <string name="total_wallet_name">"Итого"</string>
+
+    <string name="title_warning">"Внимание"</string>
+    <string name="title_atm_search">"Поиск банкоматов"</string>
+    <string name="title_bank_search">"Поиск банков"</string>
+
     <string name="title_activity_new_wallet">Новый счёт</string>
+    <string name="title_activity_calendar">"Календарь"</string>
     <string name="title_activity_edit_wallet">Редактировать счёт</string>
     <string name="title_activity_new_transaction">"Новая операция"</string>
     <string name="title_activity_edit_transaction">"Редактировать операцию"</string>
@@ -90,17 +143,47 @@
     <string name="title_activity_new_event">"Новое событие"</string>
     <string name="title_activity_edit_event">"Редактировать событие"</string>
     <string name="title_activity_category_picker">Выберите иконку</string>
-    <string name="title_activity_calculator">Калькулятоh</string>
+    <string name="title_activity_category_sort">"Сортировка категорий"</string>
+    <string name="title_activity_icon_list">"Иконки"</string>
+    <string name="title_activity_backup_services">"Сервисы резервного копирования"</string>
+    <string name="title_activity_about">"О программе"</string>
+    <string name="title_activity_support_developer">"Поддержать разработчика"</string>
+    <string name="title_activity_calculator">Калькулятор</string>
+    <string name="title_activity_new_model">"Новая модель"</string>
+    <string name="title_activity_edit_model">"Изменить модель"</string>
+    <string name="title_activity_new_place">"Новое место"</string>
+    <string name="title_activity_edit_place">"Изменить место"</string>
+    <string name="title_activity_new_person">"Новый человек"</string>
+    <string name="title_activity_edit_person">"Изменить человека"</string>
     <string name="title_activity_currency_converter">"Конвертер валют"</string>
-    <string name="menu_advanced_settings">"Расширенный"</string>
-    <string name="menu_action_edit_item">"Редактировать"</string>
-    <string name="menu_action_delete_item">"Удалить"</string>
-    <string name="menu_action_search_item">"Поиск"</string>
-    <string name="menu_action_open_calendar">"Календарь"</string>
-    <string name="menu_action_open_map">"Карта"</string>
-    <string name="menu_action_service_disconnect">"Отключить"</string>
+    <string name="title_activity_currency_list">"Валюты"</string>
+    <string name="title_activity_new_transfer">"Новый перевод"</string>
+
+    <string name="bottom_sheet_icon_picker_title">"Персонализировать иконку"</string>
+    <string name="bottom_sheet_icon_picker_action_select_icon">"Выделить иконку"</string>
+    <string name="bottom_sheet_icon_picker_action_change_icon">"Изменить иконку"</string>
+    <string name="bottom_sheet_icon_picker_action_remove_icon">"Удалить иконку"</string>
+    <string name="bottom_sheet_icon_picker_action_change_bg_color">"Изменить цвет фона"</string>
+
+    <string name="dialog_color_picker_title_icon_picker_background_color">"Выделить цвет"</string>
+    <string name="dialog_color_picker_title">"Выбрать цвет"</string>
+    <string name="dialog_wallet_picker_title">"Счета"</string>
+    <string name="dialog_event_picker_title">"События"</string>
+    <string name="dialog_category_picker_title">"Категории"</string>
+    <string name="dialog_budget_type_picker_title">"Типы бюджета"</string>
+    <string name="dialog_place_picker_title">"Места"</string>
+    <string name="dialog_people_picker_title">"Люди"</string>
+    <string name="dialog_filter_search_title">"Фильтр"</string>
+    <string name="dialog_change_log_title">"История изменений"</string>
+    <string name="dialog_overview_setting_title">"Расширенный"</string>
+    <string name="dialog_recurrence_title">"Повторить"</string>
+    <string name="dialog_auto_backup_title">"Автом. рез. копир."</string>
+    <string name="dialog_data_format_picker_title">"Формат данных"</string>
+    <string name="dialog_export_optional_columns_title">"Необязательные столбцы"</string>
+
     <string name="error_input_missing_wallet">"Пожалуйста, выберите нужный счёт"</string>
     <string name="error_input_missing_category">"Пожалуйста, выберите нужную категорию"</string>
+
     <string name="system_category_transfer">"Деньги переведены"</string>
     <string name="system_category_transfer_tax">"Налог на перевод"</string>
     <string name="system_category_debt">Долг</string>
@@ -110,6 +193,7 @@
     <string name="system_category_generic_tax">Налог на операцию</string>
     <string name="system_category_saving_in">"Сбережения"</string>
     <string name="system_category_saving_out">"Вывод"</string>
+
     <string name="default_category_tip">"Совет"</string>
     <string name="default_category_prize">"Премия"</string>
     <string name="default_category_salary">"Зарплата"</string>
@@ -121,12 +205,48 @@
     <string name="default_category_technology">"Технологии"</string>
     <string name="default_category_food_drinks">"Еда и напитки"</string>
     <string name="default_category_hobby">"Хобби"</string>
+
+    <string name="relative_string_ended_on">"Закрыт: %s"</string>
+    <string name="relative_string_will_end_on">"Закроется: %s"</string>
+    <string name="relative_string_money_to_settle_debt">"%s чтобы погасить долг"</string>
+    <string name="relative_string_debt_completed">"Долг закрыт"</string>
+    <string name="relative_string_expired_on">"Просрочка: %s"</string>
+    <string name="relative_string_will_expire_on">"Был просрочен: %s"</string>
+    <string name="relative_string_version_name">"Версия %s"</string>
+
+    <string name="msg_no_wallet_found">"Нажмите здесь, чтобы добавить ещё"</string>
+    <string name="msg_add_one_wallet">"Пожалуйста, добавьте счёт"</string>
+
     <string name="message_no_wallet_found">"Счёт не найден"</string>
     <string name="message_no_transaction_found">"Транзакции не найдены"</string>
     <string name="message_no_transfer_found">"Переводы не найдены"</string>
     <string name="message_no_category_found">"Категория не найдена"</string>
     <string name="message_no_debt_found">"Долги не найдены"</string>
     <string name="message_no_recurrence_found">"Регулярные операции не найдены"</string>
+    <string name="message_no_currency_found">"Валюты не найдены"</string>
+    <string name="message_no_budget_found">"Бюджеты не найдены"</string>
+    <string name="message_no_saving_found">"Сбережения не найдены"</string>
+    <string name="message_no_event_found">"События не найдены"</string>
+    <string name="message_no_model_found">"Модели не найдены"</string>
+    <string name="message_no_place_found">"Места не найдены"</string>
+    <string name="message_no_person_found">"Люди не найдены"</string>
+    <string name="message_no_icon_found">"Иконка не найдена"</string>
+    <string name="message_no_file_found">"Файл не найден"</string>
+    <string name="message_action_archive_wallet">"Уверены, что хотите архивировать счет? Он больше не будет виден в меню."</string>
+    <string name="message_action_unarchive_wallet">"Уверены, что хотите разархивировать счет? Он будет отображаться в меню."</string>
+    <string name="message_action_archive_debt">"Уверены, что хотите архивировать этот долг?"</string>
+    <string name="message_action_unarchive_debt">"Уверены, что хотите разархивировать этот долг?"</string>
+    <string name="message_action_archive_saving">"Уверены, что хотите архивировать это сбережение?"</string>
+    <string name="message_action_unarchive_saving">"Уверены, что хотите разархивировать это сбережение?"</string>
+    <string name="message_error_backend_recoverable">"Проблема с подключением."</string>
+
+    <string name="spinner_item_start_date">"От:   %s"</string>
+    <string name="spinner_item_end_date">"До:   %s"</string>
+
+    <string name="header_debts_to_pay">"К оплате:"</string>
+    <string name="header_debts_to_receive">"К получению:"</string>
+    <string name="header_debts_archived">"Архивные"</string>
+
     <string name="setting_title_user_interface">"Пользовательский интерфейс"</string>
     <string name="setting_title_utility">"Разное"</string>
     <string name="setting_title_about">"Информация"</string>
@@ -140,6 +260,37 @@
     <string name="setting_title_ui_theme_color_primary">"Основной цвет"</string>
     <string name="setting_title_ui_theme_color_accent">"Цвет выделения"</string>
     <string name="setting_title_daily_reminder">"Ежедневное напоминание"</string>
+    <string name="setting_title_exchange_rate_update">"Обновить курсы валют"</string>
+    <string name="setting_title_security_change_pin">"Изменить ПИН-код"</string>
+    <string name="setting_title_currency_management">"Редактировать валюты"</string>
+    <string name="setting_title_exchange_rate_source">"Сервис"</string>
+    <string name="setting_title_exchange_rate_api_key">"Свой API-ключ"</string>
+    <string name="setting_title_security_change_sequence">"Изменить последовательность разблокировки"</string>
+    <string name="setting_title_database">"База данных"</string>
+    <string name="setting_title_security">"Способ защиты"</string>
+    <string name="setting_title_database_backup_services">"Зарезервировать сервисы"</string>
+    <string name="setting_title_import_data">"Импортировать данные"</string>
+    <string name="setting_title_export_data">"Экспорт данных"</string>
+
+    <string name="setting_subtitle_user_interface">"Персонализируйте по своему усмотрению"</string>
+    <string name="setting_subtitle_utility">"Настройте доступные инструменты"</string>
+    <string name="setting_subtitle_database">"Управляйте своими данными"</string>
+    <string name="setting_subtitle_about">"Права и лицензии"</string>
+
+    <string name="setting_category_utility_exchange_rates">"Обменные курсы"</string>
+    <string name="setting_category_utility_security">"Безопасность"</string>
+    <string name="setting_item_daily_reminder_none">"Отключено"</string>
+    <string name="setting_item_security_none">"Отключено"</string>
+    <string name="setting_category_utility_notification">"Уведомление"</string>
+    <string name="setting_category_ui_appearance">"Внешний вид"</string>
+    <string name="setting_category_ui_theme">"Тема"</string>
+    <string name="setting_summary_ui_custom_digits">"Индивидуальная настройка стиля отображения цифр"</string>
+    <string name="setting_category_database_backup">"Резервное копирование"</string>
+    <string name="setting_summary_database_backup_services">"Создать и восстановить базу данных"</string>
+    <string name="setting_category_database_import_export">"Импорт/Экспорт"</string>
+    <string name="setting_summary_import_data">"Прочитать данные из внешнего файла"</string>
+    <string name="setting_summary_export_data">"Записать данные в внешний файл"</string>
+
     <string name="setting_item_ui_group_type_daily">"По дням"</string>
     <string name="setting_item_ui_group_type_weekly">"По неделям"</string>
     <string name="setting_item_ui_group_type_monthly">"По месяцам"</string>
@@ -147,9 +298,47 @@
     <string name="setting_item_ui_theme_type_light">"Светлая тема"</string>
     <string name="setting_item_ui_theme_type_dark">"Тёмная тема"</string>
     <string name="setting_item_ui_theme_type_deep_dark">"Чёрная тема"</string>
+
+    <string name="setting_summary_exchange_rate_update">"Последнее обновление: %s"</string>
+    <string name="setting_summary_currency_management">"Добавить свою валюту"</string>
+    <string name="setting_summary_exchange_rate_api_key">"API-ключ: %s"</string>
+    <string name="setting_summary_exchange_rate_api_key_missing">"API-ключа нет"</string>
+
     <string name="notification_title_daily_reminder_title">Есть какие-нибудь операции за сегодня?</string>
     <string name="notification_title_daily_reminder_text">Нажмите, чтобы добавить их немедленно</string>
+
     <string name="about_hint_version">"Версия"</string>
     <string name="about_hint_changelog">"История изменений"</string>
+    <string name="about_hint_support">"Поддержать разработку"</string>
+    <string name="about_hint_rate_app">"Оценить приложение"</string>
+    <string name="about_hint_open_source_libraries">"Открытые библиотеки приложения"</string>
+    <string name="about_hint_report_bug">"Сообщить о ошибке"</string>
+    <string name="about_hint_fork">"Форкнуть можно на Github"</string>
+    <string name="about_hint_author">"Автор"</string>
+    <string name="about_hint_developer">"Разработчик"</string>
+    <string name="about_hint_logo_designer">"Дизайнер лого"</string>
+    <string name="about_hint_website">"Сайт"</string>
+    <string name="about_hint_icon_licenses">"Изображения и иконки"</string>
+    <string name="about_hint_icon_image_intro">"Интро"</string>
+    <string name="about_hint_md_icons">"Иконки Material Design"</string>
+    <string name="about_hint_icon_pack">"Набор иконок"</string>
     <string name="about_hint_translators">"Переводчики"</string>
+
+    <string name="activity_donation_first_title">"Спасибо!"</string>
+    <string name="activity_donation_first_content">"Если вам нравится это приложение и вы находите его полезным, подумайте о том, чтобы купить мне пива. Это поддержит этот проект и поможет мне продолжать его развивать."</string>
+    <string name="activity_donation_second_title">"Почему это должен быть я?"</string>
+    <string name="activity_donation_second_content">"Кто-то может сказать: "Все лучшее в жизни достается бесплатно", и я с этим согласен. Вы не можете купить дружбу, любовь или воспоминания о прекрасном восходе солнца. Именно поэтому я решил поделиться исходным кодом этого приложения бесплатно. Но, к сожалению, жизнь не бесплатна. Каждый день у вас есть всего 24 часа дефицитного времени, и вы должны принимать решения, как их потратить, чтобы обеспечить себя. Если вам нравится этот проект и вы хотите, чтобы он развивался в будущем, подумайте о том, чтобы поддержать мою работу, чтобы я мог уделять ей больше времени. Любой вклад имеет огромное значение."</string>
+    <string name="activity_donation_third_title">"Не можете внести денежный вклад? Не беда, вы все равно можете оказать большую помощь!"</string>
+    <string name="activity_donation_crypto_address_copied">"Адрес скопирован"</string>
+    <string name="activity_donation_action_share_title">"Поделиться"</string>
+    <string name="activity_donation_action_share_content">"Распространите информацию среди своих друзей"</string>
+    <string name="activity_donation_action_share_message">"Здравствуйте, взгляните на %s"</string>
+    <string name="activity_donation_action_share_using">"Поделиться с помощью"</string>
+    <string name="activity_donation_action_rate_title">"Оценить"</string>
+    <string name="activity_donation_action_rate_content">"Напишите 5-звездочный отзыв, рассказав нам, что вы думаете о приложении"</string>
+    <string name="activity_donation_action_translate_title">"Перевести"</string>
+    <string name="activity_donation_action_translate_content">"Локализуйте строки на вашем языке"</string>
+    <string name="activity_donation_action_contribute_title">"Вклад в проект"</string>
+    <string name="activity_donation_action_contribute_content">"Исходный код является общедоступным, и каждый может помочь с ним."</string>
+    <string name="activity_donation_final_content">"Каждый вклад, денежный или неденежный, имеет для меня значение. Надеюсь, вам понравится, и еще раз спасибо, что решили воспользоваться этим приложением."</string>
 </resources>
