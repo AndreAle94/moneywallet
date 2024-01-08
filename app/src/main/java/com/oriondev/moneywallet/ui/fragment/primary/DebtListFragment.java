@@ -64,6 +64,7 @@ public class DebtListFragment extends CursorListFragment implements DebtCursorAd
     @Override
     protected void onPrepareRecyclerView(AdvancedRecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // TODO: add "No credit found"
         recyclerView.setEmptyText(R.string.message_no_debt_found);
     }
 
