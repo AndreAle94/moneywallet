@@ -59,6 +59,7 @@
     <string name="menu_model_tab_transactions">"Операции"</string>
     <string name="menu_model_tab_transfers">"Переводы"</string>
 
+    <string name="hint_total_sum">"Всего"</string>
     <string name="hint_address">"Адрес"</string>
     <string name="hint_unknown">"Неизвестно"</string>
     <string name="hint_money">"Деньги"</string>
@@ -78,6 +79,7 @@
     <string name="hint_event">"Событие"</string>
     <string name="hint_place">"Место"</string>
     <string name="hint_note">"Заметка"</string>
+    <string name="hint_not_exclude_wallet">"Показывать счет в итоговой сумме"</string>
     <string name="hint_name">"Название"</string>
     <string name="hint_income">"Доход"</string>
     <string name="hint_expense">"Трата"</string>
@@ -107,7 +109,7 @@
     <string name="menu_action_save_changes">"Сохранить изменения"</string>
     <string name="menu_action_service_disconnect">"Отключить"</string>
 
-    <string name="menu_advanced_settings">"Расширенный"</string>
+    <string name="menu_advanced_settings">"Расширенный поиск"</string>
     <string name="menu_refresh_currency_rate">"Обновить курсы"</string>
 
     <string name="action_filter">"Фильтр"</string>
@@ -175,7 +177,7 @@
     <string name="dialog_people_picker_title">"Люди"</string>
     <string name="dialog_filter_search_title">"Фильтр"</string>
     <string name="dialog_change_log_title">"История изменений"</string>
-    <string name="dialog_overview_setting_title">"Расширенный"</string>
+    <string name="dialog_overview_setting_title">"Расширенный поиск"</string>
     <string name="dialog_recurrence_title">"Повторить"</string>
     <string name="dialog_auto_backup_title">"Автом. рез. копир."</string>
     <string name="dialog_data_format_picker_title">"Формат данных"</string>
@@ -239,6 +241,16 @@
     <string name="message_action_archive_saving">"Уверены, что хотите архивировать это сбережение?"</string>
     <string name="message_action_unarchive_saving">"Уверены, что хотите разархивировать это сбережение?"</string>
     <string name="message_error_backend_recoverable">"Проблема с подключением."</string>
+
+    <string name="spinner_item_group_type_daily">"Группировать по дням"</string>
+    <string name="spinner_item_group_type_weekly">"Группировать по неделям"</string>
+    <string name="spinner_item_group_type_monthly">"Группировать по месяцам"</string>
+    <string name="spinner_item_group_type_yearly">"Группировать по годам"</string>
+    <string name="spinner_item_type_cash_flow">"Движение денег"</string>
+    <string name="spinner_item_type_category">"Категория"</string>
+    <string name="spinner_item_cash_flow_incomes">"Только доходы"</string>
+    <string name="spinner_item_cash_flow_expenses">"Только траты"</string>
+    <string name="spinner_item_cash_flow_net_incomes">"Чистый доход"</string>
 
     <string name="spinner_item_start_date">"От:   %s"</string>
     <string name="spinner_item_end_date">"До:   %s"</string>
@@ -323,6 +335,22 @@
     <string name="about_hint_md_icons">"Иконки Material Design"</string>
     <string name="about_hint_icon_pack">"Набор иконок"</string>
     <string name="about_hint_translators">"Переводчики"</string>
+
+    <string name="activity_launcher_first_start_title">"Добро пожаловать в MoneyWallet"</string>
+    <string name="activity_launcher_first_start_content">"Вы впервые используете это приложение или хотите восстановить предыдущую резервную копию?"</string>
+    <string name="activity_launcher_first_start_button_first_time">"Первый раз"</string>
+    <string name="activity_launcher_first_start_button_restore_backup">"Восстановить из файла"</string>
+
+    <string name="activity_intro_title_slide_1">"Больше никаких неприятных сюрпризов"</string>
+    <string name="activity_intro_title_slide_2">"Следите и планируйте"</string>
+    <string name="activity_intro_title_slide_3">"Открытый исходный код"</string>
+    <string name="activity_intro_title_slide_4">"Облачные резервные копии"</string>
+    <string name="activity_intro_title_slide_5">"Это всё"</string>
+    <string name="activity_intro_description_slide_1">"Он поможет вам отслеживать все ваши расходы"</string>
+    <string name="activity_intro_description_slide_2">"Вы можете проанализировать, на что вы много тратите, и спланируете бюджет"</string>
+    <string name="activity_intro_description_slide_3">"Теперь проект имеет открытый исходный код, и каждый может внести свой вклад"</string>
+    <string name="activity_intro_description_slide_4">"Он поддерживает наиболее используемые облачные сервисы, чтобы вы никогда не потеряли свои данные"</string>
+    <string name="activity_intro_description_slide_5">"Теперь вы будете перенаправлены на создание вашего первого кошелька"</string>
 
     <string name="activity_donation_first_title">"Спасибо!"</string>
     <string name="activity_donation_first_content">"Если вам нравится это приложение и вы находите его полезным, подумайте о том, чтобы купить мне пива. Это поддержит этот проект и поможет мне продолжать его развивать."</string>

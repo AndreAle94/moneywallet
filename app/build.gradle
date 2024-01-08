@@ -115,7 +115,7 @@ dependencies {
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation 'com.itextpdf:itextpdf:5.5.13'
     implementation 'me.weishu:free_reflection:2.2.0'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     // google play dependencies
     proprietaryImplementation('com.dropbox.core:dropbox-core-sdk:3.0.8')
@@ -127,12 +127,12 @@ dependencies {
     // floss dependencies
     osmImplementation 'org.osmdroid:osmdroid-android:6.1.1'
     // test dependencies (local tests)
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:3.6.28'
     // android test dependencies (on-device tests)
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:core:1.2.0'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestUtil "androidx.test:orchestrator:1.2.0"
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestUtil "androidx.test:orchestrator:1.4.2"
 }
