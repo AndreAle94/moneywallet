@@ -1,0 +1,747 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ This file is part of MoneyWallet.
+  ~
+  ~ MoneyWallet is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MoneyWallet is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MoneyWallet.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">"MoneyWallet"</string>
+
+    <string name="menu_transaction">"Транзакції"</string>
+    <string name="menu_category">"Категорії"</string>
+    <string name="menu_overview">"Огляд"</string>
+    <string name="menu_debt">"Борги"</string>
+    <string name="menu_budget">"Бюджети"</string>
+    <string name="menu_saving">"Заощадження"</string>
+    <string name="menu_event">"Події"</string>
+    <string name="menu_recurrences">"Повернення"</string>
+    <string name="menu_models">"Моделі"</string>
+    <string name="menu_place">"Місця"</string>
+    <string name="menu_people">"Люди"</string>
+    <string name="menu_converter">"Конвертор"</string>
+    <string name="menu_calculator">"Калькулятор"</string>
+    <string name="menu_search_atm">"Пошук банкомату"</string>
+    <string name="menu_search_bank">"Пошук банку"</string>
+    <string name="menu_setting">"Налаштування"</string>
+    <string name="menu_support_developer">"Підтримка розробника"</string>
+    <string name="menu_about">"Про програму"</string>
+
+    <!-- Transactions -->
+    <string name="menu_transaction_tab_transactions">"Транзакції"</string>
+    <string name="menu_transaction_tab_transfers">"Перекази"</string>
+
+    <!-- Categories -->
+    <string name="menu_category_tab_income">"Доходи"</string>
+    <string name="menu_category_tab_expense">"Витрати"</string>
+    <string name="menu_category_tab_system">"Система"</string>
+
+    <!-- Debts -->
+    <string name="menu_debt_tab_debt">"Взяти кредин"</string>
+    <string name="menu_debt_tab_credit">"Дати в борг"</string>
+
+    <!-- Budgets -->
+    <string name="menu_budget_tab_running">"Поточні"</string>
+    <string name="menu_budget_tab_expired">"Минувші"</string>
+
+    <!-- Savings -->
+    <string name="menu_saving_tab_running">"Поточні"</string>
+    <string name="menu_saving_tab_completed">"Завершені"</string>
+
+    <!-- Events -->
+    <string name="menu_event_tab_running">"Поточні"</string>
+    <string name="menu_event_tab_completed">"Завершені"</string>
+
+    <!-- Models -->
+    <string name="menu_model_tab_transactions">"Транзакції"</string>
+    <string name="menu_model_tab_transfers">"Перекази"</string>
+
+    <string name="action_new_wallet">"Новий гаманець"</string>
+    <string name="action_manage_wallets">«Керувати гаманцями»</string>
+    <string name="action_pay_debt">"Виплатити"</string>
+    <string name="action_receive_debt">"Повернули"</string>
+    <string name="action_withdraw">"Зняти"</string>
+    <string name="action_deposit">"Депозит"</string>
+    <string name="action_withdraw_everything">«Зняти все»</string>
+    <string name="action_add">"Додати"</string>
+    <string name="action_new">"Новий"</string>
+    <string name="action_edit">"Редагувати"</string>
+    <string name="action_search">"Пошук"</string>
+    <string name="action_filter">"Фільтер"</string>
+    <string name="action_remove">"Вилучити"</string>
+    <string name="action_open">"Відкрити"</string>
+    <string name="action_undo">"Скасувати"</string>
+    <string name="action_skip">"Пропустити"</string>
+
+    <string name="msg_no_wallet_found">"Гаманець не знайдено"</string>
+    <string name="msg_add_one_wallet">"Будь ласка, додайте один гаманець"</string>
+
+    <string name="hint_total_sum">"Всього"</string>
+
+    <string name="hint_name">"Ім'я"</string>
+    <string name="hint_description">"Опис"</string>
+    <string name="hint_currency">"Валюта"</string>
+    <string name="hint_money">"Гроші"</string>
+    <string name="hint_start_money">"Початкова сума"</string>
+    <string name="hint_not_exclude_wallet">"Показати цей гаманець у загальній кількості"</string>
+    <string name="hint_category">"Категорія"</string>
+    <string name="hint_parent_category">"Батьківська категорія"</string>
+    <string name="hint_show_category_report">"Показати цю категорію у звітах"</string>
+    <string name="hint_show_category_report_on">"Ця категорія включена до звітів"</string>
+    <string name="hint_show_category_report_off">"Ця категорія не включена до звітів"</string>
+    <string name="hint_confirmed">"Підтверджено"</string>
+    <string name="hint_show_in_total">"Показати в загальному гаманці"</string>
+    <string name="hint_income">"Дохід"</string>
+    <string name="hint_expense">"Витрати"</string>
+    <string name="hint_date">"Дата"</string>
+    <string name="hint_start_date">"Дата початку"</string>
+    <string name="hint_end_date">"Дата закінчення"</string>
+    <string name="hint_expiration_date">"Термін придатності"</string>
+    <string name="hint_time">"Час"</string>
+    <string name="hint_wallet">"Гаманець"</string>
+    <string name="hint_wallets">"Гаманці"</string>
+    <string name="hint_wallet_from">"Від"</string>
+    <string name="hint_wallet_to">"До"</string>
+    <string name="hint_recurrence">"Повторюваність"</string>
+    <string name="hint_recurrence_invalid">"Недійсне повторення"</string>
+    <string name="hint_event">"Подія"</string>
+    <string name="hint_people">"Люди"</string>
+    <string name="hint_place">"Місце"</string>
+    <string name="hint_note">"Примітка"</string>
+    <string name="hint_tax">"Податок"</string>
+    <string name="hint_type">"Тип"</string>
+    <string name="hint_incomes">"Доходи"</string>
+    <string name="hint_expenses">"Витрати"</string>
+    <string name="hint_net_incomes">"Чистий прибуток"</string>
+    <string name="hint_summary">"Резюме"</string>
+    <string name="hint_address">"Адреса"</string>
+    <string name="hint_size_unknown">"Невідомий розмір"</string>
+    <string name="hint_address_unknown">"Невідома адреса"</string>
+    <string name="hint_unknown">"Невідомий"</string>
+    <string name="hint_directory">"Довідник"</string>
+    <string name="hint_navigate_up">"Перейти вгору"</string>
+    <string name="hint_password">"Пароль"</string>
+    <string name="hint_atm_name">"Назва банкомату"</string>
+    <string name="hint_bank_name">"Назва банку"</string>
+    <string name="hint_attachments">"Додатки"</string>
+    <string name="hint_operation_in_progress">"В процесі ..."</string>
+    <string name="hint_search_something">"Пошукайте щось"</string>
+    <string name="hint_exchange_rate">"Курс обміну валют"</string>
+    <string name="hint_recurrence_finished">"Завершено"</string>
+    <string name="hint_new_folder">"Нова папка"</string>
+    <string name="hint_import_format">"Формат імпорту"</string>
+    <string name="hint_export_format">"Формат експорту"</string>
+    <string name="hint_import_file">"Файл для імпорту"</string>
+    <string name="hint_export_folder">"Експорт папки"</string>
+    <string name="hint_export_optional_columns">"Додаткові колонки"</string>
+    <string name="hint_export_unique_wallet">"Об'єднуйте транзакції з різних гаманців"</string>
+    <string name="hint_data_format_csv" translatable="false">"CSV"</string>
+<string name="hint_data_format_xls" translatable="false">"XLS"</string>
+<string name="hint_data_format_pdf" translatable="false">"PDF"</string>
+<string name="hint_iso_code">"Код iso"</string>
+<string name="hint_symbol">"Символ"</string>
+<string name="hint_decimals">"Кількість десяткових знаків"</string>
+
+<string name="hint_show_currency_symbol">"Показати символ валюти"</string>
+<string name="hint_group_digits">"Цифри групи"</string>
+<string name="hint_round_decimals">"Круглі десяткові дроби"</string>
+<string name="hint_show_always_plus_minus">"Завжди показувати символи +/-"</string>
+<string name="hint_auto_backup_enabled">"Служба включена"</string>
+<string name="hint_auto_backup_wifi_only">"Тільки в мережі wifi"</string>
+<string name="hint_auto_backup_only_if_data_changed">"Тільки якщо дані змінено"</string>
+<string name="hint_auto_backup_every_n_hours">"Кожні %d години"</string>
+<string name="hint_auto_backup_folder">"Папка"</string>
+<string name="hint_auto_backup_root_folder">"Корінь"</string>
+
+
+<string name="total_wallet_name">"Всього"</string>
+
+
+<string name="title_activity_new_currency">"Нова валюта"</string>
+<string name="title_activity_edit_currency">"Редагувати валюту"</string>
+<string name="title_activity_new_wallet">"Новий гаманець"</string>
+<string name="title_activity_edit_wallet">"Редагувати гаманець"</string>
+<string name="title_activity_new_transaction">"Нова транзакція"</string>
+<string name="title_activity_edit_transaction">"Редагувати транзакцію"</string>
+<string name="title_activity_new_transfer">"Нова передача"</string>
+<string name="title_activity_edit_transfer">"Редагувати передачу"</string>
+<string name="title_activity_new_category">"Нова категорія"</string>
+<string name="title_activity_edit_category">"Редагувати категорію"</string>
+<string name="title_activity_new_debt">"Новий борг"</string>
+<string name="title_activity_edit_debt">"Редагувати борг"</string>
+<string name="title_activity_new_budget">"Новий бюджет"</string>
+<string name="title_activity_edit_budget">"Редагувати бюджет"</string>
+<string name="title_activity_new_saving">"Нове збереження"</string>
+<string name="title_activity_edit_saving">"Редагувати збереження"</string>
+<string name="title_activity_new_event">"Нова подія"</string>
+<string name="title_activity_edit_event">"Редагувати подію"</string>
+<string name="title_activity_new_recurrence">"Новий рецидив"</string>
+<string name="title_activity_edit_recurrence">"Редагувати повторення"</string>
+<string name="title_activity_new_model">"Нова модель"</string>
+<string name="title_activity_edit_model">"Редагувати модель"</string>
+<string name="title_activity_new_place">"Нове місце"</string>
+<string name="title_activity_edit_place">"Редагувати місце"</string>
+<string name="title_activity_new_person">"Нова людина"</string>
+<string name="title_activity_edit_person">"Редагувати особу"</string>
+<string name="title_activity_wallet_sort">"Сортувати гаманці"</string>
+<string name="title_activity_currency_list">"Валюти"</string>
+<string name="title_activity_category_picker">"Виберіть категорію"</string>
+<string name="title_activity_category_sort">"Сортування категорій"</string>
+<string name="title_activity_icon_list">"Ікони"</string>
+<string name="title_activity_backup_services">"Сервіси резервного копіювання"</string>
+<string name="title_activity_about">"Про"</string>
+<string name="title_activity_calculator">"Калькулятор"</string>
+<string name="title_activity_currency_converter">"Конвертер валют"</string>
+<string name="title_activity_search_transaction">"Пошук"</string>
+<string name="title_activity_calendar">"Календар"</string>
+<string name="title_activity_map">"Карта"</string>
+<string name="title_activity_backend_explorer">"Дослідіть бекенд"</string>
+<string name="title_activity_backend_file_picker">"Виберіть файл"</string>
+<string name="title_activity_backend_folder_picker">"Виберіть папку"</string>
+<string name="title_activity_support_developer">"Підтримка розробника"</string>
+<string name="title_activity_import_data">"Імпорт даних"</string>
+<string name="title_activity_export_data">"Експорт даних"</string>
+
+
+<string name="title_fragment_item_wallet">"Гаманець"</string>
+<string name="title_fragment_item_transaction">"Транзакція"</string>
+<string name="title_fragment_item_transfer">"Трансфер"</string>
+<string name="title_fragment_item_category">"Категорія"</string>
+<string name="title_fragment_item_debt">"Борг"</string>
+<string name="title_fragment_item_budget">"Бюджет"</string>
+<string name="title_fragment_item_saving">"Збереження"</string>
+<string name="title_fragment_item_event">"Подія"</string>
+<string name="title_fragment_item_recurrence">"Повторюваність"</string>
+<string name="title_fragment_item_model">"Модель"</string>
+<string name="title_fragment_item_place">"Місце"</string>
+<string name="title_fragment_item_person">"Особа"</string>
+
+
+<string name="menu_action_attach_file">"Прикріпити файл"</string>
+<string name="menu_action_save_changes">"Зберегти зміни"</string>
+<string name="menu_refresh_currency_rate">"Оновити курс валюти"</string>
+<string name="menu_advanced_settings">"Розширені налаштування"</string>
+<string name="menu_action_edit_item">"Редагувати"</string>
+<string name="menu_action_delete_item">"Видалити"</string>
+<string name="menu_action_archive_item">"Архів"</string>
+<string name="menu_action_unarchive_item">"Розархівувати"</string>
+<string name="menu_action_search_item">"Пошук"</string>
+<string name="menu_action_open_calendar">"Календар"</string>
+<string name="menu_action_open_map">"Карта"</string>
+<string name="menu_action_sort_items">"Сортувати"</string>
+<string name="menu_action_show_transaction_list">"Показати транзакції"</string>
+<string name="menu_action_service_disconnect">"Відключити"</string>
+<string name="menu_action_service_auto_backup">"Автоматичне резервне копіювання"</string>
+<string name="menu_action_select_folder">"Виберіть папку"</string>
+<string name="menu_action_import_data">"Імпорт даних"</string>
+<string name="menu_action_export_data">"Експорт даних"</string>
+
+
+<string name="bottom_sheet_icon_picker_title">"Персоналізуйте значок"</string>
+<string name="bottom_sheet_icon_picker_action_select_icon">"Виберіть піктограму"</string>
+<string name="bottom_sheet_icon_picker_action_change_icon">"Змініть значок"</string>
+<string name="bottom_sheet_icon_picker_action_remove_icon">"Видалити значок"</string>
+<string name="bottom_sheet_icon_picker_action_change_bg_color">"Змінити колір фону"</string>
+
+
+<string name="dialog_color_picker_title_icon_picker_background_color">"Виберіть колір"</string>
+<string name="dialog_color_picker_title">"Виберіть колір"</string>
+<string name="dialog_wallet_picker_title">"Гаманці"</string>
+<string name="dialog_event_picker_title">"Події"</string>
+<string name="dialog_category_picker_title">"Категорії"</string>
+<string name="dialog_budget_type_picker_title">"Види бюджету"</string>
+<string name="dialog_place_picker_title">"Місця"</string>
+<string name="dialog_people_picker_title">"Люди"</string>
+<string name="dialog_filter_search_title">"Фільтр"</string>
+<string name="dialog_change_log_title">"Журнал змін"</string>
+<string name="dialog_overview_setting_title">"Розширені налаштування"</string>
+<string name="dialog_recurrence_title">"Повторіть"</string>
+<string name="dialog_auto_backup_title">"Автоматичне резервне копіювання"</string>
+<string name="dialog_data_format_picker_title">"Формат даних"</string>
+<string name="dialog_export_optional_columns_title">"Додаткові колонки"</string>
+
+
+<string name="error_input_name_not_valid">"Недійсне ім'я"</string>
+<string name="error_input_iso_not_valid">"Недійсний код iso"</string>
+<string name="error_input_decimals_not_valid">"Це має бути значення від 0 до 8"</string>
+<string name="error_input_currency_not_valid">"Недійсна валюта"</string>
+<string name="error_input_date_range_not_valid">"Недійсний діапазон дат"</string>
+<string name="error_input_missing_budget_type">"Виберіть тип бюджету"</string>
+<string name="error_input_missing_wallet">"Виберіть гаманець"</string>
+<string name="error_input_missing_multiple_wallets">"Виберіть хоча б один гаманець"</string>
+<string name="error_input_invalid_multiple_wallets">"Гаманці повинні мати однакову валюту"</string>
+<string name="error_input_missing_date">"Виберіть дату"</string>
+<string name="error_input_missing_start_date">"Виберіть дату початку"</string>
+<string name="error_input_missing_end_date">"Виберіть кінцеву дату"</string>
+<string name="error_input_invalid_date_range">"Недійсний діапазон дат"</string>
+<string name="error_input_missing_category">"Виберіть категорію"</string>
+<string name="error_input_missing_description">"Надайте опис"</string>
+<string name="error_input_missing_format">"Виберіть формат файлу"</string>
+<string name="error_input_missing_input_file">"Виберіть вхідний файл"</string>
+<string name="error_input_missing_output_folder">"Виберіть вихідну папку"</string>
+
+
+<string name="system_category_transfer">"Трансфер"</string>
+<string name="system_category_transfer_tax">"Податок на передачу"</string>
+<string name="system_category_debt">"Борг"</string>
+<string name="system_category_debt_paid">"Борг сплачено"</string>
+<string name="system_category_credit">"Кредит"</string>
+<string name="system_category_credit_paid">"Кредит виплачено"</string>
+<string name="system_category_generic_tax">"Податок"</string>
+<string name="system_category_saving_in">"Депозит"</string>
+<string name="system_category_saving_out">"Вилучити"</string>
+
+
+<string name="default_category_tip">"Порада"</string>
+<string name="default_category_prize">"Премія"</string>
+<string name="default_category_salary">"Зарплата"</string>
+<string name="default_category_interests">"Інтереси"</string>
+<string name="default_category_sale">"Розпродаж"</string>
+<string name="default_category_car_expenses">"Витрати на автомобіль"</string>
+<string name="default_category_travel">"Подорожі"</string>
+<string name="default_category_friends">"Друзі"</string>
+<string name="default_category_technology">"Технології"</string>
+<string name="default_category_food_drinks">"Їжа і напої"</string>
+<string name="default_category_hobby">"Хобі"</string>
+
+
+<string name="relative_string_ended_on">"Завершено: %s"</string>
+<string name="relative_string_will_end_on">"Закінчиться: %s"</string>
+<string name="relative_string_money_to_settle_debt">"Для погашення цього боргу залишилося %s"</string>
+<string name="relative_string_debt_completed">"Цей борг погашено"</string>
+<string name="relative_string_expired_on">"Термін дії минув: %s"</string>
+<string name="relative_string_will_expire_on">"Термін дії минув: %s"</string>
+<string name="relative_string_version_name">"Версія %s"</string>
+
+
+<string name="adapter_current_money">"Поточний:"</string>
+<string name="adapter_needed_money">"Необхідно:"</string>
+<string name="adapter_used_money">"Використовується:"</string>
+<string name="adapter_available_money">"В наявності:"</string>
+<string name="adapter_tax_money">"Податок:"</string>
+
+
+<string name="header_debts_to_pay">"Платити:"</string>
+<string name="header_debts_to_receive">"Отримати:"</string>
+<string name="header_debts_archived">"Архівовано"</string>
+
+
+<string name="message_no_currency_found">"Валюту не знайдено"</string>
+<string name="message_no_wallet_found">"Гаманця не знайдено"</string>
+<string name="message_no_transaction_found">"Транзакції не знайдено"</string>
+<string name="message_no_transfer_found">"Перенесення не знайдено"</string>
+<string name="message_no_category_found">"Категорія не знайдена"</string>
+<string name="message_no_debt_found">"Борг не знайдено"</string>
+<string name="message_no_budget_found">"Бюджет не знайдено"</string>
+<string name="message_no_saving_found">"Збереження не знайдено"</string>
+<string name="message_no_event_found">"Подія не знайдена"</string>
+<string name="message_no_recurrence_found">"Повторення не виявлено"</string>
+<string name="message_no_model_found">"Модель не знайдено"</string>
+<string name="message_no_place_found">"Місце не знайдено"</string>
+<string name="message_no_person_found">"Особи не знайдено"</string>
+<string name="message_no_icon_found">"Значок не знайдено"</string>
+<string name="message_no_file_found">"Файл не знайдено"</string>
+<string name="message_error_backend_recoverable">"Проблема з підключенням. будь ласка, повторіть спробу."</string>
+
+
+<string name="cover_message_backup_storage_access_framework_title">"Програма може створювати та відновлювати резервні копії з будь-якого постачальника документів (наприклад, nextcloud, dropbox або вашої файлової системи)"</string>
+<string name="cover_message_backup_external_memory_title">"Програма може створювати та відновлювати резервні копії безпосередньо із зовнішньої пам’яті пристрою"</string>
+<string name="cover_message_backup_dropbox_title">"Програма може створювати та відновлювати резервні копії з вашого особистого облікового запису dropbox"</string>
+<string name="cover_message_backup_google_drive_title">"Програма може створювати та відновлювати резервні копії з вашого особистого облікового запису google drive"</string>
+<string name="cover_message_backup_external_memory_button">"Продовжити"</string>
+<string name="cover_message_backup_storage_access_framework_button">"Продовжити"</string>
+<string name="cover_message_backup_dropbox_button">"Логін"</string>
+<string name="cover_message_backup_google_drive_button">"Логін"</string>
+
+
+<string name="empty_message_secondary_panel">"Виберіть один елемент на лівій панелі, щоб переглянути деталі"</string>
+<string name="empty_message_backup_cover">"Виберіть службу, яку ви хочете використовувати для зберігання та отримання особистих резервних копій"</string>
+
+
+<string name="title_warning">"Увага"</string>
+<string name="title_request_permission">"Запит на дозвіл"</string>
+<string name="title_backup_create">"Створити резервну копію"</string>
+<string name="title_backup_creation">"Створення резервної копії"</string>
+<string name="title_backup_restore">"Відновити резервну копію"</string>
+<string name="title_backup_restoring">"Відновлення резервної копії"</string>
+<string name="title_backend_create_folder">"Нова папка"</string>
+<string name="title_success">"Успіх"</string>
+<string name="title_failed">"Не вдалося"</string>
+<string name="title_error">"Помилка"</string>
+<string name="title_atm_search">"Пошук банкомату"</string>
+<string name="title_bank_search">"Пошуковий банк"</string>
+<string name="title_changelog">"Журнал змін"</string>
+<string name="title_licenses">"Ліцензії"</string>
+<string name="title_debt_insert_master_transaction">"Молодці"</string>
+<string name="title_currency_exchange_rate">"Курс обміну валют"</string>
+<string name="title_data_importing">"Імпорт даних"</string>
+<string name="title_data_exporting">"Експорт даних"</string>
+<string name="message_multiply_currency_decimals">"Суми в базі даних необхідно оновити, щоб відповідати новій кількості десяткових цифр. операція може зайняти деякий час. якщо ви хочете, ви можете пропустити оновлення, але після зміни суми відображатимуться поділені на %d."</string>
+<string name="message_divide_currency_decimals">"Суми в базі даних необхідно оновити, щоб відповідати новій кількості десяткових цифр. операція може зайняти деякий час. якщо ви хочете, ви можете пропустити оновлення, але суми відображатимуться як помножені на %d після зміни. у разі оновлення сум частина інформації про їх поточну дробову частину буде втрачена."</string>
+<string name="message_backend_create_folder">"Вставте назву папки, яку ви хочете створити"</string>
+<string name="message_permission_required_external_storage">"Для читання та запису файлів потрібен дозвіл на доступ до зовнішньої пам’яті. увімкніть його."</string>
+<string name="message_permission_required_not_granted">"У дозволі відмовлено. перейдіть до налаштувань програми та ввімкніть її."</string>
+<string name="message_backup_create">"Ви впевнені, що хочете створити нову резервну копію? операцію неможливо зупинити. якщо ви хочете, ви можете встановити пароль для захисту файлу резервної копії."</string>
+<string name="message_backup_restore_standard">"Ви впевнені, що бажаєте відновити цю резервну копію? усі поточні дані буде втрачено, і операцію неможливо зупинити. продовжити?"</string>
+<string name="message_backup_restore_protected">"Ви впевнені, що бажаєте відновити цю резервну копію? усі поточні дані буде втрачено, і операцію неможливо зупинити. резервна копія захищена паролем, введіть його та продовжуйте."</string>
+<string name="message_backup_restore_legacy">"Ви впевнені, що бажаєте відновити цю резервну копію? усі поточні дані буде втрачено, і операцію неможливо зупинити. увага!: це застаріла резервна копія, і програмі може не вдатися її імпортувати. продовжити?"</string>
+<string name="message_backup_status_creation">"Триває створення файлу резервної копії…"</string>
+<string name="message_backup_status_uploading">"Триває завантаження файлу резервної копії…"</string>
+<string name="message_backup_status_downloading">"Триває завантаження файлу резервної копії…"</string>
+<string name="message_backup_status_restoring">"Триває відновлення файлу резервної копії…"</string>
+<string name="message_backup_creation_success">"Резервну копію створено правильно."</string>
+<string name="message_backup_restoring_success">"Резервну копію відновлено правильно."</string>
+<string name="message_backup_creation_failed">"Помилка під час створення резервної копії. повідомлення: %s"</string>
+<string name="message_backup_restoring_failed">"Збій під час відновлення резервної копії. повідомлення: %s"</string>
+<string name="message_backup_service_dropbox_disconnect">"Ви впевнені, що бажаєте відключити обліковий запис dropbox?"</string>
+<string name="message_backup_service_storage_access_framework_disconnect">"Ви впевнені, що хочете звільнити поточного постачальника вмісту? файли не будуть видалені."</string>
+<string name="message_backup_service_google_drive_disconnect">"Ви впевнені, що бажаєте від’єднати обліковий запис диска google?"</string>
+<string name="message_action_archive_wallet">"Ви впевнені, що хочете заархівувати цей гаманець? його більше не буде видно в меню."</string>
+<string name="message_action_unarchive_wallet">"Ви впевнені, що бажаєте розархівувати цей гаманець? його знову буде видно в меню."</string>
+<string name="message_action_archive_debt">"Ви впевнені, що хочете архівувати цей борг?"</string>
+<string name="message_action_unarchive_debt">"Ви впевнені, що хочете розархівувати цей борг?"</string>
+<string name="message_action_archive_saving">"Ви впевнені, що хочете заархівувати це збереження?"</string>
+<string name="message_action_unarchive_saving">"Ви впевнені, що бажаєте розархівувати це збереження?"</string>
+<string name="message_error_activity_not_found">"На цьому пристрої не знайдено програми для обробки запиту."</string>
+<string name="message_delete_currency">"Ви впевнені, що бажаєте видалити цю валюту?"</string>
+<string name="message_error_delete_currency">"Цю валюту неможливо видалити, оскільки вона використовується."</string>
+<string name="message_delete_wallet">"Ви впевнені, що хочете видалити цей гаманець? усі пов’язані дані буде видалено."</string>
+<string name="message_error_delete_wallet_of_transfer">"Цей гаманець не можна видалити, оскільки він використовується в одному або кількох переказах. щоб видалити цей гаманець, видаліть пов’язані перекази."</string>
+<string name="message_delete_category">"Ви впевнені, що хочете видалити цю категорію?"</string>
+<string name="message_error_insert_category_deep_hierarchy">"Вкладені дочірні категорії не підтримуються: вибрана батьківська категорія вже є дочірньою для іншої категорії."</string>
+<string name="message_error_insert_category_not_consistent">"Вибрана батьківська категорія не належить до типу цієї категорії."</string>
+<string name="message_error_update_category_deep_hierarchy">"Вкладені дочірні категорії не підтримуються: ця категорія має одну або кілька дочірніх категорій і не може бути оновлена ​​як дочірня категорія."</string>
+<string name="message_error_update_category_not_consistent">"Вибрана батьківська категорія не належить до типу цієї категорії."</string>
+<string name="message_error_delete_category_with_children">"Цю категорію не можна видалити, оскільки вона має одного або кількох дочірніх елементів. будь ласка, видаліть їх раніше."</string>
+<string name="message_error_delete_category_in_use">"Цю категорію неможливо видалити, оскільки вона використовується. будь ласка, видаліть усі посилання на цю категорію та повторіть спробу."</string>
+<string name="message_error_delete_system_category">"Цю категорію неможливо видалити, оскільки це системна категорія."</string>
+<string name="message_delete_transaction">"Ви впевнені, що хочете видалити цю трансакцію?"</string>
+<string name="message_delete_transfer">"Ви впевнені, що хочете видалити цю передачу?"</string>
+<string name="message_error_delete_transaction_of_transfer">"Цю транзакцію неможливо видалити, оскільки вона є частиною переказу. щоб видалити цю транзакцію, видаліть пов’язаний переказ."</string>
+<string name="message_delete_debt">"Ви впевнені, що хочете видалити цей борг? усі пов’язані дані буде видалено."</string>
+<string name="message_delete_budget">"Ви впевнені, що бажаєте видалити цей бюджет?"</string>
+<string name="message_delete_saving">"Ви впевнені, що хочете видалити це збереження? усі пов’язані дані буде видалено."</string>
+<string name="message_delete_event">"Ви впевнені, що хочете видалити цю подію?"</string>
+<string name="message_delete_transaction_model">"Ви впевнені, що бажаєте видалити цю модель транзакції?"</string>
+<string name="message_delete_transfer_model">"Ви впевнені, що бажаєте видалити цю модель передачі?"</string>
+<string name="message_delete_recurrent_transaction">"Ви впевнені, що хочете видалити цю повторювану транзакцію? усі вже згенеровані транзакції не будуть видалені."</string>
+<string name="message_delete_recurrent_transfer">"Ви впевнені, що хочете видалити цей повторний переказ? усі вже створені перекази не будуть видалені."</string>
+<string name="message_delete_place">"Ви впевнені, що хочете видалити це місце?"</string>
+<string name="message_delete_person">"Ви впевнені, що хочете видалити цю особу?"</string>
+<string name="message_debt_insert_master_transaction">"Ви хочете додати головну транзакцію для цього боргу?"</string>
+<string name="message_error_legacy_upgrade_failed">"Під час оновлення внутрішньої бази даних сталася помилка. будь ласка, наберіться терпіння та повідомте це повідомлення розробнику. не видаляйте програму, інакше ви втратите свої дані. ви будете перенаправлені до програми, щоб перевірити, чи щось не пошкоджено. повідомлення про помилку: %s"</string>
+<string name="message_data_import_without_backup">"Це функція, яка може вийти з ладу та зіпсувати ваші дані. перш ніж продовжити, переконайтеся, що ви створили резервну копію наявних даних. ви все одно бажаєте продовжити?"</string>
+<string name="message_data_import_running">"Importingвђ¦"</string>
+<string name="message_data_export_running">"Exportingвђ¦"</string>
+<string name="message_data_import_failed">"Збій під час процедури імпорту. повідомлення: %s"</string>
+<string name="message_data_export_failed">"Помилка під час процедури експорту. повідомлення: %s"</string>
+<string name="message_data_import_success">"Дані імпортовано правильно."</string>
+<string name="message_data_export_success">"Дані експортовані правильно. бажаєте відкрити створений файл?"</string>
+
+
+<string name="message_async_init">"Ініціалізація ..."</string>
+
+
+<string name="snackbar_message_model_transaction_added">"Трансакцію додано"</string>
+<string name="snackbar_message_model_transfer_added">"Трансфер додано"</string>
+<string name="snackbar_message_model_transaction_removed">"Трансакцію видалено"</string>
+<string name="snackbar_message_model_transfer_removed">"Трансфер видалено"</string>
+
+
+<string name="spinner_item_group_type_daily">"Група щодня"</string>
+<string name="spinner_item_group_type_weekly">"Група щотижня"</string>
+<string name="spinner_item_group_type_monthly">"Група місячна"</string>
+<string name="spinner_item_group_type_yearly">"Група щорічно"</string>
+<string name="spinner_item_type_cash_flow">"Грошовий потік"</string>
+<string name="spinner_item_type_category">"Категорія"</string>
+<string name="spinner_item_cash_flow_incomes">"Тільки доходи"</string>
+<string name="spinner_item_cash_flow_expenses">"Тільки витрати"</string>
+<string name="spinner_item_cash_flow_net_incomes">"Чистий прибуток"</string>
+
+
+<string name="spinner_item_start_date">"Від: %s"</string>
+<string name="spinner_item_end_date">"Кому: %s"</string>
+
+
+<string name="service_backup_drop_box">"Dropbox"</string>
+<string name="service_backup_google_drive">"Диск google"</string>
+<string name="service_backup_external_memory">"Зовнішня пам'ять"</string>
+<string name="service_backup_storage_access_framework" translatable="false">"Платформа доступу до сховища"</string>
+
+
+
+<string name="setting_title_user_interface">"Інтерфейс користувача"</string>
+<string name="setting_title_utility">"Комунальні послуги"</string>
+<string name="setting_title_database">"База даних"</string>
+<string name="setting_title_about">"Про"</string>
+
+
+<string name="setting_category_ui_appearance">"Зовнішній вигляд"</string>
+<string name="setting_category_ui_theme">"Тема"</string>
+<string name="setting_title_ui_income_color">"Колір доходу"</string>
+<string name="setting_title_ui_expense_color">"Витратний колір"</string>
+<string name="setting_title_ui_custom_digits">"Стиль відображення цифр"</string>
+<string name="setting_summary_ui_custom_digits">"Персоналізуйте стиль відображення цифр"</string>
+<string name="setting_title_ui_date_format">"Формат дати"</string>
+<string name="setting_title_ui_first_day_week">"Перший день тижня"</string>
+<string name="setting_title_ui_first_day_month">"Перший день місяця"</string>
+<string name="setting_title_ui_group_type">"Групування"</string>
+<string name="setting_title_ui_theme_color_primary">"Колір первинний"</string>
+<string name="setting_title_ui_theme_color_accent">"Колірний акцент"</string>
+<string name="setting_title_ui_theme_type">"Тип"</string>
+
+
+<string name="setting_category_utility_notification">"Сповіщення"</string>
+<string name="setting_category_utility_security">"Безпека"</string>
+<string name="setting_category_utility_exchange_rates">"Курси валют"</string>
+<string name="setting_title_daily_reminder">"Щоденне нагадування"</string>
+<string name="setting_summary_daily_reminder">"Щодня о: %02d:00"</string>
+<string name="setting_title_security">"Захист доступу"</string>
+<string name="setting_title_security_change_pin">"Змінити пін-код"</string>
+<string name="setting_title_security_change_sequence">"Змінити послідовність розблокування"</string>
+<string name="setting_title_exchange_rate_source">"Сервіс"</string>
+<string name="setting_title_exchange_rate_api_key">"Спеціальний api-ключ"</string>
+<string name="setting_summary_exchange_rate_api_key">"Api-ключ: %s"</string>
+<string name="setting_summary_exchange_rate_api_key_missing">"Api-ключ відсутній"</string>
+<string name="setting_title_exchange_rate_update">"Оновити курси валют"</string>
+<string name="setting_summary_exchange_rate_update">"Останнє оновлення: %s"</string>
+<string name="setting_title_currency_management">"Керуйте валютами"</string>
+<string name="setting_summary_currency_management">"Додайте власні валюти"</string>
+<string name="setting_subtitle_user_interface">"Персоналізуйте його як хочете"</string>
+<string name="setting_subtitle_utility">"Налаштуйте доступні інструменти"</string>
+<string name="setting_subtitle_database">"Керуйте своїми даними"</string>
+<string name="setting_subtitle_about">"Кредити та ліцензії"</string>
+<string name="setting_item_daily_reminder_none">"Вимкнено"</string>
+<string name="setting_item_security_none">"Вимкнено"</string>
+<string name="setting_item_security_pin">"Pin-код"</string>
+<string name="setting_item_security_sequence">"Послідовність"</string>
+<string name="setting_item_security_fingerprint">"Відбиток пальця"</string>
+<string name="setting_item_ui_group_type_daily">"Щодня"</string>
+<string name="setting_item_ui_group_type_weekly">"Щотижня"</string>
+<string name="setting_item_ui_group_type_monthly">"Щомісяця"</string>
+<string name="setting_item_ui_group_type_yearly">"Щорічно"</string>
+<string name="setting_item_ui_theme_type_light">"Світло"</string>
+<string name="setting_item_ui_theme_type_dark">"Темний"</string>
+<string name="setting_item_ui_theme_type_deep_dark">"Глибока темрява"</string>
+<string name="setting_item_utility_exchange_rates_custom_api_key_hint">"Вставте api-ключ"</string>
+<string name="setting_item_utility_exchange_rates_service_oer" translatable="false">"OpenExchangeRates.org"</string>
+
+<string name="setting_item_utility_exchange_rates_service_oer_custom_api_key_message">"Для роботи цієї служби потрібен дійсний api-ключ. це означає, що цей випуск програми було скомпільовано без ключа за замовчуванням, ймовірно, через проблеми з ліцензуванням. щоб мати можливість спілкуватися з цим зовнішнім провайдером, ви повинні перейти на https://openexchangerates.org і зареєструватися: ви отримаєте безкоштовний ключ."</string>
+
+
+<string name="setting_category_database_backup">"Резервне копіювання"</string>
+<string name="setting_title_database_backup_services">"Сервіси резервного копіювання"</string>
+<string name="setting_summary_database_backup_services">"Створення та відновлення бази даних"</string>
+<string name="setting_category_database_import_export">"Імпорт-експорт"</string>
+<string name="setting_title_import_data">"Імпорт даних"</string>
+<string name="setting_summary_import_data">"Читання даних із зовнішнього файлу"</string>
+<string name="setting_title_export_data">"Експорт даних"</string>
+<string name="setting_summary_export_data">"Запис даних у зовнішній файл"</string>
+
+
+<string name="notification_title_daily_reminder_title">"Будь-яка трансакція сьогодні?"</string>
+<string name="notification_title_daily_reminder_text">"Натисніть тут, щоб додати його негайно"</string>
+<string name="notification_title_download_exchange_rates">"Оновити курси валют"</string>
+<string name="notification_title_backup_creation">"Створення резервної копії"</string>
+<string name="notification_title_backup_restoring">"Відновлення з резервної копії"</string>
+<string name="notification_title_backup_creation_failed">"Не вдалося створити резервну копію"</string>
+<string name="notification_title_backup_restoring_failed">"Не вдалося відновити резервну копію"</string>
+<string name="notification_content_downloading_data">"Завантаження оновлених даних…"</string>
+<string name="notification_content_caching_data">"Зберігання оновлених даних…"</string>
+<string name="notification_content_error_message">"Помилка: %s"</string>
+<string name="notification_content_backup_file_creation">"Запис локального файлу резервної копії…"</string>
+<string name="notification_content_backup_file_uploading">"Завантаження файлу резервної копії…"</string>
+<string name="notification_content_backup_file_downloading">"Завантаження файлу резервної копії…"</string>
+<string name="notification_content_backup_file_restoring">"Читання файлу резервної копії…"</string>
+<string name="notification_content_backup_error_wifi_network">"Операцію було запрограмовано на виконання лише тоді, коли пристрій підключено до мережі wifi. підключіться до мережі wifi і повторіть спробу."</string>
+<string name="notification_content_backup_error_backend_recoverable">"Під час зв’язку з серверною службою сталася помилка. перевірте підключення до інтернету та повторіть спробу."</string>
+<string name="notification_content_backup_error_backend">"Сталася помилка серверної частини, і автоматичне резервне копіювання було вимкнено. перевірте, чи є якась проблема."</string>
+<string name="notification_content_backup_error_internal">"Під час операції виникла внутрішня помилка, яка, ймовірно, є помилкою. будь ласка, повідомте про це повідомлення розробнику: %s"</string>
+<string name="notification_action_retry">"Повторіть спробу"</string>
+<string name="message_error_network_connection">"Підключення до мережі"</string>
+<string name="message_error_invalid_response">"Недійсна відповідь"</string>
+<string name="message_error_missing_api_key">"Відсутній або недійсний ключ api, оновіть ключ api в налаштуваннях, щоб користуватися цією послугою"</string>
+
+
+<string name="about_hint_version">"Версія збірки"</string>
+<string name="about_hint_changelog">"Журнал змін"</string>
+<string name="about_hint_support">"Підтримуйте розвиток"</string>
+<string name="about_hint_rate_app">"Оцініть цей додаток"</string>
+<string name="about_hint_open_source_libraries">"Бібліотеки з відкритим кодом"</string>
+<string name="about_hint_report_bug">"Повідомити про помилку"</string>
+<string name="about_hint_author">"Автор"</string>
+<string name="about_hint_developer">"Розробник"</string>
+<string name="about_hint_fork">"Форк на github"</string>
+<string name="about_hint_logo_designer">"Дизайнер логотипів"</string>
+<string name="about_hint_google_plus">"Google plus"</string>
+<string name="about_hint_website">"Веб-сайт"</string>
+<string name="about_hint_icon_licenses">"Зображення та значки"</string>
+<string name="about_hint_icon_image_intro">"Вступні зображення"</string>
+<string name="about_hint_md_icons">"Матеріал дизайн іконки"</string>
+<string name="about_hint_icon_pack">"Пакет значків"</string>
+<string name="about_hint_translators">"Перекладачі"</string>
+
+
+<string name="activity_launcher_legacy_edition_upgrade_title">"Upgradingвђ¦"</string>
+<string name="activity_launcher_first_start_title">"Ласкаво просимо до moneywallet"</string>
+<string name="activity_launcher_first_start_content">"Ви вперше використовуєте цю програму чи хочете відновити попередню резервну копію?"</string>
+<string name="activity_launcher_first_start_button_first_time">"Перший раз"</string>
+<string name="activity_launcher_first_start_button_restore_backup">"Відновити резервну копію"</string>
+
+
+<string name="activity_intro_title_slide_1">"Більше ніяких поганих сюрпризів"</string>
+<string name="activity_intro_title_slide_2">"Відкрийте та сплануйте"</string>
+<string name="activity_intro_title_slide_3">"Відкрите джерело"</string>
+<string name="activity_intro_title_slide_4">"Хмарні резервні копії"</string>
+<string name="activity_intro_title_slide_5">"Молодці"</string>
+<string name="activity_intro_description_slide_1">"Це допоможе вам відстежувати всі ваші витрати"</string>
+<string name="activity_intro_description_slide_2">"Ви можете проаналізувати, на що ви витрачаєте багато, і встановити певний бюджет"</string>
+<string name="activity_intro_description_slide_3">"Тепер проект має відкритий вихідний код, і кожен може зробити свій внесок"</string>
+<string name="activity_intro_description_slide_4">"Він підтримує найбільш використовувані хмарні служби, щоб ви ніколи не втратили свої дані"</string>
+<string name="activity_intro_description_slide_5">"Тепер ви будете перенаправлені на створення свого першого гаманця"</string>
+
+
+<string name="help_create_new_pin_code">"Створіть новий пін-код"</string>
+<string name="help_verify_created_pin_code">"Повторно введіть пін-код"</string>
+<string name="help_verify_created_pin_code_failed">"Невідповідність коду, створіть новий пін-код"</string>
+<string name="help_insert_pin_code">"Вставте пін-код"</string>
+<string name="help_insert_pin_code_failed">"Неправильний пін-код, повторіть спробу"</string>
+<string name="help_insert_old_pin_code">"Вставте старий пін-код"</string>
+<string name="help_create_new_sequence">"Створіть нову послідовність"</string>
+<string name="help_verify_created_sequence">"Повторно вставте послідовність"</string>
+<string name="help_verify_created_sequence_failed">"Невідповідність послідовності, створіть нову послідовність"</string>
+<string name="help_insert_sequence">"Вставте послідовність"</string>
+<string name="help_insert_sequence_failed">"Неправильна послідовність, повторіть спробу"</string>
+<string name="help_insert_old_sequence">"Вставте стару послідовність"</string>
+<string name="help_create_fingerprint">"Використовуйте відбиток пальця для підтвердження"</string>
+<string name="help_insert_fingerprint">"Використовуйте відбиток пальця, щоб розблокувати"</string>
+<string name="help_insert_fingerprint_failed">"Помилка підтвердження, повторіть спробу"</string>
+<string name="help_fingerprint_not_initialized">"На цьому пристрої не зареєстровано відбитків пальців"</string>
+
+
+<string name="icon_category_clothes">"Одяг"</string>
+<string name="icon_category_people">"Люди"</string>
+<string name="icon_category_toys">"Іграшки"</string>
+<string name="icon_category_travel_and_transportation">"Поїздки та транспорт"</string>
+<string name="icon_category_home">"Додому"</string>
+<string name="icon_category_animals">"Тварини"</string>
+<string name="icon_category_shopping">"Шопінг"</string>
+<string name="icon_category_sport_and_free_time">"Спорт і вільний час"</string>
+<string name="icon_category_payments">"Платежі"</string>
+<string name="icon_category_party">"Партія"</string>
+<string name="icon_category_food_and_drinks">"Їжа і напої"</string>
+<string name="icon_category_baby">"Дитина"</string>
+<string name="icon_category_beauty_and_wellness">"Краса і здоров'я"</string>
+<string name="icon_category_technology">"Технології"</string>
+<string name="icon_category_finance">"Фінанси"</string>
+
+<string name="keyboard_9">9</string>
+<string name="keyboard_8">8</string>
+<string name="keyboard_7">7</string>
+<string name="keyboard_6">6</string>
+<string name="keyboard_5">5</string>
+<string name="keyboard_4">4</string>
+<string name="keyboard_3">3</string>
+<string name="keyboard_2">2</string>
+<string name="keyboard_1">1</string>
+<string name="keyboard_0">0</string>
+<string name="keyboard_000">000</string>
+<string name="keyboard_point">.</string>
+<string name="keyboard_clear">"C"</string>
+<string name="keyboard_multiplication">"×"</string>
+<string name="keyboard_division">"÷"</string>
+<string name="keyboard_addition">"+"</string>
+<string name="keyboard_subtraction">"−"</string>
+<string name="keyboard_equal">"="</string>
+<string name="keyboard_commit">">"</string>
+
+<string name="recurrence_type_daily">"Щодня"</string>
+<string name="recurrence_type_weekly">"Щотижня"</string>
+<string name="recurrence_type_monthly">"Щомісяця"</string>
+<string name="recurrence_type_yearly">"Щорічно"</string>
+
+
+<string name="recurrence_hint_from">"Від"</string>
+<string name="recurrence_hint_every">"Кожен"</string>
+<string name="recurrence_hint_days">"Днів"</string>
+<string name="recurrence_hint_weeks">"Тижнів"</string>
+<string name="recurrence_hint_months">"Місяців"</string>
+<string name="recurrence_hint_years">"Років"</string>
+<string name="recurrence_hint_times">"Разів"</string>
+
+
+<string name="recurrence_type_weekly_sunday">"В неділю"</string>
+<string name="recurrence_type_weekly_monday">"В понеділок"</string>
+<string name="recurrence_type_weekly_tuesday">"У вівторок"</string>
+<string name="recurrence_type_weekly_wednesday">"В середу"</string>
+<string name="recurrence_type_weekly_thursday">"На четвер"</string>
+<string name="recurrence_type_weekly_friday">"В п'ятницю"</string>
+<string name="recurrence_type_weekly_saturday">"В суботу"</string>
+<string name="recurrence_type_monthly_repeat_same_day">"В один і той же день кожного місяця"</string>
+
+
+<string name="recurrence_end_type_forever">"Назавжди"</string>
+<string name="recurrence_end_type_until">"Поки"</string>
+<string name="recurrence_end_type_for">"Для"</string>
+
+
+<string name="recurrence_hint_repeat_every_day">"Повторювати кожен день,"</string>
+<string name="recurrence_hint_repeat_every_n_days">"Повторювати кожні %d днів,"</string>
+<string name="recurrence_hint_repeat_every_week">"Повторювати щотижня,"</string>
+<string name="recurrence_hint_repeat_every_n_weeks">"Повторювати кожні %d тижнів,"</string>
+<string name="recurrence_hint_repeat_every_month">"Повторювати кожен місяць,"</string>
+<string name="recurrence_hint_repeat_every_n_months">"Повторювати кожні %d місяців,"</string>
+<string name="recurrence_hint_repeat_every_year">"Повторювати щороку,"</string>
+<string name="recurrence_hint_repeat_every_n_years">"Повторювати кожні %d років,"</string>
+<string name="recurrence_hint_repeat_weekly_sunday">"В неділю,"</string>
+<string name="recurrence_hint_repeat_weekly_monday">"В понеділок,"</string>
+<string name="recurrence_hint_repeat_weekly_tuesday">"У вівторок,"</string>
+<string name="recurrence_hint_repeat_weekly_wednesday">"В середу,"</string>
+<string name="recurrence_hint_repeat_weekly_thursday">"На четвер,"</string>
+<string name="recurrence_hint_repeat_weekly_friday">"В п'ятницю,"</string>
+<string name="recurrence_hint_repeat_weekly_saturday">"В суботу,"</string>
+<string name="recurrence_hint_repeat_starting_from">"Починаючи з %s,"</string>
+<string name="recurrence_hint_repeat_forever">"Назавжди"</string>
+<string name="recurrence_hint_repeat_until">"До %s"</string>
+<string name="recurrence_hint_repeat_for_one_occurrence">"За 1 випадок"</string>
+<string name="recurrence_hint_repeat_for_n_occurrence">"Для %d випадків"</string>
+
+
+<string name="notification_channel_name_backup">"Резервне копіювання"</string>
+<string name="notification_channel_name_reminder">"Нагадування"</string>
+<string name="notification_channel_name_exchange_rate">"Курси валют"</string>
+<string name="notification_channel_name_error">"Помилка"</string>
+
+
+<string name="activity_donation_first_title">"Дякую тобі!"</string>
+<string name="activity_donation_first_content">"Якщо вам подобається цей додаток і ви вважаєте його корисним, купіть мені пива. це підтримає цей проект і спонукатиме мене продовжувати його розвиток."</string>
+<string name="activity_donation_second_title">"Навіщо мені?"</string>
+<string name="activity_donation_second_content">"Хтось може сказати: «найкращі речі в житті безкоштовні», і я з цим погоджуюсь. не можна купити дружбу, кохання чи спогад про прекрасний схід сонця. ось чому я вирішив безкоштовно поділитися вихідним кодом цієї програми. але, на жаль, життя не вільне. щодня у вас є лише 24 години дефіцитного часу, і ви повинні приймати рішення, як витратити їх, щоб підтримати себе. якщо вам подобається цей проект і ви хочете, щоб він розвивався в майбутньому, подумайте про підтримку моєї роботи, щоб я міг приділяти їй більше часу. будь-який внесок має величезне значення."</string>
+<string name="activity_donation_third_title">"Не можете внести гроші? не біда, ви ще можете багато допомогти!"</string>
+<string name="activity_donation_crypto_address_copied">"Адресу скопійовано"</string>
+<string name="activity_donation_action_share_title">"Поділіться"</string>
+<string name="activity_donation_action_share_content">"Поширюйте інформацію серед своїх друзів"</string>
+<string name="activity_donation_action_share_message">"Привіт, погляньте на %s"</string>
+<string name="activity_donation_action_share_using">"Поділитися за допомогою"</string>
+<string name="activity_donation_action_rate_title">"Оцінка"</string>
+<string name="activity_donation_action_rate_content">"Напишіть 5-зірковий відгук і розкажіть нам, що ви думаєте про це"</string>
+<string name="activity_donation_action_translate_title">"Перекласти"</string>
+<string name="activity_donation_action_translate_content">"Локалізуйте рядки вашою мовою"</string>
+<string name="activity_donation_action_contribute_title">"Внести свій внесок"</string>
+<string name="activity_donation_action_contribute_content">"Вихідний код є загальнодоступним, і кожен може співпрацювати"</string>
+<string name="activity_donation_final_content">"Кожен внесок, грошовий чи негрошовий, є рівноцінним і має суттєве значення для мене. сподіваюся, вам сподобається, і ще раз дякуємо, що вибрали цю програму."</string>
+
+
+    </resources>
